@@ -7,6 +7,7 @@ status
 resest
 log
 help
+
 git config --global user.name "Alok Kumar Singh"
 git config --global user.email "mail.alok87@gmail.com"
 git config -l
@@ -24,17 +25,20 @@ git log
 git reset --hard 8b4fe # Removes all the change in the repository which was done after commit 8b4fe
 git log
 git help
+
 ---------------------------------------------------------------------------- share over internet >
 git fetch # fetch changes from source to destination
 git merge # comibine two branches
 git push # push our contents from source to destination
 git remote # manage one's source and destination, where and how you can share your work
 git clone # clone a repo into local
+
 git remote add origin https://bitbucket.org/alok87/learn_git.git
 git push -u origin master # -u defines the remote repo to push to by default, so that next
 time git push and git pull works without specifing remote repo
 git remote add # adds a git repo identified by its path to your current local repo ( origin
 is nothing but an alias for the path representing the remote repo )
+
 Now comes the main purpose of sharing
 >Clone your work from anywhere to local
 >Work on it
@@ -46,6 +50,7 @@ git commit -m "new changes done
 git pull
 git push # mark we did not provide -u as we did earlier for the first push.
 # note: we can use git fetch & git merge instead of git pull.
+
 ----------------------------------------------------------------------------- share over intranet >
 1. Gitolite server
 2. Bare repository
@@ -54,23 +59,34 @@ Working dir # directory containing your source.
 So a bare directory will only have contents of .git and nothing else.
 git clone --bare /path/myrepo /path/myrepo_bare # this creates a bare clone of your "myrepo" repository
 cd /path/myrepo_bare;ls -ltra # you will find it has all the contents of /path/myrepo/.git/
+
 ----------------------------------------------------------------------------- git fancy features >
 shortlog
 log search
 clean
 tag
+
 git shortlog # for the better output of the repository log, arranged with user names in alphbetical order.
 git shortlog -n # arranged with no. of commits by a user. --numbered
 git shortlog -e # same as git shortlog but with additional email info attached. --email
 git shortlog -s # to get only the names and no of commits --summary
+
 git log --skip=2 # gives the output skipping last 2 recent commits
 git log --since=2014-08-20 --untill=2014-10-14 # if you know what since and untill means it should be clear
 git log -since=2.days
 git log -since=2.months
 git log --grep="Q3R2" # it looks for keyword "Q3R2" in your commit msgs and shows such commits
+
 gt clean -f -e*.txt # to remove untracked *.txt files
 git clean -f # to remove all the untracked files
 git clean -f # forceful delete
 git clean -d # removes untracked directories
 git clean -n # dry-run, does not remove anything but shows what needs to de done.
+git clean -e<pattern> #excludes the cleanup of patterned specified files along with .gitignore
+
+Tagging #specify a point in your history with some metadata and refer to it henceforth with the same tag.
+Lightweight tag: Tracks the tag name not depending on whom or when the tag was created. < Single user env >
+		 Simple referrence of different phases that your project files in repo have gone through.
+Annotated tag:   Tracks the author name, time of tag creation and the tag name with a description. < Multi user env >
+
 
