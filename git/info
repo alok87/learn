@@ -85,11 +85,14 @@ git clean -n # dry-run, does not remove anything but shows what needs to de done
 git clean -e<pattern> #excludes the cleanup of patterned specified files along with .gitignore
 
 Tagging #specify a point in your history with some metadata and refer to it henceforth with the same tag.
+
 Lightweight tag: Tracks the tag name not depending on whom or when the tag was created. < Single user env >
 		 Simple referrence of different phases that your project files in repo have gone through.
-Annotated tag:   Tracks the author name, time of tag creation and the tag name with a description. < Multi user env >
 git checkout <commitchecksumid> # creates a head branch and takes you there, head branch with that checksum checkin snapshot
 git checkout <tag_id> # takes us back to our tagged id 
+
+Annotated tag:   Tracks the author name, time of tag creation and the tag name with a description. < Multi user env >
+git tag -a <tag_name> -m <tagged message>
 
 
 
