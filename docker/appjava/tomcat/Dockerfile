@@ -1,8 +1,8 @@
 FROM ubuntu:14.04
 MAINTAINER Alok Kumar Singh "mail.alok87@gmail.com" 
 ENV REFRESHED_AT 2014-10-11
-RUN apt-get -yqq update
-RUN apt-get -yqq install tomcat7 default-jdk
+RUN apt-get -y update
+RUN apt-get -y install tomcat7 default-jdk
 ENV CATALINA_HOME /usr/share/tomcat7
 ENV CATALINA_BASE /var/lib/tomcat7
 ENV CATALINA_PID /var/run/tomcat7.pid
