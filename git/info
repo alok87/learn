@@ -94,6 +94,87 @@ git checkout <tag_id> # takes us back to our tagged id
 Annotated tag:   Tracks the author name, time of tag creation and the tag name with a description. < Multi user env >
 git tag -a <tag_name> -m <tagged message>
 
+git tag -d <tag_name> # Deletion of any type of tag
+
+------------------------------------------------------------------------------- unleash the beast features git offers >
+----------------------------------------------------------------------------------------- multiplayer mode ------------
+merge
+resolve conflicts
+
+Files ( top to bottom i.e. how a user sees it to how a computer seees it )
+text data/binary data
+binary files
+file system
+hard disk
+
+Text data - any file/data which can be read in any simple editor.
+Binary data - any file/data which can only be read through specif programs such as microsoft word, picture viewer, etc..
+
+Multiplayer mode
+divide the work into files with each file for a particular task.
+So if we have more no of files divided with functionality it becomes easier to manage and maintain when compared to a single file with everybody working on.
+
+user1 makes changes 
+clone it into shared bare repo # git clone --bare 
+user2 clones bare, works on it
+user3 clones bare, works on it
+user2 does > git pull 
+	   > git push # no issues
+user3 does > git pull # user 2 changes missing ERR
+	   > Open editor include user2 changes it should be in b/w >>>HEAD ===
+	   > check in the changes (commit with message "included user2 changes"
+	   > git push
+	   > git log --graph
+	 
+----------------------------------------------------------------------------------killer branching in git >
+Why is a branch needed
+1. Feature development branch eg. DEV_2 DEV_3 ... here you develop a feature and then release it.
+2. Active branch - this branch is the current production branch.
+
+git checkout -b <new branch name>
+git checkout <branch name> # to switch to the <branch name>
+git merge <app_development> # this merges the changes in the branch app_development to the branch u are in.
+git branch -d <branch_name_of_the_branch_you_want_to_delete> # delete a branch
+git branch # shows list of branch in your system
+
+git config --local alias.c clear # it will make c as an alias for clear by updating in .config file
+				 # note it will work only with git means git c
+wrtie the below alias under [alias] in file config for add a file and seeing the status
+ast = !git add . && git status # git ast 
+write the below alias under [alias] for commiting the code 
+ct = "!f() { git commit -m \"${1}\";};f" # git ct "checkin comment"
+Note: Changes or aliases we put are in your local git config file. To make it usable across a user level/global access make 
+      changes in ~/.gitconfig
+
+----------------------------------------------------------------------------------mechanisms behind git magical speed and functionality >
+Following operational modes are explained:
+init add commit status clone fetch merge remote pull push tag branch checkout 
+
+Plumbing commands  - lower level operations which forms the base of git.
+Porcelain commands - cover the underlying plumbing tasks at high level with easy-handling names for end users.
+
+Contents of .git:
+1. Hooks -	 Customization scripts injected into various git commands. ### git help hooks
+	   	 # git init creates sample hooks-scripts with can be renamed (remove .sample) for using them
+2. Info - 	 Additional info about the repo is kept here. By default only 1 files is there exclude. It is a master list of files to be excluded by git.
+	  	 Any file written in exclude file is only ignored in your local repository and not in clones
+	  	 while in .gitignore which gets checked in, so on clone it is ignored in the new repo also.
+3. Config -	 Every configuration of the repository is kept in this file. 
+4. Description - gitweb is used for GUI git. This file contains user-defined description for gitweb.
+5. Objects     - Git repo is nothing but a database containing all the data that is needed to retain,reproduce and manage the revisions and history of files.
+		 Git considers everything that goes inside it as objects.. MAIN REASON FOR FASTER PERFORMANCE.
+		 4 types of objects: 	BLOBS
+					TREES
+					COMMITS
+					TAGS
+
+		BLOBS: binary large objects : collection of large binary data stored inside a box as a single entity for later use. 
+
+
+
+
+  
+
 
 
 
