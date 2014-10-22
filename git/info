@@ -131,6 +131,7 @@ Why is a branch needed
 1. Feature development branch eg. DEV_2 DEV_3 ... here you develop a feature and then release it.
 2. Active branch - this branch is the current production branch.
 
+git branch <branch_name>
 git checkout -b <new branch name>
 git checkout <branch name> # to switch to the <branch name>
 git merge <app_development> # this merges the changes in the branch app_development to the branch u are in.
@@ -168,12 +169,68 @@ Contents of .git:
 					COMMITS
 					TAGS
 
-		BLOBS: binary large objects : collection of large binary data stored inside a box as a single entity for later use. 
+		BLOBS:   binary large objects : collection of large binary data stored inside a box as a single entity for later use. 
+		TREES:   Git's internal representation of directories and structure of your content. 
+		         Git Tree object refers to Git Blobs and other Git tree objects.
+		COMMITS: Commit objects hold all the metadata for changes introduced to the repo content.
+			  It includes, author of change, commiter of change, date time etc..
+		TAGS: 	 It carries a human readable name which can be attached to other objects, usually a commit obj for easy retrieval, and other reasons.
+		HEAD: 	 It is a pointer which points the Git engine to the active branch.
+			 so if you are in master branch it will show>		 ref: refs/heads/master
+			    if you are in test_release branch it will show>	 ref: refs/heads/test_release
+		REFS: it stores the SHA1-IDs of imp points in the repo ( tags and branches )
+		      metadata of tags are stored in refs/tags		
+		      metadata of branches are stored in refs/heads
+		      each branch name is a file inside the head directory ( refs/heads/master ) and the content is the commit SHA-ID of parent branch.
+		      same for tag
+		      each tag is a file inside refs/tags which has single sha-id for reference.
+		      <directories can also be there under refs/tags and refs/heads for hierarchical struct>
+
+	       INDEX: It is a file where Git stores your staging area information to be commited.
+		      This is a place where you keep your files that you want to be commited.
+		-------------------------------------------------------------------------------------------------------------------------------------------
+GIT CONTENT TRACKING SYSTEM: 
+
+git sees relation between files through their hashes.
+so a file1 having helloworld and file2 having same content will have same hash.
+It distinguishes on basis of content and not localtion/size.
+
+GIT ADD 
+1. Computing hash is the first task of git before storing any data.
+2. Git puts the content under one single BLOB object. 
+3. When aksed to reproduce content it will bring out the content with the exact storage pattern with the use of metadata stored in TREE object.
+4. When a file is changed a little bit, its hash completely changes.
+5. When add is executed, Git updates the index using the current content found in the working tree(stages your changes) and prepares the 
+   content staged for next commit:
+	a. Computes the hash of the content.
+	b. Decides to create a new content or link to an existing blob object.
+	   { if a file is not changed the hash remains same and git links it to the old file only }
+	c. Actual creation or linking of BLOB takes place.
+ 	d. Creation of tree object to track localtion of content.
+
+GIT COMMIT
+When a commit is done
+1. a commit object gets created with the metadata of content/changes that were added using git add ( metadata contains info of author, commiter, date time)
+2. created commit obj gets linked with the tree object which is alread linked with blob.
+	commit obj > tree obj > blob obj
+
+GIT STATUS
+When a git status is executed:
+File path present in index VS recent commit          >>> Changes to be commited.
+File path present in index VS working tree 	     >>> Changes not staged for commit. Untracked.
+Paths in the working tree and not tracked by git     >>> Changes not staged for commit. Untracked.
+
+GIT CLONE
+1. create dest dir, and initate repo git init
+2. set up remote branches in the dest dir for each branch present in source repo ( git remote )
+3. fetch objs, refs 
+4. checkout 
+
+GIT REMOTE
 
 
 
 
-  
 
 
 
