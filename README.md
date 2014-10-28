@@ -23,5 +23,14 @@ Repo for learning new technologies:
 18.Microservice Architecture
 19.Cloud Computing (Deb)
 
-
+Alok's list - 
+Docker
+Git
+Docker Orchestration Tools & Service Discovery - Fig, Consul.
+Configuration Management Tools - Puppet, Chef
+SELinux, CGroups, Namespaces
+Cloud Computing and REST APIs
+Key value db - Redis
+Python
+Json
 
