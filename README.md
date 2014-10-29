@@ -33,4 +33,6 @@ Cloud Computing and REST APIs
 Key value db - Redis
 Python
 Json
+Curl command full detailed
+API
 
