@@ -3,7 +3,7 @@ learn
 
 Repo for learning new technologies:
 
- 1.Git (Alok)
+ 1.Git (Alok) - basic book completed 
  2.Shell Scripting
  3.Ruby (Sujai)
  4.Jira
