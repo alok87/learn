@@ -1,0 +1,17 @@
+DockerBook Revised:
+
+-----------------------------------------------------------------------------------------
+1. Introduction
+-----------------------------------------------------------------------------------------
+Difference with Hypervisor-Virtualization:
+Hypervisor Virtualization - 1 or more independent machines runs on physical hardware via an intermediation layer.
+Containers - Containers runs user-space on top of OperatingSystem's kernel. ( so called OS level virtualization ).
+           - Multiple user spaces to be run on a single host.
+           - Less flexible, because it runs on top Kernel. so windows can not be run on Linux host. But docker is working on 
+             achieveing it.
+           - Less secure, as the isolation of container with the host is not complete as it is in hypervisor virtual machines.
+           - Despite above containers have been used in a lot places
+           - Use cases:
+            - Hyperscale deployments of multi-tenant services.
+            - Lightweight sandboxing.
+            
