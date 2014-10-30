@@ -230,8 +230,9 @@ GIT REMOTE
 
 
 
-
-
-
-
-
+#GIT PARTIAL CHECKOUT 
+git init 
+git remote add -f tprov https://github.com/jamtur01/dockerbook-code
+git config core.sparsecheckout true
+vi .git/info/spar-checkout and add subdirs path in new lines
+git pull trprov

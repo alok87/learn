@@ -10,5 +10,5 @@ ENV CATALINA_SH /usr/share/tomcat7/bin/catalina.sh
 ENV CATALINA_TMPDIR /tmp/tomcat7-tomcat7-tmp
 RUN mkdir -p $CATALINA_TMPDIR
 VOLUME [ "/var/lib/tomcat7/webapps/" ]
-EXPOSE 9000
+EXPOSE 8080 
 ENTRYPOINT [ "/usr/share/tomcat7/bin/catalina.sh", "run" ]
