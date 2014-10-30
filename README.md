@@ -16,7 +16,7 @@ Common List-
 12.Project Atomic
 13.CoreOS
 14.Kubernetes
-15.Linux Security & SELinux & Containers & Cgroups & REST (Alok)
+15.Linux Security & SELinux & Containers & Cgroups & REST 
 16.Node.js
 17.MongoDB (or) CouchDB
 18.Microservice Architecture
