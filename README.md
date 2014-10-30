@@ -1,9 +1,8 @@
-learn
-=====
+learn & share
+--------=====
 
-Repo for learning new technologies:
-
- 1.Git (Alok) - basic book completed 
+Common List-
+ 1.Git (Alok) - basic book read - presentation left 
  2.Shell Scripting
  3.Ruby (Sujai)
  4.Jira
@@ -12,12 +11,12 @@ Repo for learning new technologies:
  7.Logstash
  8.Nagios (Deb)
  9.Splunk
-10.Docker (Alok)
+10.Docker (Alok) - docker book read - presentation left 
 11.Puppet (Sujai)
 12.Project Atomic
 13.CoreOS
 14.Kubernetes
-15.Linux Security & SELinux
+15.Linux Security & SELinux & Containers & Cgroups & REST (Alok)
 16.Node.js
 17.MongoDB (or) CouchDB
 18.Microservice Architecture
