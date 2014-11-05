@@ -30,7 +30,7 @@ Configuration Management Tools - Puppet, Chef
 SELinux, CGroups, Namespaces
 Cloud Computing and REST APIs
 Key value db - Redis
-Python
+Python/Ruby
 Json
 Curl command full detailed
 API
