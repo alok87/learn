@@ -1,6 +1,5 @@
 Core OS
 
-complete ref: http://goo.gl/7otyID
 ------------------------------------------------------------------------------------------------------------------------
 1. Introduction
 ------------------------------------------------------------------------------------------------------------------------
@@ -70,21 +69,49 @@ To interact with the etcd data you can either use the below 2 to manipulate/retr
 > HTTP/JSON API ( http://127.0.0.1:4001/v2/keys/, by default )
 > or, etcdctl utility
 Note: the HTTP API is also available to the applications running docker containers( which means configuration 
-of individual containers can 
+of individual containers can take into account the value stored in etcd.
 
-  
 -------------------------------------------------------------------------------------------------------------------------
 fleet
 
 fleet daemon basically is a distributed init system.
 - It works by hooking into the systemd init system of each host in a cluster.
 - handles service scheduling.
-- contraining the deployment targets based on user defined criteria.
+- constraining the deployment targets based on user defined criteria.
 - it helps in making the whole cluster act as one and manages each node inside it.
 
+systemd init is used to start and manage services on the local machine.
+each node in a cluster operates its own local systemd init system.
+what fleet does is it provides a interface to control each nodes's systemd.
+so what u can do with fleet is:
+> u can start and stop a service in a node in a cluster.
+> get state information of the running processes across your cluster.
+> It follows a process distribution mechanism, so it can start services on less busy similar hosts.
+> You can specify placement conditions, means you can choose the particular service should run on this geographical
+  localtion machines only, on the machines with particular things runnings etc...
+> fleet leverages on systemd for starting the local processes, each of the files which define services are
+  systemd unit files, you can pass these config files to fleet and manage them on the entire cluster.
+  "HIGHLY AVAILABLE CONFIGURATIONS"  
+  
+  So with these you can deploy each of your web server containers on different nodes.
+  Any of the member node can use the "fleetctl" utility to manage the cluster.
+  Fleetctl will be your main interface with your cluster.
+  
+  --------------------------------------------------------------------------------------------------------------
+  
+  
+  
+  
+  
 
 
 
 
 
 
+
+
+
+
+
+complete ref: http://goo.gl/7otyID
