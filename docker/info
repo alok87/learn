@@ -34,6 +34,41 @@ docker images - building block of docker world. containers are launched from ima
                       layered format using union filesystem
 docker registeries - place for private/public storage of images - dockerhub
 docker containers - it is an virtualized machine ( actually a process only for the host ) where you run your app.
+---------------------------------------------------------------
+What can you use docker for ?
+> Developers build, run and share containers./
+> Containers can be built in development, and then later promoted to testing envs, and then production.
+> Running stand alone services across multiple environments.
+> Using docker create a isolated instances to run CI 
+> Build and test complex appliaction on local host, create a prod like environment on localhost and do your tests
+  when all ok directly promote to production.
+> Build a multi user PAAS architecture.
+> Build different environments for testing on localhost itself.
+> Hyperscale deployments of hosts.
+
+Docker with Configuration Management?
+You need a config management tool though docker solves most of the problems.
+
+Docker technical components
+The host haveing docker installed must be x64 machine with kernel version >= 3.8
+Docker inculdes:
+> A native linux container format - libcontainer as well as
+  popular container format - lxc. 
+  The lib container format is the default format.
+> Linux Kernel namespaces which provides isolation for filesystems, processes and networks.
+  fs isolation - each container has own root.
+  process isolation - each container runs its own process environment.
+  network isolation - separate virtual interfaces and IP addressing b.w. containers.
+  resource isolation and grouping - resources like CPU, memory are allocated to each Docker container using
+                                    CGRPOUPS( a kernel feature)
+  copy on write - meaning the fs are layered and this requires very less disk space.
+  logging - STDOUT, STDERR and STDIN are collected and logged and available for analysis.
+           you can create a pseudo tty and attach to STDIN to have a interactive shell.
+           
+-----------------------------------------------------------------------------------------
+2. Introduction
+-----------------------------------------------------------------------------------------
+
 
 
 
