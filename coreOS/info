@@ -1,2 +1,25 @@
 Core OS
 
+http://goo.gl/7otyID
+------------------------------------------------------------------------------------------------------------------------
+1. Introduction
+------------------------------------------------------------------------------------------------------------------------
+> (Base OS) Powerful linux distribution made on top of Chrome OS.
+> (Use) Manily useful for large scalable deployments on varied infrastructure.
+> (Containerization) Maintains lightweight host system and uses docker containers for all its applications.
+> (Clusters) Provides process isolation and allows applications to move throughout a cluster easily.
+> (Uses ETCD for cluster management and Service discovery) To manage these clusters, Core Os uses globally 
+  distributed key-value store - ETCD to pass configuration data between nodes. This component is also 
+  responsible for SERVICE DISCOVERY, allowing applications to be dyanamically configured based on the 
+  information available from the shared resources.
+> (Orchestration) - Core Os uses Fleet for scheduling and managing applications across all the nodes of the cluster. 
+                    It servers as a cluster-wide INIT system that manages the processes across the cluster.
+                    It helps in manage/configure the whole cluster from a single point in a muli-service, multi hosts env.
+                    It does this by tying with the each node's systemd init system.
+-------------------------------------------------------------------------------------------------------------------------                    
+2. System Design
+-------------------------------------------------------------------------------------------------------------------------
+CoreOs design is geared towards Clustering and Containerization.
+The main host system is relatively very simple, it does not even have a package manager. It has least no 
+of applications and services installed by default. The idea is to run each and everything as a docker
+container allowing isolation, portability and external management of services.
