@@ -1,25 +1,90 @@
 Core OS
 
-http://goo.gl/7otyID
+complete ref: http://goo.gl/7otyID
 ------------------------------------------------------------------------------------------------------------------------
 1. Introduction
 ------------------------------------------------------------------------------------------------------------------------
 > (Base OS) Powerful linux distribution made on top of Chrome OS.
 > (Use) Manily useful for large scalable deployments on varied infrastructure.
-> (Containerization) Maintains lightweight host system and uses docker containers for all its applications.
+> (Containerization) Maintains lightweight host system and uses "docker" containers for all its applications.
 > (Clusters) Provides process isolation and allows applications to move throughout a cluster easily.
 > (Uses ETCD for cluster management and Service discovery) To manage these clusters, Core Os uses globally 
-  distributed key-value store - ETCD to pass configuration data between nodes. This component is also 
-  responsible for SERVICE DISCOVERY, allowing applications to be dyanamically configured based on the 
+  distributed key-value store - "ETCD" to pass configuration data between nodes. This component is also 
+  responsible for "SERVICE DISCOVERY", allowing applications to be dyanamically configured based on the 
   information available from the shared resources.
 > (Orchestration) - Core Os uses Fleet for scheduling and managing applications across all the nodes of the cluster. 
-                    It servers as a cluster-wide INIT system that manages the processes across the cluster.
+                    It servers as a cluster-wide "INIT" system that manages the processes across the cluster.
                     It helps in manage/configure the whole cluster from a single point in a muli-service, multi hosts env.
-                    It does this by tying with the each node's systemd init system.
+                    It does this by tying with the each node's "SYSTEMD" init system.
+  
+  Why do you need a cluster?
+  > greater computing power.
+  > To avoid single point of failure.
+  > To distribute the load.
+                    
 -------------------------------------------------------------------------------------------------------------------------                    
 2. System Design
 -------------------------------------------------------------------------------------------------------------------------
-CoreOs design is geared towards Clustering and Containerization.
+CoreOS design is geared towards Clustering and Containerization.
+
 The main host system is relatively very simple, it does not even have a package manager. It has least no 
 of applications and services installed by default. The idea is to run each and everything as a docker
 container allowing isolation, portability and external management of services.
+
+What does CoreOS does on booting?
+The main ability of core os lies here. It has the capability of joining a cluster on boot.
+Core os on boot reads a user-supplied configuration file called "CLOUD-CONFIG".
+CLOUD-CONFIG file does - 
+  > basic inital configuration.
+  > startup essential services.
+  > reconfigure important parameters.
+  > makes the current CoreOS host to join other memebers of the cluster. 
+    (This is how CoreOS is able to immediately join a cluster as a working unit upon creation.)
+Usually at minimum, (requirements for bootstrap CoreOS node to a cluster:)
+ Core os does below 3 on boot up:
+ > joins a existing defined cluster.
+ > starts etcd service.
+ > starts fleet service.
+
+-------------------------------------------------------------------------------------------------------------------------
+etcd
+
+etcd is a daemon which stores and distribute data to each of the hosts in a cluster.
+- (inter node communication) - it helps the nodes to know the status/and other info about other nodes in cluster.
+- (configuration) it enables consistent configuration across a cluster.
+- (service discovery) platform with which services announces themselves.
+  This service discovery mechanism allows other services to query for information to adjust their own configuration.
+  example - load balancer queries etcd to get the IP addresses of all the web hosts when it starts up.
+
+-format:detailed  
+basically it does:
+a. get the configuration data.
+b. query information about running services.
+c. publish information that should be known to the other memebers of the cluster.
+
+each node has a etcd running.
+So if a cluster needs a particular information. It just contacts the etcd in the current machine and gets it.
+All the data are available to each of the etcd regardleses of where actually the data is stored.
+leader elections are also handled automatically.
+To interact with the etcd data you can either use the below 2 to manipulate/retrieve/read data:
+> HTTP/JSON API ( http://127.0.0.1:4001/v2/keys/, by default )
+> or, etcdctl utility
+Note: the HTTP API is also available to the applications running docker containers( which means configuration 
+of individual containers can 
+
+  
+-------------------------------------------------------------------------------------------------------------------------
+fleet
+
+fleet daemon basically is a distributed init system.
+- It works by hooking into the systemd init system of each host in a cluster.
+- handles service scheduling.
+- contraining the deployment targets based on user defined criteria.
+- it helps in making the whole cluster act as one and manages each node inside it.
+
+
+
+
+
+
+
