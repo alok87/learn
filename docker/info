@@ -4,14 +4,47 @@ DockerBook Revised:
 1. Introduction
 -----------------------------------------------------------------------------------------
 Difference with Hypervisor-Virtualization:
+-------------------------------------------------------------
 Hypervisor Virtualization - 1 or more independent machines runs on physical hardware via an intermediation layer.
 Containers - Containers runs user-space on top of OperatingSystem's kernel. ( so called OS level virtualization ).
            - Multiple user spaces to be run on a single host.
-           - Less flexible, because it runs on top Kernel. so windows can not be run on Linux host. But docker is working on 
-             achieveing it.
-           - Less secure, as the isolation of container with the host is not complete as it is in hypervisor virtual machines.
+           - Less flexible, because it runs on top Kernel. so windows can not be run on Linux host. But docker is working 
+             on achieveing it.
+           - Less secure, as the isolation of container with the host is not complete as it is in hypervisor virtual 
+             machines.
            - Despite above containers have been used in a lot places
            - Use cases:
             - Hyperscale deployments of multi-tenant services.
             - Lightweight sandboxing.
             
+Docker 
+---------------------------------------------------------------
+Docker encourages Service oriented architecture & microservices architecture.
+
+Docker recommends to run a single service/process/app in a container.
+Application or service is represented by interconencted containers.
+This makes it easy to scale, distribute, debug and introspect your application.
+
+Components of docker - docker client & server,images, registeries, containers.
+---------------------------------------------------------------------------------------
+docker clinet & server - docker client talks to the daemon which in turn talks to the containers and does the work.
+docker ships with cmd line library ( i.e. docker ) as well as full REST FULL API(http://docs.docker.com/reference/api/docker_remote_api/)
+REST FULL API of docker 
+docker images - building block of docker world. containers are launched from images. 
+                      layered format using union filesystem
+docker registeries - place for private/public storage of images - dockerhub
+docker containers - it is an virtualized machine ( actually a process only for the host ) where you run your app.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
