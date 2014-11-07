@@ -155,6 +155,11 @@ Note: $private_ipv4 and $public_ipv4 are automatically interpolated to actual IP
 private server). It is supported in Digital Ocean, not sure of other systems. Also fleet section is not required 
 if you are not going to use fleetclt ssh command.
 
+Create a CoreOS Cluster
+------------------------
+Recommended to setup at least 3 machines. We will create machines coreos-1, coreos-2, coreos-3 for learning.
+you can create coreos droplets using the method of your choice.
+
 
 
 
