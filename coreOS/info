@@ -187,11 +187,76 @@ cb35b356... 172.17.8.103  -
 17040743... 172.17.8.102  -
 This means all machines know about each other. And your cluster is up !
 
-
 check etcd functionality 
 core@core-01 ~ $ etcdctl set etcd-key1 "key1-value"
 core@core-02 ~ $ etcdctl get etcd-key1
 key1-value
+
+---------------------------------------------------------------------------------------------------------------
+3.  Use Fleet and Fleetctl to manage your COreOS cluster
+---------------------------------------------------------------------------------------------------------------
+Fleet enables the cluster management in Core-OS clusters.
+Fleet allows users to manage docker containers as a service for their entire cluster.
+
+Fleet acts as the upper level interface that controls the systemd init system of each nodes.
+So system admins can define the criteria of a service i.e. in which hosts it should run etc.. and then
+fleet will setup the whole cluster acc to that criteria.
+
+Service Unit Files 
+-------------------
+Unit Files are used by systemd init system to describe each available service, define the commands needed
+to manage it, set dependency information (so that system is always in the woring state).
+
+fleet daemon is built on top of systemd in order to manage services on a cluster-wide level.
+
+Unit File Sections
+------------------
+
+> Unit: Provides generic information about the unit and is not dependent on the "type" of the unit.
+        metadata and dependency information.
+        fleet uses it to show the description and also to show the service place in connection to other service units.
+
+> Unit Type Section: Fleet daemon can take units of different types including:
+  Service
+  Socket
+  Device
+  Mount
+  Automount
+  Timer
+  Path
+
+> X-Fleet: This section is used to provide fleet-specific configuration options. 
+           This mainly means that you can specify that a service must or must not be scheduled in a 
+           certain way based on criteria like machine ID, currently running services, metadata information, etc.
+
+[Unit]
+Generic_option_1
+Generic_option_2
+
+[Service]
+Service_specific_option_1
+Service_specific_option_2
+
+[X-Fleet]
+Fleet_option_1
+Fleet_option_2  
+
+---- eg of a hello service ------
+hello.service
+[Unit]
+Description=My Service
+After=docker.service
+
+[Service]
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/docker kill hello
+ExecStartPre=-/usr/bin/docker rm hello
+ExecStartPre=/usr/bin/docker pull busybox
+ExecStart=/usr/bin/docker run --name hello busybox /bin/sh -c "while true; do echo Hello World; sleep 1; done"
+ExecStop=/usr/bin/docker stop hello
+
+
+
 
 
 
