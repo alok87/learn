@@ -177,7 +177,26 @@ Login to the core-01 using below
 [root@centdev01 coreos-vagrant]# vagrant ssh core-01 -- -A
 Last login: Sun Nov  9 12:57:55 2014 from 10.0.2.2
 CoreOS (stable)
-core@core-01 ~ $ 
+core@core-01 ~ $
+
+Check from core-01 if all machines are visibe - 
+$ fleetctl list-machines
+MACHINE   IP            METADATA
+517d1c7d... 172.17.8.101  -
+cb35b356... 172.17.8.103  -
+17040743... 172.17.8.102  -
+This means all machines know about each other. And your cluster is up !
+
+
+check etcd functionality 
+core@core-01 ~ $ etcdctl set etcd-key1 "key1-value"
+core@core-02 ~ $ etcdctl get etcd-key1
+key1-value
+
+
+
+
+
 
 
 
