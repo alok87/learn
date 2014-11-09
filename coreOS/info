@@ -157,8 +157,29 @@ if you are not going to use fleetclt ssh command.
 
 Create a CoreOS Cluster
 ------------------------
-Recommended to setup at least 3 machines. We will create machines coreos-1, coreos-2, coreos-3 for learning.
+Recommended to setup at least 3 machines. We will create machines core-1, core-2, core-3 for learning.
 you can create coreos droplets using the method of your choice.
+
+Create a vagrant enabled cluster following - http://goo.gl/YEuJ2w
+From the host machine run to check the status of the cluster - 
+[root@centdev01 coreos-vagrant]# vagrant status
+Current machine states:
+
+core-01                   running (virtualbox)
+core-02                   running (virtualbox)
+core-03                   running (virtualbox)
+core-04                   running (virtualbox)
+This environment represents multiple VMs. The VMs are all listed
+above with their current state. For more information about a specific
+VM, run `vagrant status NAME`.
+
+Login to the core-01 using below 
+[root@centdev01 coreos-vagrant]# vagrant ssh core-01 -- -A
+Last login: Sun Nov  9 12:57:55 2014 from 10.0.2.2
+CoreOS (stable)
+core@core-01 ~ $ 
+
+
 
 
 
