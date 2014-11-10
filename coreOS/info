@@ -324,6 +324,57 @@ hello.service   0d1c468 launched    launched    14fferc3.../10.132.249.212
 $ fleetctl list-units
 UNIT        MACHINE             ACTIVE  SUB
 hello.service   14ffe4c3.../10.132.249.212  active  running
+It gives information directly from the systemd
+ACTIVE - generalized state of unit
+SUB    - more low level description
+
+To stop a service, it will execute the command specfied for action stop under services in unit files
+$ fleetctl stop hello.service  ( this will make the state loaded again )
+Unit hello.service loaded on 144...
+You can obeserve the unit reverting back to the loaded state.
+$ fleetctl list-units
+You will find the service loaded, which means it is still loaded in the systemd memory.
+To remove it from system memory of fleet, best is to use unload
+$ fleetctl unload hello.service ( this will make the state inactive )
+To completely remove it 
+$ fleetctl destroy hello.service ( this removes the unit hello.service completely )
+
+IF YOU MODIFY A UNIT FILE OF A SERVICE TO MAKE THAT COME IN EFFECT YOU NEED TO DESTROY THE 
+EXISTING SERVICE AND START IT AGAIN
+$ fleetctl destroy hello.service
+$ fleetctl load hello.service
+$ fleetctl start hello.service
+
+Getting Unit statuses 
+----------------------
+
+$ fleetctl list-units        # list of units currently been scheduled/running.
+$ fleetctl list-unit-files   # list of all units that fleets knows about with actual and desired state.
+
+$ fleetctl status hello.service # it gives the systemctl status information of the service running on whatever host it is
+$ fleetctl journal --lines 20 hello.service # this shows last 20 lines of STDOUT for hello.service
+$ fleetctl journal -f hello.service # it will follow the STDOUT for hello.service "hello world" keep repeats
+
+--------------------------------------------------------------------------------------------------------------------
+4. Use etcdctl, etcd - coreOS distributed key value store
+--------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
