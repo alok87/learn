@@ -394,7 +394,7 @@ etcd=http%3A%2F%2F172.17.8.103%3A4001&raft=http%3A%2F%2F172.17.8.103%3A7001
 TWO WAYS TO INTERACT WITH THE etcd:
 a. With HTTP/JSON API
 b. etcdctl utility 
-
+------------------------------------------------------------------------------ etcdctl utility 
 Viewing keys and directories 
 -----------------------------
 to get started lets see what etcd is currently storing.
@@ -404,10 +404,59 @@ $ etcdctl get first-etcd-key
 Hello World # it simply prints the value of that key
 $ etcdctl get coreos.com
 /coreos.com is a directory 
+$ etcdctl get /coreos.com/updateengine/rebootlock/semaphore
+{"semaphore":1,"max":1,"holders":null}
+$ etcdctl -o extended get /coreos.com/updateengine/rebootlock/semaphore
+Key: /coreos.com/updateengine/rebootlock/semaphore
+Created-Index: 8
+Modified-Index: 8
+TTL: 0
+Etcd-Index: 13693
+Raft-Index: 76366
+Raft-Term: 2986
+{"semaphore":1,"max":1,"holders":null}
 
+Setting keys and creating nodes
+-------------------------------
+$ etcdctl mkdir /example        # to make a new directory
+$ etcdctl mk /example/key data  # to make a new key - key with value data
+$ etcdctl get /example/key
+data
+$ etcdctl update /example/key turtles # to update a key
+$ etcdctl get /example/key
+turtles
+$ etcdctl mkdir /here/you/go --ttl 10      # this will keep the dir for only 10 seconds ( time to live --ttl) 
+$ etcdctl updatedir /here/you/go --ttl 120 # this will update the ttl time of /here/you/go
+$ etcdctl set /example/key new             # to change the value of the existing key/ create the key if it doesnt exist
+                                           # even if the path is not there it will create
+$ etcdctl setdir /alok/kumar/singh         # it will create directories all of them alok,kumar,singh
+$ etcdctl rm /a/b/c                        # it deletes the key c 
+$ etcdctl rm /a --recursive                # it deletes directory and subdirs recursively
+$ etcdctl rmdir /a/b/x                     # it delets the emty directory x
 
+Watching for changes 
+---------------------
+you can watch either a key or a entire directory for changes.
+what happens is etcd starts a hanging shell in wait mode for the new value for that key, and as soon as the value 
+of that key/anything in that directory changes it displays it and comes out of the hanging mode
 
+$ etcdctl watch /example/key1 # hangs and keep looking if key1 changes
+$ etcdctl watch --recursive /example # hangs and keep lookng for changes in /example directory
+$ while true; do etcdctl watch --recursive /example;done # CONSTANTLY MONITOR CERTAIN VALUES
 
+If you want to execute a command whenever a value changes use -
+$ etcdctl exec-watch --recursive  /example --echo "Something changed in /example"
+
+Hidden Values
+-------------
+All hidden values in etcd starts with "_" eg: /_etcd, /_coreos.com
+You can never find them untill you know their name, you can search them with below cmds -
+$ etcdctl ls --recursive /_etcd
+$ etcdctl ls --recursive /_coreos.com
+
+----------------------------------------------------------------------- HTTP/JSON API 
+HTTP/JSON API Usage
+-------------------
 
 
 
