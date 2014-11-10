@@ -288,10 +288,52 @@ you can do much more -
 fleetctl ssh nginx cat /etc/environment 
 This will take you to the nginx host and prints its environment values 
 
+Service Management 
+------------------
+Submit the service unit file to fleet using below
+$ fleetctl submit hello.service # it will allow the fleet to read the file and put into memory for action.
 
+To see the list of files that has been submitted to fleet use below
+$ fleetctl list-unit-files
 
-
+To see the content of list file that fleet knows about, use below
+$ fleetctl cat hello.service
       
+To load and schedule the service use below
+$ fleetctl load hello.service
+Unit hello.service loaded on 14fferc3.../10.132.249.212
+$ fleetctl list-unit-files
+UNIT        HASH    DSTATE  STATE   TMACHINE
+hello.service   0d1c468 loaded  loaded  14fferc3.../10.132.249.212
+
+To see the list of any running/scheduled units use below
+$ fleetctl list-units
+UNIT        MACHINE             ACTIVE      SUB
+hello.service   14ffe4c3.../10.132.249.212  inactive    dead
+
+To actually start a unit, use below, it will start the service at the machine it has been loaded
+$ fleetctl start hello.service
+Unit hello.service launched on 14fferc3.../10.132.249.212
+$ fleetctl list-unit-files
+UNIT        HASH    DSTATE      STATE       TMACHINE
+hello.service   0d1c468 launched    launched    14fferc3.../10.132.249.212
+      DSTATE - desired state
+      STATE - actual state 
+      if the above 2 match that means action was successful.
+
+$ fleetctl list-units
+UNIT        MACHINE             ACTIVE  SUB
+hello.service   14ffe4c3.../10.132.249.212  active  running
+
+
+
+
+
+
+
+
+
+
 
 
 
