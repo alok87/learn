@@ -196,7 +196,7 @@ key1-value
 3.  Use Fleet and Fleetctl to manage your COreOS cluster
 ---------------------------------------------------------------------------------------------------------------
 Fleet enables the cluster management in Core-OS clusters.
-Fleet allows users to manage docker containers as a service for their entire cluster.
+Fleet allows users to manage docker containers as a service for the entire cluster.
 
 Fleet acts as the upper level interface that controls the systemd init system of each nodes.
 So system admins can define the criteria of a service i.e. in which hosts it should run etc.. and then
@@ -205,7 +205,7 @@ fleet will setup the whole cluster acc to that criteria.
 Service Unit Files 
 -------------------
 Unit Files are used by systemd init system to describe each available service, define the commands needed
-to manage it, set dependency information (so that system is always in the woring state).
+to manage it, set dependency information (so that system is always in the woring state when the service is started).
 
 fleet daemon is built on top of systemd in order to manage services on a cluster-wide level.
 
@@ -213,7 +213,7 @@ Unit File Sections
 ------------------
 
 > Unit: Provides generic information about the unit and is not dependent on the "type" of the unit.
-        metadata and dependency information.
+        gives metadata and dependency information.
         fleet uses it to show the description and also to show the service place in connection to other service units.
 
 > Unit Type Section: Fleet daemon can take units of different types including:
@@ -225,10 +225,11 @@ Unit File Sections
   Timer
   Path
 
-> X-Fleet: This section is used to provide fleet-specific configuration options. 
+> X-Fleet: Thi s section is used to provide fleet-specific configuration options. 
            This mainly means that you can specify that a service must or must not be scheduled in a 
            certain way based on criteria like machine ID, currently running services, metadata information, etc.
 
+general format:
 [Unit]
 Generic_option_1
 Generic_option_2
@@ -241,7 +242,7 @@ Service_specific_option_2
 Fleet_option_1
 Fleet_option_2  
 
----- eg of a hello service ------
+---- eg of a hello service running as a service as docker container in a cluster ------
 hello.service
 [Unit]
 Description=My Service
@@ -254,6 +255,52 @@ ExecStartPre=-/usr/bin/docker rm hello
 ExecStartPre=/usr/bin/docker pull busybox
 ExecStart=/usr/bin/docker run --name hello busybox /bin/sh -c "while true; do echo Hello World; sleep 1; done"
 ExecStop=/usr/bin/docker stop hello
+
+The above has [Unit] which gives description of hello.service
+Inside defining service - 
+ExecStartPre are the commands which should be run before starting the service
+We have given it using "=-" when means the service should not be effected if these commands fail
+Ours has a basic cleanup commands
+Next We have ExecStart and ExecStop which specifies the start and stop command for the service.
+
+Basic Cluster Management Commands 
+---------------------------------
+fleetctl has all the commands very similar in syntax of its parent guru systemctl, systemd's management tool.
+
+#Get a list of all cluster members
+fleetctl list-machines
+Gyan: When a machine boots up it generates a unique id for itself which is used to identify each node. It is 
+      stored in /etc/machine-id for each node.
+      By default each node uses node's public IPV4 addr for communication but in our setup we have setup a private
+      connection for it. The metadata of each private conenctoion can be added while defining the connection in 
+      the cloud-config file.
+      public-ip: $private_ipv4
+      metadata: region=europe,public_ip=$public_ipv4
+       
+#Connect to a machine in cluster
+fleetctl ssh <machine-name>
+fleetctl ssh <machine-id>
+For instance, if you have a unit running called nginx.service, 
+you can connect to whatever host is running a service by:
+fleetctl ssh nginx
+This will take you to the host which is running nginx
+you can do much more - 
+fleetctl ssh nginx cat /etc/environment 
+This will take you to the nginx host and prints its environment values 
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
 
 
 
