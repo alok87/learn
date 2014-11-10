@@ -364,6 +364,54 @@ each node in a cluster as a platform to store globally acecssible data.
 
 etcd cluster discovery model
 -----------------------------
+To get to know your cluster discovery url, check it in the below file -
+$ cat /run/systemd/system/etcd.service.d/20-cloudinit.conf
+
+[Service]
+Environment="ETCD_ADDR=10.132.248.118:4001"
+Environment="ETCD_DISCOVERY=https://discovery.etcd.io/dcadc5d4d42328488ecdcd7afae5f57c"
+Environment="ETCD_NAME=921a7241c31a499a97d43f785108b17c"
+Environment="ETCD_PEER_ADDR=10.132.248.118:7001"
+
+ETCD_DISCOVERY has the discovery URL.
+So when a machine with etcd boots up it will look for the discovery URL in the above place and 
+posts its information, it will also query out the information of the other nodes from it. The first node 
+obviously wont find any other nodes info so it will make itself as the cluster leader.
+The other machines wil also gives it information to the discvery url and will get back the infomration of the 
+whole cluster. It will then choose one of the active machine in the cluster and connect to it.
+
+The infomration/data about each machines is stored in a hidden directry under etcd
+$ etcdctl ls /_etcd/machines --recusrsive # To see the list of machines etcd knows about
+/_etcd/machines/22f349d48c8246178d056d56e1825cc9
+/_etcd/machines/461714408c2b48f2b4d1f00716dda888
+/_etcd/machines/d5e4b06e06df4bbcb955ec333af902e1
+/_etcd/machines/e699ed65c74042068d4bb9cdb60c4a16
+                                          # These are nothing but keys with info about machines as values
+                                          # these contains values that the etcd passes to the new cluster members
+core@core-01 ~ $ etcdctl get /_etcd/machines/22f349d48c8246178d056d56e1825cc9
+etcd=http%3A%2F%2F172.17.8.103%3A4001&raft=http%3A%2F%2F172.17.8.103%3A7001
+
+TWO WAYS TO INTERACT WITH THE etcd:
+a. With HTTP/JSON API
+b. etcdctl utility 
+
+Viewing keys and directories 
+-----------------------------
+to get started lets see what etcd is currently storing.
+$ etcdctl ls / # this lists all the directories and keys stored in etcd
+$ etcdctl ls --recursive # to avoid the confusion b.w dir and key, it lists out everything
+$ etcdctl get first-etcd-key
+Hello World # it simply prints the value of that key
+$ etcdctl get coreos.com
+/coreos.com is a directory 
+
+
+
+
+
+
+
+
 
 
 
