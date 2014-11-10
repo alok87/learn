@@ -359,6 +359,11 @@ $ fleetctl journal -f hello.service # it will follow the STDOUT for hello.servic
 4. Use etcdctl, etcd - coreOS distributed key value store
 --------------------------------------------------------------------------------------------------------------------
 
+This is technology which makes CoreOS possible, it is a globally distributed key-value store that is used by 
+each node in a cluster as a platform to store globally acecssible data.
+
+etcd cluster discovery model
+-----------------------------
 
 
 
