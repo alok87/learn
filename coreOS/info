@@ -488,57 +488,46 @@ $ curl -L http://127.0.0.1:4001/v2/stats/store
 
 etcd configuration
 -------------------
+etcd service can be configured in a few different ways:
+a. First is to pass paramenters to your etcd service from the cloud-config file
+   #cloud-config
+   coreos:
+     etcd:
+       discovery: ...
+       addr: ...
+       peer-addr: ...
+  
+b. To see the options you have available, use the -h flag with etcd 
+  $ etcd -h 
 
+To take the etcd <option> which we are using for configuration to the cloud-confg file use below 
+like to take this 
+etcd -peer-addr=<host:port>, we can use peer-addr:<host:port> in cloud-config file
+CoreOS reads the cloud-config file and translates the configurations into env variables in a stub unit file which is 
+used to start the service.
 
+c. Another way to change they etcd configuration is to use the 7001 port ( remember 4001 is used only quering keys )
+   # To get the current configuration values use below - 
+   $ curl -L http://127.0.0.1:7001/v2/admin/config
+   {"activeSize":9,"removeDelay":1800,"syncInterval":5}
+   
+   # You can change these values by passing in the new JSON as data payload with a put operation
+   $ curl -L http://127.0.0.1:7001/v2/admin/config -XPUT -d '{"activeSize":96,"removeDelay":6800,"syncInterval":6}'
+  {"activeSize":96,"removeDelay":6800,"syncInterval":6}
+  
+  # To get the list of machines - 
+  $ curl -L http://127.0.0.1:7001/v2/admin/machines
+  
+Conclusion
+As you can see, etcd can be used to store or retrieve information from any machine in your cluster. 
+This allows you to synchronize data and provides a location for services to look for configuration data
+and connection details.
 
+This is especially useful when building distributed systems because you can provide a simple endpoint 
+that will be valid from any location within the cluster. By taking advantage of this resource,
+your services can dynamically configure themselves.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+--------------------------------------------------------------------------------------------------------------------------  
+5. 
+--------------------------------------------------------------------------------------------------------------------------
 complete ref: http://goo.gl/7otyID
