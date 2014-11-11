@@ -458,10 +458,36 @@ $ etcdctl ls --recursive /_coreos.com
 HTTP/JSON API Usage
 -------------------
 
+To access the API for interacting with etcd, use a simple HTTP program curl.
+From within your cluster you can use http://127.0.0.1:4001
+From within docker container you can use http://172.17.42..1:4001 ( this can help the applications to updated the configu-
+-ration using the newly registered information)
 
+# Get the list of top level keys/directories 
+$ curl -L http://127.0.0.1:4001/v2/keys/
+  Note: -L is used for redirecting the page if the real page has been moved to a diff location
 
+# To recursively list all the keys
+$ curl -L http://127.0.0.1:4001/v2/keys/?recursive=true
+{"action":"get"," ...
 
+# Version info of etcd
+$ curl -L http://127.0.0.1:4001/version
+etcd 0.4.6
 
+# To look at the stats about each cluster leader with each follower 
+$ curl -L http://127.0.0.1:4001/v2/stats/leader
+{"leader":"921a7241c31a499a97d43f785108b17c","followers":{"27987f5eaac243f88ca6823b47012c5b":{"lat ...
+
+# To Look at the stats of the current machine you are on
+$ curl -L http://127.0.0.1:4001/v2/stats/self
+
+# To see stats about the performed operation
+$ curl -L http://127.0.0.1:4001/v2/stats/store
+...
+
+etcd configuration
+-------------------
 
 
 
