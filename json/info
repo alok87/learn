@@ -1,0 +1,58 @@
+JSON - Javascript Object Notation
+
+It is a lightweight data-interchange language suited for interchanging data between C-family languages 
+like C, C#, Java, Javascript, Perl, Python etc..
+
+It is built of two structures mainily:
+1. A collection of Key-Value pairs.
+2. Ordered list of Values.
+
+It has the following parts:
+
+Object  - Unordered set of name/value pairs.
+-------
+{}
+{ members }
+{ string : value }
+{ string1:value1, string2:value2 }
+
+Array  - Ordered collection of values.
+------ 
+[]
+[ elements ]
+[ value ]
+[ value1,value2,value3 ]
+
+Value  - Value can be a lot of things :
+------
+A string in double quotes.
+A number
+A true
+A false
+A null
+An Object
+An array
+Actually it can be anything.
+These structures can be nested.
+
+String
+-------
+It is a sequence of 0 or more Unicode characters wrapped in dobule quotes
+" \" " #QUOTATION MARK
+" \\ " #BACKSLASH
+" \b " #backspace
+" alok "  # string alok
+
+Number
+------
+any numbe dude
+
+
+Thats all what JSON is !
+
+
+
+
+
+
+complete ref: http://json.org/
