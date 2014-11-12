@@ -568,8 +568,84 @@ Now, you are connected lets build services -
 
 GOAL/TARGET: Make up a Apache application running on a docker container inside coreOS cluster.
 ----------------------------------------------------------------------------------------------------
+From one of the nodes get the apache container ready and push it to dockerhub.
+---------------------------------------------------------------------------------
+$ docker login
+$ docker run -i -t --name apachedev01 ubuntu:14.04 /bin/bash
+  $bash apt-get update 
+  $bash apt-get install apache2
+  $bash echo "<h1>Running from Docker on CoreOS</h1>" > /var/www/html/index.html
+  $bash exit 
+  
+$ docker ps -l 
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                      PORTS               NAMES
+cb58a2ea1f8f        ubuntu:14.04        "/bin/bash"         8 minutes ago       Exited (0) 
+
+$ docker commit cb58a2ea1f8f alok87/apache2dv01 
+$ docker images | grep alok87 | grep apache2dv01 
+REPOSITORY           TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
+alok87/apache2dv01     latest              42a71fb973da        4 seconds ago       247.4 MB
+
+$ docker push alok87/apache2dv01 
+This last step is done to push our apache container into the docker hub, so that other node 
+can pull this container and start using it.
+
+Create the apache service unit file
+----------------------------------------
+Now that we have our docker container ready, we can use Fleet to manage our service.
+Fleet manages the service scheduling for the entire CoreOS cluster. 
+It provides a centralized interface to the user, while manipulating each host's systemd init systems locally 
+to complete the appropriate actions.
+
+The fleet unit files are slightly modifed form of systemd unit files.
+
+Create a fleet unit service file - 
+$ vi apache@.service
+  
+$ cat apache@.service
+[Unit]
+Description=Apache web server service
+After=etcd.service
+After=docker.service
+Requires=apache-discovery@%i.service
+[Service]
+TimeoutStartSec=0
+KillMode=none
+EnvironmentFile=/etc/environment
+ExecStartPre=-/usr/bin/docker kill apache%i
+ExecStartPre=-/usr/bin/docker rm apache%i
+ExecStartPre=/usr/bin/docker pull user_name/apache
+ExecStart=/usr/bin/docker run --name apache%i -p ${COREOS_PUBLIC_IPV4}:%i:80 user_name/apache /usr/sbin/apache2ctl -D FOREGROUND
+ExecStop=/usr/bin/docker stop apache%i
+[X-Fleet]
+X-Conflicts=apache@*.service
+
+Explaination of each part:
+> [Unit] the service needs to be run after etcd and docker services have started, hence After=
+> [Unit] as part of this service we are also starting another service which will be responsible for updating
+         the etcd with the information about our service, hence Requires=
+> [Unit] %i. 
+> [Unit] we named our service apache@.service, @ indicates this is a template service.
+
+The file which are creating is a template unit file. apache@.service
+This file when run by fleet, will replace the variables like %i with the appropriate values.
+In our case, %i would be replaced by anything that is b.w "@" and ".service".
+We do not have anything because this our template file, we submit our file to fleetctl as apache@.service only.
+But we load it on the basis of which port we will run the service.
+SO we load our submitted template service as apache@<PORT_NUM>.service, so our %i becomes the <PORT_NUM>
+and if you see this PORT_NUM will be replaced whereever %i is.
 
 
+Next we need to tell what our service will do on start/stop for that [Service] 
+> [Service] We need to tell the system can take more time so no timeout. coz first time docker pull takes time.
+> [Service] We need to specify KillMode to none, this will allow systemd to kill docker proceseses otherwise 
+            the docker stop would think that docker process failed.
+> [Service] We need to source /etc/emvironment file, containing the public and private ip addr of the host running
+            the service
+> [Service] We need to setup cleanup rules so that if some docker container with the same name is running, it 
+            can be killed and then only we will pull our new image
+> [Service] Basic pull and container start and stop commands are mentioned
+> [Service] =- options means those tasks may fail and will not stop any service.
 
 
 
