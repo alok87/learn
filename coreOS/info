@@ -4,7 +4,7 @@ Core OS
 1. Introduction
 ------------------------------------------------------------------------------------------------------------------------
 > (Base OS) Powerful linux distribution made on top of Chrome OS.
-> (Use) Manily useful for large scalable deployments on varied infrastructure.
+> (Use) Manily useful for large scalable deployments on varied infrastructure. ( Web scale IT )
 > (Containerization) Maintains lightweight host system and uses "docker" containers for all its applications.
 > (Clusters) Provides process isolation and allows applications to move throughout a cluster easily.
 > (Uses ETCD for cluster management and Service discovery) To manage these clusters, Core Os uses globally 
@@ -646,6 +646,85 @@ Next we need to tell what our service will do on start/stop for that [Service]
             can be killed and then only we will pull our new image
 > [Service] Basic pull and container start and stop commands are mentioned
 > [Service] =- options means those tasks may fail and will not stop any service.
+
+> [XFleet] this commands just tell how to schedule the service on what criteria?
+Our only criteria is - apache service should only be started in machines which are not running these services already.
+So that we are highly distributed. We use X-Conflicts=apache@*.service ( a wildcard ) to catch if any of apache instance
+is already running. 
+
+Create companion Service to register services with etcd
+---------------------------------------------------------
+In order to record the current state of the services started on the cluster, we would write some
+entries to etcd - This is known as registering with etcd.
+
+In order to do this we will create a minimal service(we are calling it apache-discovery@.service) 
+that will write to etcd as to when the server is available for traffic.
+
+You might have seen in the main service-unit file the below line - 
+Requires=apache-discovery@%i.service
+
+$ vi apache-discovery@.service
+$ cat apache-discovery@.service 
+[Unit]
+Description=Announce Apache@%i service
+BindsTo=apache@%i.service
+[Service]
+EnvironmentFile=/etc/environment
+ExecStart=/bin/sh -c "while true; do etcdctl set /announce/services/apache%i ${COREOS_PUBLIC_IPV4}:%i --ttl 60; sleep 45; done"
+ExecStop=/usr/bin/etcdctl rm /announce/services/apache%i
+[X-Fleet]
+X-ConditionMachineOf=apache@%i.service
+
+> [Unit] - we give a brief description what the service is.
+> [Unit] - By BindsTo we will bind to the parent service, so if our main service stops, this will inform etcd 
+           about the main service has stopped and will stop itself after that.
+> [Service] - We are again sourcing the environment file for the host ip address information.
+> [Service] - With the start command we are simply running bash inifinite loop which sets a key 
+              /announce/services/apache<mostly port number> with the value of "IPaddres:port"
+              and this key expires in 60seconds, we have given a timeout because in case this minimal 2nd service 
+              dies for some reason our key should automatically expires.
+              We have also given a sleep of 45 seconds so that we are recreating the key every 45secs, b4 it expires.
+     
+            - With the stop command we are simply removing the same key we created, making the service unavailable.
+
+Our only [XFleet] condition with this service is that it should be started in the same webserver host it is reporting 
+for.
+> [X-Fleet] - X-ConditionMachineOf=apache@%i.service
+YOU NOW HAVE A SIDEKICK SERVICE THAT RECORDS THE HEALTH STATUS OF YOUR APACHE SERVICE IN THE ETCD.
+
+Submiting and loading the services we created  
+---------------------------------------------
+We now have two service templates - apache@.service && apache-discovery@.service
+
+We submit these services to fleetctl so that our cluster knows about them.
+$ fleetctl submit apache@.service apache-discovery@.service
+
+You should be able to see them now.
+$ fleetctl list-unit-files
+  UNIT                HASH    DSTATE      STATE       TMACHINE
+  apache-discovery@.service   26a893f inactive    inactive    -
+  apache@.service         72bcc95 inactive    inactive    -
+The template after submitting, exist in our cluster-wide init system.
+
+Now we need to load these services. This is when fleetctl looks at what the scheduling requirements are by 
+looking at the [Xfleet] tag in the unit file. We need to specify our service with a new name with port give in b.w
+apache@80.service
+apache-discovery@80.service
+
+Since we are not doing load balancing we just provided the port numbers in b.w "@" and ".service"
+$ fleetctl load apache@80.service
+$ fleetctl load apache-discovery@80.service
+On loading we will get the information on which nodes these services were loaded.
+We can clearly see both got loaded in the same machine as we stated in our [XFleet] configuration.
+Since our 2nd service is binded to our 1st apache service, we can directly start the 1st service.
+$ fleetctl start apache@80.service
+
+Check which units are running in our cluster:
+$ fleetctl list-units
+UNIT                MACHINE             ACTIVE  SUB
+apache-discovery@80.service 41f4cb9a.../10.132.248.119  active  running
+apache@80.service       41f4cb9a.../10.132.248.119  active  running
+
 
 
 
