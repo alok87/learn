@@ -1,8 +1,7 @@
-learn & share
---------=====
+learn & share - opensource target feb end
 
 Common List-
- 1.Git (Alok) - basic book read - presentation left 
+ 1.Git (Alok) - Done
  2.Shell Scripting
  3.Ruby (Sujai)
  4.Jira
@@ -11,7 +10,7 @@ Common List-
  7.Logstash
  8.Nagios (Deb)
  9.Splunk
-10.Docker (Alok) - docker book read - presentation left 
+10.Docker (Alok) - Done
 11.Puppet (Sujai)
 12.Project Atomic
 13.CoreOS
@@ -20,7 +19,7 @@ Common List-
 16.Node.js
 17.MongoDB (or) CouchDB
 18.Microservice Architecture
-19.Cloud Computing (Deb)
+19.Cloud Computing (Deb/Alok)
 
 Alok's list - 
 Docker
@@ -31,7 +30,7 @@ SELinux, CGroups, Namespaces
 Cloud Computing and REST APIs
 Key value db - Redis
 Python/Ruby
-Json
+Json - Done
 Curl command full detailed
 API
 
