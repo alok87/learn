@@ -288,6 +288,10 @@ you can do much more -
 fleetctl ssh nginx cat /etc/environment 
 This will take you to the nginx host and prints its environment values 
 
+NOTE:
+You won't be able to use ssh b/w nodes if you have not done below in your main machine having vagrant
+ssh-add ~/.vagrant.d/insecure_private_key
+
 Service Management 
 ------------------
 Submit the service unit file to fleet using below
@@ -534,7 +538,36 @@ One of the major feature coreos offers is that it provides the ability to manage
 the single point. CoreOS provides integrated tools to to make this process simple.
 
 
+Connect to a node and pass your ssh agent
+------------------------------------------
+First thing( if you are not using vagrant)
+> start the ssh-agent in any of your nodes.
+   core@core-01 ~ $ echo $(ssh-agent)
+   SSH_AUTH_SOCK=/tmp/ssh-YTeUTqF7IkJH/agent.765; export SSH_AUTH_SOCK; SSH_AGENT_PID=766; 
+   export SSH_AGENT_PID; echo Agent pid 766;
+   core@core-01 ~ $ eval $(ssh-agent)
+   
+> add your private key to the agent's memory storage.
+   core@core-01 ~ $ ssh-add
+   
+First thing(if you are using vagrant)
+> ssh-add ~/.vagrant.d/insecure_private_key
 
+Once the first thing is done - 
+use below command to connect to your node -if not vagrant
+$ ssh -A core@core-01
+or,  $ ssh -A core@ip-machine-node1
+
+use below -if vagrant
+$ vagrant staus
+$ vagrant ssh core-01 -- -A
+
+-A means forwarding your host-ssh-agent information.
+
+Now, you are connected lets build services - 
+
+GOAL/TARGET: Make up a Apache application running on a docker container inside coreOS cluster.
+----------------------------------------------------------------------------------------------------
 
 
 
