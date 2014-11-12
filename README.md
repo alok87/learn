@@ -1,5 +1,9 @@
 learn & share - opensource target feb end
+-------------------------------------------------------------------------------------
 
+
+
+------------------------------------------------------------------------------------
 Common List-
  1.Git (Alok) - Done
  2.Shell Scripting
@@ -13,7 +17,7 @@ Common List-
 10.Docker (Alok) - Done
 11.Puppet (Sujai)
 12.Project Atomic
-13.CoreOS
+13.CoreOS (Alok) - In progress
 14.Kubernetes
 15.Linux Security & SELinux & Containers & Cgroups & REST 
 16.Node.js
