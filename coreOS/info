@@ -528,6 +528,18 @@ that will be valid from any location within the cluster. By taking advantage of 
 your services can dynamically configure themselves.
 
 --------------------------------------------------------------------------------------------------------------------------  
-5. 
+5. Create and Run a Service on a Cluster
 --------------------------------------------------------------------------------------------------------------------------
+One of the major feature coreos offers is that it provides the ability to manage all the services from 
+the single point. CoreOS provides integrated tools to to make this process simple.
+
+
+
+
+
+
+
+
+
+
 complete ref: http://goo.gl/7otyID
