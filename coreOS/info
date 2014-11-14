@@ -725,9 +725,13 @@ UNIT                MACHINE             ACTIVE  SUB
 apache-discovery@80.service 41f4cb9a.../10.132.248.119  active  running
 apache@80.service       41f4cb9a.../10.132.248.119  active  running
 
+Once you have started your service, the running service is notified to the etcd.
+You can check that using below
+$ etcdctl get /announce/services/apache80
+docker pull alok87/apache
 
-
-
+You can deploy another instance of apache service at some port say 90
+and it will be started in another host as expected.
 
 
 complete ref: http://goo.gl/7otyID
