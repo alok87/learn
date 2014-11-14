@@ -1,0 +1,18 @@
+[Unit]
+Description=This is an Apache Web Service
+After=docker.service
+After=etcd.service
+Requires=apache-discovery@%i.service
+
+[Service]
+TimeoutStartSec=0
+KillMode=none
+EnvironmentFile=/etc/environment
+ExecStartPre=-/usr/bin/docker kill apache%i
+ExecStartPre=-/usr/bin/docker rm apache%i
+ExecStart=/usr/bin/docker run --name apache%i -p ${CORE_PUBLIC_IPV4}:%i alok87/apache /usr/bin/apache2ctl -D FOREGROUND
+ExecStop=/usr/bin/docker stop apache%i
+
+[X-Fleet]
+X-Conflicts=apache@*.service
+
