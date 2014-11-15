@@ -10,7 +10,8 @@ KillMode=none
 EnvironmentFile=/etc/environment
 ExecStartPre=-/usr/bin/docker kill apache%i
 ExecStartPre=-/usr/bin/docker rm apache%i
-ExecStart=/usr/bin/docker run --name apache%i -p ${CORE_PUBLIC_IPV4}:%i alok87/apache /usr/bin/apache2ctl -D FOREGROUND
+ExecStartPre=/usr/bin/docker pull alok87/apache
+ExecStart=/usr/bin/docker run --name apache%i -p ${CORE_PUBLIC_IPV4}:%i alok87/apache /usr/sbin/apache2ctl -D FOREGROUND
 ExecStop=/usr/bin/docker stop apache%i
 
 [X-Fleet]
