@@ -733,5 +733,240 @@ docker pull alok87/apache
 You can deploy another instance of apache service at some port say 90
 and it will be started in another host as expected.
 
+---------------------------------------------------------------------------------------------------------
+6. Create Flexible services with Fleet Unit Files - in depth of fleet
+---------------------------------------------------------------------------------------------------------
+Unit File Sections and Types
+-----------------------------
+Types are - service, socket, device, mount, automount, timer and path.
+They are defined as templates with <name>.<unit-type> for eg: apache.service 
+
+service: Most common type of unit file.
+         Used to define service or application that can be run on one of the machines in cluster.
+
+socket: Socket files are special files used for inter-process communication in unix like systems. srw--
+        socket unit type defines details about a socket/socket-like files( n/w sockets, IPC sockets, FIFO buffers)
+        these unit types are used to call services to start when traffic is seen on the file.
+
+device: Device files are special files that allow software(OS) to interact with device-drivers using standard 
+        input/output system calls. crw--
+        device type unit files defines information about a device available in the udev device tree.
+        systemd will create these as needed on individual hosts for kernel devices based on udev rules.
+        These unit types are mainly used for ordering issues, to make sure devices are available b4 attempting a mount.
+        
+mount: these defines the information about the mount point of a device.
+       they are named after the mount point they referrence(with slashes replaced by dashes)
+
+automount: defines automount point.
+
+timer: defines timer associated with another unit. meaning the time is defined in the unit type, when the time
+       is reached the associated unit is starated.
+
+path: this unit type defines a path that can be used for path based activation. This is used to start another unit
+      when changes are made to a certain path.
+      
+Now all of the above are not being covered. Visit https://coreos.com/docs/ for it.
+Now only service unit files are covered.
+To learn about systemd unit file and its various options - visit http://goo.gl/ip7wTv
+
+Basic unit service file has - 
+[Unit] section in which we describe the basic description of the init file. Define its dependency and ordering information. This is 
+       also the places where we tell the etcd service to be sidekicked.
+
+[XFleet] We had defined our service to be starated on a machine which is not running this service. By doing this we avoid duplication
+         and makes our service highly available.
+
+
+Basic Takeaways for building main services
+-------------------------------------------
+
+I. Separate logic for dependency and ordering: 
+   layout your dependecies with Requires= and Wants= ( depending on whether your current unit should fail or not fail(resp) if the dependent unit fails )
+   define when the service should be started using After= and Before=
+   always keeps dependency list separte from ordering so that you can debug easily in case of dependency issues.
+
+II. Handle service registration with a separate process/service:
+    Like we created a apache-discovery@.service to keep informing the etcd about the state/health of our service.
+    This also helps in dynamic configuration and service discovery.
+    It gives a outside view of your service. That is what is needed by other components.
+
+III. Beaware of service timeouts: Docker pull can increase the time of service startup, so timeout should be defined keeping this in mind.
+                                  Incase you are not sure exactly then we can use TimeoutStartSec=0 i.e. disabled the timeout feature.
+
+IV. Adjust the KillMode, if your service does not stop cleanly:
+    Better to keep it 0, so that the cleanup is done.
+
+V. Cleanup the environment b4 starting up: Sometimes docker containers keep running even after stop, good practice is to clean and startup services.
+
+VI. Pull in and use host-specfic information for service portability: 
+    If you need to bind your service to specfic n/w interface, pull in the /etc/environment and use the CORE_PUBLIC/PRIVATE_IPV4 variables.
+    Use systemd specifiers also - ( http://goo.gl/bw1qPc )
+    %H - hostname of the machine
+    In the [XFleet] section only the %n, %N, %i, and %p specifiers will work.
+
+Building the sidekick announce service
+---------------------------------------
+The sidekick services are associated with the main service and are used as an external point to register services with etcd.
+We had - apache-discovery@.service.
+---------------------------------------------------------------------------------------------------------------------------------------------
+# Start
+## Test whether service is accessible and then register useful information
+ExecStart=/bin/bash -c '\
+  while true; do \
+    curl -f ${COREOS_PUBLIC_IPV4}:80; \
+    if [ $? -eq 0 ]; then \
+      etcdctl set /services/apache/${COREOS_PUBLIC_IPV4} \'{"host": "%H", "ipv4_addr": ${COREOS_PUBLIC_IPV4}, "port": 80}\' --ttl 30; \
+    else \
+      etcdctl rm /services/apache/${COREOS_PUBLIC_IPV4}; \
+    fi; \
+    sleep 20; \
+  done'
+
+# Stop
+ExecStop=/usr/bin/etcdctl rm /services/apache/${COREOS_PUBLIC_IPV4}
+
+[X-Fleet]
+# Schedule on the same machine as the associated Apache service
+X-ConditionMachineOf=apache.1.service
+----------------------------------------------------------------------------------------------------------------------------------------------
+The BindsTo send start/stop to this sidekick service depending on the main service state.
+For BindsTo= directive function to work properly we need the discovery sidekick service to run on the same host as the main service , hence X-Fleet section. 
+
+This sidekick service on start runs a simple bash script which checks the main service every 20 seconds, if it is up using curl.
+If it is up then it announces the service by creating a key in the etcd using etcdctl command with the public ip of the
+machine and the value of key as JSON object containing information about the service. The ttyl is 30 seconds only , after that this key is destroyed.
+And since we are reruning this bash script every 25 seconds, the key is always there if the service is up else in next 30 seconds its gone.
+On stoppin this service this key is destroyed.
+
+Take away from Sidekick service 
+--------------------------------
+
+I. Ensure the check you perform for the main service is accurate and robust. Because the check only defines the main fucntionality of service state registaration.
+II. Loop the service registration process, coz the service could go down/change state anytime/ 
+III. Use TTL everytime to expire the service after sometime, for auto deregistration of service in sometime. So that no stale information is present in etcd.
+     Since we are refreshin the key before timeout, so if the service is up the key is always there. TTL only takes care if the service is down it automatically deletes
+     stale information from etcd.
+IV. Provide only useful information -etcd is a key value store, this can be used for inter service communication. So if you want to provide a lot of information 
+                                     about your service, register them with keys into the etcd with values as big JSON objects.
+                                     JSON is a excellent way of passing multiple piece of information b/w services.
+Fleet Specific Considerations
+-------------------------------
+The section in fleet systemd unit files (which we are builidng) [X-Fleet] directs fleet on how to make scheduling decissions.
+
+X-ConditionMachineID: To specify the exact machine to load the unit in.
+                      it takes machine-id as value.
+                      /etc/machine-id gives the machine-id of the current machine.
+                      fleetctl list-machines -l gives the machine-ids of all the nodes in the cluster.
+                      Note: full name of machine-id is required.
+
+
+X-ConditionMachineOf: For associating units together. If you want to run the current service in the machine the "X" service is running. You specify "X" here.
+
+X-Conflicts: Opposite of above. If you do not want to run the current service in the machine "X" service is runnning. You specify "X" here.
+
+X-ConditionMachineMetadata: here you specify the metadata of the machine in which this service needs to run. Do fleetctl list-machines you 
+                            will see the metadata of the machine. The metadata of the machine is defined in cloud-config file.
+
+Global: It takes boolean argument, tells the service should be started in all machines in cluster if true. Only metadata condition can be used along side this.
+        i.e. to start the machines in all machines with a particular metadata.
+
+All the above are evaluated in the load stage only before passing the fleet unit for processing to the individual systemd of machines in clusters.
+
+Note:
+Sidekick services if not loaded are not started when the main service is only started.
+To avoid this:
+a. either start both and main service manually.
+b. or, load both the services and then start only the main service.
+
+Instances and Template
+------------------------
+
+Unit templates rely on a feature of systemd called "instances". These are instantiated units that are created at runtime by processing a template unit file. The template file is for the most part very similar to a regular unit file, with a few small modifications. However, these are extremely powerful when utilized correctly
+
+template unit file: unit@.service
+unit file:          unit.service
+
+When a unit is instantiated from a template, its instance identifier is placed between the @ and the .service suffix. This identifier is a unique string selected by th administrator:
+
+unit_name@instance_id.service
+
+unit-name: %p
+instance_id: %i
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+7. 
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 complete ref: http://goo.gl/7otyID
