@@ -894,15 +894,63 @@ unit-name: %p
 instance_id: %i
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
-7. 
+7. Using confd 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
+Better go from the digitalocean only.
+   Details go here: http://goo.gl/D92rfo
+
+What is confd?
+confd is a tool which continuously monitors the etcd for changes. If changes are found it triggers configuration modifications and service reloads.
+
+We will focus on creating a new application container with Nginx. This will serve as a reverse proxy to the various Apache instances 
+that we can spawn from our template files. 
+The Nginx container will be configured with confd to watch the service registration that our sidekick services are responsible for.
+
+a. Create service template files apache@.service and apache-discovery@.service.
+b. Create service instances for ports 7777 and 8888 and create links for them to the template files.
+c. Create the nginx container which will have confd installed which will inturn monitor our etcd for changes.
+   
+   Create a new nginx image and commit it. ( better practice is to write a Dockerfile only and build it )
+   refer https://github.com/alok87/learn/tree/master/coreOS/dockerfiles/confd-nginx/Dockerfile
+
+   Dockerfile
+   The dockerfile downloads the nginx and curl installer and install it in base ubuntu image.
+   It then adds the confd configuration file - nginx.toml file in the image from the host build location. 
+   Creates the necessary directories /etc/confd/conf.d and /etc/confd/templates
+
+   
+   Create a confd configuration file: https://github.com/alok87/learn/tree/master/coreOS/dockerfiles/confd-nginx/nginx.toml
+   Configuration in confd files are used to setup services to check for certain etcd values and initate actions when 
+   changes are detected. These config files use TOML file format.
+
+   toml file has the contents:
+   src, dest : it tells the nginx container to use the template stored at src location and create a application configuration file at dest location.
+   owner,mode: with some permission and with some user access.
+   keys: The confd application keep looking for changes in /service/apache key in etcd.  When confd finds a new key at /services/apache it creates a
+         new configuration file at the dest location for nginx. It will check the newly created configuration file
+   check_cmd: for syntax errors and 
+   reload_cmd: reloads the nginx service.
 
 
 
 
 
 
+  
+   
  
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
