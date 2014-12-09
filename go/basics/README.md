@@ -1,1 +1,1 @@
-All the above examples are from www.gobyexample.com
+All the examples are from www.gobyexample.com
