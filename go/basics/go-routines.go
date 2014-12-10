@@ -1,10 +1,12 @@
 package main
 
 import "fmt"
+import "time"
 
 func f1_sync( msg string ) {
-	
-	for i :=1; i<=3; i++ {
+
+    for i :=1; i<=3; i++ {
+	time.Sleep(1000 * time.Millisecond)
 	fmt.Println("f1_sync(): ", i, msg)
 	}
 }
@@ -22,4 +24,3 @@ func main() {
 	fmt.Scanln(&input)
 	fmt.Println("all done, good night!")
 }
-
