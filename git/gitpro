@@ -231,64 +231,12 @@ or,	$ git mv newfile newfileR
 	vicky_remote	https://github.com/alok87/backup.git
 	So we can pull contributions from multiple people, make changes and may be if access we can push it back to them.
   add remotes
-	$ git remote add [shortname] [URL]
-	$ git remote add alok87/learn https://github.com/alok87/learn.git
-	$ git fetch alok87/learn 	# Now the alok87/learn brach is available locally as alok87/learn/master"	
-
+        $ git remote add [shortname] [URL]
+        $ git remote add alok87/learn https://github.com/alok87/learn.git
+        $ git clone https://github.com/alok87/learn.git # This adds this remote repo to origin and fetches it to your current 
+                                                        # branch if not present.
+        $ git pull 					# This fetches the remote branch and merge it in your current branch.                                               
+	$ git fetch 					# This fetches the remote branch and do not merge it in your current branch.
+							# You have to manually merge it in current branch if needed.
 	
-
-
-
-
-
-					
-
-
-	 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
 
