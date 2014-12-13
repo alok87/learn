@@ -244,8 +244,6 @@ or,	$ git mv newfile newfileR
 	$ git push origin master       # If you want to push your master branch to your origin remote server.
 	$ git push alok87/learn master # If you want to push your master branch to your alok87/origin server.
 
-		
-
 
 	
 
