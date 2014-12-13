@@ -1,0 +1,294 @@
+------------------------------------------------------------------------------------------ 1. Getting Started
+
+Why use a version control ?
+
+Types of version control? How it evolved.
+
+Local Version control  
+	rcs - stores difference b.w versions and when you want a version, joins all of them and give you the file
+Central Version control 
+	When a lot of developers started working on the same code and started contributing to the same project, 
+	the need of central vcs was visioned. 
+	Advantage it brought was everyone in the project knew to certain degree what ever1 else in the project was doing.
+	The big issue with it was SINGLE POINT OF FAILURE. You risk everything, as all your main project is at single place.
+Distributed Version control
+	This is where the distributed vcs stepped in. 
+	In a DVCS, clients don't just checkout the latest snapshot of the files but they fully mirror/clone the repository.
+	Thus if any server dies then any of the client server can be restored there. Every checkout is a full backup of all data.
+
+History of Git - 
+Linux Kernel, an open source soft project was manitained by software patches and archived files till 2002.
+After 2002, a linux kernel project BitProject(DVCS) begain to support Linux Kernel source code.
+On 2005, some split happened b.w linux kernel and BitProject which led the founder of Linux Kernel Linus Torvalds to 
+develop a new DVCS with below things in mind - 
+	> Speed
+	> Simple Design
+	> Strong Support for non-linear development i.e. thousands of parallel branches
+	> Fully Distributed
+	> Ability to handle large projects like Linux Kernel (in which the world is running its software/apps) efficiently
+So folks!! this is how Git was born. 
+Easy and yet humangously efficient.
+
+Git basics 
+It is suggested to "CLEAR your mind with all the things you many know about VCS, and then start learning GIT"
+Use command line of Git, coz command line provides all functionality of git, while GUI's mostly provides some sub sets of functionlity.
+coz the user interface and what it does may look similar like other VCS but how it does is completely different way.
+
+	> Snapshots, Not differences:
+	  Other VCS - Treat the data as a set of files and track differences b.w. them.
+	  v1	v2		v3		v4		v5
+	  a	delta1		-		delta2		-	
+	  b	-		delta1		-		delta2	  
+
+	  Git - Treats the data as a set of snapshots of a minature filesystem.
+		So,
+		    When you commit in Git(checkin), it basically takes a picture of what all your files like at that
+		    moment and stores the referrence to that snapshot. And if the file has not changed, then git does 
+		    not store that file again. It just makes a link to that old versioned file it had once stored on change.
+	  v1	v2		v3		v4		v5
+	  a	a1		a1		a2		a2
+	  b	b		b		b1		b2
+
+	> Nearly Every Operational is Local(no central dependency), You can work offline
+	  You are not dependent on external network, external central server. Everything that you need to about your souce, from 
+	  history of changes to who checked in and what is there in your local. You do not need to login to a particular instance
+	  or gui to check what is the history and all the stuffs, you have everything at your local. You do not need a internet 
+	  connection or network or server availability to know about your project. 
+	  For eg in some older VCS, you made your changes offline but you can not commit them since you are offline not connected 
+	  to network. But in GIT, you can do this. 
+
+	> Git has integrity - You can loose info in git. Your file cannot get corrupted. Everything in git is checksumed and 
+			      then taken inside. No-one can manually change those checksums.
+			      Mechanishm for checksuming in git is known as SHA-1 hash. 40 character string composed of 
+			      hexadecimal characters(0-9, a-f). It is calculated based on contents of a file and directory struct
+			      -ure in git. Git's database has data stored with these SHA-1 hash names instead of regular file names.
+
+	> Git's three states - basic usage of local repo 
+	  This is the main thing about git you need to know if you are using git.
+	
+	  Commited, modified and staged.
+	  Commited - Your data is safely stored in your "local" database.
+	  Modified - You have changed the file you have not commited to your database yet.
+	  Staged   - Files in the staged states are the modified files which you have marked  which needs to go into your next commit.
+
+	  So, we can come down to the below three now - 
+	  working dir, .git directory and staging area.
+
+	  .git directory - gits area. This place git keeps all the information it needs about your source code. 
+                           When you clone a repository, this is what is created. Complete compressed git database.
+          working dir    - When you pull out a version of a project. Git pulls that version from the compressed git db, .git.
+	  	           So that you have a particular version of that project in your local working dir.
+	  staging        - it is simply a file containing information about your modified files in your working dir which needs to
+		 	   be commited. Good thing about staging is, you can check them in and discard completely also.
+	  
+	  1. modify files in working dir
+	  2. stage the files, adding snapshot of the set of files in staging area
+	  3. commit files, so that those changes are permanently made to git repo.
+
+Installation
+Linux - yum install git /apt-get install git
+Windows/Mac - Installers are present
+Or, you can build the git using make from scratch.
+
+Basic Customizations
+git config files are stored at 3 diff places: 
+	/etc/gitconfig: config for every user on the system and their repos. (git config --system)
+	~/.gitconfig or ~/.config/git/config: config specific to your user. (git config --global)
+	.git/config: config specific to your git repo.
+
+	Each level above overrides the above level. So .git/config will overwrite the values in /etc/gitconfig
+
+	$ git config --global user.name "Alok Kumar Singh"        #your identity
+	$ git config --global user.email mail.alok87@gmail.com    #your email 
+	$ git config -l						  #see config list
+or	$ git config --list
+	$ git config user.name 					  #to see a single specific value    
+	$ git help <verb>
+
+
+------------------------------------------------------------------------------------------ 2. Git Basics
+
+Here i will show you all the basics which you need for daily usage in git, all the basic commands. Thats all.
+
+#Getting a git repository
+	a. git init  - start tracking your existing project in git
+	$ git init #initializes your current dir with git and creates a git db .git
+	$ git add *.c #adds all the modified *.c files to the staging area
+	$ git commit -m "Initial commit" #commits the staged files in git repository
+	
+	b. git clone - clones an repository from other server
+	   Please take a key note here, the command is clone and not checkout. This commands completely gets the whole 
+           project into your local with all the history and information it has. It is not only brining the source files 
+           as it used to happen in CVCS. So you can do whatever with network dependecny with this repo now.
+	$ git clone [URL]
+        $ git clone https://github.com/alok87/learn.git
+	$ git clone https://github.com/alok87/learn.git anynameyouwant
+	  #Note: Here we have used a https:// protocol , you can use git:// or user@server:path/to/repo.git later explained.
+	
+#Lifecycle of the status of the files:
+As you edit files, Git seems them as modified.
+Untracked > Unmodified > Modified > Staged > Commited
+	$ git status #Check the status of the files in your current repository.
+	$ echo "Git tuts 15mis" > readme
+	$ git status # you will see untracked file
+        $ git add readme # this adds the read me to tracked and then staging area.
+        $ echo "more" >> readme
+	$ git status # you will see a modified file saying readme
+	$ git add readme # this again adds the modifed file in the staging area.	
+	$ cat .gitignore #the files which you put here wont be staged and commited, you can use RE to define files in it.
+	  *.[oa] # do no track *.o and *.a files
+	  !lib.a # do track lib.a even if *.a are said no
+          README.test # ignore README.test
+
+#Diff
+	Difference you commited/staged.
+	$ git diff 	    # It tells the difference in the files in your working area to the files which are staged.
+	$ git diff --staged # It tells the difference in the files in your staging aread to the commited files.
+	$ git commit -m "Commit comments"
+
+#Commit	
+	Commiting a new file.
+	$ git add newfile
+	$ git commit -m "commit 1" newfile
+or,	$ git commit -a -m "commit 1" newfile # this is a shortcut to skip git add
+
+#Remove
+	Say if you want to remove a file which you staged.
+	$ rm newfile
+	$ git status #it will still show as Deleted in staging area
+	$ git add --all #this will finally remove the newfile from the staging area
+or,     $ git rm newfile #this is a shortcut for above 3 commands, it directly removes the files from working and staging area.
+	$ git rm --cached README #Suppose you want to keep README in your working dir but not in staging area.
+
+#Move
+	Moving files around git.
+	$ mv newfile newfileR
+	$ git rm newfile
+	$ git add newfileR      # Running these commands puts your renamed file in staging 
+				# as git was not aware renmaing happened.
+				# see the or, alternative for this below:	
+or,	$ git mv newfile newfileR
+	$ git status #you will see that git shows a renamed file in your staging area.
+      
+#Log
+	$ git log		# To view your commit history, latest changeset first
+	$ git log -p -2		# Introduce changes introduced to 2 commits
+	$ git log --stat	# It shows the commit history telling how many lines were inserted and deleted.
+	$ git log --pretty=oneline # Shows the pretty log history in one line, other options are also there.
+	$ git log --pretty=format:"%h -> %an, %ar :%s" # show the history in your own format ##WowGitFeature
+	$ git log --pretty=format:"%h -> %s" --graph 	# Shows graph of merging and branching history
+		format options below:
+		%H Commit hash
+		%h Abbreviated commit hash
+		%T Tree hash
+		%t Abbreviated tree hash
+		%P Parent hashes
+		%p Abbreviated parent hashes
+		%an Author name
+		%ae Author e-mail
+		%ad Author date (format respects the –date= option)
+		%ar Author date, relative
+		%cn Committer name
+		%ce Committer email
+		%cd Committer date
+		%cr Committer date, relative
+		%s Subject
+	$ git log -<n> 	# Shows the last n commits.
+	$ git log --since=2.weeks
+	$ git log --untill=2014-01-14
+	$ git log --author="Alok Kumar Singh"
+	$ git log --grep="some keyword"
+
+#Undo
+	$ git commit -m "Changes i commited"
+	$ git add forgottenfile
+	$ git commit --amend #This will add the forgottenfile and check in the last commit again by allowing you to edit msg.
+
+#Unstaging a mistakenly staged file
+	$ ls
+	a b
+	$ git add *
+	$ git status # shows that both a and b are ready to be commited, but you wanted only a to be commited and not b.
+	$ git reset HEAD b # This removes the file b from the staging area.
+
+
+#Unmodifying a modified file
+	$ git status --s
+	M a.file
+	$ git status # gives you info how to unmodify the changed file to the state of the file in the last commit.
+	$ git checkout -- a.file #This discards your modified changes and checkout the latest file from repo.
+
+#Remotes
+  show remote, add remote, remove remotes, manage remote branches, define them as being tracked or not.
+	
+  show remotes
+	$ git remote
+	origin			#This is the default name of the 
+	$ git remote -v         #This gives you the URLs with which your remote is connected to.
+	If a repository is connected to multiple remote repos then it will show the mutiple URLs here.
+	eg:
+	alok_remote 		https://guthub.com/alok87/learn.git
+	vicky_remote	https://github.com/alok87/backup.git
+	So we can pull contributions from multiple people, make changes and may be if access we can push it back to them.
+  add remotes
+	$ git remote add [shortname] [URL]
+	$ git remote add alok87/learn https://github.com/alok87/learn.git
+	$ git fetch alok87/learn 	# Now the alok87/learn brach is available locally as alok87/learn/master"	
+
+	
+
+
+
+
+
+					
+
+
+	 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
