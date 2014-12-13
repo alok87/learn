@@ -233,10 +233,58 @@ or,	$ git mv newfile newfileR
   add remotes
         $ git remote add [shortname] [URL]
         $ git remote add alok87/learn https://github.com/alok87/learn.git
-        $ git clone https://github.com/alok87/learn.git # This adds this remote repo to origin and fetches it to your current 
-                                                        # branch if not present.
-        $ git pull 					# This fetches the remote branch and merge it in your current branch.                                               
-	$ git fetch 					# This fetches the remote branch and do not merge it in your current branch.
-							# You have to manually merge it in current branch if needed.
-	
+        $ git pull 	# This fetches the remote branch and merge it in your current branch.                                               
+	$ git fetch 	# This fetches the remote branch and do not merge it in your current branch.
+			# You have to manually merge it in current branch if needed.
+        $ git clone https://github.com/alok87/learn.git 
+			# This adds this remote repo to origin and fetches it to your current 
+                        # branch if not present.
+                                                       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+>>>>>>> d67698233638f20663be558fd41065b1c1610069
 
