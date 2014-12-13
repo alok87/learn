@@ -249,6 +249,7 @@ or,	$ git mv newfile newfileR
 	$ git remote rm alok87/learn
 
 #Tagging
+	Tags are like labels in TFS.
 	Tagging is a good feature in git which let you mark specific important times in history.
 	Typically people use this feature to mark the release points of the projects.
 	$ git tag #lists all the tags 
@@ -261,7 +262,22 @@ or,	$ git mv newfile newfileR
 
 	$ git tag -a v2.0 -m "Chapter 2 read" # It creates a annonated tag with an associated message.
 	$ git show v2.0 		      # It shows all the information about the tag v2.0
-
+	$ git tag v3.0 			      # This is a lightweight tag, no other info apart from checksum commit is kept.
+					      # Lightweight is light but not recommended.
+	$ git tag -a v1.0 -m "Chap 1" 9edia   # This will help in tagging the repo for the old commit also.
+        $ git push origin <tagname>	      # This pushes your tag to the remote server which is mapped with origin name.
+	$ git push origin --tags	      # This pushes all your tags to the remote server.
+					      # So now if someone else pulls your repo, he will have all the tags.
+	$ git checkout -b Git_ProBook_v1.0 Git_ProBook_v1.0
+					     # The above command checks out your tag in a new branch with the same name.
+#Aliases
+	$ git config --global alias.c commit # This is an alias for "git commit" to act as "git c"
+	$ git config --global alias.unstage 'reset HEAD--'
+					     # This sets the alias for unstaging
+	$ git config --global alias.last 'log -1 HEAD' # This gives the last commit log
+	$ git config --global alias.visual "!gitk"     # This runs the gitk own program that runs with git repo. 
+		
+	
 	
 
 
