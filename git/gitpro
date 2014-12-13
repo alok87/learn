@@ -230,7 +230,7 @@ or,	$ git mv newfile newfileR
 	alok_remote 		https://guthub.com/alok87/learn.git
 	vicky_remote	https://github.com/alok87/backup.git
 	So we can pull contributions from multiple people, make changes and may be if access we can push it back to them.
-  add remotes, fetch, clone
+  add, fetch, clone
         $ git remote add [shortname] [URL]
         $ git remote add alok87/learn https://github.com/alok87/learn.git
         $ git pull 	# This fetches the remote branch and merge it in your current branch.                                               
@@ -244,7 +244,29 @@ or,	$ git mv newfile newfileR
 	$ git push origin master       # If you want to push your master branch to your origin remote server.
 	$ git push alok87/learn master # If you want to push your master branch to your alok87/origin server.
 
-		
+  rename, remove remotes 
+	$ git remote rename alok87/learn alok87/newlearn
+	$ git remote rm alok87/learn
+
+#Tagging
+	Tagging is a good feature in git which let you mark specific important times in history.
+	Typically people use this feature to mark the release points of the projects.
+	$ git tag #lists all the tags 
+	$ git tag -l 'v23*' #it lists all the v23* tags only.
+	
+	There are two types of git tags:
+		Lightweight: It is just a pointer to commit. Like a branch that does not change.
+		Annonated:   It is full info tag which contains all the info about it like email, date, pointer-commit everything.
+		Recommended to use annonated.
+
+	$ git tag -a v2.0 -m "Chapter 2 read" # It creates a annonated tag with an associated message.
+	$ git show v2.0 		      # It shows all the information about the tag v2.0
+
+	
+
+
+
+
 
 
 	
