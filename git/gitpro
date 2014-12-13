@@ -277,15 +277,3 @@ or,	$ git mv newfile newfileR
 	$ git config --global alias.last 'log -1 HEAD' # This gives the last commit log
 	$ git config --global alias.visual "!gitk"     # This runs the gitk own program that runs with git repo. 
 		
-	
-	
-
-
-
-
-
-
-	
-
-	
-                                                       
