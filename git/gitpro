@@ -430,11 +430,26 @@ Basic Merging and Branching
 	$ touch bb53 cc53 dd53		# You created new files to try fixing the issue53.
 	$ git checkout master		# You got a call suddenly to fix an issue in master production branch. 
 					# So you checked out master branch to do a hotfix for prod.
-	$ touch hotfix_prod_52		# Y	
+	$ git checkout -b hotfix 	# So you create a new branch to work on the hotfix from the current master.
+	$ git status
+	# On branch hotfix
+	$ touch hotfix_prod_52		# You make your production fix in the hotfix branch. 
+	$ git commit -a -m "Urgent production fix" 
+					# You checked in your changes.
+					# Now do your tests in hotifix branch to verify all is good.
+					# If all looks good, merge your changes to the master production branch to deploy to prod 
+					  after build.
+#merge  $ git checkout master
+       	$ git merge hotfix
+	  Fast-forward			# Fast-forward means Git simplified the merge operations as it found that the master was
+					  only 1 commit behind and rest everything was same. So it just moved the pointer to new
+					  commit.
+	$ git branch -d hotfix		# You delete the hotfix branch as it is no longer needed.
+	$ git checkout issue-53  
 	$ git add . && git commit -m "checked in issue 53 fix"
                                         # You fixed and checked in your changes in this branch.
-                                        # Now the iss53 branch has moved ahead of master branch remember
-
+                                        # Now the iss53 branch has moved ahead of master branch remember.
+	
 	
 
 	
