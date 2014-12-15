@@ -408,7 +408,45 @@ eg:	[root@centdev01 tmp]# git log --oneline --decorate
 	199134a (HEAD, slave) Checked in d in slave branch
 	2d28b57 commit 1	
 
+	$ git log --oneline --decorate --graph --all #shows where your branch pointers are and how your history has diverged.
+
+	SUMMARY:	
+	SO BRANCH IN A GIT IS A SIMPLE FILE THAT CONTAINS THE 40 char SHA-1 checksum of the commit it points to.
+	SO BRANCHES ARE CHEAP TO DESTROY AND CREATE AND MOVE AROUND. 
+	CREATING A BRANCH IS AS QUICK AS WRITING THAT 40char and a newline in a file. 
+	THIS FEATURE OF GIT IS IN SHARP CONTRAST TO OTHERS WHERE FOR CREATING A NEW BRANCH THE COMPLETE DATA WAS COPIED
+	TO ANOTHER DIRECTORY AND THEN IT WAS CHECKED IN, MAKING IT HEAVY.
+	FINDING A MERGE POINT AND WORKING ON IT ALL BECOMES EASY BECAUSE OF GIT STORES THE POINTERS TO THEIR PARENT COMMITS.
+
+Basic Merging and Branching     
 	
+	$ git status
+	# On branch master
+	$ git checkout -b "iss53"	# You created a branch iss53 to work on the issue-53.
+				 	# You created and switched to that branch using this command.
+					# Shorthand for: git branch iss53; git checkout iss53
+	$ git status
+	# On branch iss53
+	$ touch bb53 cc53 dd53		# You created new files to try fixing the issue53.
+	$ git checkout master		# You got a call suddenly to fix an issue in master production branch. 
+					# So you checked out master branch to do a hotfix for prod.
+	$ touch hotfix_prod_52		# Y	
+	$ git add . && git commit -m "checked in issue 53 fix"
+                                        # You fixed and checked in your changes in this branch.
+                                        # Now the iss53 branch has moved ahead of master branch remember
+
+	
+
+	
+
+
+
+	
+
+
+
+
+						
 
 
 
