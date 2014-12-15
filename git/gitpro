@@ -266,6 +266,7 @@ or,	$ git mv newfile newfileR
 					      # Lightweight is light but not recommended.
 	$ git tag -a v1.0 -m "Chap 1" 9edia   # This will help in tagging the repo for the old commit also.
         $ git push origin <tagname>	      # This pushes your tag to the remote server which is mapped with origin name.
+
 	$ git push origin --tags	      # This pushes all your tags to the remote server.
 					      # So now if someone else pulls your repo, he will have all the tags.
 	$ git checkout -b Git_ProBook_v1.0 Git_ProBook_v1.0
@@ -276,4 +277,140 @@ or,	$ git mv newfile newfileR
 					     # This sets the alias for unstaging
 	$ git config --global alias.last 'log -1 HEAD' # This gives the last commit log
 	$ git config --global alias.visual "!gitk"     # This runs the gitk own program that runs with git repo. 
+
+------------------------------------------------------------------------------------------ 3. Git Branching
+What is Branching? 
+	Branching means you diverge from the main line of development and continue to do work without disturbing with that main line.
+	Almost every VCS has some kind of branching support. But Git's branching model is a killer feature. 
+
+Why is Git Branching model so special?
+	Git branches in a very lightweight manner. 
+	Branching operations are instantaneous. 
+	Branching operations like switching b/w branches back and forth are super fast.
+	Git encourages workflows(to be explained later) that branch and merge often, several times a day.
+	Knowing branching in Git will change the way you develop software.
+
+Branching in Git in a nutshell
+	When you make a commit. Git stores a commit object that stores the pointer to the snapshot the staged content && it also
+	contains the author, email and commit msg && it also contains pointers to the parent commits(if present)
+		git_commit_obj  = pointer_to_snapshot_staged_content
+		git_commit_obj += email, commitmsg, author'sname, 
+		git_commit_obj += pointers to the parent/parents commit
+	-------------------------------------------------------------------------------------------------------
+	eg, we have three files in our repo
+	a
+	b
+	c
+	$ git add . 
+		When you stage these files(a, b c)
+		Git makes the SHA-1 hash checksums of each of the files and stores the versions of 
+		the files in Git repo(git calls them BLOBS), and adds the checksums to the staging area.
+	$ git commit -m "whatever" .
+		When you commit. Git checksums each subdir and stores those tree objects in Git repo.
+		Git then creates a commit object that has metadata and pointer to the root project tree.
+		This helps re-creating the snapshot again if needed.
+	
+	Git repo has 5 objects now:
+	Blob - Contents of each of your files.
+	Tree - List the contents of the dir, and specifies which file names are stored as which blobs.
+	Commit - One commit object that stores the pointer to that root tree and all the commit metadata.
+
+	Commit:98ca9	-->	Tree:92ec2          ----->	blob 5dl12, all contents of file
+	tree	 92ec2		blob 5dl12 a    ----|---->	blob 5dl13, all contents of file      
+	author	 alok           blob 5dl13 b	    ----->      blob 5dl14, all contents of file
+	parent			blob 5dl14 c	
+	commiter alok           		
+	type     initial-commit
 		
+	So now, if you make some changes to some files and commit again. Suppose you changed file a and c.
+	In Git, Each commit is a snapshot.
+	You can see in the new commit, the parent is kept as a pointer to the old commit. New commit points to new tree
+	which in turn will have new blob values.
+
+						HEAD 		
+						|
+					        -----
+					            V
+					     v1.0   master
+		------------------------------       ---  
+		|				     |
+		V				     V
+											
+	Commit:98ca9			Commit:98ca10	
+	tree	 92ec2			tree 	 92ec3
+	author   alok		<---    author   alok
+	parent  			parent   98ca9 	
+	commiter alok			commiter alok
+	type     initial-commit         type 	 some-changes
+		|				|
+		|				|
+		V				V
+	  Snapshot A			  Snapshot B
+
+	A branch in Git is a simple lightweight pointer to one of these commits.
+	Default branch name is Master. As you commits, each commit object starts getting attached to the previous one.
+	master <- commit1 <- commit2 and so on....
+	
+	Here branch v1.0 is behind of master branch by 1 commit.
+	A new branch creates a new pointer for you to move around.
+	Here head points to the master branch. So master is the current branch. 
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+     #Creating a new branch
+	Well creating a new branch creates a new pointer for you to move around.
+
+	$ git status	  # Showed your current branch was "master" which is by default on doing git init.
+			  # Git knows about your current branch by seeing where HEAD points to.
+	$ git branch test # This created a branch test at the same commit you are currently on your current branch(master)
+			  # Note this command only created a new branch, you are still in your HEAD pointer pointing branch.
+	
+	98ca7  <--- 98ca8  <-- 98ca9
+		        	master   <-- HEAD
+				test
+	$ git log --oneline --decorate # this give the above diagram which you see here.
+	98ca9 (HEAD, master, test) commit info
+	98ca8 commit info
+	98ca7 commit info
+      
+     #Switching to an existing branch 
+	$ git checkout test # This switches your current branch to test and HEAD pointer is now pointing to test.
+	98ca7  <--- 98ca8  <-- 98ca9
+                                master  
+                                test      <-- HEAD
+		
+	Now make a change to a file and commit(commit id say 98ca10)
+	98ca7  <--- 98ca8  <-- 98ca9   <--  98ca10
+                                master      
+                                             test      <-- HEAD
+		 
+ 	Now let's switch back to master branch.
+	$ git checkout master
+	98ca7  <--- 98ca8  <-- 98ca9   <--  98ca10
+                                master                 <-- HEAD             
+                                             test      		
+        # This latest checkout of master, did two things:
+		a. Moved the pointer of HEAD to point to master.
+		b. Reverted back your 98ca10 changes, by checking out the snapshot 98ca9 points to.		
+	
+	Now again if you make a change and commit(say commit id 98ca11)
+				------------98ca11
+				V	    master    <--- HEAD
+	98ca7  <--- 98ca8  <-- 98ca9   <--  98ca10
+                                             test
+	So now your branches(master and test) have diverged from each other and have their own development path.
+eg:	[root@centdev01 tmp]# git log --oneline --decorate
+	746e8cf (HEAD, master) Checked in e in branch master
+	2d28b57 commit 1
+	[root@centdev01 tmp]# git checkout slave
+	Switched to branch 'slave'
+	[root@centdev01 tmp]# git log --oneline --decorate
+	199134a (HEAD, slave) Checked in d in slave branch
+	2d28b57 commit 1	
+
+	
+
+
+
+
+ 
