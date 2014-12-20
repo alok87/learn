@@ -460,21 +460,171 @@ Basic Merging and Branching
 	$ git checkout master           # Now you have decided that iss53 is fixed and should be merged to master
 					# Checkout the branch you want to merge into
 
- #recursive
+ #recursive - 3way merge
 	$ git merge iss53		# Merge the branch you want to merge
 	Merge made by the 'recursive' strategy.
 	Note: The merge was made by recursive strategy now.
 	# Since the main branch had also moved ahead.	
-			
+	# In this commit one thing you might observe is the c6 is having 2 parents.			
+	# one more good feature you might see in git here is that it automatically determines the best common ancestor
+	  to use for its merge base(here c2), while in other VCS like CVS or Subversion the user have to decide this.
+	  This makes merge quick and easy in GIT.
 			
 	c1	c2	c3 < master
 			c4	c5 < iss53
 			
+	
+	c1	c2	c3		    <---c6 < master
+			c4	c5 < iss53  <---^
+
+	Now that you have merged your development branch iss53 to master.
+	We can delete this branch using below 
+	$ git branch -d iss53
+
+ #Automatic merge failed
+	If you change the same part of the same file differently in 2 branches you are merging together, git wont merge
+	it in a clean way.
+
+	So when you try to merge in this kind of situation -, your merge will fail.
+	And git status will msg like below
+	# Unmerged paths:
+	#   (use "git add <file>..." to mark resolution)
+	#
+	#	both modified:      neworder.java
+
+	
+	And when you open the file, git would have included both the changes like
+	<<<<<<< HEAD
+	echo "changed by master = yesyesyesabsolutely right"
+	=======
+	echo "changed by devbranch yesyesyesabsolutely right"
+	>>>>>>> devbranch
+	You can edit this file and change <<<< HEAD,==== and >>>>>> devbranch and make your final change.
+
+ #mergetool
+	$ git mergetool
+	# tool to resolve the merge-conflicts between files.
+
+Branch Management
+	$ git branch 		 # lists the branches in the repository
+				 # * indicates your current branch
+	$ git branch -v 	 # lists the branches with last commits info for each branch
+	$ git branch --merged	 # gives the list of branches merged to the current branch
+	$ git branch --no-merged # gives the list of branches not merged to the current branch
+	  testing
+	$ git branch -d testing	 # since the testing branch is not merged
+				   trying to delete it will not allow to delete, since the branch is not merged to current branch.
+	$ git branch -D testing  # will forcibly delete testing branch
+
+Branching Workflows
+	Since merging branches is an easy and efficient task in Git. You can maintain different branches for the complete
+	software development cycle. You can regularly merge one branch with the other.
+	Many Git developers have a workflow that embraces this approach.
+
+ Long Running branches:
+
+	c1	c2	c3	c4	c5	c6
+	^		^			^
+	master		^			^
+			stable-1		^
+						stable-2
+	
+	Your branches are various level of stability ( most > least in the above figure)
+	You have a stablest branch which goes to prodcution at the loweset level.
+	You do your development at branches stable-1 and stable-2. stable-1 is more stable than stable-2.
+	so some feature is developed in stable-2 and it is tested well. It is merged to stable-1 where again it is tested. 
+	If it is tested well there it is released to the main production master branch.
+	This approach is important when you are dealing with very large projects. Developing software with this long branch 
+	approach is good in dealing with big complex projects.
+
+ Topic branches:
+
+	c1	c2	 		c3
+	^	^			^
+	master	feature1 < master       feature2 < master
+
+	Topic branch is feature1, you develop your feature do your tests and merge it to master.
+	Later when a new feature requirement came, you branch out a new feature2 branch, develop and test it and on 
+	success again merge it to master.
+
+	This approach was not possible in earlier VCS, where branching for each change and merging was not an easy task as it is
+	in Git.
+
+  VVI
+  Remote Branches: clone, fetch and push explained with good examples below
+	They are the bookmarks to remind you where your remote branches were when you last communicated to them.
+	So for say-
+     
+    #clone	
+	$ git clone https://github.com/alok87/learn.git	
+	Suppose you cloned a repo from github.com, then git automatically 
+		> creates remote with name origin for you. to name your own remote use git clone -o hullala ...
+		> pulls all its data and and creates a branch master and also names it origin/master locally.
+	c1	c2	c3 < master		     || at github.com	
+	c1	c2	c3 < origin/master && master || at my computer after clone
+	
+	c1	c2	c3	c6 < master	     || at github.com after new push from other user
+	c1	c2	c3	c4  	c5	     || at my computer after new commits
+			^		^
+			origin/master	master
+    #fetch	
+	$ git fetch origin
+	# This command finds out which server origin refers to, then goes to that server and gets the latest changes and 
+	  updates your origin/master pointer to the latest changes. 
+	  In short updates your origin/master with the latest github change.
+	so,
+	c1	c2	c3	c6 < origin/master   || at my computer, after git fetch origin
+				c4	c5 < master    
+	
+        #Multiple remotes in this situation
+	suppose you have one more remote https://github.com/alok87/spree.git
+	c3	c7	c8 < master 		     || at github.com
+	create a remote locally for it also
+	$ git remote add origin2 https://github.com/alok87/spree.git
+	$ git fetch origin2
+		
+	c1	c2	c3	c6 < origin/master   || at my computer, after git fetch origin && git fetch origin2
+				c4	c5 < master    
+				c7	c8 < origin2/master
+	
+	So think to observe here is, you do not have a working branch with origin/master or origin2/master.
+	They are just pointers avaiable to use to create new branches/merge changes
+	a. create new branch from that pointer
+		$ git branch -b origin_master origin/master # this creates a branch from your remote pointer.
+	b. merge changes from pointers to your branch
+		$ git merge origin2/master # this merges the remote pointer to your current branch.
+    #push
+	Once in a while you have to push your topic branches to the github.com remote.
+	You do it by using below command, so for say you are pushing your topicbranch to topicbranch in github.
+	$ git push origin serverfix #push serverfix branch to remote origin url 
+or, 	$ git push origin serverfix:serverfix
+or,	$ git push origin serverfix:new_serverfix
+	Both of the above commands means you are pushing all your local serverfix code to serverfix/new_serverfix in github.
+
+	To not allow git to keep asking git password, use below command to cache your config for few mins.
+	$ git config --global credential.helper cache # stores git config in cache for sometime, so that no pass to give
+
+Tracking Branches
+
+
+
+
+
+
 
 
 
 	
 
+
+
+
+
+
+
+	
+
+				
 
 
 
