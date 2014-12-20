@@ -439,20 +439,37 @@ Basic Merging and Branching
 					# Now do your tests in hotifix branch to verify all is good.
 					# If all looks good, merge your changes to the master production branch to deploy to prod 
 					  after build.
-#merge  $ git checkout master
+#merge
+ #fast-forward
+        $ git checkout master
        	$ git merge hotfix
-	  Fast-forward			# Fast-forward means Git simplified the merge operations as it found that the master was
+	'Fast-forward' strategy.	# Fast-forward means Git simplified the merge operations as it found that the master was
 					  only 1 commit behind and rest everything was same. So it just moved the pointer to new
 					  commit.
+		
+	c1	c2 < master
+			c3	c4 < iss53
+	*fast-forward merge was performed as the iss53 was only 2 commits ahead after c2. So git just moved
+	*the master branch pointer to c4 for performing the merge operation. Thats it, so fast-forward
+
 	$ git branch -d hotfix		# You delete the hotfix branch as it is no longer needed.
 	$ git checkout issue-53  
 	$ git add . && git commit -m "checked in issue 53 fix"
                                         # You fixed and checked in your changes in this branch.
                                         # Now the iss53 branch has moved ahead of master branch remember.
-	
-	
+	$ git checkout master           # Now you have decided that iss53 is fixed and should be merged to master
+					# Checkout the branch you want to merge into
 
-	
+ #recursive
+	$ git merge iss53		# Merge the branch you want to merge
+	Merge made by the 'recursive' strategy.
+	Note: The merge was made by recursive strategy now.
+	# Since the main branch had also moved ahead.	
+			
+			
+	c1	c2	c3 < master
+			c4	c5 < iss53
+			
 
 
 
