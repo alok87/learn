@@ -598,18 +598,77 @@ Branching Workflows
 	You do it by using below command, so for say you are pushing your topicbranch to topicbranch in github.
 	$ git push origin serverfix #push serverfix branch to remote origin url 
 or, 	$ git push origin serverfix:serverfix
-or,	$ git push origin serverfix:new_serverfix
+or,	$ rgit push origin serverfix:new_serverfix
 	Both of the above commands means you are pushing all your local serverfix code to serverfix/new_serverfix in github.
 
 	To not allow git to keep asking git password, use below command to cache your config for few mins.
 	$ git config --global credential.helper cache # stores git config in cache for sometime, so that no pass to give
 
-Tracking Branches
+	Deleting Remote branches
+	$ git push origin --delete serverfix # deletes the serverfix branch in the remote server origin is mapped to.
+					     # it justs remove the pointer pointing to this data, garbage collecn permanently 
+					     # removes it
 
+Rebasing
+	In git there are two ways to integrate changes b.w. branches: 
+		a. merging
+		b. rebasing
 
+	#merging
+	>       c1      c2      c3 < master
+				c4 < expt
 
+	>	c1	c2	c3 < master	
+				c4 < expt
+					c5 < master #after performing 3 way merge
 
+	In merging, three way merge is done. latest snapshots of 2 branches c3 and c4 are merged in a 3way manner with common
+	ancestor c2 to get the latest c5.
 
+	#rebasing
+				c4 < expt
+	>	c1	c2	c3 < master
+
+	>	c1	c2	c3	c4' 		
+				^master	^expt
+
+	>	c1	c2	c3	c4' < master
+					^expt
+
+	$ git checkout expt
+	$ git rebase master
+	$ git checkout master
+	$ git merge experiment
+
+	The state you reach in c4' is exactly same as c5. The only difference is how you reachled this state.
+	The rebased state results in a very clean log history. It looks as if the development was done in a linear/series way though
+	it was done parallely.
+
+	How it happened?
+	You checked out your project at experiment. Then on rebasing it with master did the following:
+		> common ancesotr of master and expt was found out to be c2.
+		> diff was done b.w. c2 and c4 and stored in a temp file.
+		> change of rebasing into branch(master branch, c3 change) was applied to c2.
+		> then the stored temp change was applied to make c4'
+		> then you switched back to your main branch master.
+		> then you did a fast forward merge to the latest change c4'.
+	This way you have a very linear commit history c1 c2 c3 c4' instead of having history like below -
+									      c4
+									c1 c2 c3
+										 c5			
+
+	VVI 
+	So a good development practice, workflow would be the one in which developers creates their own branches, does their 
+	development and then rebase their changes into the main branch/remote branch. In that way:
+		> history of the branch would always be linear.
+		> and the maintainer of the master branch would only need to fast forward merge to the lastest change.
+	So REBASE instead of 3-way merge.
+
+	DRAWBACKS of REBASING
+		Do not rebase commits that exist outside your repository
+		you did not rebase your commits and pushed it to common repo. Someone later pulled that from common repo
+		and started using it. Later you again pulled it and rebased the history and pushed it. Now when the other guy
+		pushes to the common repo CONFLICTS and CONFUSION will happen over the history.
 
 
 
@@ -617,20 +676,4 @@ Tracking Branches
 	
 
 
-
-
-
-
-
 	
-
-				
-
-
-
-						
-
-
-
-
- 
