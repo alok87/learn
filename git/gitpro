@@ -671,9 +671,57 @@ Rebasing
 		pushes to the common repo CONFLICTS and CONFUSION will happen over the history.
 
 
+------------------------------------------------------------------------------ 4. Git Server
 
+	Git server is a common place where everyone contribute changes and others pulls the latest code from here.
+	Since there is no need to have the latest snapshot of the code be available in some working directory, you do not need
+	a working dir. So git server merely can be seen as a .git folder.
 
+	Git uses four protocols to transfer data:
+	
+	a. Local Protocol
+	   Remote repository is on another directory or disk(common file-system mount/NFS mount).
+	   Use case: Every member in the team is working on the same computer.
+		     Every member in the team has the access to one common shared mount.
+	   $ git clone /home/aks/shared/project1/learn.git            # clone a local remote git server || faster
+or,	   $ git clone file:///home/aks/shared/project1/learn.git     # clone a local remote git server || cleaner
+	   $ git remote add local_project1_learn /home/aks/shared/project1/learn.git # local remote add for a git server
+	   Pros:
+		 Easy to setup. Just put the repository(.git) in any shared location everyone has acecss to. And start pulling/pushing
+		 code into it. There is no issue with it at all. Read/Write access can be provided just like any other read/write access you provide.
+	   Cons:
+		 Shared access is slow and hard to setup compared to network access.
+		 Supopose you are at home, then you wont have access to that office shared repo and even if you do it would be slow.
+
+	b. Http Protocol
+	   smart http - user/pass authentication, super easy to use. very popular now a days.
+	   dumb  http - web server authentication. 
+
+	   pros - smart http has a simple user/pass authentication which makes it super good for the endusers. pass is only required 
+		  few times. It is better when compared with SSH as no SSH key setups are required. Fast and efficient at the same time.
+		  Encrpyted transfer of data supported using HTTPS. You can make it even more secure by making use of signed SSL certs.
+		  Good for working under corporate firewall setups.
+
+	   cons - sometimes provinding password once in a while can be a big head ache. but caching tools are available which will 
+		  store your crendentials which you do not need to provide.
+
+	c. SSH Protocol
+	   use case - place where all servers are already connected with ssh. Even if it is not it is easy to setup ssh. And accessing over
+		      ssh is a well authenticated method which can be used.
+
+		$ git clone ssh://user@host/home/aks/shared/project1/learn.git # clone using ssh protocol.
+		$ git clone user@host:/home/aks/shared/project1/learn.git      # scp like clone using ssh protcol.		
+									       # if you do not specfiy a user above git assumes your current user.
+		pros - of ssh are many. very easy to setup, sysadmins and IT people know about it. It is highly secure and ecrypted. 
+		cons - everyone should have an ssh access established before using it. So annonymous access is not possible here. Not good for
+		       open source projects. 
+	 
+	d. Git Protocol
+	   use case - a project with huge traffic of read/pulls and pushes. It provides the fastet transfer of data compared to all the 
+	   protocols as it does not have any authentication, encryption. So since it does not have any authentication anyone who has the 
+           url of your project has the acces yo your repo.
+
+	   pros - good for using it for read only access as it is super fast. Good for public projects with huge traffic.
+	   cons - no authentication. no encrpytion. very hard to setup. Not good in firewall protected organization.
 	
 
-
-	
