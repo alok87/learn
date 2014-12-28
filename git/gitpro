@@ -724,4 +724,34 @@ or,	   $ git clone file:///home/aks/shared/project1/learn.git     # clone a loca
 	   pros - good for using it for read only access as it is super fast. Good for public projects with huge traffic.
 	   cons - no authentication. no encrpytion. very hard to setup. Not good in firewall protected organization.
 	
+Git Server(ssh protocol) ------------------------------------------------------------
+UseCase- Small Setups, For small organizations with few developers, we can setup like below.
+     > Establish ssh between git server and the developer machines.
+       #Login to the git server and make a project dir and intialize it as bare repository.	
+	$ mkdir -p /home/git/projects/learn.git && git init --bare 
+    > Your git server is ready. Now you can pull and push to this repository.
+       #Login to the developer machine and push to the git repo.
+	$ cdl && git remote add localgitrepo_learn git@centdev01:/home/git/projects/learn.git
+	$ git push localgitrepo_learn master # This pushes your learn.git to your localgit repo at git@centdev01
+    > You can disable ssh login to the git server by developers using git-shell like below.
+	$ cat `which git-shell` >> /etc/shells # append the git-shell to the /etc/shells, only if not present there.
+------
+Smart Http git server has a simple CGI script which sees if the clinet is smart/dumb. 
+If the clinet is having version of git > 1.6 it is smart and CGI interacts with it in a smart http way 
+otherwise it falls back and interacts in a dumb http way.
+	$ git httpd-backend
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
