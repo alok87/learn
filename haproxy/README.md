@@ -105,7 +105,7 @@ frontend http                            #configures frontend named http
 	
 	acl url_blog path_beg /blog
 	use_backend jms-backend if url_blog
-	default-backend web-backend
+	default_backend web-backend
 ```
 	
 	
