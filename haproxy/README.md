@@ -57,5 +57,49 @@ Frontend can be configured to various type of network traffic as defined below:
 
 ## Types of Load Balancing
 
+### No Load Balancing
+A simple web application with no load balancing would like the following:
+```
+User > Internet > WebServer 		 > DatabaseServer
+                  https://yourdomain.com
+```
+So in this case if your webserver goes down, your website goes down and noone can access your service.
+Or, if many users login and start accessing this server then it wont be able to handle 
+so much load and website becomes slow or not accesbile.
+
+### Layer4 Load Balancing
+The simplest way to load balance network traffic to multiple servers is use layer4 load balancing(transport layer).
+In this way the user traffic is forwarded based on IP range and port.
+For eg, 
+	If a request comes in for https://yourdomain.com/anything, the traffic would be forwarded to the backend
+	that handles all the request of yourdomain.com on port 80
+```
+				Web-backend
+User > LoadBalanncer 		> Web1		
+       https://yourdomain.com			> Database
+			 	> Web2
+
+```
+User access the load balancer, which forwards the user's request to the web-backend group of backend servers.
+Whichever backend server is selected will respond directly to the user's request. All the backend web servers should serve
+the identical content otherwise the user will see inconsistent content. Note that both web servers connect to same db.
+
+### Layer7 Load Balancing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	
 			
