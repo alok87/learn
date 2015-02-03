@@ -67,7 +67,7 @@ So in this case if your webserver goes down, your website goes down and noone ca
 Or, if many users login and start accessing this server then it wont be able to handle 
 so much load and website becomes slow or not accesbile.
 
-### Layer4 Load Balancing
+### Layer4 Load Balancing - TCP
 The simplest way to load balance network traffic to multiple servers is use layer4 load balancing(transport layer).
 In this way the user traffic is forwarded based on IP range and port.
 For eg, 
@@ -80,11 +80,40 @@ User > LoadBalanncer 		> Web1
 			 	> Web2
 
 ```
-User access the load balancer, which forwards the user's request to the web-backend group of backend servers.
+In this eg, User access the load balancer, which forwards the user's request to the web-backend group of backend servers.
 Whichever backend server is selected will respond directly to the user's request. All the backend web servers should serve
 the identical content otherwise the user will see inconsistent content. Note that both web servers connect to same db.
 
-### Layer7 Load Balancing
+### Layer7 Load Balancing - HTTP
+Another complex way to load balance is to use layer7(application layer) load balancing.
+It allows load balancer to forward request to different backend servers based on **content of the user's request**.
+This mode of loadbalancing allows you to run multiple web application servers under the same domain and port.
+```
+		      Web-backend(/)
+		    > Web1,Web2,Web3	
+User > LoadBalancer 			> Database
+		      Jms-backend(/blog)
+		    > Jms1,Jms2,Jms3
+```
+In this eg, if a user requests yourdomain.com/blog then the request is forwarded to the Jmss-backend( which is a set of servers running jms application) else in all the othercases it is forwarded to Web-backend ( set of servers running web application) Both applicatiion use the same db, please note.
+
+Frontend config would look like - 
+```
+frontend http                            #configures frontend named http
+	bind *:80			 #which handles all incoming traffic on port 80 (*:80)
+	mode http
+	
+	acl url_blog path_beg /blog
+	use_backend jms-backend if url_blog
+	default-backend web-backend
+```
+	
+	
+	
+
+
+
+
 
 
 
