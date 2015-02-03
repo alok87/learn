@@ -107,9 +107,38 @@ frontend http                            #configures frontend named http
 	use_backend jms-backend if url_blog
 	default_backend web-backend
 ```
-	
-	
-	
+
+## Load Balancing Algorithms	
+The load balancing algo determines which backend server would be picked for processing when load balancing happens for the request. In addition to the load balancing algo, weight parameter can also be applied to maniupulate how frequently the 
+server is selected.
+
+### Most common algos
+
+** roundrobin
+Selects up servers in turns. Default algo.
+
+** leastconn
+Selects the servers with least number of connections. 
+
+** source
+Selects the server based on the hash of the source IP(user's IP). 
+This ensures a user connects to the same server everytime.
+
+## Sticking Sessions 
+using the appsession parameter in the backend we can bind a user to a particular backend server.
+
+## HAProxy Health check
+HAProxy uses health check to determine if backend server is available to process requests or not.
+This avoids to having to manually remove the non-responsive/unavailable backend servers.
+
+
+The default health check is to try to establish a TCP connection to the bacakend server. It actually checks if the
+backend server is listening on the configured ip address and port.
+If a server fails a health check it is automatically disabled in the backend and no user request can reach there.
+
+
+
+
 
 
 
