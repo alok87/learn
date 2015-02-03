@@ -5,7 +5,7 @@ It is an open source TCP/HTTP load balancer and proxing solution which can be ru
 Commonly used to distribute workloads across multiple servers(eg, application servers/database servers) to improve the 
 performance and reliablilty of the server.
 
-### HAProxy Terminology
+### HAProxy Terminologies
 
 #### Access Control List (ACL)
 * ACLs are used to test some condition and perform some action based on the test result. Actions like - select a server, block a request
@@ -20,9 +20,9 @@ performance and reliablilty of the server.
 #### Backend
 Backend is a set of servers that receives forwarded requests. 
 It is defined in the backed section of HAProxy configuration.
-In its most basic form a backend can be defined by - 
-* which load balance algorithm to use
-* list of servers and ports
+Basic defination as - 
+ * which load balance algorithm to use
+ * list of servers and ports
 
 At minimum the backend can contain one server, and at maximum it can contain as many hosts as you want.
 The number of servers in the backed defined your load capacity. 
@@ -44,14 +44,18 @@ Example of two backed configuration - 2 web servers both listening at port 9001
 
 * balance roundrobin - loadbalancing alogrithm used for load balancing here. Later explained in detail.
 * mode http	     - layer 7 proxing is being used was defined. Later explained each mode in detail.
-* chec		     - this attributes specifies that the health check be performed at each of the server. 
+* check		     - this attributes specifies that the health check be performed at each of the server. 
 
+### Frontend
+Frontend defines how the requests should be forwarded to the backends.
+It is defined in the frontend section of the HAProxy configuration.
+Basic defination as - 
+ * a set of IP addresses and port ( eg- 10.17.11.8:8080, *:443, *:9011, etc.. )
+ * ACLs
+ * use_backend rules - which backed to use depending on which ACL condition are matched(or to use default rule if none match)
+Frontend can be configured to various type of network traffic as defined below:
 
+## Types of Load Balancing
 
-
-
-
-
-			
 	
 			
