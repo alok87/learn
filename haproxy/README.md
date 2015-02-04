@@ -136,6 +136,44 @@ The default health check is to try to establish a TCP connection to the bacakend
 backend server is listening on the configured ip address and port.
 If a server fails a health check it is automatically disabled in the backend and no user request can reach there.
 
+# Load Balancing Docker Containers
+
+## HAProxy to forward the load to the docker containers in CoreOS cluster.
+CoreOS is a cluster of machines running minimal coreos distro which runs two services by default 
+* etcd is a highly available distributed key value store for communicating information/configuration across the whole 
+coreos cluster. It is being used for service discovery.
+* fleet is used to define, submit, manage and schedule services running in docker containers in the coreos cluster.
+
+How to put load balancer in front of my web containers to proxy for the upcoming requests and direct it to the 
+backend containers running in the coreos cluster. We are going to use HAProxy as an example for load-balancing.
+
+When a container starts/stop it register and unregister that from the etcd.
+So our etcd containing our container information would like below -
+
+```
+	https://etcd-server:4001/v2/keys/services/docker-container-webapp1:49153
+	https://etcd-server:4001/v2/keys/services/docker-container-webapp2:49153
+	https://etcd-server:4001/v2/keys/services/docker-container-webapp3:49153
+	https://etcd-server:4001/v2/keys/services/docker-container-jmsapp1:49154
+	https://etcd-server:4001/v2/keys/services/docker-container-jmsapp2:49154
+	https://etcd-server:4001/v2/keys/services/docker-container-webapp1:49154
+```
+
+We will be running HAProxy in a docker container which keeps watching the keys under **/services. 
+Each key would be configured as a backend for HAProxy.
+When a new container is started/stopped the etcd key changes under /services and the HAProxy knows about it and 
+reconfigures its configuration.
+	
+	
+	
+	
+
+
+
+
+
+
+
 
 
 
