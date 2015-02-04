@@ -131,7 +131,6 @@ using the appsession parameter in the backend we can bind a user to a particular
 HAProxy uses health check to determine if backend server is available to process requests or not.
 This avoids to having to manually remove the non-responsive/unavailable backend servers.
 
-
 The default health check is to try to establish a TCP connection to the bacakend server. It actually checks if the
 backend server is listening on the configured ip address and port.
 If a server fails a health check it is automatically disabled in the backend and no user request can reach there.
@@ -148,10 +147,9 @@ How to put load balancer in front of my web containers to proxy for the upcoming
 backend containers running in the coreos cluster. We are going to use HAProxy as an example for load-balancing.
 
 When a container starts/stop it register and unregister that from the etcd.
-So our etcd containing our container information would like below -
+So our etcd containing our container information would look like below -
 
-```
-	https://etcd-server:4001/v2/keys/services/docker-container-webapp1:49153
+```	https://etcd-server:4001/v2/keys/services/docker-container-webapp1:49153
 	https://etcd-server:4001/v2/keys/services/docker-container-webapp2:49153
 	https://etcd-server:4001/v2/keys/services/docker-container-webapp3:49153
 	https://etcd-server:4001/v2/keys/services/docker-container-jmsapp1:49154
@@ -159,11 +157,49 @@ So our etcd containing our container information would like below -
 	https://etcd-server:4001/v2/keys/services/docker-container-webapp1:49154
 ```
 
-We will be running HAProxy in a docker container which keeps watching the keys under **/services. 
-Each key would be configured as a backend for HAProxy.
+We will be running HAProxy in a docker container.
+The **main goal** here is to make **HAProxy automatically reconfigure itself on changes to /services under etcd.**
+Each key under **/services** in etcd would be configured as a backend for HAProxy.
 When a new container is started/stopped the etcd key changes under /services and the HAProxy knows about it and 
 reconfigures its configuration.
+
+HAProxy would be listening at a port for the user requests(say port 8000). When a new request comes in, it would forward
+the request to the relevant backend server by using roundrobin algo by default.
+
+** A config file must be passed to HAProxy to startup. **
+```
+global
+	maxconn 4096
+
+defaults
+	log	global
+	mode	http
+	option	httplog
+	option	dontlognull
+	retries	3
+	redispatch
+	maxconn 	2000
+	contimeout 	5000
+	clitimeout	50000
+	srvtimeout	50000
 	
+frontend http-in
+	bind *:8000
+	default_backend	http
+	
+backend http
+	server webapp-1 127.0.0.1:49153 maxconn 32
+	server webapp-2 127.0.0.1:49153 maxconn 32
+	server webapp-3 127.0.0.1:49153 maxconn 32
+
+```
+So the above configuration sets up our HAProxy container to listen for requests at ```port 8000``` and forward the 
+request to ```backend http```. We need to dynamically configure this file based on the state of the containers stored
+in etcd. And after reconfiguration we would need to gracefully restart the HAProxy using ```-sf``` command line argument, which would restart the HAProxy service without breaking the open/running containers.
+
+
+
+
 	
 	
 	
