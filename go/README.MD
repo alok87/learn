@@ -7,7 +7,7 @@
     Constants                           : OK
     For                                 : OK
     If/Else                             : OK
-    Switch
+    Switch                              : OK
     Arrays
     Slices
     Maps
