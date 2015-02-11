@@ -10,11 +10,11 @@
     Switch                              : OK
     Arrays                              : OK
     Slices                              : OK
-    Mapss                               : OK
+    Maps                                : OK
     Ranges                              : OK
-    Functions
-    Multiple Return Values
-    Variadic Functions
+    Functions                           : OK
+    Multiple Return Values              : OK
+    Variadic Functions                  : OK
     Closures
     Recursion
     Pointers
