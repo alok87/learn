@@ -8,10 +8,10 @@
     For                                 : OK
     If/Else                             : OK
     Switch                              : OK
-    Arrays
-    Slices
-    Maps
-    Range
+    Arrays                              : OK
+    Slices                              : OK
+    Mapss                               : OK
+    Ranges                              : OK
     Functions
     Multiple Return Values
     Variadic Functions
