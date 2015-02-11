@@ -1,0 +1,46 @@
+package main
+
+import "fmt"
+
+func main() {
+
+//array
+var array1[5]int
+array2 :=[5]int{1,2,3,4,5}                  //#singleline 
+fmt.Println("array1",array1)
+fmt.Println("array2",array2)
+
+//slices
+slice1 := make([]int,5)
+slice2 := []int{1,2,3,4,5}                 //#singleline
+fmt.Println("slice1",slice1)
+fmt.Println("slice2",slice2)
+
+
+//maps
+map1 := make(map[int]int)
+map1[210]=3
+map1[109]=3
+map1[907]=5
+map1[222]=555
+fmt.Println("Apartment:People",map1)
+delete(map1,222)
+fmt.Println("Apartment:People",map1)	
+val2:=map1[109]
+fmt.Println("Number of person living in 109 =",val2)
+map2:=map[int]int{290:2,390:4}             //#singleline
+fmt.Println(map2)
+
+// range eg in slice
+s:=[]string{"alok","vicky","l2k"}
+for index,name := range s {
+	fmt.Println(index,name)
+}
+
+//range eg in maps
+m:=map[string]string{"alok":"singh","vicky":"singh"}
+for key,value := range m {
+	fmt.Println(key,value)
+}
+
+}
