@@ -3,10 +3,10 @@
 ```
     Hello World                         : OK
     Values                              : OK
-    Variables
-    Constants
-    For
-    If/Else
+    Variables                           : OK
+    Constants                           : OK
+    For                                 : OK
+    If/Else                             : OK
     Switch
     Arrays
     Slices
