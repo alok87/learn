@@ -15,9 +15,9 @@
     Functions                           : OK
     Multiple Return Values              : OK
     Variadic Functions                  : OK
-    Closures
-    Recursion
-    Pointers
+    Closures                            : OK
+    Recursion                           : OK
+    Pointers                            :
     Structs
     Methods
     Interfaces
