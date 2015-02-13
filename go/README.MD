@@ -17,10 +17,10 @@
     Variadic Functions                  : OK
     Closures                            : OK
     Recursion                           : OK
-    Pointers                            :
-    Structs
-    Methods
-    Interfaces
+    Pointers                            : OK
+    Structs                             : OK
+    Methods                             : OK
+    Interfaces                          : OK
     Errors
     Goroutines
     Channels
