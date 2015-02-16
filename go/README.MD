@@ -21,8 +21,8 @@
     Structs                             : OK
     Methods                             : OK
     Interfaces                          : OK
-    Errors
-    Goroutines
+    Errors                              : OK
+    Goroutines                          : OK
     Channels
     Channel Buffering
     Channel Synchronization
