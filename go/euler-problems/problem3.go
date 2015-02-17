@@ -1,4 +1,28 @@
+//New method below
 package main
+
+import "fmt"
+
+func main() {
+	factors(600851475143)
+	//factors(13195)
+}
+func factors(num int64) { 
+	var i,res int64
+	i = 2
+	for ;num%i!=0; {
+		i+=1
+	}
+	res = num/i
+	fmt.Println(num,"/",i,"=",res)
+	if res!=1 {
+		factors(res)
+	}else if res ==1 {
+		fmt.Println("Largest Prime factor=",i)
+	}
+}
+// Old method below
+/*package main
 
 import "fmt"
 
@@ -31,3 +55,4 @@ func main() {
 		}
 	}
 }
+*/
