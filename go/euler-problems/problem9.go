@@ -1,11 +1,11 @@
+package main
+
 import "fmt"
-//import "os"
 
 func main() {
 
 	sqrs := make(map[int]int)
-	//pytha := make(map[int][]int)
-	var i,j,c,val int
+	var i,j,c,val,total int
 	
 	for i=1;i<=1000;i++ {
 		val = i*i
@@ -17,8 +17,11 @@ func main() {
 			val=sqrs[i]+sqrs[c]
 			for j=c+1;j<=1000;j++ {
 				if sqrs[j]==val {
-					fmt.Println(i,i+1,j)
-					//os.Exit(1)
+					total=i+c+j
+					if total == 1000 {
+						fmt.Println("Pytha Triplet having sum 1000=",i,c,j)
+						fmt.Println("Product of this triplet=",i*c*j)
+					}
 				}
 			}
 		}
