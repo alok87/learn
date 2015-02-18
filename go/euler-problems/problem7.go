@@ -5,7 +5,7 @@ import "math/big"
 
 func isPrime(n int64) bool{
 	i := big.NewInt(n)
-	isPrime := i.ProbablyPrime(1)
+	isPrime := i.ProbablyPrime(100)
 	return isPrime
 }
 
@@ -17,9 +17,10 @@ func main() {
 		isPrime := isPrime(i)
 		if isPrime == true { 
 			found+=1
-			if found == 10001 {
-				fmt.Println("Prime:",i,"Number-",found)
-			}
+			//if found == 10001 {
+				fmt.Println("#",found,"Prime:",i)
+			//}
+				
 		}	
 	i+=1
 	}
