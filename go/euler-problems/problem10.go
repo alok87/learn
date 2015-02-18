@@ -12,7 +12,7 @@ func isPrime(n int64) bool{
 func main() {
 	var i,total int64
 	total=0
-	for i=1;i<=1000000;i++ {
+	for i=1;i<=2000000;i++ {
 		isPrime := isPrime(i)
 		if isPrime == true {
 			total += i
