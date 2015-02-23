@@ -1,5 +1,4 @@
-# Learning go from gobyexample.com
-
+# Learning go
 ```
     Hello World                         : OK
     Values                              : OK
@@ -23,16 +22,16 @@
     Interfaces                          : OK
     Errors                              : OK
     Goroutines                          : OK
-    Channels
-    Channel Buffering
-    Channel Synchronization
-    Channel Directions
-    Select
-    Timeouts
-    Non-Blocking Channel Operations
-    Closing Channels
-    Range over Channels
-    Timers
+    Channels                            : OK
+    Channel Buffering                   : OK
+    Channel Synchronization             : OK
+    Channel Directions                  : OK
+    Select                              : OK
+    Timeouts                            : OK
+    Non-Blocking Channel Operations     : OK
+    Closing Channels                    : OK          
+    Range over Channels                 : OK
+    Timers                              
     Tickers
     Worker Pools
     Rate Limiting
