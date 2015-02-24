@@ -3,6 +3,7 @@ package main
 import "fmt"
 import "flag"
 import "runtime"
+import "time"
 
 func generate(c chan <- int) {
 	for i:=2;;i++ {
@@ -21,6 +22,8 @@ func filter(in <-chan int,out chan<- int,prime int) {
 
 func main() {
 
+	t_start := time.Now()
+
 	//Maximum number of CPU allocation for this concurrent program's processing.
 	numCPU:=runtime.NumCPU()
 	runtime.GOMAXPROCS(numCPU)
@@ -29,12 +32,13 @@ func main() {
 	var tillN int
 	flag.IntVar(&tillN,"tillN",10,"List the number till where you want to list primes")
 	flag.Parse()
+	tillN+=2
 
 	//Channel creation for storing numbers generated
 	c := make(chan int)
 	defer close(c)  //defer used to close the channel just before main exists, so that we dont forget it
 
-	//Go routine function to generate numbers and put the numbers in the g channel
+	//Go routine function to generate numbers and put the numbers in the channel c
 	go generate(c)
 
 	//Go routine function to use filter out the non prime numbers from the group
@@ -47,5 +51,7 @@ func main() {
 		c = c1
 		//^^reduced channel
 	}
+	
+	fmt.Println("Execution Time",time.Since(t_start))
 }
 
