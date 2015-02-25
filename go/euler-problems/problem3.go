@@ -2,10 +2,16 @@
 package main
 
 import "fmt"
+import "time"
+import "flag"
 
 func main() {
-	factors(600851475143)
-	//factors(13195)
+	t_start := time.Now()
+	var N int64
+	flag.Int64Var(&N,"N",600851475143,"largest prime factor of the number?")
+        flag.Parse()
+	factors(N)
+	fmt.Println("Execution Time=",time.Since(t_start))
 }
 func factors(num int64) { 
 	var i,res int64
@@ -14,7 +20,7 @@ func factors(num int64) {
 		i+=1
 	}
 	res = num/i
-	fmt.Println(num,"/",i,"=",res)
+//	fmt.Println(num,"/",i,"=",res)
 	if res!=1 {
 		factors(res)
 	}else if res ==1 {
