@@ -34,7 +34,7 @@
     Timers                              : OK            
     Tickers                             : OK
     Worker Pools                        : OK
-    Rate Limiting
+    Rate Limiting                       : OK     
     Atomic Counters
     Mutexes
     Stateful Goroutines
