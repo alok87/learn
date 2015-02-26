@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 import "os"
+import "time"
 
 func check_palindrome(n int) int {
 	rev := 0
@@ -19,6 +20,7 @@ func check_palindrome(n int) int {
 }
 
 func main() {
+	t_start:=time.Now()
 	var i, j, res, prod int
 	for i = 999; i > 900; i-- {
 		for j = i; j > 900; j-- {
@@ -27,6 +29,7 @@ func main() {
 			//fmt.Println(i,"*",j,"=",prod,res)
 			if res == 1 {
 				fmt.Println("Largest palindrome made from the product of two 3-digit numbers=", prod)
+				fmt.Println("Execution Time=",time.Since(t_start))
 				os.Exit(0)
 			}
 		}
