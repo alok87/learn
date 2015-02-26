@@ -31,9 +31,9 @@
     Non-Blocking Channel Operations     : OK
     Closing Channels                    : OK          
     Range over Channels                 : OK
-    Timers                              
-    Tickers
-    Worker Pools
+    Timers                              : OK            
+    Tickers                             : OK
+    Worker Pools                        : OK
     Rate Limiting
     Atomic Counters
     Mutexes
