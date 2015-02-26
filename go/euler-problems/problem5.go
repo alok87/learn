@@ -1,6 +1,7 @@
 package main
 
 import "fmt"
+import "time"
 
 func lcm(a int64, b int64) int64 {
 	var  max, flag_found int64
@@ -17,6 +18,7 @@ func lcm(a int64, b int64) int64 {
 }
 
 func main() {
+	t_start:=time.Now()
 	var a, b, c int64
 	a = 20 
 	b = 19
@@ -26,4 +28,5 @@ func main() {
 		a = c
 	}
 	fmt.Println("Smallest positive number that is evenly divisible by all of the numbers from 1 to 20 =", a)
+	fmt.Println("Execution Time=",time.Since(t_start))
 }

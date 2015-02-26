@@ -1,8 +1,10 @@
 package main
 
 import "fmt"
+import "time"
 
 func main() {
+	t_start:=time.Now()
 	var i,sum1,j,sum2,diff int64
 	sum1=0
 	for i=1;i<=100;i++ {
@@ -18,4 +20,5 @@ func main() {
 	
 	diff = sum1 - sum2
 	fmt.Println(diff)
+	fmt.Println("Execution Time=",time.Since(t_start))
 }

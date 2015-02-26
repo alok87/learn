@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 import "time"
+import "runtime"
 
 func check_palindrome(i int,j int,ch chan int) {
 	rev := 0
@@ -26,6 +27,7 @@ func i_incrementer(ch1 chan int) {
 }
 
 func main() {
+	runtime.GOMAXPROCS(runtime.NumCPU())
 	t_start:=time.Now()
 
 	ch := make(chan int)
