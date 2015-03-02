@@ -35,9 +35,9 @@
     Tickers                             : OK
     Worker Pools                        : OK
     Rate Limiting                       : OK     
-    Atomic Counters
-    Mutexes
-    Stateful Goroutines
+    Atomic Counters                     : OK
+    Mutexes                             : OK
+    Stateful Goroutines             
     Sorting
     Sorting by Functions
     Panic
