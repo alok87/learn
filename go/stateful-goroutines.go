@@ -40,20 +40,24 @@ func main() {
 	// Multiple go routines trying to read from the single go routine's state variable.
 	for i:=0;i<100;i++ {
 		go func() {
+		   for {
 			readStateObj := &readState{key: rand.Intn(5), resp: make(chan int)}
 			read_channel <- readStateObj
 			<-readStateObj.resp
 			atomic.AddInt64(&ops,1)
+		   }
 		}()
 	}
 	
 	// Multiple go routines trying to write to the single go routine's state variable.
 	for i:=0;i<10;i++ {
 		go func() {
+		  for {
 			writeStateObj := &writeState{key: rand.Intn(5), value: rand.Intn(100), resp: make(chan bool)}
 			write_channel <- writeStateObj
 			<-writeStateObj.resp
 			atomic.AddInt64(&ops,1)
+		  }
 		}()
 	}
 			
