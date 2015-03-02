@@ -37,9 +37,9 @@
     Rate Limiting                       : OK     
     Atomic Counters                     : OK
     Mutexes                             : OK
-    Stateful Goroutines             
-    Sorting
-    Sorting by Functions
+    Stateful Goroutines                 : OK            
+    Sorting                             : OK
+    Sorting by Functions                : OK
     Panic
     Defer
     Collection Functions
