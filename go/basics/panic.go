@@ -1,7 +1,6 @@
 package main
 
 import "os"
-import "fmt"
 
 func main() {
 
@@ -9,7 +8,6 @@ func main() {
 
 	_,err := os.Create("/tmp/File")
 
-	fmt.Println("Error Code=",err)
 	if err!= nil {
 		panic(err)
 	}
