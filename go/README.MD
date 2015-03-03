@@ -40,10 +40,10 @@
     Stateful Goroutines                 : OK            
     Sorting                             : OK
     Sorting by Functions                : OK
-    Panic
-    Defer
-    Collection Functions
-    String Functions
+    Panic                               : OK
+    Defer                               : OK
+    Collection Functions                : OK
+    String Functions                    : OK
     String Formatting
     Regular Expressions
     JSON
