@@ -44,8 +44,8 @@
     Defer                               : OK
     Collection Functions                : OK
     String Functions                    : OK
-    String Formatting
-    Regular Expressions
+    String Formatting                   : OK
+    Regular Expressions                 : OK
     JSON
     Time
     Epoch
