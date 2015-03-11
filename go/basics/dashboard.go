@@ -34,7 +34,7 @@ func generateInfo(lastDate string,endDate string) bytes.Buffer {
 
 func generateCheckin(projectDir string, startDate string, endDate string) bytes.Buffer {
 	var buffer,dateTime bytes.Buffer
-	buffer.WriteString("<table class=hovertable><tr><th class=top scope=col colspan=7>Checkin Dashboard</th></tr><tr><th class=top scope=col>Application</th><th class=top scope=col>Changeset</th><th class=top scope=col>Date</th><th class=top scope=col>Comments</th><th class=top scope=col>Date</th><th class=top scope=col>Changed by</th><th class=top scope=col>Items</th></tr>")
+	buffer.WriteString("<table class=hovertable><tr><th class=top scope=col colspan=5>Checkin Dashboard</th></tr><tr><th class=top scope=col>Changeset</th><th class=top scope=col>Date</th><th class=top scope=col>Comments</th><th class=top scope=col>Changed by</th><th class=top scope=col>Items</th></tr>")
 	dateTime.WriteString("/version:")
 	dateTime.WriteString(startDate)
 	dateTime.WriteString("~")
@@ -45,19 +45,65 @@ func generateCheckin(projectDir string, startDate string, endDate string) bytes.
         panic(err)
     }
 	if strings.Contains(string(tfOut),"No history entries were found for the item and version combination specified.") {
-		buffer.WriteString("<tr><td align=center>-</td><td align=center>No new checkins</td><td align=center>-</td><td align=center>-</td><td align=center>-</td><td align=center>-</td><td align=center>-</td></tr>")
+		buffer.WriteString("<tr><td align=center>-</td><td align=center>No new checkins</td><td align=center>-</td><td align=center>-</td><td align=center>-</td></tr>")
 	}else {
 		out := string(tfOut)
-		r := regexp.MustCompile("[-]+")
-		out = r.ReplaceAllString(out, "")
-		lines := strings.Split(out,"Changeset:")
-		for i:=0; i<len(lines);i++ {
-			buffer.WriteString("<tr><td colspan=7>")
-			buffer.WriteString(lines[i])
-			buffer.WriteString("</td></tr>")	
-		}
+		removeLines := regexp.MustCompile("[-]+")
+		out = removeLines.ReplaceAllString(out, "")
+		lines := strings.Split(out,"Changeset")
+		
+		for i:=1; i<len(lines); i++ {
+			rx_changeSet := regexp.MustCompile(`(: )(?P<middle>(.)+)(\nUser: )`)
+			changeSet := findMiddle(rx_changeSet,lines[i])
+			rx_dateCheckin := regexp.MustCompile(`(Date: )(?P<middle>(.)+)(\n)`)
+			dateCheckin := findMiddle(rx_dateCheckin,lines[i])
+			
+			comments := getMiddle("Comment:","Items:",lines[i])
+			rx_changedBy := regexp.MustCompile(`(: )(?P<middle>(.)+)(\nDate: )`)
+			changedBy := findMiddle(rx_changedBy,lines[i])
+			items := getMiddle("Items:","Checkin Notes:",lines[i])
+			buffer.WriteString("<tr><td colspan=1>")
+			buffer.WriteString(changeSet)
+			buffer.WriteString("</td>")
+			
+			buffer.WriteString("<td colspan=1>")
+			buffer.WriteString(dateCheckin)
+			buffer.WriteString("</td>")
+			
+			buffer.WriteString("<td colspan=1>")
+			buffer.WriteString(comments)
+			buffer.WriteString("</td>")
+			
+			buffer.WriteString("<td colspan=1>")
+			buffer.WriteString(changedBy)
+			buffer.WriteString("</td>")
+			
+			buffer.WriteString("<td colspan=1>")
+			buffer.WriteString(items)
+			buffer.WriteString("</td></tr>")
+			
+			
+		}	
 	}
 	return buffer
+}
+
+func findMiddle(myExp *regexp.Regexp,out string) string{
+		match  := myExp.FindStringSubmatch(out)
+		result := make(map[string]string)
+		for i, name := range myExp.SubexpNames() {
+         	result[name] = match[i]
+      }
+		return result["middle"]
+}
+
+func getMiddle(start string, end string,out string) string {
+	v1 := strings.Index(out,start)
+	v2 := strings.Index(out,end)
+	v1 = v1 + len(start)
+	v2 = v2 - len(end)
+	out = out[v1:v2]	
+	return out
 }
 
 func generateCss(projectDir string) bytes.Buffer {
@@ -87,6 +133,7 @@ func getDate(startRunFile string) string {
 
 func main() {
 	// Declare Variables
+	now := time.Now()
 	var v_app,projectDir string
 	var buffer_final bytes.Buffer
 	
@@ -120,6 +167,6 @@ func main() {
 	check(remove_err)
 	rename_err := os.Rename(endRunFile,startRunFile)
 	check(rename_err)	
+	fmt.Println("Success\nExecution Time:",time.Since(now))
 }
-
 
