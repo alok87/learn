@@ -1,3 +1,13 @@
+/*
+	Dashboard Report
+
+	Description : Prepares a report for checkins and builds done during a time period(/everyday/everyweek/per-release)
+				  Also shows the status of the environment. (which label is deployed in the environment)
+	
+	Usage : dashboard -help
+
+*/
+
 package main
 
 import "fmt"
@@ -10,6 +20,10 @@ import "path/filepath"
 import "time"
 import "regexp"
 import "strings"
+import "bufio"
+
+// Golbal variables
+var projectDir string //The Home Directory for the Project, all data checked out here.
 
 func check(e error) {
     if e != nil {
@@ -32,6 +46,42 @@ func generateInfo(lastDate string,endDate string) bytes.Buffer {
 	return buffer
 }
 
+func generateEnv(projectDir string) bytes.Buffer {
+
+}
+
+func generateBuild(projectDir string) bytes.Buffer {
+	var buffer bytes.Buffer
+	buffer.WriteString("<table class=hovertable><tr><th class=top scope=col colspan=5>Build Dashboard</th></tr><tr><th class=top scope=col>Build-Label</th><th class=top scope=col>Build-Start-Time</th><th class=top scope=col>Build-Duration</th><th class=top scope=col>Build-Triggered-By</th><th class=top scope=col>Status</th></tr>")
+	fileBuildData := filepath.Join(projectDir,"buildDetail")
+	buffer.WriteString("<tr>")
+	if _, err := os.Stat(fileBuildData); err == nil {
+		buildDatafile, Openerr := os.Open(fileBuildData)
+		check(Openerr)
+		scanner := bufio.NewScanner(buildDatafile)
+		for scanner.Scan() {
+    		lines := strings.Split(scanner.Text(),"#")
+    		for i:=0; i<len(lines); i++ {
+    			buffer.WriteString("<td colspan=1>")
+				buffer.WriteString(lines[i])
+				buffer.WriteString("</td>")
+			}
+			buffer.WriteString("</tr>")
+		}
+		
+		Scanerr := scanner.Err()
+		check(Scanerr)
+		buildDatafile.Close()
+		remove_err := os.Remove(fileBuildData)
+		check(remove_err)	
+	}else {
+		buffer.WriteString("<td>-</td><td>No-new-builds</td><td>-</td><td>-</td><td>-</td></tr>")
+	} 
+	buffer.WriteString("</table><br><br>")
+	return buffer
+}
+
+
 func generateCheckin(projectDir string, startDate string, endDate string) bytes.Buffer {
 	var buffer,dateTime bytes.Buffer
 	buffer.WriteString("<table class=hovertable><tr><th class=top scope=col colspan=5>Checkin Dashboard</th></tr><tr><th class=top scope=col>Changeset</th><th class=top scope=col>Date</th><th class=top scope=col>Comments</th><th class=top scope=col>Changed by</th><th class=top scope=col>Items</th></tr>")
@@ -39,13 +89,13 @@ func generateCheckin(projectDir string, startDate string, endDate string) bytes.
 	dateTime.WriteString(startDate)
 	dateTime.WriteString("~")
 	dateTime.WriteString(endDate)	
-	tfCmd := exec.Command("tf","history","/login:tz31,Tesco20166","/collection:http://tfsapp.dotcom.tesco.org/tfs/Grocery","$/AcornOMS/Main","/noprompt","/recursive","/format:detailed",dateTime.String())
+	tfCmd := exec.Command("tf","history","/login:dbt80ccdbt80bld01,DAmx88?aN9=t-Cw","/collection:http://tfsapp.dotcom.tesco.org/tfs/Grocery","$/AcornOMS/Main","/noprompt","/recursive","/format:detailed",dateTime.String())
 	tfOut, err := tfCmd.Output()
     if err != nil {
         panic(err)
     }
 	if strings.Contains(string(tfOut),"No history entries were found for the item and version combination specified.") {
-		buffer.WriteString("<tr><td align=center>-</td><td align=center>No new checkins</td><td align=center>-</td><td align=center>-</td><td align=center>-</td></tr>")
+		buffer.WriteString("<tr><td align=center>-</td><td align=center>No-new-checkins</td><td align=center>-</td><td align=center>-</td><td align=center>-</td></tr></table><br>")
 	}else {
 		out := string(tfOut)
 		removeLines := regexp.MustCompile("[-]+")
@@ -73,7 +123,7 @@ func generateCheckin(projectDir string, startDate string, endDate string) bytes.
 			buffer.WriteString("<td colspan=1>")
 			buffer.WriteString(comments)
 			buffer.WriteString("</td>")
-			
+	
 			buffer.WriteString("<td colspan=1>")
 			buffer.WriteString(changedBy)
 			buffer.WriteString("</td>")
@@ -81,9 +131,8 @@ func generateCheckin(projectDir string, startDate string, endDate string) bytes.
 			buffer.WriteString("<td colspan=1>")
 			buffer.WriteString(items)
 			buffer.WriteString("</td></tr>")
-			
-			
 		}	
+		buffer.WriteString("</table><br>")
 	}
 	return buffer
 }
@@ -132,19 +181,18 @@ func getDate(startRunFile string) string {
 }
 
 func main() {
-	// Declare Variables
-	now := time.Now()
-	var v_app,projectDir string
-	var buffer_final bytes.Buffer
 	
-	// Parse Input
-	flag.StringVar(&v_app,"app","AcornOMS","Application-Name")
-	flag.StringVar(&projectDir,"home","C:\\rewards_daily_dashboard","Workspace-Directory")
+	var buffer_final bytes.Buffer // Buffer to store the Dashboard Report.
+	var lastRunFile string       // File storing the date when the program was last run. Used for calculating the duration in which the data need to be tracked.
+ 	now := time.Now()           // Variable to store the current time. Used for calculating the Total Execution time of the program.	       
+	
+	// Parse Input - Can be overridden from command line. Eg: dashboard.go 
+	flag.StringVar(&projectDir,"home","C:\\rewards_daily_dashboard","homeDirectory where source is checked out")
+	flag.StringVar(&lastRunFile,"lastRunFile","C:\\rewards_daily_dashboard\\lastRun.dat")
 	flag.Parse()
 	
 	// Calculate duration in which the data should be collected
-	startRunFile := filepath.Join(projectDir,"lastRun.dat")
-	startDate := getDate(startRunFile)
+	startDate := getDate(lastRunFile)
 	endRunFile := filepath.Join(projectDir,"endRun.dat")
 	endDate := getDate(endRunFile)
 	
@@ -152,6 +200,8 @@ func main() {
 	buffer_0 := generateCss(projectDir)	
 	buffer_1 := generateInfo(startDate,endDate)
 	buffer_2 := generateCheckin(projectDir,startDate,endDate)	
+	buffer_3 := generateBuild(projectDir)
+	buffer_4 := generateEnv(projectDir)
 	
 	// Combine all and create the report
 	report := filepath.Join(projectDir, "report.html")
@@ -161,6 +211,8 @@ func main() {
 	buffer_final.WriteString(buffer_0.String())
 	buffer_final.WriteString(buffer_1.String())
 	buffer_final.WriteString(buffer_2.String())
+	buffer_final.WriteString(buffer_3.String())
+	buffer_final.WriteString(buffer_4.String())
 	final_data := []byte(buffer_final.String())
 	writeFile(report,final_data,0755)
 	remove_err := os.Remove(startRunFile)
