@@ -4,23 +4,21 @@ import "fmt"
 import "os"
 
 func main() {
-	for i:=1;;i++ {
-		total := 0
-		j := i-1
-		s := make([]int,j)
-		for j=i-1;j>=1;j-- {
 
-			total=total+j
-			s = append(s,j)
-		}
-		for k:=0;k>=len(s);k++ {
-			if total%s[k] != 0 {
-				s = append(s[:k], s[k+1:]...)
+	for i:=1;;i++ {
+		total := i
+		for j:=i-1;j>0;j-- {
+			total+=j
+		}				
+		divisors := 0
+		for k:=i-1;k>0;k-- {
+			if total%k == 0 {
+				divisors+=1
 			}
 		}
-		fmt.Println(i,": ",s)
-		if i > 10 {
-			os.Exit(0)
+		if divisors>500 {
+			fmt.Println(total)
+			os.Exit(1)
 		}
 	}
 }
