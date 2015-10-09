@@ -1,0 +1,932 @@
+###Core OS
+
+------------------------------------------------------------------------------------------------------------------------
+1. Introduction
+------------------------------------------------------------------------------------------------------------------------
+> (Base OS) Powerful linux distribution made on top of Chrome OS.
+> (Use) Manily useful for large scalable deployments on varied infrastructure. ( Web scale IT )
+> (Containerization) Maintains lightweight host system and uses "docker" containers for all its applications.
+> (Clusters) Provides process isolation and allows applications to move throughout a cluster easily.
+> (Uses ETCD for cluster management and Service discovery) To manage these clusters, Core Os uses globally 
+  distributed key-value store - "ETCD" to pass configuration data between nodes. This component is also 
+  responsible for "SERVICE DISCOVERY", allowing applications to be dyanamically configured based on the 
+  information available from the shared resources.
+> (Orchestration) - Core Os uses Fleet for scheduling and managing applications across all the nodes of the cluster. 
+                    It servers as a cluster-wide "INIT" system that manages the processes across the cluster.
+                    It helps in manage/configure the whole cluster from a single point in a muli-service, multi hosts env.
+                    It does this by tying with the each node's "SYSTEMD" init system.
+  
+  Why do you need a cluster?
+  > greater computing power.
+  > To avoid single point of failure.
+  > To distribute the load.
+                    
+System Design
+----------------
+CoreOS design is geared towards Clustering and Containerization.
+
+The main host system is relatively very simple, it does not even have a package manager. It has least no 
+of applications and services installed by default. The idea is to run each and everything as a docker
+container allowing isolation, portability and external management of services.
+
+What does CoreOS does on booting?
+The main ability of core os lies here. It has the capability of joining a cluster on boot.
+Core os on boot reads a user-supplied configuration file called "CLOUD-CONFIG".
+CLOUD-CONFIG file does - 
+  > basic inital configuration.
+  > startup essential services.
+  > reconfigure important parameters.
+  > makes the current CoreOS host to join other memebers of the cluster. 
+    (This is how CoreOS is able to immediately join a cluster as a working unit upon creation.)
+Usually at minimum, (requirements for bootstrap CoreOS node to a cluster:)
+ Core os does below 3 on boot up:
+ > joins a existing defined cluster.
+ > starts etcd service.
+ > starts fleet service.
+
+-------------------------------------------------------------------------------------------------------------------------
+etcd
+
+etcd is a daemon which stores and distribute data to each of the hosts in a cluster.
+- (inter node communication) - it helps the nodes to know the status/and other info about other nodes in cluster.
+- (configuration) it enables consistent configuration across a cluster.
+- (service discovery) platform with which services announces themselves.
+  This service discovery mechanism allows other services to query for information to adjust their own configuration.
+  example - load balancer queries etcd to get the IP addresses of all the web hosts when it starts up.
+
+-format:detailed  
+basically it does:
+a. get the configuration data.
+b. query information about running services.
+c. publish information that should be known to the other memebers of the cluster.
+
+each node has a etcd running.
+So if a cluster needs a particular information. It just contacts the etcd in the current machine and gets it.
+All the data are available to each of the etcd regardleses of where actually the data is stored.
+leader elections are also handled automatically.
+To interact with the etcd data you can either use the below 2 to manipulate/retrieve/read data:
+> HTTP/JSON API ( http://127.0.0.1:4001/v2/keys/, by default )
+> or, etcdctl utility
+Note: the HTTP API is also available to the applications running docker containers( which means configuration 
+of individual containers can take into account the value stored in etcd.
+
+-------------------------------------------------------------------------------------------------------------------------
+fleet
+
+fleet daemon basically is a distributed init system.
+- It works by hooking into the systemd init system of each host in a cluster.
+- handles service scheduling.
+- constraining the deployment targets based on user defined criteria.
+- it helps in making the whole cluster act as one and manages each node inside it.
+
+systemd init is used to start and manage services on the local machine.
+each node in a cluster operates its own local systemd init system.
+what fleet does is it provides a interface to control each nodes's systemd.
+so what u can do with fleet is:
+> u can start and stop a service in a node in a cluster.
+> get state information of the running processes across your cluster.
+> It follows a process distribution mechanism, so it can start services on less busy similar hosts.
+> You can specify placement conditions, means you can choose the particular service should run on this geographical
+  localtion machines only, on the machines with particular things runnings etc...
+> fleet leverages on systemd for starting the local processes, each of the files which define services are
+  systemd unit files, you can pass these config files to fleet and manage them on the entire cluster.
+  "HIGHLY AVAILABLE CONFIGURATIONS"  
+  
+  So with these you can deploy each of your web server containers on different nodes.
+  Any of the member node can use the "fleetctl" utility to manage the cluster.
+  Fleetctl will be your main interface with your cluster.
+
+---------------------------------------------------------------------------------------------------------------
+2.  Setup coreOS
+---------------------------------------------------------------------------------------------------------------
+First thing what we need here is to setup a coreOS cluster and for that we need to conenct etcd instances of each node.
+Pre-requistes:
+  ssh keys: each new node should have one ssh public key created. This will be put in the authorized_keys file of 
+            the core user. Also you will need this private key for loggin into your coreOS server.
+
+Generate a New "Discovery URL"
+------------------------------
+The first step to setup up a new CoreOS cluster is generating new discovery URL.
+Discovery URL is the unique address that stores peer CoreOS addresses and metadata.
+CoreOS has provided a free discovery service - https://discovery.etcd.io (open the link to read about it)
+A new URL can be generated by visting https://discovery.etcd.io/new or in linux using the below cmd -
+curl -w "\n" https://discovery.etcd.io/new 
+(output is like  https://discovery.etcd.io/d9d107225c6946f4ff3bf86f6f04e122 with a new line)
+We will have to put this Discovery URL in the etcd section of the cloud-config file of each node that 
+is to be included in this URL cluster.
+
+Write a Cloud-Config File
+--------------------------
+This file allows you to declaratively customize:
+> network configuration.
+> systemd units.
+> OS-level items.
+
+The file is written in YAML format. It is processed when machine boots and provides a way to 
+configure you machine with etcd settings that tells them which cluster to join.
+
+Minimal Cloud-Config file: ( for detailed visit - http://goo.gl/MEQcIq )
+etcd section inside cloud-config:-
+Peer address of each node in a cluster is stored with the discovery URL.
+Therefore, each node in a cluster will have the same discovery URL and will pass its own IP address where 
+its etcd can be reached.( this is specified under etcd section of cloud-config )
+
+units section inside cloud-config:-
+this sections specifies the services which you need to start as part of boot. By default CorOS must have 
+etcd and fleet services.
+  
+################### cloud - config file begins
+#cloud-config
+coreos:
+  etcd:
+    discovery: <your own cluster discovery URL>
+    addr: $public_ipv4:4001
+    peer-addr: $public_ipv4:7001
+  fleet:
+    public-ip: $public_ipv4 #used for fleetctl ssh command
+  units:
+    - name: etcd.service
+      command: start
+    - name: fleet.service
+      command: start
+################### cloud - config file ends
+
+Note: $private_ipv4 and $public_ipv4 are automatically interpolated to actual IP addresses of your new VPS(virtual
+private server). It is supported in Digital Ocean, not sure of other systems. Also fleet section is not required 
+if you are not going to use fleetclt ssh command.
+
+Create a CoreOS Cluster
+------------------------
+Recommended to setup at least 3 machines. We will create machines core-1, core-2, core-3 for learning.
+you can create coreos droplets using the method of your choice.
+
+Create a vagrant enabled cluster following - http://goo.gl/YEuJ2w
+From the host machine run to check the status of the cluster - 
+[root@centdev01 coreos-vagrant]# vagrant status
+Current machine states:
+
+core-01                   running (virtualbox)
+core-02                   running (virtualbox)
+core-03                   running (virtualbox)
+core-04                   running (virtualbox)
+This environment represents multiple VMs. The VMs are all listed
+above with their current state. For more information about a specific
+VM, run `vagrant status NAME`.
+
+Login to the core-01 using below 
+[root@centdev01 coreos-vagrant]# vagrant ssh core-01 -- -A
+Last login: Sun Nov  9 12:57:55 2014 from 10.0.2.2
+CoreOS (stable)
+core@core-01 ~ $
+
+Check from core-01 if all machines are visibe - 
+$ fleetctl list-machines
+MACHINE   IP            METADATA
+517d1c7d... 172.17.8.101  -
+cb35b356... 172.17.8.103  -
+17040743... 172.17.8.102  -
+This means all machines know about each other. And your cluster is up !
+
+check etcd functionality 
+core@core-01 ~ $ etcdctl set etcd-key1 "key1-value"
+core@core-02 ~ $ etcdctl get etcd-key1
+key1-value
+
+---------------------------------------------------------------------------------------------------------------
+3.  Use Fleet and Fleetctl to manage your COreOS cluster
+---------------------------------------------------------------------------------------------------------------
+Fleet enables the cluster management in Core-OS clusters.
+Fleet allows users to manage docker containers as a service for the entire cluster.
+
+Fleet acts as the upper level interface that controls the systemd init system of each nodes.
+So system admins can define the criteria of a service i.e. in which hosts it should run etc.. and then
+fleet will setup the whole cluster acc to that criteria.
+
+Service Unit Files 
+-------------------
+Unit Files are used by systemd init system to describe each available service, define the commands needed
+to manage it, set dependency information (so that system is always in the woring state when the service is started).
+
+fleet daemon is built on top of systemd in order to manage services on a cluster-wide level.
+
+Unit File Sections
+------------------
+
+> Unit: Provides generic information about the unit and is not dependent on the "type" of the unit.
+        gives metadata and dependency information.
+        fleet uses it to show the description and also to show the service place in connection to other service units.
+
+> Unit Type Section: Fleet daemon can take units of different types including:
+  Service
+  Socket
+  Device
+  Mount
+  Automount
+  Timer
+  Path
+
+> X-Fleet: Thi s section is used to provide fleet-specific configuration options. 
+           This mainly means that you can specify that a service must or must not be scheduled in a 
+           certain way based on criteria like machine ID, currently running services, metadata information, etc.
+
+general format:
+[Unit]
+Generic_option_1
+Generic_option_2
+
+[Service]
+Service_specific_option_1
+Service_specific_option_2
+
+[X-Fleet]
+Fleet_option_1
+Fleet_option_2  
+
+---- eg of a hello service running as a service as docker container in a cluster ------
+hello.service
+[Unit]
+Description=My Service
+After=docker.service
+
+[Service]
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/docker kill hello
+ExecStartPre=-/usr/bin/docker rm hello
+ExecStartPre=/usr/bin/docker pull busybox
+ExecStart=/usr/bin/docker run --name hello busybox /bin/sh -c "while true; do echo Hello World; sleep 1; done"
+ExecStop=/usr/bin/docker stop hello
+
+The above has [Unit] which gives description of hello.service
+Inside defining service - 
+ExecStartPre are the commands which should be run before starting the service
+We have given it using "=-" when means the service should not be effected if these commands fail
+Ours has a basic cleanup commands
+Next We have ExecStart and ExecStop which specifies the start and stop command for the service.
+
+Basic Cluster Management Commands 
+---------------------------------
+fleetctl has all the commands very similar in syntax of its parent guru systemctl, systemd's management tool.
+
+#Get a list of all cluster members
+fleetctl list-machines
+Gyan: When a machine boots up it generates a unique id for itself which is used to identify each node. It is 
+      stored in /etc/machine-id for each node.
+      By default each node uses node's public IPV4 addr for communication but in our setup we have setup a private
+      connection for it. The metadata of each private conenctoion can be added while defining the connection in 
+      the cloud-config file.
+      public-ip: $private_ipv4
+      metadata: region=europe,public_ip=$public_ipv4
+       
+#Connect to a machine in cluster
+fleetctl ssh <machine-name>
+fleetctl ssh <machine-id>
+For instance, if you have a unit running called nginx.service, 
+you can connect to whatever host is running a service by:
+fleetctl ssh nginx
+This will take you to the host which is running nginx
+you can do much more - 
+fleetctl ssh nginx cat /etc/environment 
+This will take you to the nginx host and prints its environment values 
+
+NOTE:
+You won't be able to use ssh b/w nodes if you have not done below in your main machine having vagrant
+ssh-add ~/.vagrant.d/insecure_private_key
+
+Service Management 
+------------------
+Submit the service unit file to fleet using below
+$ fleetctl submit hello.service # it will allow the fleet to read the file and put into memory for action.
+
+To see the list of files that has been submitted to fleet use below
+$ fleetctl list-unit-files
+
+To see the content of list file that fleet knows about, use below
+$ fleetctl cat hello.service
+      
+To load and schedule the service use below
+$ fleetctl load hello.service
+Unit hello.service loaded on 14fferc3.../10.132.249.212
+$ fleetctl list-unit-files
+UNIT        HASH    DSTATE  STATE   TMACHINE
+hello.service   0d1c468 loaded  loaded  14fferc3.../10.132.249.212
+
+To see the list of any running/scheduled units use below
+$ fleetctl list-units
+UNIT        MACHINE             ACTIVE      SUB
+hello.service   14ffe4c3.../10.132.249.212  inactive    dead
+
+To actually start a unit, use below, it will start the service at the machine it has been loaded
+$ fleetctl start hello.service
+Unit hello.service launched on 14fferc3.../10.132.249.212
+$ fleetctl list-unit-files
+UNIT        HASH    DSTATE      STATE       TMACHINE
+hello.service   0d1c468 launched    launched    14fferc3.../10.132.249.212
+      DSTATE - desired state
+      STATE - actual state 
+      if the above 2 match that means action was successful.
+
+$ fleetctl list-units
+UNIT        MACHINE             ACTIVE  SUB
+hello.service   14ffe4c3.../10.132.249.212  active  running
+It gives information directly from the systemd
+ACTIVE - generalized state of unit
+SUB    - more low level description
+
+To stop a service, it will execute the command specfied for action stop under services in unit files
+$ fleetctl stop hello.service  ( this will make the state loaded again )
+Unit hello.service loaded on 144...
+You can obeserve the unit reverting back to the loaded state.
+$ fleetctl list-units
+You will find the service loaded, which means it is still loaded in the systemd memory.
+To remove it from system memory of fleet, best is to use unload
+$ fleetctl unload hello.service ( this will make the state inactive )
+To completely remove it 
+$ fleetctl destroy hello.service ( this removes the unit hello.service completely )
+
+IF YOU MODIFY A UNIT FILE OF A SERVICE TO MAKE THAT COME IN EFFECT YOU NEED TO DESTROY THE 
+EXISTING SERVICE AND START IT AGAIN
+$ fleetctl destroy hello.service
+$ fleetctl load hello.service
+$ fleetctl start hello.service
+
+Getting Unit statuses 
+----------------------
+
+$ fleetctl list-units        # list of units currently been scheduled/running.
+$ fleetctl list-unit-files   # list of all units that fleets knows about with actual and desired state.
+
+$ fleetctl status hello.service # it gives the systemctl status information of the service running on whatever host it is
+$ fleetctl journal --lines 20 hello.service # this shows last 20 lines of STDOUT for hello.service
+$ fleetctl journal -f hello.service # it will follow the STDOUT for hello.service "hello world" keep repeats
+
+--------------------------------------------------------------------------------------------------------------------
+4. Use etcdctl, etcd - coreOS distributed key value store
+--------------------------------------------------------------------------------------------------------------------
+
+This is technology which makes CoreOS possible, it is a globally distributed key-value store that is used by 
+each node in a cluster as a platform to store globally acecssible data.
+
+etcd cluster discovery model
+-----------------------------
+To get to know your cluster discovery url, check it in the below file -
+$ cat /run/systemd/system/etcd.service.d/20-cloudinit.conf
+
+[Service]
+Environment="ETCD_ADDR=10.132.248.118:4001"
+Environment="ETCD_DISCOVERY=https://discovery.etcd.io/dcadc5d4d42328488ecdcd7afae5f57c"
+Environment="ETCD_NAME=921a7241c31a499a97d43f785108b17c"
+Environment="ETCD_PEER_ADDR=10.132.248.118:7001"
+
+ETCD_DISCOVERY has the discovery URL.
+So when a machine with etcd boots up it will look for the discovery URL in the above place and 
+posts its information, it will also query out the information of the other nodes from it. The first node 
+obviously wont find any other nodes info so it will make itself as the cluster leader.
+The other machines wil also gives it information to the discvery url and will get back the infomration of the 
+whole cluster. It will then choose one of the active machine in the cluster and connect to it.
+
+The infomration/data about each machines is stored in a hidden directry under etcd
+$ etcdctl ls /_etcd/machines --recusrsive # To see the list of machines etcd knows about
+/_etcd/machines/22f349d48c8246178d056d56e1825cc9
+/_etcd/machines/461714408c2b48f2b4d1f00716dda888
+/_etcd/machines/d5e4b06e06df4bbcb955ec333af902e1
+/_etcd/machines/e699ed65c74042068d4bb9cdb60c4a16
+                                          # These are nothing but keys with info about machines as values
+                                          # these contains values that the etcd passes to the new cluster members
+core@core-01 ~ $ etcdctl get /_etcd/machines/22f349d48c8246178d056d56e1825cc9
+etcd=http%3A%2F%2F172.17.8.103%3A4001&raft=http%3A%2F%2F172.17.8.103%3A7001
+
+TWO WAYS TO INTERACT WITH THE etcd:
+a. With HTTP/JSON API
+b. etcdctl utility 
+------------------------------------------------------------------------------ etcdctl utility 
+Viewing keys and directories 
+-----------------------------
+to get started lets see what etcd is currently storing.
+$ etcdctl ls / # this lists all the directories and keys stored in etcd
+$ etcdctl ls --recursive # to avoid the confusion b.w dir and key, it lists out everything
+$ etcdctl get first-etcd-key
+Hello World # it simply prints the value of that key
+$ etcdctl get coreos.com
+/coreos.com is a directory 
+$ etcdctl get /coreos.com/updateengine/rebootlock/semaphore
+{"semaphore":1,"max":1,"holders":null}
+$ etcdctl -o extended get /coreos.com/updateengine/rebootlock/semaphore
+Key: /coreos.com/updateengine/rebootlock/semaphore
+Created-Index: 8
+Modified-Index: 8
+TTL: 0
+Etcd-Index: 13693
+Raft-Index: 76366
+Raft-Term: 2986
+{"semaphore":1,"max":1,"holders":null}
+
+Setting keys and creating nodes
+-------------------------------
+$ etcdctl mkdir /example        # to make a new directory
+$ etcdctl mk /example/key data  # to make a new key - key with value data
+$ etcdctl get /example/key
+data
+$ etcdctl update /example/key turtles # to update a key
+$ etcdctl get /example/key
+turtles
+$ etcdctl mkdir /here/you/go --ttl 10      # this will keep the dir for only 10 seconds ( time to live --ttl) 
+$ etcdctl updatedir /here/you/go --ttl 120 # this will update the ttl time of /here/you/go
+$ etcdctl set /example/key new             # to change the value of the existing key/ create the key if it doesnt exist
+                                           # even if the path is not there it will create
+$ etcdctl setdir /alok/kumar/singh         # it will create directories all of them alok,kumar,singh
+$ etcdctl rm /a/b/c                        # it deletes the key c 
+$ etcdctl rm /a --recursive                # it deletes directory and subdirs recursively
+$ etcdctl rmdir /a/b/x                     # it delets the emty directory x
+
+Watching for changes 
+---------------------
+you can watch either a key or a entire directory for changes.
+what happens is etcd starts a hanging shell in wait mode for the new value for that key, and as soon as the value 
+of that key/anything in that directory changes it displays it and comes out of the hanging mode
+
+$ etcdctl watch /example/key1 # hangs and keep looking if key1 changes
+$ etcdctl watch --recursive /example # hangs and keep lookng for changes in /example directory
+$ while true; do etcdctl watch --recursive /example;done # CONSTANTLY MONITOR CERTAIN VALUES
+
+If you want to execute a command whenever a value changes use -
+$ etcdctl exec-watch --recursive  /example --echo "Something changed in /example"
+
+Hidden Values
+-------------
+All hidden values in etcd starts with "_" eg: /_etcd, /_coreos.com
+You can never find them untill you know their name, you can search them with below cmds -
+$ etcdctl ls --recursive /_etcd
+$ etcdctl ls --recursive /_coreos.com
+
+----------------------------------------------------------------------- HTTP/JSON API 
+HTTP/JSON API Usage
+-------------------
+
+To access the API for interacting with etcd, use a simple HTTP program curl.
+From within your cluster you can use http://127.0.0.1:4001
+From within docker container you can use http://172.17.42..1:4001 ( this can help the applications to updated the configu-
+-ration using the newly registered information)
+
+# Get the list of top level keys/directories 
+$ curl -L http://127.0.0.1:4001/v2/keys/
+  Note: -L is used for redirecting the page if the real page has been moved to a diff location
+
+# To recursively list all the keys
+$ curl -L http://127.0.0.1:4001/v2/keys/?recursive=true
+{"action":"get"," ...
+
+# Version info of etcd
+$ curl -L http://127.0.0.1:4001/version
+etcd 0.4.6
+
+# To look at the stats about each cluster leader with each follower 
+$ curl -L http://127.0.0.1:4001/v2/stats/leader
+{"leader":"921a7241c31a499a97d43f785108b17c","followers":{"27987f5eaac243f88ca6823b47012c5b":{"lat ...
+
+# To Look at the stats of the current machine you are on
+$ curl -L http://127.0.0.1:4001/v2/stats/self
+
+# To see stats about the performed operation
+$ curl -L http://127.0.0.1:4001/v2/stats/store
+...
+
+etcd configuration
+-------------------
+etcd service can be configured in a few different ways:
+a. First is to pass paramenters to your etcd service from the cloud-config file
+   #cloud-config
+   coreos:
+     etcd:
+       discovery: ...
+       addr: ...
+       peer-addr: ...
+  
+b. To see the options you have available, use the -h flag with etcd 
+  $ etcd -h 
+
+To take the etcd <option> which we are using for configuration to the cloud-confg file use below 
+like to take this 
+etcd -peer-addr=<host:port>, we can use peer-addr:<host:port> in cloud-config file
+CoreOS reads the cloud-config file and translates the configurations into env variables in a stub unit file which is 
+used to start the service.
+
+c. Another way to change they etcd configuration is to use the 7001 port ( remember 4001 is used only quering keys )
+   # To get the current configuration values use below - 
+   $ curl -L http://127.0.0.1:7001/v2/admin/config
+   {"activeSize":9,"removeDelay":1800,"syncInterval":5}
+   
+   # You can change these values by passing in the new JSON as data payload with a put operation
+   $ curl -L http://127.0.0.1:7001/v2/admin/config -XPUT -d '{"activeSize":96,"removeDelay":6800,"syncInterval":6}'
+  {"activeSize":96,"removeDelay":6800,"syncInterval":6}
+  
+  # To get the list of machines - 
+  $ curl -L http://127.0.0.1:7001/v2/admin/machines
+  
+Conclusion
+As you can see, etcd can be used to store or retrieve information from any machine in your cluster. 
+This allows you to synchronize data and provides a location for services to look for configuration data
+and connection details.
+
+This is especially useful when building distributed systems because you can provide a simple endpoint 
+that will be valid from any location within the cluster. By taking advantage of this resource,
+your services can dynamically configure themselves.
+
+--------------------------------------------------------------------------------------------------------------------------  
+5. Create and Run a Service on a Cluster
+--------------------------------------------------------------------------------------------------------------------------
+One of the major feature coreos offers is that it provides the ability to manage all the services from 
+the single point. CoreOS provides integrated tools to to make this process simple.
+
+
+Connect to a node and pass your ssh agent
+------------------------------------------
+First thing( if you are not using vagrant)
+> start the ssh-agent in any of your nodes.
+   core@core-01 ~ $ echo $(ssh-agent)
+   SSH_AUTH_SOCK=/tmp/ssh-YTeUTqF7IkJH/agent.765; export SSH_AUTH_SOCK; SSH_AGENT_PID=766; 
+   export SSH_AGENT_PID; echo Agent pid 766;
+   core@core-01 ~ $ eval $(ssh-agent)
+   
+> add your private key to the agent's memory storage.
+   core@core-01 ~ $ ssh-add
+   
+First thing(if you are using vagrant)
+> ssh-add ~/.vagrant.d/insecure_private_key
+
+Once the first thing is done - 
+use below command to connect to your node -if not vagrant
+$ ssh -A core@core-01
+or,  $ ssh -A core@ip-machine-node1
+
+use below -if vagrant
+$ vagrant staus
+$ vagrant ssh core-01 -- -A
+
+-A means forwarding your host-ssh-agent information.
+
+Now, you are connected lets build services - 
+
+GOAL/TARGET: Make up a Apache application running on a docker container inside coreOS cluster.
+----------------------------------------------------------------------------------------------------
+From one of the nodes get the apache container ready and push it to dockerhub.
+---------------------------------------------------------------------------------
+$ docker login
+$ docker run -i -t --name apachedev01 ubuntu:14.04 /bin/bash
+  $bash apt-get update 
+  $bash apt-get install apache2
+  $bash echo "<h1>Running from Docker on CoreOS</h1>" > /var/www/html/index.html
+  $bash exit 
+  
+$ docker ps -l 
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                      PORTS               NAMES
+cb58a2ea1f8f        ubuntu:14.04        "/bin/bash"         8 minutes ago       Exited (0) 
+
+$ docker commit cb58a2ea1f8f alok87/apache2dv01 
+$ docker images | grep alok87 | grep apache2dv01 
+REPOSITORY           TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
+alok87/apache2dv01     latest              42a71fb973da        4 seconds ago       247.4 MB
+
+$ docker push alok87/apache2dv01 
+This last step is done to push our apache container into the docker hub, so that other node 
+can pull this container and start using it.
+
+Create the apache service unit file
+----------------------------------------
+Now that we have our docker container ready, we can use Fleet to manage our service.
+Fleet manages the service scheduling for the entire CoreOS cluster. 
+It provides a centralized interface to the user, while manipulating each host's systemd init systems locally 
+to complete the appropriate actions.
+
+The fleet unit files are slightly modifed form of systemd unit files.
+
+Create a fleet unit service file - 
+$ vi apache@.service
+  
+$ cat apache@.service
+[Unit]
+Description=Apache web server service
+After=etcd.service
+After=docker.service
+Requires=apache-discovery@%i.service
+[Service]
+TimeoutStartSec=0
+KillMode=none
+EnvironmentFile=/etc/environment
+ExecStartPre=-/usr/bin/docker kill apache%i
+ExecStartPre=-/usr/bin/docker rm apache%i
+ExecStartPre=/usr/bin/docker pull user_name/apache
+ExecStart=/usr/bin/docker run --name apache%i -p ${COREOS_PUBLIC_IPV4}:%i:80 user_name/apache /usr/sbin/apache2ctl -D FOREGROUND
+ExecStop=/usr/bin/docker stop apache%i
+[X-Fleet]
+X-Conflicts=apache@*.service
+
+Explaination of each part:
+> [Unit] the service needs to be run after etcd and docker services have started, hence After=
+> [Unit] as part of this service we are also starting another service which will be responsible for updating
+         the etcd with the information about our service, hence Requires=
+> [Unit] %i. 
+> [Unit] we named our service apache@.service, @ indicates this is a template service.
+
+The file which are creating is a template unit file. apache@.service
+This file when run by fleet, will replace the variables like %i with the appropriate values.
+In our case, %i would be replaced by anything that is b.w "@" and ".service".
+We do not have anything because this our template file, we submit our file to fleetctl as apache@.service only.
+But we load it on the basis of which port we will run the service.
+SO we load our submitted template service as apache@<PORT_NUM>.service, so our %i becomes the <PORT_NUM>
+and if you see this PORT_NUM will be replaced whereever %i is.
+
+
+Next we need to tell what our service will do on start/stop for that [Service] 
+> [Service] We need to tell the system can take more time so no timeout. coz first time docker pull takes time.
+> [Service] We need to specify KillMode to none, this will allow systemd to kill docker proceseses otherwise 
+            the docker stop would think that docker process failed.
+> [Service] We need to source /etc/emvironment file, containing the public and private ip addr of the host running
+            the service
+> [Service] We need to setup cleanup rules so that if some docker container with the same name is running, it 
+            can be killed and then only we will pull our new image
+> [Service] Basic pull and container start and stop commands are mentioned
+> [Service] =- options means those tasks may fail and will not stop any service.
+
+> [XFleet] this commands just tell how to schedule the service on what criteria?
+Our only criteria is - apache service should only be started in machines which are not running these services already.
+So that we are highly distributed. We use X-Conflicts=apache@*.service ( a wildcard ) to catch if any of apache instance
+is already running. 
+
+Create companion Service to register services with etcd
+---------------------------------------------------------
+In order to record the current state of the services started on the cluster, we would write some
+entries to etcd - This is known as registering with etcd.
+
+In order to do this we will create a minimal service(we are calling it apache-discovery@.service) 
+that will write to etcd as to when the server is available for traffic.
+
+You might have seen in the main service-unit file the below line - 
+Requires=apache-discovery@%i.service
+
+$ vi apache-discovery@.service
+$ cat apache-discovery@.service 
+[Unit]
+Description=Announce Apache@%i service
+BindsTo=apache@%i.service
+[Service]
+EnvironmentFile=/etc/environment
+ExecStart=/bin/sh -c "while true; do etcdctl set /announce/services/apache%i ${COREOS_PUBLIC_IPV4}:%i --ttl 60; sleep 45; done"
+ExecStop=/usr/bin/etcdctl rm /announce/services/apache%i
+[X-Fleet]
+X-ConditionMachineOf=apache@%i.service
+
+> [Unit] - we give a brief description what the service is.
+> [Unit] - By BindsTo we will bind to the parent service, so if our main service stops, this will inform etcd 
+           about the main service has stopped and will stop itself after that.
+> [Service] - We are again sourcing the environment file for the host ip address information.
+> [Service] - With the start command we are simply running bash inifinite loop which sets a key 
+              /announce/services/apache<mostly port number> with the value of "IPaddres:port"
+              and this key expires in 60seconds, we have given a timeout because in case this minimal 2nd service 
+              dies for some reason our key should automatically expires.
+              We have also given a sleep of 45 seconds so that we are recreating the key every 45secs, b4 it expires.
+     
+            - With the stop command we are simply removing the same key we created, making the service unavailable.
+
+Our only [XFleet] condition with this service is that it should be started in the same webserver host it is reporting 
+for.
+> [X-Fleet] - X-ConditionMachineOf=apache@%i.service
+YOU NOW HAVE A SIDEKICK SERVICE THAT RECORDS THE HEALTH STATUS OF YOUR APACHE SERVICE IN THE ETCD.
+
+Submiting and loading the services we created  
+---------------------------------------------
+We now have two service templates - apache@.service && apache-discovery@.service
+
+We submit these services to fleetctl so that our cluster knows about them.
+$ fleetctl submit apache@.service apache-discovery@.service
+
+You should be able to see them now.
+$ fleetctl list-unit-files
+  UNIT                HASH    DSTATE      STATE       TMACHINE
+  apache-discovery@.service   26a893f inactive    inactive    -
+  apache@.service         72bcc95 inactive    inactive    -
+The template after submitting, exist in our cluster-wide init system.
+
+Now we need to load these services. This is when fleetctl looks at what the scheduling requirements are by 
+looking at the [Xfleet] tag in the unit file. We need to specify our service with a new name with port give in b.w
+apache@80.service
+apache-discovery@80.service
+
+Since we are not doing load balancing we just provided the port numbers in b.w "@" and ".service"
+$ fleetctl load apache@80.service
+$ fleetctl load apache-discovery@80.service
+On loading we will get the information on which nodes these services were loaded.
+We can clearly see both got loaded in the same machine as we stated in our [XFleet] configuration.
+Since our 2nd service is binded to our 1st apache service, we can directly start the 1st service.
+$ fleetctl start apache@80.service
+
+Check which units are running in our cluster:
+$ fleetctl list-units
+UNIT                MACHINE             ACTIVE  SUB
+apache-discovery@80.service 41f4cb9a.../10.132.248.119  active  running
+apache@80.service       41f4cb9a.../10.132.248.119  active  running
+
+Once you have started your service, the running service is notified to the etcd.
+You can check that using below
+$ etcdctl get /announce/services/apache80
+docker pull alok87/apache
+
+You can deploy another instance of apache service at some port say 90
+and it will be started in another host as expected.
+
+---------------------------------------------------------------------------------------------------------
+6. Create Flexible services with Fleet Unit Files - in depth of fleet
+---------------------------------------------------------------------------------------------------------
+Unit File Sections and Types
+-----------------------------
+Types are - service, socket, device, mount, automount, timer and path.
+They are defined as templates with <name>.<unit-type> for eg: apache.service 
+
+service: Most common type of unit file.
+         Used to define service or application that can be run on one of the machines in cluster.
+
+socket: Socket files are special files used for inter-process communication in unix like systems. srw--
+        socket unit type defines details about a socket/socket-like files( n/w sockets, IPC sockets, FIFO buffers)
+        these unit types are used to call services to start when traffic is seen on the file.
+
+device: Device files are special files that allow software(OS) to interact with device-drivers using standard 
+        input/output system calls. crw--
+        device type unit files defines information about a device available in the udev device tree.
+        systemd will create these as needed on individual hosts for kernel devices based on udev rules.
+        These unit types are mainly used for ordering issues, to make sure devices are available b4 attempting a mount.
+        
+mount: these defines the information about the mount point of a device.
+       they are named after the mount point they referrence(with slashes replaced by dashes)
+
+automount: defines automount point.
+
+timer: defines timer associated with another unit. meaning the time is defined in the unit type, when the time
+       is reached the associated unit is starated.
+
+path: this unit type defines a path that can be used for path based activation. This is used to start another unit
+      when changes are made to a certain path.
+      
+Now all of the above are not being covered. Visit https://coreos.com/docs/ for it.
+Now only service unit files are covered.
+To learn about systemd unit file and its various options - visit http://goo.gl/ip7wTv
+
+Basic unit service file has - 
+[Unit] section in which we describe the basic description of the init file. Define its dependency and ordering information. This is 
+       also the places where we tell the etcd service to be sidekicked.
+
+[XFleet] We had defined our service to be starated on a machine which is not running this service. By doing this we avoid duplication
+         and makes our service highly available.
+
+
+Basic Takeaways for building main services
+-------------------------------------------
+
+I. Separate logic for dependency and ordering: 
+   layout your dependecies with Requires= and Wants= ( depending on whether your current unit should fail or not fail(resp) if the dependent unit fails )
+   define when the service should be started using After= and Before=
+   always keeps dependency list separte from ordering so that you can debug easily in case of dependency issues.
+
+II. Handle service registration with a separate process/service:
+    Like we created a apache-discovery@.service to keep informing the etcd about the state/health of our service.
+    This also helps in dynamic configuration and service discovery.
+    It gives a outside view of your service. That is what is needed by other components.
+
+III. Beaware of service timeouts: Docker pull can increase the time of service startup, so timeout should be defined keeping this in mind.
+                                  Incase you are not sure exactly then we can use TimeoutStartSec=0 i.e. disabled the timeout feature.
+
+IV. Adjust the KillMode, if your service does not stop cleanly:
+    Better to keep it 0, so that the cleanup is done.
+
+V. Cleanup the environment b4 starting up: Sometimes docker containers keep running even after stop, good practice is to clean and startup services.
+
+VI. Pull in and use host-specfic information for service portability: 
+    If you need to bind your service to specfic n/w interface, pull in the /etc/environment and use the CORE_PUBLIC/PRIVATE_IPV4 variables.
+    Use systemd specifiers also - ( http://goo.gl/bw1qPc )
+    %H - hostname of the machine
+    In the [XFleet] section only the %n, %N, %i, and %p specifiers will work.
+
+Building the sidekick announce service
+---------------------------------------
+The sidekick services are associated with the main service and are used as an external point to register services with etcd.
+We had - apache-discovery@.service.
+---------------------------------------------------------------------------------------------------------------------------------------------
+# Start
+## Test whether service is accessible and then register useful information
+ExecStart=/bin/bash -c '\
+  while true; do \
+    curl -f ${COREOS_PUBLIC_IPV4}:80; \
+    if [ $? -eq 0 ]; then \
+      etcdctl set /services/apache/${COREOS_PUBLIC_IPV4} \'{"host": "%H", "ipv4_addr": ${COREOS_PUBLIC_IPV4}, "port": 80}\' --ttl 30; \
+    else \
+      etcdctl rm /services/apache/${COREOS_PUBLIC_IPV4}; \
+    fi; \
+    sleep 20; \
+  done'
+
+# Stop
+ExecStop=/usr/bin/etcdctl rm /services/apache/${COREOS_PUBLIC_IPV4}
+
+[X-Fleet]
+# Schedule on the same machine as the associated Apache service
+X-ConditionMachineOf=apache.1.service
+----------------------------------------------------------------------------------------------------------------------------------------------
+The BindsTo send start/stop to this sidekick service depending on the main service state.
+For BindsTo= directive function to work properly we need the discovery sidekick service to run on the same host as the main service , hence X-Fleet section. 
+
+This sidekick service on start runs a simple bash script which checks the main service every 20 seconds, if it is up using curl.
+If it is up then it announces the service by creating a key in the etcd using etcdctl command with the public ip of the
+machine and the value of key as JSON object containing information about the service. The ttyl is 30 seconds only , after that this key is destroyed.
+And since we are reruning this bash script every 25 seconds, the key is always there if the service is up else in next 30 seconds its gone.
+On stoppin this service this key is destroyed.
+
+Take away from Sidekick service 
+--------------------------------
+
+I. Ensure the check you perform for the main service is accurate and robust. Because the check only defines the main fucntionality of service state registaration.
+II. Loop the service registration process, coz the service could go down/change state anytime/ 
+III. Use TTL everytime to expire the service after sometime, for auto deregistration of service in sometime. So that no stale information is present in etcd.
+     Since we are refreshin the key before timeout, so if the service is up the key is always there. TTL only takes care if the service is down it automatically deletes
+     stale information from etcd.
+IV. Provide only useful information -etcd is a key value store, this can be used for inter service communication. So if you want to provide a lot of information 
+                                     about your service, register them with keys into the etcd with values as big JSON objects.
+                                     JSON is a excellent way of passing multiple piece of information b/w services.
+Fleet Specific Considerations
+-------------------------------
+The section in fleet systemd unit files (which we are builidng) [X-Fleet] directs fleet on how to make scheduling decissions.
+
+X-ConditionMachineID: To specify the exact machine to load the unit in.
+                      it takes machine-id as value.
+                      /etc/machine-id gives the machine-id of the current machine.
+                      fleetctl list-machines -l gives the machine-ids of all the nodes in the cluster.
+                      Note: full name of machine-id is required.
+
+
+X-ConditionMachineOf: For associating units together. If you want to run the current service in the machine the "X" service is running. You specify "X" here.
+
+X-Conflicts: Opposite of above. If you do not want to run the current service in the machine "X" service is runnning. You specify "X" here.
+
+X-ConditionMachineMetadata: here you specify the metadata of the machine in which this service needs to run. Do fleetctl list-machines you 
+                            will see the metadata of the machine. The metadata of the machine is defined in cloud-config file.
+
+Global: It takes boolean argument, tells the service should be started in all machines in cluster if true. Only metadata condition can be used along side this.
+        i.e. to start the machines in all machines with a particular metadata.
+
+All the above are evaluated in the load stage only before passing the fleet unit for processing to the individual systemd of machines in clusters.
+
+Note:
+Sidekick services if not loaded are not started when the main service is only started.
+To avoid this:
+a. either start both and main service manually.
+b. or, load both the services and then start only the main service.
+
+Instances and Template
+------------------------
+
+Unit templates rely on a feature of systemd called "instances". These are instantiated units that are created at runtime by processing a template unit file. The template file is for the most part very similar to a regular unit file, with a few small modifications. However, these are extremely powerful when utilized correctly
+
+template unit file: unit@.service
+unit file:          unit.service
+
+When a unit is instantiated from a template, its instance identifier is placed between the @ and the .service suffix. This identifier is a unique string selected by th administrator:
+
+unit_name@instance_id.service
+
+unit-name: %p
+instance_id: %i
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+7. Using confd 
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+Better go from the digitalocean only.
+   Details go here: http://goo.gl/D92rfo
+
+What is confd?
+confd is a tool which continuously monitors the etcd for changes. If changes are found it triggers configuration modifications and service reloads.
+
+We will focus on creating a new application container with Nginx. This will serve as a reverse proxy to the various Apache instances 
+that we can spawn from our template files. 
+The Nginx container will be configured with confd to watch the service registration that our sidekick services are responsible for.
+
+a. Create service template files apache@.service and apache-discovery@.service.
+b. Create service instances for ports 7777 and 8888 and create links for them to the template files.
+c. Create the nginx container which will have confd installed which will inturn monitor our etcd for changes.
+   
+   Create a new nginx image and commit it. ( better practice is to write a Dockerfile only and build it )
+   refer https://github.com/alok87/learn/tree/master/coreOS/dockerfiles/confd-nginx/Dockerfile
+
+   Dockerfile
+   The dockerfile downloads the nginx and curl installer and install it in base ubuntu image.
+   It then adds the confd configuration file - nginx.toml file in the image from the host build location. 
+   Creates the necessary directories /etc/confd/conf.d and /etc/confd/templates
+
+   
+   Create a confd configuration file: https://github.com/alok87/learn/tree/master/coreOS/dockerfiles/confd-nginx/nginx.toml
+   Configuration in confd files are used to setup services to check for certain etcd values and initate actions when 
+   changes are detected. These config files use TOML file format.
+
+   toml file has the contents:
+   src, dest : it tells the nginx container to use the template stored at src location and create a application configuration file at dest location.
+   owner,mode: with some permission and with some user access.
+   keys: The confd application keep looking for changes in /service/apache key in etcd.  When confd finds a new key at /services/apache it creates a
+         new configuration file at the dest location for nginx. It will check the newly created configuration file
+   check_cmd: for syntax errors and 
+   reload_cmd: reloads the nginx service.

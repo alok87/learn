@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--The "acceptLicense" attribute has been deprecated. Use "-acceptLicense" command line option to accept license agreements.-->
+<agent-input acceptLicense='true'>
+<server>
+<repository location='/u01/app/SterlingInstallables/STR_OM_9.3_SF_MP_ML/foundation'/>
+</server>
+<profile id='IBM Sterling Order Management_2' installLocation='/u01/app/Sterling93/Foundation'>
+<data key='eclipseLocation' value='/u01/app/Sterling93/Foundation'/>
+<data key='user.import.profile' value='false'/>
+<data key='cic.selector.os' value='linux'/>
+<data key='cic.selector.arch' value='x86'/>
+<data key='cic.selector.ws' value='gtk'/>
+<data key='user.sbx.JVM_LOC' value='/u01/app/jdk1.7.0_71'/>
+<data key='user.COPYJVM' value='true'/>
+<data key='user.featurelist' value='com.ibm.is.commerce.ssfs.main|com.ibm.is.commerce.ssfs.multischema'/>
+<data key='user.featurelist,com.ibm.is.commerce.ssfs' value='com.ibm.is.commerce.ssfs.main|com.ibm.is.commerce.ssfs.multischema'/>
+<data key='user.sbx.multischema.multivendor.enabled' value='false'/>
+<data key='user.sbx.DB_VENDOR' value='Oracle'/>
+<data key='user.sbx.DB_DRIVERS' value='/u01/app/jdk1.7.0_71/ojdbc6.jar'/>
+<data key='user.METADATA_DISPLAY_NAME' value='oms_conf_1 (OMS_CONF_1)'/>
+<data key='user.STATISTICS_DISPLAY_NAME' value='oms_conf_1 (OMS_CONF_1)'/>
+<data key='user.CONFIGURATION_DISPLAY_NAME' value='oms_conf_1 (OMS_CONF_1)'/>
+<data key='user.MASTER_DISPLAY_NAME' value='oms_conf_1 (OMS_CONF_1)'/>
+<data key='user.TRANSACTION_DISPLAY_NAME' value='oms_tran_1 (OMS_TRAN_1)'/>
+<data key='user.sbx.DB_SCHEMA_OWNER_METADATA' value='OMS_CONF_1'/>
+<data key='user.sbx.DB_REF_ENABLED_METADATA' value='false'/>
+<data key='user.sbx.DB_PORT_METADATA' value='1521'/>
+<data key='user.sbx.DB_PASS_METADATA' value='sterling321'/>
+<data key='user.sbx.DB_USER_METADATA' value='oms_conf_1'/>
+<data key='user.sbx.DB_DATA_METADATA' value='pltofsapp'/>
+<data key='user.sbx.tmp.DB_PASS_METADATA' value='sterling321'/>
+<data key='user.sbx.DB_HOST_METADATA' value='dvofstrndb001uk.dev.global.tesco.org'/>
+<data key='user.sbx.DB_REF_ENABLED_STATISTICS' value='true'/>
+<data key='user.sbx.MULTISCHEMA_STATISTICS_LINK' value='METADATA'/>
+<data key='user.sbx.MULTISCHEMA_CONFIGURATION_LINK' value='METADATA'/>
+<data key='user.sbx.DB_REF_ENABLED_CONFIGURATION' value='true'/>
+<data key='user.sbx.DB_REF_ENABLED_MASTER' value='true'/>
+<data key='user.sbx.MULTISCHEMA_MASTER_LINK' value='METADATA'/>
+<data key='user.sbx.DB_HOST_TRANSACTION' value='dvofstrndb001uk.dev.global.tesco.org'/>
+<data key='user.sbx.DB_DATA_TRANSACTION' value='pltofsapp'/>
+<data key='user.sbx.tmp.DB_PASS_TRANSACTION' value='sterling321'/>
+<data key='user.sbx.DB_USER_TRANSACTION' value='oms_tran_1'/>
+<data key='user.sbx.DB_PORT_TRANSACTION' value='1521'/>
+<data key='user.sbx.DB_PASS_TRANSACTION' value='sterling321'/>
+<data key='user.sbx.DB_REF_ENABLED_TRANSACTION' value='false'/>
+<data key='user.sbx.DB_SCHEMA_OWNER_TRANSACTION' value='OMS_TRAN_1'/>
+<data key='user.sbx.SUPPORT_MULTIBYTE' value='false'/>
+<data key='user.sbx.ADDITIONAL_ANT_JAVA_TASK_ARGS' value='-XX:MaxPermSize=768m'/>
+<data key='user.sbx.ADDITIONAL_ANT_COMPILER_TASK_ARGS' value='-J-Xms1024m -J-Xmx1048m'/>
+<data key='cic.selector.nl' value='en'/>
+</profile>
+<install modify='false'>
+<offering id='com.ibm.is.commerce.ssfs' version='9.3.0' profile='IBM Sterling Order Management_2' features='com.ibm.is.commerce.ssfs.main,com.ibm.is.commerce.ssfs.multischema' installFixes='none'/>
+</install>
+<preference name='com.ibm.cic.common.core.preferences.eclipseCache' value='/u01/app/IBM/SDPShared'/>
+<preference name='com.ibm.cic.common.core.preferences.connectTimeout' value='30'/>
+<preference name='com.ibm.cic.common.core.preferences.readTimeout' value='45'/>
+<preference name='com.ibm.cic.common.core.preferences.downloadAutoRetryCount' value='0'/>
+<preference name='offering.service.repositories.areUsed' value='true'/>
+<preference name='com.ibm.cic.common.core.preferences.ssl.nonsecureMode' value='false'/>
+<preference name='com.ibm.cic.common.core.preferences.http.disablePreemptiveAuthentication' value='false'/>
+<preference name='http.ntlm.auth.kind' value='NTLM'/>
+<preference name='http.ntlm.auth.enableIntegrated.win32' value='true'/>
+<preference name='com.ibm.cic.common.core.preferences.preserveDownloadedArtifacts' value='true'/>
+<preference name='com.ibm.cic.common.core.preferences.keepFetchedFiles' value='false'/>
+<preference name='PassportAdvantageIsEnabled' value='false'/>
+<preference name='com.ibm.cic.common.core.preferences.searchForUpdates' value='false'/>
+<preference name='com.ibm.cic.agent.ui.displayInternalVersion' value='false'/>
+<preference name='com.ibm.cic.common.sharedUI.showErrorLog' value='true'/>
+<preference name='com.ibm.cic.common.sharedUI.showWarningLog' value='true'/>
+<preference name='com.ibm.cic.common.sharedUI.showNoteLog' value='true'/>
+</agent-input>

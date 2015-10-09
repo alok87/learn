@@ -1,0 +1,23 @@
+(function () {
+try {
+var loc=''; var ref='';
+try{loc=encodeURIComponent(document.location.toString().substr(0,700));}catch(e){}
+try{ref=encodeURIComponent(document.referrer.toString().substr(0,700));}catch(e){}
+var width = screen.width;
+var height = screen.height;
+var src_url="https://i.ctnsnet.com/int/integration?cguid=159343cddf3e4f128aead310ce09ad52&pixel=1270525&nid=304041&cont=s&PageName=EYEY%3AAIR_SELECT_PAGE&Edition=en_GB&OD=ECONOMY%3ABLR%3ACDG-PMI%3ABLR&DepartReturn=14%2F06%2F2015%3A20%2F06%2F2015&Pax=2ADT%3A0CHD%3A0INF&loc="+loc+"&ref="+ref+"&cb="+new Date().getTime()+"&w="+width+"&h="+height;
+var iframe=document.createElement("iframe");
+iframe.src="javascript:false";
+(iframe.frameElement || iframe).style.cssText = "width: 0; height: 0; border: 0; display: none;";
+var scripts = document.getElementsByTagName('script');
+var fdoc = scripts[scripts.length-1].parentNode.appendChild(iframe).contentWindow.document;
+fdoc.open().send=function() {
+var s=this.createElement("script");
+s.async=true;
+s.src=src_url;
+this.getElementsByTagName("head")[0].appendChild(s);
+};
+fdoc.write("<body onload=document.send();>");
+fdoc.close();
+} catch (e) {}
+})();

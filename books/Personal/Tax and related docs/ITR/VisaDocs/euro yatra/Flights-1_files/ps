@@ -1,0 +1,19 @@
+
+(function () {
+var _fbq = window._fbq || (window._fbq = []);
+if (!_fbq.loaded) {
+    var fbds = document.createElement('script');
+    fbds.async = true;
+    fbds.src = '//connect.facebook.net/en_US/fbds.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(fbds, s);
+    _fbq.loaded = true;
+}
+_fbq.push(['addPixelId', '542934125809044']);
+})();
+window._fbq = window._fbq || [];
+window._fbq.push(['track', 'PixelInitialized', {}]);
+
+window._fbq.push(['track', 'kv', {"key10936":"BLR",
+"key10937":"CDG",
+"ckid":302328144908} ]);

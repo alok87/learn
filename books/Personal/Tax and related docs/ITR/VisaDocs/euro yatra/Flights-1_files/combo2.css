@@ -1,0 +1,4900 @@
+.mytrips .footerContent {width:702px; border-top: 1px dotted #CCCCCC; padding-top: 10px;padding-right:3px; }
+.mytrips .footerContent .paging { float: right; font-size: 10px; padding-top:7px; }
+.mytrips .footerContent .paging .footerPadding {padding-right:3px; padding-left:3px; }
+
+.mytrips .flightUpgradeButton {
+    font: bold 11px Arial;
+    text-decoration: none;
+    background-color: #EEEEEE;
+    color: #333333;
+    padding: 2px 6px 2px 6px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+}
+
+.mytrips .flightCheckInButton{
+    font: bold 11px Arial;
+    text-decoration: none;
+    background-color: #EEEEEE;
+    color: #333333;
+    padding: 2px 6px 2px 6px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+}
+
+.mytrips .upperUpgradeLinkWrapperClass {
+    background: #C0D0E0;
+    padding: 13px;
+    margin: 13px 13px 13px 34px;
+}
+
+.mytrips .upperCheckInLinkWrapperClass {
+    background: #C0D0E0;
+    padding: 13px;
+    margin: 13px;
+}
+
+.mytrips .upperUpgradeButtonMessageContainerClass{
+    margin: 13px;
+}
+
+.mytrips .upperCheckInButtonMessageContainerClass{
+    margin: 13px;
+}.navigation > ul {
+   text-indent: -9999px;
+   list-style-type: none;
+   height: 0px;
+   overflow: hidden;
+}/* Payment Component */
+#payment { padding:0 0 20px 0; width: 702px}
+#payment h2 { margin-left:12px; }
+#payment .payment-wrapper { background:url(../images/payment-bg.gif) repeat-y; }
+#payment .payment-content { background:url(../images/payment-top.gif) no-repeat top left; padding-top:3px; }
+#payment div.payment { background:url(../images/payment-bottom.gif) no-repeat bottom left; padding-bottom:10px; overflow:visible; }
+#payment h3 { margin-left:20px; padding:10px 0 15px 0; }
+#payment h3.border-transparent { border-color: transparent; }
+#payment h3.component-section { margin:10px 3px 0; padding:15px 0 15px 15px; }
+#payment h4 { padding:0 20px 8px 20px; color: #000; }
+#payment h4 a { font-weight:normal; text-decoration:underline; }
+#payment div.multi-fop-amountdue {margin-left:20px; padding:10px 0 15px 0;font-size: 14px;font-weight: bold;color: #2b6dcc;}
+#payment hr.component-section { margin:0 0 17px 0; padding:0; }
+#payment fieldset legend {display: none;}
+#payment label.rel { display:none; }
+#payment .payment-type { background:url(../images/payment-type-top.gif) no-repeat top left; margin:0 0 7px 18px; width:664px;}
+.payment-details { background:url(../images/payment-type-bottom.gif) no-repeat bottom left;}
+#payment .payment-details .date-box { float: none;}
+#payment .payment-type h4 { width:140px; float:left; font-size:14px; padding:17px 0 0 15px !important; }
+.oldie #payment .payment-type h4 { width:140px; float:none; font-size:14px; padding:17px 0 0 15px !important; }
+.modern #payment .payment-type h4 { width:140px; float:none; font-size:14px; padding:17px 0 0 15px !important; }
+.oldie #payment .payment-type h5 {width:185px;margin-bottom:10px; padding:17px 0 0 15px !important; float:none; font-size:14px; color: #000; }
+.modern #payment .payment-type h5 {width:185px;margin-bottom:10px; padding:17px 0 0 15px !important; float:none; font-size:14px; color: #000; }
+#payment .payment-type h4 em { font-size:11px; font-weight:normal; font-style:normal; line-height:16px; display:block; }
+#payment .payment-type li { width:100px; padding:17px 0 15px 0; margin-right:5px; float:left; display:inline; text-align:center; }
+#payment .payment-type .rel { display:none }
+#payment .payment-type li a { line-height:24px; text-decoration:underline; }
+#payment .payment-amount-right { margin-left:10px; }
+#payment .payment-details h4.payment-type-header { width: 250px;}
+#payment .payment-details h4 span.payment-name-text { width: auto; }
+#payment .payment-details select.clip { min-width: 155px;}
+.credit-card-item input { float:left; display:inline; margin:0 12px 0 10px; }
+#payment .fop-item {padding:17px 0 15px 0; margin-right: 5px; float:left}
+#payment .fop-savedCards .fop-item {width: 205px}
+#payment .credit-card-item {width: 100px;}
+#payment .card-icon {width:50px; height:30px; display:block; float:left; background:url(../images/payment_icons.png) no-repeat 0 0/*-1077px -166px;*/ }
+#payment .card-vi, #payment .card-vi_remote { background-position: 0 0; }
+#payment .card-ca, #payment .card-ca_remote { background-position: 0 -30px; }
+#payment .card-ik, #payment .card-ik_remote { background-position: 0 -30px; }
+#payment .card-ax, #payment .card-ax_remote { background-position: 0 -60px; }
+#payment .card-cirrus { background-position: 0 -90px; }
+#payment .card-ve { background-position: 0 -120px; }
+#payment .card-pp, #payment .card-paypal { background-position: 0 -150px; }
+#payment .card-bill { background-position: 0 -180px; }
+#payment .card-wu { background-position: 0 -210px; }
+#payment .card-tp { background-position: 0 -240px; }
+#payment .card-dc { background-position: 0 -270px; }
+#payment .card-jb { background-position: 0 -300px; }
+#payment .card-bpc { background-position: 0 -330px; }
+#payment .card-af { background-position: 0 -360px; }
+#payment .card-fa { background-position: 0 -390px; }
+#payment .card-poli { background-position: 0 -420px; }
+#payment .card-giftCard { background: url(../images/payment-gift-card.png) no-repeat -17px -19px; }
+#payment .card-smlPayLater { background: none; }
+#payment .card-smlPayNow { background: none; }
+#payment .saved-cards li { width:205px; }
+#payment .multi-row { margin-left: 155px; }
+#payment .saved-cards dl, .fop-savedCards dl { float:left; font-size:12px; line-height:18px; margin-left:10px; }
+#payment .saved-cards dt, .saved-cards dd, .fop-savedCards dt, .fop-savedCards dd { display:inline; float:left; }
+#payment .saved-cards dt, .fop-savedCards dt { clear:left; margin-right:3px; }
+#payment .payment-details {line-height: 20px; padding: 15px 0 10px 0; overflow:visible; }
+#payment .payment-details h4 { width:285px; padding:3px 0 7px 0 !important; margin:0; }
+#payment .payment-details h4 span { float:left; display:inline; margin:0 15px; width:50px; height:30px;/* text-indent:-9999px;*/ }
+#payment .payment-details h4 .currency { float:none; }
+#payment .payment-details h4.align-right { width:auto; text-align:right; float:right; display:inline; margin-right:15px; padding:3px 0 20px 0; }
+#payment .payment-details .field { margin:0 0 13px 13px; background:none; }
+#payment .payment-details .first { margin:0 0 0 80px; }
+#payment .payment-details label { display:block; font-size:12px; line-height:20px; float: left; width: 130px; margin-right: 4px; text-align: right; }
+#payment .innerLabelAndInput {margin-left: 183px}
+#payment .payment-details .inline { padding-top:20px; }
+#payment .payment-details .inline label { display:inline; }
+#payment .payment-details input.textfield { width:150px; }
+#payment .payment-details select { margin-right:3px; padding:1px 1px 1px 0; }
+#payment .payment-details .purchaserDropdown select { width: 161px }
+#payment .payment-amount { width:360px; padding-right:15px; margin-left:0 !important; text-align:right; }
+#payment .payment-amount label { display:inline; font-size:14px; font-weight:bold;; }
+#payment .payment-amount input.textfield { width:83px; font-size:14px; text-align:right; }
+#payment .apply-credit { position:relative; margin-bottom:15px; }
+#payment .apply-credit .field { font-size:12px; margin:15px 100px 0 15px; }
+#payment .apply-credit .button { margin-top:10px; }
+#payment .apply-credit .credit-info { background:url(../images/payment-type-bottom.gif) no-repeat bottom left; }
+#payment .credited .field { margin-right:0; }
+#payment .credited h4 { float:right; display:inline; font-size:12px; padding-top:0; white-space:nowrap; width:auto; margin-right:15px; }
+#payment .credited a.align-right { margin:5px 15px 20px 0; text-decoration:underline; }
+#payment .payment-details .column {width: 325px; float: left;}
+#payment .payment-details .address1 {clear: both;}
+#payment .payment-details .billing-address-header, #payment .payment-details .payment-details {clear: both; margin-left: 20px; margin-bottom: 0;}
+#payment .checkboxgroup { overflow: hidden; }
+#payment .payment-details .billing-column {float: left;}
+#payment .payment-details input.phone-areaCode {width: 20px;}
+#payment .payment-details input.phone-number {width: 85px;}
+#payment .payment-details input.phone-extension {width: 40px;}
+#payment .payment-details label.requiredIndicatorLabel { height: 1em; padding-right:10px;}
+#payment .payment-details .phone-number-type {float:left;}
+#payment span.currency {float: none; height: 0; margin: 0; width: 0;}
+#payment .payment-travelbank-label-column { width: 210px; float:left; text-align:left; }
+#payment .payment-travelbank-label-row { clear:left; overflow: hidden; }
+#payment .savedcard-item dl {width : 195px}
+#payment .savedcard-item dd {float:right}
+#payment .savedcard-item dt {display:inline;}
+#payment .surcharge-note {display: block; padding: 8px;}
+#exchangePaymentMsg { clear: both; padding-left: 15px; font-weight: bold;}
+#exchangePaymentMsg .exchange-payment-msg li { display: list-item; width: auto; float: none; text-align: left; padding: inherit; margin-left: 30px;}
+#exchangePaymentMsg .exchange-payment-msg ol { margin-left: 30px}
+
+/* Travel Bank Section */
+/*.travel-bank-form label {float: left; width: 230px; margin-right: 4px; text-align: left;}*/
+.travel-bank-form a.button {float: none; display: inline-block; margin: 0 0 0 5px; padding: 0 10px; height: 26px;line-height: 23px;}
+.travel-bank-form p {padding: 0 0 10px;}
+.travel-bank-form .loginSystemError, .travel-bank-form .wrongPassword, .travel-bank-form .loginStatusIsNotAllowed {color: #f00; font-weight: bold;}
+.travel-bank-form .link-options {width: 160px;}
+.travel-bank-form .link-options .link-forgotPassword {float: left;}
+.travel-bank-form .link-options .link-login {float: right; padding-bottom: 10px;}
+#bt_amount {width: 70px;}
+#payment .travel-bank-form {padding-left: 10px; padding-right: 10px; padding-bottom: 0}
+#tb-fop-details {background-color: #fff; margin:0 0 -7px; padding:10px 0 0;}
+
+/* Multi Form of Payment (FOP) Component */
+.multi-fop .payment-content { font-size: 12px; background:url(../images/component-top.gif) no-repeat top left !important; padding-top:10px !important; }
+.multi-fop .amount-charged { text-align: right; padding-right: 20px;}
+.multi-fop .amount { display: inline-block;}
+.multi-fop .additional_payment { margin: 2px; background-color:#FFC; padding: 5px 18px; text-align: right; }
+.multi-fop .additional_payment .message { float: left; width: 450px; text-align: left; }
+.multi-fop .additional_payment  {color: #777;}
+/*.multi-fop .travel-bank-form p { padding: 0 0 10px;}*/
+/*.multi-fop .travel-bank-form label {float: left; width: 230px; margin-right: 4px; text-align: left;}*/
+.multi-fop .travel-bank-form .inputColumn {width: 100px}
+.multi-fop .travel-bank-form .textfield {width: 250px}
+.multi-fop .travel-bank-form a {font-size: 11px;}
+.multi-fop .travel-bank-form a.button {float: none; display: inline-block; margin: 0 0 0 5px !important; padding: 0 10px;}
+.multi-fop .travel-bank-form #bt_amount {width: 70px !important;}
+.multi-fop-body {clear: left; border: 1px solid #bbb; border-radius: 5px; padding: 0}
+.multi-fop .component-tabs { background: transparent; padding-left: 10px; margin-top: 5px; position: relative; top: 1px;}
+.multi-fop .component-tabs .column { float:left; width:50%; display:inline; }
+.multi-fop .component-tabs li { background:url(../images/tab-default-left.gif) no-repeat; padding-left:15px; }
+.multi-fop .component-tabs .departing-flights li { }
+.multi-fop .component-tabs a { background:url(../images/tab-default-right.gif) no-repeat right top; color: #2B6DCC !important; margin:0; padding-right:20px; float:left; }
+.multi-fop .component-tabs li.tab-current { background:url(../images/tab-class-left.gif) no-repeat; }
+.multi-fop .component-tabs li.tab-current a {  background:url(../images/tab-class-right.gif) no-repeat right top; }
+#multiFopContainer .payment-type li.selected{ background:transparent !important; background-color:#D7D7CF !important; }
+.multi-fop-body h4 {margin-top: 10px}
+.multi-fop .payc_sections .multi-fop-header{clear:both;float:left;}
+.payc_sections {margin-bottom: 20px}
+.bt_balance_overlay {padding: 20px}
+.bt_balance_overlay ul { list-style: none; padding-left: 10px; margin: 10px 0 20px 0; width: 410px; }
+.bt_balance_overlay ul li { padding-bottom: 4px; }
+.bt_balance_overlay ul li div { float: right;}
+.bt_balance_overlay ul li div .balance-value { width: 135px; float:left;}
+.bt_balance_overlay ul li em { position: absolute; float: right; left: 290px; color: #ff0000 }
+.bt_balance_overlay ul li em.check { background:url("../images/icon-check.png") top left no-repeat; width: 16px; height: 16px; }
+.bt_balance_overlay ul .bt_balance_header { font-weight: bold;}
+.bt_balance_overlay .buttons {height: 37px}
+
+/* Payment Information Component */
+#payment .payment-type { background-color:#eaebe6; }
+#payment .payment-type .selected { background-color:#d7d7cf; }
+#payment .saved-cards .expired, .fop-savedCards .expired { color:#ec1225; }
+#payment .fop-unavailable-msg { color:#ec1225; padding-left: 20px;  }
+
+/* Payment Not Requred in payc */
+#payment #payment-not-required .payment { padding-top: 10px}
+#payment #payment-not-required .payment-type { padding: 10px 20px; width:624px;}
+#payment #payment-not-required .total h4 { float: right; padding-right: 18px; }
+#payment #payment-not-required h3 { font-size: 14px }
+#payment #payment-not-required h4 { color: #000000; padding: 0; float: left; font-size: 14px}
+
+/* POLI FOP */
+#payment .fop-poli-item { width: 100%; background-color: #fff; padding: 0; }
+#payment .fop-poli-item.selected { background-color:#fff; }
+#payment .fop-poli-item .card-icon { float: none; margin-left: 20px; margin-right: 0; background-position: 0 -420px;}
+.fop-poli-item .checkbox { background-color: #ddd; padding: 8px 5px; display: inline-block; }
+.fop-poli-checkbox { float:left; margin-right:10px; }
+.fop-poli-marketing_block { clear: both; overflow: hidden; }
+.fop-poli-marketing_text { padding: 10px 0; font-weight: bold; float: left; width: 450px; margin-right: 10px; }
+.fop-poli-logo { background:url(../images/logo_poli.gif) no-repeat 0 0; height: 55px; width: 134px; overflow: hidden; margin-top: 6px; }
+.fop-poli-instruction { padding: 10px 0; font-weight: bold; }
+.fop-poli-instruction ol { margin: 1em 0; }
+#payment .fop-poli-item li { display: list-item; float: none; width: auto; padding: 0; text-align: left; margin-left: 20px; font-weight: normal; }
+.fop-poli-links a { border-right: 1px solid #444; padding-right: 5px; margin-right: 5px; }
+.fop-poli-links a.last-poli-link { border-right: none }
+.card-poli-amount-charged { float: right; font-weight: bold; }
+.fop-poli-item .amount { float: right; font-weight: bold; margin-left: 1em; }
+
+/* paypal FOP */
+#payment .fop-paypal-item { width: 100%; background-color: #fff; padding: 0; }
+#payment .fop-paypal-item.selected { background-color:#fff; }
+#payment .fop-paypal-item .card-icon { float: none; margin-left: 20px; margin-right: 0; background-position: 0 -150px;}
+.fop-paypal-item .checkbox { float: left; margin-right: 20px; background-color: #ddd; padding: 8px 5px; display: inline-block; }
+.fop-paypal-checkbox { float:left; margin-right:10px; }
+.fop-paypal-marketing_block { overflow: hidden; }
+.fop-paypal-marketing_text {float: left; width: 550px; margin-right: 10px; margin-bottom: 15px; }
+#payment .fop-paypal-item li { display: list-item; float: none; width: auto; padding: 0; text-align: left; margin-left: 20px; font-weight: normal; }
+.fop-paypal-links a { border-right: 1px solid #444; padding-right: 5px; margin-right: 5px; }
+.fop-paypal-links a.last-paypal-link { border-right: none }
+.card-paypal-amount-charged { float: right; font-weight: bold; }
+.fop-paypal-item .amount { float: right; font-weight: bold; margin-left: 1em; }
+
+/* SML PayLater FOP */
+#payment .fop-sml_pay_later-item { width: 100%; background-color: #fff; padding: 0; }
+.fop-sml_pay_later-item p { margin: 8px 0; }
+.fop-sml_pay_later-item label { display: block; margin: 10px 0; }
+.fop-sml_pay_later-item .checkbox-label { display: inline; margin: 0 0 0 15px; }
+.sml_pay_later-selectbox-container { display: inline-block; }
+.card-smlPayLater-amount-charged { float: right; font-weight: bold; }
+.fop-sml_pay_later-item .amount { float: right; font-weight: bold; margin-left: 1em; }
+#payment .card-smlPayLater .rel { display: inline; position: relative; }
+
+/* SML PayNow FOP */
+#payment .fop-sml_pay_now-item { width: 100%; background-color: #fff; padding: 0;}
+.fop-sml_pay_now-item .checkbox { background-color: #ddd; margin-bottom: 10px; padding: 4px 0 0 4px; width: 100px; }
+#payment .fop-sml_pay_now-item ul { padding: 3px; }
+#payment .fop-sml_pay_now-item li { display: list-item; list-style-type: none; float: none; width: auto; padding: 4px; text-align: left; margin-left: 20px; font-weight: bold; }
+.fop-sml_pay_now-item input { float: left; }
+.fop-sml_pay_now-item .input-label { display: block; font-weight: bold; overflow: hidden; padding: 0 0 10px 10px; }
+.card-sml_pay_now-available-banks { width: 245px; height: 125px; border: 1px solid #000; float: left; margin-right: 15px; font-weight: bold; }
+.card-sml_pay_now-available-banks .header { background-color: #ddd; text-align: center; padding: 3px; }
+.card-sml_pay_now-information-text { height: 135px; }
+.card-smlPayNow-amount-charged { float: right; font-weight: bold; }
+.fop-sml_pay_now-item .amount { float: right; font-weight: bold; margin-left: 1em; }
+#payment .card-smlPayNow .rel { display: inline; position: relative; }
+
+/* gift card FOP */
+#payment .fop-gift-card-item { width: 100%; background-color: #fff;}
+#payment .fop-gift-card-item .marketing_block {margin-left:auto; margin-right: auto; margin-bottom: 10px;}
+#payment .fop-gift-card-item label { display:block; float: left; width: 125px; margin-right: 4px; line-height:20px; text-align: right; font-size: 11px; }
+#payment .fop-gift-card-item .column1 label { width: 60px; padding: 0 2px 0 0;}
+#payment .fop-gift-card-item .value { float: left; text-align: left; line-height:20px; font-size: 11px; }
+#payment .fop-gift-card-item .fop-gift-card-initial { clear: both;}
+#payment .fop-gift-card-item .fop-gift-card-initial .button-gray { float: left; background-image: url(../images/button-sprite-gray.png); height:27px; margin:5px 0 0 0; }
+#payment .fop-gift-card-item .fop-gift-card-selected .button-gray { background-image: url(../images/button-sprite-gray.png); height:27px; position: absolute; top: 50%; right:0; margin:-14px 10px 0 5px; }
+#payment .fop-gift-card-item .giftCard-no-second-fop { padding-left: 120px; }
+#payment .fop-gift-card-item .giftCard-no-second-fop .button-gray { float: left; }
+#payment .fop-gift-card-item .button-gray input { background-image: url(../images/button-sprite-gray.png); height:27px; line-height:27px; font-size:11px; letter-spacing:0; color: #888; text-shadow: none; text-transform:none; padding-bottom:0; }
+#payment .fop-gift-card-item .add_card_details { padding: 10px 0; font-weight: bold; }
+#payment .fop-gift-card-item .fop-gift-card-selected { clear: both; position: relative; background-color: #F3F9FF; padding: 10px; border-radius: 5px; overflow: hidden; }
+#payment .fop-gift-card-item .column1 { float: left; width: 200px; }
+#payment .fop-gift-card-item .column2 { float: left; width: 280px; }
+#payment .fop-gift-card-item .field { margin: 5px 0; }
+#payment .fop-gift-card-item .fop-gift-card-selected .field { overflow: hidden; margin: 0; }
+#payment .fop-gift-card-item .bold { font-weight: bold; }
+#payment .fop-gift-card-item .icon { float: left; margin: 0 15px 10px 0; background: url(../images/payment-gift-card.png) top left no-repeat; width: 70px; height: 48px; }
+#payment .fop-gift-card-item .message { margin: 0 0 0 80px; padding: 5px 5px 5px 40px; line-height :18px; }
+#payment .fop-gift-card-item .message-error { background: url(../images/flomes-error.gif) left center no-repeat; }
+#payment .fop-gift-card-item .message-warn { background: url(../images/flomes-warn.gif) left center no-repeat; }
+
+/* frequent flyer FOP */
+#payment .fop-frequentFlyer-item { width: 100%; }
+#payment .fop-frequentFlyer-item .frequent-flyer-title { margin: 0 0 10px 8px; font-weight: bold; font-size: 12px; }
+#payment .fop-frequentFlyer-item .frequent-flyer-header { margin: 0 0 10px 12px; }
+#payment .fop-frequentFlyer-item label { display: inline-block; width: 21%; padding-right: 4px; }
+#payment .fop-frequentFlyer-item .link-forgotPassword { margin: 0 0 23px 23%; }
+#payment .fop-frequentFlyer-item #login { margin-left: 23%; padding: 5px; }
+#payment .fop-frequentFlyer-item .frequent-flyer-label { font-weight: bold; }
+#payment .fop-frequentFlyer-item .frequent-flyer-row { display: inline-block; width: 60% }
+#payment .fop-frequentFlyer-item .frequent-flyer-price { font-weight: bold; float: right; }
+#payment .fop-frequentFlyer-item .frequent-flyer-breakdown { margin-left: 20px; }
+#payment  .paymentSlider_insufficient_miles { background: url(../images/ff-warn.gif) left center no-repeat; margin: 10px; padding: 5px 5px 5px 35px; float: left }
+
+/* radio view */
+#payment .radio-view .fop-item-select { width: 200px; float:left; vertical-align: middle; padding-right: 10px; }
+#payment .radio-view .fop-item-select input,
+#payment .radio-view .fop-item-select label,
+#payment .radio-view .fop-item-select a { line-height: 25px; vertical-align: middle}
+#payment .radio-view .fop-item-row { margin: 10px 20px;overflow: hidden; clear: left; }
+#payment .radio-view .fop-item-label { margin-right: 0px; padding-right: 3px; }
+#payment .radio-view .field { margin: 0; padding: 5px 0; line-height: 20px; clear: left; }
+#payment .radio-view .field label { width: 175px; margin-right: 4px; float: left; }
+#payment .radio-view .fop-icons { float: left; }
+#payment .radio-view .fop-security-logo { float: right; margin-right: 20px; width: 79px; height: 56px; background: none; }
+#payment .radio-view h4 { float: left; width: 100%; margin: 0 0 10px 0; font-size: 12px; }
+#payment .radio-view .sections-list { margin: 10px 0 10px 0; }
+#payment .radio-view .payment-type .credit-card-form { padding: 0px; }
+#payment .radio-view .payment-type .billing-data{ background-color: #fff; }
+#payment .radio-view .payment-type .billing-data .sameAsContactAddress { float :left; padding-left : 150px }
+#payment .radio-view .payment-type .frequentFlier-data{ background-color: #fff; }
+#payment .radio-view .payment-type { margin: 0px; background: none; }
+#payment .radio-view .payment-type li { padding: 2px 5px; margin: 0; width: 100%; text-align: left; }
+#payment .radio-view .payment-details label { font-size: 11px; }
+#payment .radio-view .fop-icon { display: none; width:35px; height:22px; margin-right: 5px; background: url(../images/payment-fop-icons.png) top left no-repeat; }
+#payment .radio-view .fop-icon-ax { display: inline-block; background-position: 0 0; }
+#payment .radio-view .fop-icon-ba { display: inline-block; background-position: -35px 0; }
+#payment .radio-view .fop-icon-vi { display: inline-block; background-position: -35px 0; }
+#payment .radio-view .fop-icon-dc { display: inline-block; background-position: -70px 0; }
+#payment .radio-view .fop-icon-ds { display: inline-block; background-position: -105px 0; }
+#payment .radio-view .fop-icon-gc { display: inline-block; background-position: -140px 0; }
+#payment .radio-view .fop-icon-ik { display: inline-block; background-position: -175px 0; }
+#payment .radio-view .fop-icon-ca { display: inline-block; background-position: -175px 0; }
+#payment .radio-view .fop-icon-jb { display: inline-block; background-position: -210px 0; }
+#payment .radio-view .fop-icon-po { display: inline-block; background-position: -245px 0; }
+#payment .radio-view .fop-icon-pp { display: inline-block; background-position: -280px 0; }
+#payment .radio-view .fop-icon-tp { display: inline-block; background-position: -315px 0; }
+#payment .radio-view .fop-icon-af { display: inline-block; background-position: -385px 0; }
+#payment .radio-view .fop-icon-pt { display: inline-block; background-position: -420px 0; }
+
+/* AFOP */
+#payment .radio-view .fop-icon-afop { display: inline-block; background-position: -175px 0; width: 105px; }
+#payment .gender { float: left; text-align: right;}
+#payment #afopFirstName { float: left; z-index: 2}
+#payment #afopLastName { z-index: 1}
+#payment #details_afop-0-afop-0 { margin-bottom: 0; margin-left: 5px}
+#payment #afopGenderEnabled > label:first-child + label { width: 70px}
+#payment #afopGenderEnabled > label:first-child + label + label { width: 70px}
+#payment #afop-0-afop-0_afopCountry { width: 155px!important}
+#payment #afop-0-afop-0_afopProvince { width: 155px!important}
+#payment #afopLastName > label { height: 10px; width: 10px!important}
+
+#payment #purchaserContactInfo_frequentFlyerProgram{ width: 100px; margin-right: 0px; padding-right: 1px; }
+#payment #purchaserContactInfo_frequentFlyerNumber { width: 85px; margin-right: 0px; padding-right: 1px; }
+
+
+
+.payc-integrated #payment { background: url(../images/border-white-bg.gif) repeat-y; padding-bottom: 0; }
+.payc-integrated #payment #payment-wrapper { background: url(../images/border-white-bottom.gif) no-repeat bottom left; margin-bottom: 2px; padding-bottom: 12px;}
+.payc-integrated #payment .multi-fop-body { border: 0; }
+.payc-integrated.amountdue-integrated #payment .payment-content { background: none; }
+
+.payc-integrated .payc #componentTitle { background: url(../images/border-white-top.gif) no-repeat top left; }
+.payc-integrated.amountdue-integrated .payc #componentTitle { }
+
+
+/* learn more */
+#payment .radio-view .disabledLink { display:none; }
+#payment .radio-view .learnMoreIframe  {height: 460px; width: 450px; border: 0;margin-top: 10px; margin-bottom: -15px}
+#payment .radio-view .learnMoreStatic {width: 200px; height: 100px; overflow: auto}
+
+/* radio layout security code overlay body */
+#payment .radio-view .threeDigitSecurityCode {background: url(../images/3digit-cvv.png); background-repeat: no-repeat; background-position: center; margin-left: 1.12em}
+#payment .radio-view .fourDigitSecurityCode {background: url(../images/4digit-cvv.png); background-repeat: no-repeat; background-position: center; margin-left: 1.12em}
+#payment .radio-view .rightBordered {border-style:solid ; border-color: #e8eff7; border-left: 0px; border-top: 0px; border-bottom: 0px; border-right: 5px solid #C6C7CB}
+#payment .radio-view .securityCodeOverlay {overflow: auto; margin-top: 15px; width: 460px; height: 300px}
+#payment .radio-view .securityCodeTable {table-layout: fixed; margin-top: 8px}
+#payment .radio-view .securityCodeTable .paragraphCell {vertical-align: top}
+#payment .radio-view .securityCodeTable .textParagraph {padding-top: 0px}
+#payment .radio-view .securityCodeTableColumn {width:50%}
+#payment .radio-view .securityCodeImage {height: 142px}
+
+/* credit card radio view card number part input */
+#payment .radio-view .credit-card-input {margin-right: 10px; }
+
+/* insurance unacceptable fop overlay */
+#insurance-unacceptable-overlay #fop-names {font-weight:bold}
+#insurance-unacceptable-overlay table {text-align:center; margin: 30px auto auto; border-collapse: separate; border-spacing: 20px}
+#insurance-unacceptable-overlay #remove-link {text-decoration: underline; font-size: 12px}
+#insurance-unacceptable-overlay #change-button {text-transform: capitalize; font-size: 13px}
+#insurance-unacceptable-overlay h3 {margin-left:20px; padding:10px 0 15px 0; font-size: 14px; font-weight: bold;}
+
+#payment .radio-view .payment-type .installment-data{ background-color: #fff; }
+#payment .radio-view fieldset { width: 100%; clear: both; }
+#payment .dynamic .fop-icon {background: url(../images/cc-sprite.png);}
+#payment .dynamic .fop-icon-ba { background-position: 0 0; width: 35px; height: 22px; }
+#payment .dynamic .fop-icon-ba.gray { background-position: 0 -30px; width: 35px; height: 22px; }
+#payment .dynamic .fop-icon-vi { background-position: 0 0; width: 35px; height: 22px; }
+#payment .dynamic .fop-icon-vi.gray { background-position: 0 -30px; width: 35px; height: 22px; }
+#payment .dynamic .fop-icon-ik { background-position: -40px 0; width: 35px; height: 22px; }
+#payment .dynamic .fop-icon-ik.gray { background-position: -40px -30px; width: 35px; height: 22px; }
+#payment .dynamic .fop-icon-ca { background-position: -40px 0; width: 35px; height: 22px; }
+#payment .dynamic .fop-icon-ca.gray { background-position: -40px -30px; width: 35px; height: 22px; }
+#payment .dynamic .fop-icon-ax { background-position: -80px 0; width: 35px; height: 22px; }
+#payment .dynamic .fop-icon-ax.gray { background-position: -80px -30px; width: 35px; height: 22px; }
+#payment .dynamic .fop-icon-ds { background-position: -120px 0; width: 35px; height: 22px; }
+#payment .dynamic .fop-icon-ds.gray { background-position: -120px -30px; width: 35px; height: 22px; }
+#payment .dynamic .fop-icon-dc { background-position: -160px 0; width: 35px; height: 22px; }
+#payment .dynamic .fop-icon-dc.gray { background-position: -160px -30px; width: 35px; height: 22px; }
+#payment .dynamic .fop-icon-jb { background-position: -200px 0; width: 35px; height: 22px; }
+#payment .dynamic .fop-icon-jb.gray { background-position: -200px -30px; width: 35px; height: 22px; }
+#payment .dynamic .fop-icon-tp { background-position: -240px 0; width: 35px; height: 22px; }
+#payment .dynamic .fop-icon-tp.gray { background-position: -240px -30px; width: 35px; height: 22px; }
+#payment .dynamic .fop-icon-tp { background-position: -240px 0; width: 35px; height: 22px; }
+#payment .dynamic .fop-icon-tp.gray { background-position: -240px -30px; width: 35px; height: 22px; }
+#payment .dynamic .fop-icon-pt { background-position: -280px 0; width: 35px; height: 22px; }
+#payment .dynamic .fop-icon-pt.gray { background-position: -280px -30px; width: 35px; height: 22px; }
+.pagatodo-color{ background-position: -280px 0; width: 35px; height: 22px; }
+.pagatodo-gray { background-position: -280px -30px; width: 35px; height: 22px; }
+
+/* submit overlay */
+.payc .submit-overlay {width: 100%; height: 100%; top: 0; left: 0; z-index: 99; opacity: 0; position: absolute;}
+.pinCodeOverlay { margin:20px 10px 10px 10px;}
+
+/* retail payment */
+#payment .fop-retail-item {padding:17px 10px 15px 10px;}
+.fop-retail-providers-icons {background: url(../images/retail-payment-provider-icons.png);height: 40px;width: 417px;margin-left:auto;margin-right:auto;}
+.fop-retail-learn-more {width:475px;}
+.fop-retail-learn-more .fop-retail-providers-icons {background: url(../images/retail-payment-provider-icons.png);height: 40px;width: 417px;}
+.fop-retail-learn-more .fop-retail-marketing_text {margin: 20px;}div#paymentdccContainer{
+    overflow:hidden;
+}
+
+div.paymentdccHeader{
+    font-weight: bold;
+}
+
+div.paymentdccDescription{
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+div.paymentdccRadioLabel{
+    width:auto;
+    float:left;
+}
+
+div.paymentdccRadio{
+    float:left;
+    width:480px;
+}
+
+span.dccOfferDescription{
+    width:100%;
+    margin-left: 16px;
+    display: block;
+}
+
+span.dccOfferRadio{
+    width:100%;
+    font-weight: bold;
+    display: block;
+    text-align:left !important;
+}/* Payment Slider Component */
+#paymentSlider {margin-bottom:20px}
+#paymentSlider dl,#paymentSlider dt, #paymentSlider dd, #paymentSlider p, #paymentSlider a, #paymentSlider td {font-size:12px;}
+#paymentSlider h3 {margin: 3px 11px 13px}
+#paymentSlider h4 {font-size:14px;color:#000;margin-bottom:8px;}
+#paymentSlider-InfoBox {margin:0 0 20px 10px}
+#paymentSlider-InfoBox dl {overflow:hidden;}
+#paymentSlider-InfoBox dt {float:left;clear:left;width:136px;margin:0 8px 6px 0}
+#paymentSlider-InfoBox dd {float:left;width:460px;margin-bottom:6px}
+#paymentSlider-InfoBox p {margin-bottom:8px}
+#paymentSlider-InfoBox a {text-decoration:underline}
+#paymentSlider-InfoBox em {color:#999;font-style:normal;}
+#paymentSlider-Slider {margin:0 0 20px 10px}
+#paymentSlider-Slider>div {padding: 0 7px}
+#paymentSlider-Slider h4 {float:left;margin-right:4px}
+#paymentSlider-Slider .paymentSlider_msg1 {float:left;margin-right:4px;margin-bottom:8px}
+#paymentSlider-Slider .paymentSlider_msg2 {float:left;overflow:hidden;margin-bottom:8px;width:460px}
+#paymentSlider-Slider .paymentSlider_msg3 {clear:both;margin-bottom:10px;}
+#paymentSlider-SliderComponent {overflow:hidden;width:595px;margin-left:15px}
+#paymentSlider-SliderPlaceholder {float:left;margin:0 10px;width:335px;padding-top:24px}
+#paymentSlider-LeftBox {float:left;}
+#paymentSlider-RightBox {float:right;}
+.paymentSlider_plusBox {display:block;}
+.paymentSlider_plusBox strong {display:block;font-size:13px;color:#9C9C9B;margin-bottom:2px;}
+.paymentSlider_plusBox input {height:26px;line-height:26px;padding:0px 2px;border:1px solid #B2B19F;font-size:13px;font-weight:bold;color:#333;text-align:right;}
+.paymentSlider_plusBoxMiles {width:90px}
+.paymentSlider_plusBoxMiles input {width:84px}
+.paymentSlider_plusBoxCash {width:150px}
+.paymentSlider_plusBoxCash input {width:97px}
+#paymentSlider-LeftBox strong {text-align:right}
+#paymentSlider-RightBox strong {text-align:left}
+#paymentSlider-LeftBox .paymentSlider_input {float:right;}
+#paymentSlider-RightBox .paymentSlider_input {float:left;}
+.ie7 #paymentSlider-LeftBox .paymentSlider_input {max-width:149px;}
+.ie7 #paymentSlider-RightBox .paymentSlider_input {max-width:149px;}
+.paymentSlider_inputCurrency {border:1px solid #B2B19F;height:26px;line-height:26px;font-size:13px;font-weight:bold;color:#333;}
+.paymentSlider_inputCurrBef input {float:left;border-left:0;text-align:left}
+.paymentSlider_inputCurrAft input {float:right;border-right:0;text-align:right}
+.paymentSlider_inputCurrBef .paymentSlider_inputCurrency {float:left;border-right:0;padding-left:2px}
+.paymentSlider_inputCurrAft .paymentSlider_inputCurrency {float:right;border-left:0;padding-right:2px}
+#paymentSlider-SliderPlaceholder .yui3-slider-x .yui3-slider-rail, #paymentSlider-SliderPlaceholder .yui3-slider-x .yui3-slider-rail-cap-left,
+#paymentSlider-SliderPlaceholder .yui3-slider-x .yui3-slider-rail-cap-right {background-image: url(../images/slider-payment.png) !important;}
+#paymentSlider-Separator {height:1px;background:#B3B49F;}
+#paymentSlider-Summary table {border:0;border-collapse:collapse;width:100%}
+#paymentSlider-Summary td {padding:8px 4px}
+#paymentSlider-Summary .paymentSlider_milesSummary {}
+#paymentSlider-Summary .paymentSlider_monetarySummary {background-color:#FFFFCC}
+#paymentSlider-Summary .paymentSlider_info {color:#8D7785;padding-left:18px}
+#paymentSlider-Summary .paymentSlider_desc {font-weight:bold;text-align:right;white-space:nowrap;}
+#paymentSlider-Summary .paymentSlider_price {font-weight:bold;text-align:right;padding-right:24px;white-space:nowrap;}
+.paymentSlider_applyButton {overflow:hidden;margin-top:15px}
+.paymentSlider_applyButton .button {float:left;margin:0}
+.paymentSlider_applyButtonMilesFirst {margin-left:30px}
+.paymentSlider_applyButtonCashFirst {margin-left:520px}
+#paymentSlider .changeButtonBox input {color: #FFFFFF;height: 25px;padding: 3px; float:right; margin-right:25px;margin-top:25px;font-size:15px;font-weight:bold;}
+#paymentSlider .paymentSlider-Summary {width:75%;float:left;}
+#paymentSlider .overflow-fix{clear:both;overflow:auto;}
+#paymentSlider .sliderHiddenMessageBox{margin-left: 10px;}
+#paymentSlider .paymentSlider_monetarySummary{background: #FDFEE6; clear: both; font-size: 12px; height: 22px; margin-left: 10px; padding:5px;}
+#paymentSlider .paymentSlider_monetarySummary .paymentSlider_desc, #paymentSlider .paymentSlider_monetarySummary .paymentSlider_price{font-weight:bold;}
+#paymentSlider .buttons {width: 160px;}
+#paymentSlider .ancillaryContainer{position: relative;}
+#paymentSlider .ancillaryContainer .buttons button{width:80px;height:30px;background-color:#F6F6F6;background-image:linear-gradient(#F0F0F0,#FDFDFD);background:#F6F6F6;background:linear-gradient(#F6F6F6,#FDFDFD);margin:0px;border:1px solid #CCCCCC;float: left;}
+#paymentSlider .ancillaryContainer .buttons button:hover{ background-color:#FDFDFD;background-image:linear-gradient(#FDFDFD,#F6F6F6);background:#FDFDFD;background:linear-gradient(#FDFDFD,#F6F6F6);}
+#paymentSlider .ancillaryContainer .buttons .currency{border-top-right-radius:4px; border-bottom-right-radius:4px;}
+#paymentSlider .ancillaryContainer .buttons .points{border-top-left-radius:4px;border-bottom-left-radius:4px;}
+#paymentSlider .ancillaryContainer .buttons .disabled,#paymentSlider .ancillaryContainer .buttons .disabled:hover{background-color:#DDDDDD}
+#paymentSlider .ancillaryContainer .buttons .selected{background-color:#BBDDDD;background-image:linear-gradient(#BBDDDD,#99CCFF);background:#BBDDDD;background:linear-gradient(#BBDDDD,#99CCFF);}
+#paymentSlider .ancillaryContainer .buttons .selected:hover{background-color:#99CCFF;background-image:linear-gradient(#99CCFF,#BBDDDD);background:#99CCFF;background:linear-gradient(#99CCFF,#BBDDDD);}
+#paymentSlider .hover-warning{width: 200px;height: 50px;background: #F4FFd5;float: left;margin-left: -2px;border: 1px solid #aaaaaa;}
+#paymentSlider .ancillaryContainer{clear: both; margin:0px auto 25px auto;height:80px;float:none; width:90%;border-bottom:2px solid #CCCCCC; }
+#paymentSlider .paymentSlider-extrasRedemption-description,#paymentSlider .paymentSlider-extrasRedemption-balance{margin:0px 20px 10px 20px}
+#paymentSlider .paymentSlider-dynamicSliderText{float:left; margin-top:25px;margin-right:80px;}
+#paymentSlider  #paymentSlider-state,#paymentSlider  #paymentSlider-totalSection{float:left;clear: both; margin-left:205px;}
+#paymentSlider .plusSign{margin: 0px 5px;}
+.CASH_AWARD .monetaryState,.CASH_AWARD .pointsState,.CASH_AWARD .plusSign, .ancillary-name .ancillary-quantity{float:left}
+#paymentSlider .paymentSlider-stateDescription{color:#999999;float:left;}
+#paymentSlider .ancillary-icon{clear:left;float:left;width:30px;height: 30px; background: url(../images/cart_icons.png) no-repeat;}
+#paymentSlider .ancillary-icon-BG {background-position:0 -122px;}
+#paymentSlider .ancillary-icon-Car {background-position:0 -180px;}
+#paymentSlider .ancillary-icon-Hotel {background-position:0 -150px;}
+#paymentSlider .ancillary-icon-AirFare {background-position:0px;margin-top:20px;}
+#paymentSlider .ancillary-name{width:150px;float:left;line-height:30px;margin-right:25px;}
+.rightArrowBox,.leftArrowBox,.topArrowBox,.bottomArrowBox {width: 150px; height: 60px; display: inline-block; background-color: #F4FFd5; position: relative; border: 1px solid #999999; border-radius:5px; }
+.rightArrowBox.hidden,.leftArrowBox.hidden,.topArrowBox.hidden,.bottomArrowBox.hidden { display: none;}
+.rightArrowBox:after, .rightArrowBox:before, .leftArrowBox:after, .leftArrowBox:before, .bottomArrowBox:before,.bottomArrowBox:after,.topArrowBox:before,.topArrowBox:after { border: solid transparent; content: ' '; height: 0; position: absolute; width: 0; }
+.rightArrowBox:before { border-width: 12px; border-left-color: #999999; top: 8px; left: 100%;}
+.rightArrowBox:after { border-width: 10px; border-left-color:#F4FFd5; top: 10px; left: 100%; }
+.leftArrowBox:before { border-width: 12px; border-right-color: #999999; top: 8px; right:100%; }
+.leftArrowBox:after { border-width: 10px; border-right-color:#F4FFd5; top: 10px; right:100%;}
+.bottomArrowBox:before{ border-width: 14px; border-top-color: #999; top: 100%; left: 32px;}
+.bottomArrowBox:after{ border-width: 12px; border-top-color:#F4FFd5; top: 100%; left: 35px;}
+.topArrowBox:before{ border-width: 14px; border-bottom-color: #999; bottom: 100%; left: 32px;}
+.topArrowBox:after{ border-width: 12px; border-bottom-color:#F4FFd5; bottom: 100%; left: 35px;}
+.close{ top:3px; right:3px; position:absolute; border:1px solid #999999; cursor: pointer;}
+.leftArrowBox{  margin-left:10px;}
+.arrowBox .content{ margin:7px; display: block; cursor:none;}
+.paymentSlider-total-description, #paymentSlider-total, .paymentSlider-milesAfterPurchaseSummary{float:left;}
+#paymentSlider-dynamicSliderContainer .slider-points-error{
+    top: -73px;
+    position: absolute;
+}/* payment summary component */
+.paymentsummary { padding-bottom: 15px; }
+
+#payment-summary.payment-summary-initialized .payment-type { border-width:0 6px 0 4px; border-style:solid; float:left; width:136px; margin:0; padding:0; line-height:18px;}
+#payment-summary.payment-summary-initialized .payment-type dd {font-weight:bold;display:inline; padding:0 5px 13px 10px; font-size:9pt; color:#2062c1; }
+#payment-summary.payment-summary-initialized .payment-type dt  { padding:5px 11px 2px 10px;}
+#payment-summary.payment-summary-initialized .payment-wrapper { background:url(../images/component-bg.gif) repeat-y; }
+#payment-summary.payment-summary-initialized .payment-content { background:url(../images/component-top.gif) no-repeat top left; padding-top:3px; }
+#payment-summary.payment-summary-initialized div.payment { background:url(../images/component-bottom.gif) no-repeat bottom left; padding-bottom:5px; }
+.ie7 #payment-summary.payment-summary-initialized div.payment {padding-bottom: 0px}
+#payment-summary.payment-summary-initialized .payment-item { padding:5px 2px; width: 690px; overflow: hidden; }
+#payment-summary.payment-summary-initialized .payment-item-type { background: url("../images/payment-item-bg.gif") repeat-y 6px 0; }
+#payment-summary.payment-summary-initialized .payment-total { float:left; line-height:18px; width:275px; padding:6px 0 0 0; }
+#payment-summary.payment-summary-initialized .payment-total dt { float:left; }
+#payment-summary.payment-summary-initialized .payment-total dt,
+#payment-summary.payment-summary-initialized .payment-total dd { font-weight:bold; display:block; font-size:13px; padding:0 13px 0 13px; }
+#payment-summary.payment-summary-initialized .payment-total dd.payment-amounts { text-align:right; }
+#payment-summary.payment-summary-initialized .payment-total dd.payment-details { background-image: none; display:block; padding:0 0 0 13px; }
+#payment-summary.payment-summary-initialized .payment-total a { text-decoration:underline; font-weight:normal; }
+#payment-summary.payment-summary-initialized .payment-breakdown { float:right; display:inline; width:250px; margin: 0; padding: 0; }
+#payment-summary.payment-summary-initialized .payment-breakdown dt { float:left; clear:left; width:120px; font-size:12px; padding: 0; margin: 0; }
+#payment-summary.payment-summary-initialized .payment-breakdown dd { text-align:right; font-weight:normal;}
+.ie7 #payment-summary.payment-summary-initialized .payment-breakdown dd { width: 100px;}
+#payment-summary.payment-summary-initialized .payment-summary h3 {padding:7px 0 1px 0; margin:0;}
+#payment-summary.payment-summary-initialized .payment-summary {float:left; width:250px;}
+#payment-summary.payment-summary-initialized dl { line-height:18px; }
+#payment-summary.payment-summary-initialized .multiple-payments {border: 0 dotted #B2B19F;border-bottom-width: 1px;}
+#payment-summary.payment-summary-initialized .payment-remote .payment-total dt { float: left; width: 100px; }
+#payment-summary.payment-summary-initialized .payment-remote .payment-total dd { float: right; width: 140px; }
+
+#payment-summary.payment-summary-multiFop .payment-wrapper { background:url(../images/component-bg.gif) repeat-y; width:702px}
+#payment-summary.payment-summary-multiFop .payment-content { background:url(../images/confirmation-top.gif) no-repeat top left; padding-top:3px; margin-bottom: 15px;  }
+#payment-summary.payment-summary-multiFop div.payment { background:url(../images/component-bottom.gif) no-repeat bottom left; padding-bottom:7px; }
+.ie7 #payment-summary.payment-summary-multiFop div.payment {padding-bottom: 0px}
+#payment-summary.payment-summary-multiFop .payment-details,
+#payment-summary.payment-summary-multiFop .payment-type { background-image:none; }
+#payment-summary.payment-summary-multiFop .payment-item { margin-left: 240px; width: 450px; padding:5px 2px; }
+#payment-summary.payment-summary-multiFop .multiple-payments { border-width:0 0 1px 0; border-style:dotted; }
+#payment-summary.payment-summary-multiFop .last-payment { padding-bottom:0;}
+#payment-summary.payment-summary-multiFop .payment .header { border-bottom: 1px dotted #ccc; background: #ECF1F4; margin: 0 2px 5px; }
+#payment-summary.payment-summary-multiFop .payment .header h2, #payment-summary.payment-summary-multiFop .payment .header h3 { padding: 5px 5px 0 7px; color: #2B6DCC; font-weight: bold; font-size: 17px;  }
+#payment-summary.payment-summary-multiFop .payment .header a { font-size: 12px; font-weight: normal; text-decoration: underline; margin-left: 10px;   }
+#payment-summary.payment-summary-multiFop .payment .details-content { background: #fff; border-bottom: 1px dotted #ccc; padding: 15px; margin: 0 2px 5px; }
+#payment-summary.payment-summary-multiFop .payment .details-content .total { font-weight: bold; }
+#payment-summary.payment-summary-multiFop .payment .details-content .payment-breakdown-ancillaries { float: right;  }
+#payment-summary.payment-summary-multiFop .payment .details-content .payment-breakdown { border-bottom: 1px dotted #ccc;  margin: 10px 20px; width: 290px;  }
+#payment-summary.payment-summary-multiFop .payment .details-content .payment-breakdown dt { width:180px;  }
+#payment-summary.payment-summary-multiFop .payment .details-content .payment-breakdown dt.expanded { padding-left: 20px; }
+#payment-summary.payment-summary-multiFop .payment .details-content .payment-breakdown .expanded { font-size: 11px; color: #999; }
+#payment-summary.payment-summary-multiFop .payment .payment-summary { border-right: 1px dotted #ccc; padding-right: 7px; padding-left: 7px; }
+#payment-summary.payment-summary-multiFop .payment-summary { float: left; width: auto; }
+#payment-summary.payment-summary-multiFop .payment-summary .total { font-size: 14px; font-weight: bold; }
+#payment-summary.payment-summary-multiFop .payment-summary .total span { font-size: inherit; }
+#payment-summary.payment-summary-multiFop .payment-summary .payment-breakdown dt.expanded { padding-left: 20px; }
+#payment-summary.payment-summary-multiFop .payment-summary .payment-breakdown .expanded { font-size: 11px; color: #999; }
+#payment-summary.payment-summary-multiFop .payment-summary .payment-breakdown a { font-weight: normal; text-decoration: underline; }
+#payment-summary.payment-summary-multiFop .payment-breakdown a { text-decoration:underline; font-weight:normal; }
+#payment-summary.payment-summary-multiFop .payment-item h3 { padding:7px 0 1px 0; margin:0; font-size:12px; float:right; width:262px; }
+#payment-summary.payment-summary-multiFop .payment-type { border-width:0 6px 0 4px; border-style:solid; float:left; width:136px; margin:0; padding:0; line-height:18px; }
+#payment-summary.payment-summary-multiFop .payment-type dt {  padding:5px 11px 2px 10px;}
+#payment-summary.payment-summary-multiFop .payment-type dd { font-weight:bold; padding:0 11px 13px 10px; font-size:16px; color:#2062c1; }
+#payment-summary.payment-summary-multiFop .multiple-payments .payment-type dd {  }
+#payment-summary.payment-summary-multiFop .payment-total { float:left; line-height:18px; width:300px; padding:6px 0 0 0; }
+#payment-summary.payment-summary-multiFop .payment-total dt { float:left; }
+#payment-summary.payment-summary-multiFop .payment-total dt,
+#payment-summary.payment-summary-multiFop .payment-total dd { font-weight:bold; display:block; font-size:13px; padding-left:13px; }
+#payment-summary.payment-summary-multiFop .payment-total dd.payment-amounts { text-align:right; }
+#payment-summary.payment-summary-multiFop .payment-total dd.payment-details { display:block; padding:0 0 0 13px; font-weight: normal; }
+#payment-summary.payment-summary-multiFop .payment-total a { text-decoration:underline; font-weight:normal; }
+#payment-summary.payment-summary-multiFop .payment-breakdown {  width:220px; margin-left: 10px; float: left; clear: left; }
+#payment-summary.payment-summary-multiFop .payment-breakdown-total { margin-left: 0; }
+#payment-summary.payment-summary-multiFop .payment-breakdown dt { float:left; clear:left; width:120px; font-size:12px; margin-bottom: 5px; }
+#payment-summary.payment-summary-multiFop .payment-breakdown dt.total { width: 60px; }
+#payment-summary.payment-summary-multiFop .payment-breakdown dd { text-align:right; font-size: 12px; font-weight:normal; margin-bottom: 5px; float: right;  }
+
+#payment-summary.payment-summary-multiFop .details-trigger { height:20px; width:20px; display:inline-block; background:url(../images/btn-toggle-details.gif) no-repeat left top;margin-left: 5px;}
+#payment-summary.payment-summary-multiFop .details-trigger.open { background:url(../images/btn-toggle-details.gif) no-repeat left bottom; }
+#payment-summary.payment-summary-multiFop .details-button-container {display:inline-block;}
+#payment-summary.payment-summary-multiFop .payment-summary-total { padding-left:13px; font-size:13px; line-height:18px; }
+#payment-summary.payment-summary-multiFop .payment-summary-total dl { font-weight:bold; }
+#payment-summary.payment-summary-multiFop .payment-summary-total dt { display:inline; padding-left: 5px; float:left;}
+#payment-summary.payment-summary-multiFop .payment-summary-total dd { display:inline; padding-right:20px; float:right;}
+#payment-summary.payment-summary-multiFop .payment-summary-total ul { margin-left:280px;}
+#payment-summary.payment-summary-multiFop .payment-summary-total .total {  }
+#payment-summary.payment-summary-multiFop-display-below .payment .payment-summary { width:323px; padding: 13px; }
+#payment-summary.payment-summary-multiFop-display-below .payment-breakdown { width:97%; margin-left: 3%; }
+#payment-summary.payment-summary-multiFop-display-below .totals-comparison .payment-breakdown { width:100%; margin-left: 0px; margin-top: 5px; }
+#payment-summary.payment-summary-multiFop-display-below .totals-comparison dt.total { width:auto; }
+#payment-summary.payment-summary-multiFop-display-below .payment-breakdown dt { clear:left; }
+#payment-summary.payment-summary-multiFop-display-below .payment-breakdown dd { clear:right; }
+#payment-summary.payment-summary-multiFop-display-below .fop-summary { width:325px; float: right; text-align: left; padding: 13px; }
+#payment-summary.payment-summary-multiFop-display-below .payment-item { margin: 10px 0px; padding:0px; width: 100%; }
+#payment-summary.payment-summary-multiFop-display-below h3 { margin: 0px;}
+#payment-summary.payment-summary-multiFop-display-below dl { width: 100%; }
+#payment-summary.payment-summary-multiFop-display-below .payment-total dt { padding: 0px; float:left; }
+#payment-summary.payment-summary-multiFop-display-below dd { float: right; }
+#payment-summary.payment-summary-multiFop-display-below .payment-summary-total,
+#payment-summary.payment-summary-multiFop-display-below .payment-summary-total dt { padding-left: 0px; }
+#payment-summary.payment-summary-multiFop-display-below .payment-summary-total dd { padding-right: 0px; }
+#payment-summary.payment-summary-multiFop-display-below .payment-summary-total ul { margin-left: 15px; }
+
+#payment-summary.payment-summary-bnpl .payment-wrapper { background:url(../images/component-bg.gif) repeat-y; width:702px}
+#payment-summary.payment-summary-bnpl .payment-content { background:url(../images/confirmation-top.gif) no-repeat top left; padding-top:3px; margin-bottom: 15px;  }
+#payment-summary.payment-summary-bnpl div.payment { background:url(../images/component-bottom.gif) no-repeat bottom left; padding-bottom:7px; }
+.ie7 #payment-summary.payment-summary-bnpl div.payment {padding-bottom: 0px}
+#payment-summary.payment-summary-bnpl .payment-details,
+#payment-summary.payment-summary-bnpl .payment-type { background-image:none; }
+#payment-summary.payment-summary-bnpl .payment-item { width: 440px; margin-left: 240px; padding:5px 2px; }
+#payment-summary.payment-summary-bnpl .multiple-payments { width:450px; border-width:0 0 1px 0; border-style:dotted;}
+#payment-summary.payment-summary-bnpl .last-payment { padding-bottom:0;}
+#payment-summary.payment-summary-bnpl .payment .header { border-bottom: 1px dotted #ccc; background: #ECF1F4; margin: 0 2px 5px; }
+#payment-summary.payment-summary-bnpl .payment .header h2, #payment-summary.payment-summary-bnpl .payment .header h3 { padding: 5px 5px 0 7px; color: #2B6DCC; font-weight: bold; font-size: 17px;  }
+#payment-summary.payment-summary-bnpl .payment .header a { font-size: 12px; font-weight: normal; text-decoration: underline; margin-left: 10px;   }
+#payment-summary.payment-summary-bnpl .payment .details-content { background: #fff; border-bottom: 1px dotted #ccc; padding: 15px; margin: 0 2px 5px; }
+#payment-summary.payment-summary-bnpl .payment .details-content .total { font-weight: bold; }
+#payment-summary.payment-summary-bnpl .payment .details-content .payment-breakdown-ancillaries { float: right;  }
+#payment-summary.payment-summary-bnpl .payment .details-content .payment-breakdown { border-bottom: 1px dotted #ccc;  margin: 10px 20px; width: 290px;  }
+#payment-summary.payment-summary-bnpl .payment .details-content .payment-breakdown dt { width:180px;  }
+#payment-summary.payment-summary-bnpl .payment .details-content .payment-breakdown dt.expanded { padding-left: 20px; }
+#payment-summary.payment-summary-bnpl .payment .details-content .payment-breakdown .expanded { font-size: 11px; color: #999; }
+#payment-summary.payment-summary-bnpl .payment .payment-summary { border-right: 1px dotted #ccc; padding-right: 7px; padding-left: 7px; }
+#payment-summary.payment-summary-bnpl .payment-summary { float: left; width: auto; }
+#payment-summary.payment-summary-bnpl .payment-summary .total { font-size: 14px; font-weight: bold; }
+#payment-summary.payment-summary-bnpl .payment-summary .total span { font-size: inherit; }
+#payment-summary.payment-summary-bnpl .payment-summary .payment-breakdown dt.expanded { padding-left: 20px; }
+#payment-summary.payment-summary-bnpl .payment-summary .payment-breakdown .expanded { font-size: 11px; color: #999; }
+#payment-summary.payment-summary-bnpl .payment-summary .payment-breakdown a { font-weight: normal; text-decoration: underline; }
+#payment-summary.payment-summary-bnpl .payment-breakdown a { text-decoration:underline; font-weight:normal; }
+#payment-summary.payment-summary-bnpl .payment-item h3 { padding:7px 0 1px 0; margin:0; font-size:12px; float:right; width:262px; }
+#payment-summary.payment-summary-bnpl .payment-type { border-width:0 6px 0 4px; border-style:solid; float:left; width:136px; margin:0; padding:0; line-height:18px; }
+#payment-summary.payment-summary-bnpl .payment-type dt {  padding:5px 11px 2px 10px;}
+#payment-summary.payment-summary-bnpl .payment-type dd { font-weight:bold; padding:0 11px 13px 10px; font-size:16px; color:#2062c1; }
+#payment-summary.payment-summary-bnpl .multiple-payments .payment-type dd {  }
+#payment-summary.payment-summary-bnpl .payment-total { float:left; line-height:18px; width:300px; padding:6px 0 0 0; }
+#payment-summary.payment-summary-bnpl .payment-total dt { float:left; }
+#payment-summary.payment-summary-bnpl .payment-total dt,
+#payment-summary.payment-summary-bnpl .payment-total dd { font-weight:bold; display:block; font-size:13px; padding-left:13px; }
+#payment-summary.payment-summary-bnpl .payment-total dd.payment-amounts { text-align:right; }
+#payment-summary.payment-summary-bnpl .payment-total dd.payment-details { display:block; padding:0 0 0 13px; font-weight: normal; }
+#payment-summary.payment-summary-bnpl .payment-total a { text-decoration:underline; font-weight:normal; }
+#payment-summary.payment-summary-bnpl .payment-breakdown {  width:220px; margin-left: 10px; float: left; clear: left; }
+#payment-summary.payment-summary-bnpl .payment-breakdown-total { margin-left: 0; }
+#payment-summary.payment-summary-bnpl .payment-breakdown dt { float:left; clear:left; width:120px; font-size:12px; margin-bottom: 5px; }
+#payment-summary.payment-summary-bnpl .payment-breakdown dt.total { width: 76px; }
+#payment-summary.payment-summary-bnpl .payment-breakdown dd { text-align:right; font-size: 12px; font-weight:normal; margin-bottom: 5px; float: right;  }
+
+
+#payment-summary.payment-summary-bnpl .details-trigger { height:20px; width:20px; display:inline-block; background:url(../images/btn-toggle-details.gif) no-repeat left top;margin-left: 5px;}
+#payment-summary.payment-summary-bnpl .details-trigger.open { background:url(../images/btn-toggle-details.gif) no-repeat left bottom; }
+#payment-summary.payment-summary-bnpl .details-button-container {display:inline-block;}
+#payment-summary.payment-summary-bnpl .payment-summary-total { padding-left:13px; font-size:13px; line-height:18px; }
+#payment-summary.payment-summary-bnpl .payment-summary-total dl { font-weight:bold; }
+#payment-summary.payment-summary-bnpl .payment-summary-total dt { display:inline; padding-left: 5px; float:left;}
+#payment-summary.payment-summary-bnpl .payment-summary-total dd { display:inline; padding-right: 3px; float:right;}
+#payment-summary.payment-summary-bnpl .payment-summary-total ul { margin-left:280px;}
+#payment-summary.payment-summary-bnpl .payment-summary-total .total {  }
+
+#payment-summary.payment-summary-exchange .crossToggler span { padding-left: 10px; margin-top: 0px; height: 15px; background: url(../images/btn-toggle-prices.png) no-repeat; }
+#payment-summary.payment-summary-exchange .crossToggler .open span { padding-left: 10px; margin-top: 0px; height: 15px; background: url(../images/btn-toggle-prices.png) no-repeat; background-position: 0 -15px;}
+#payment-summary.payment-summary-exchange .crossToggler a { margin-left: 0px !important; }
+#payment-summary.payment-summary-exchange .crossTogglerLabel { float: left; }
+
+#payment-summary.payment-summary-exchange .price-details h4 { background:0px -1200px; padding-left: 0px;}
+#payment-summary.payment-summary-exchange .price-details  { padding: 10px 2px; margin:0 8px; border-top: 1px dotted #B2B19F;}
+#payment-summary.payment-summary-exchange .price-details ul { margin:5px 5px 5px 0px; padding:0; }
+#payment-summary.payment-summary-exchange .price-details li { margin-bottom:7px; }
+#payment-summary.payment-summary-exchange .price-details li a { margin-left:7px; }
+#payment-summary.payment-summary-exchange .price-details li .price-value { font-weight:bold; }
+#payment-summary.payment-summary-exchange .price-details p { margin-bottom: 10px;}
+#payment-summary.payment-summary-exchange .price-details li em { font-style:normal; }
+#payment-summary.payment-summary-exchange .price-details .price-type { font-weight :bold; overflow:hidden; clear:both; margin-bottom: 5px; }
+#payment-summary.payment-summary-exchange .price-details .price-element-details { overflow:hidden; clear:both; margin-bottom: 5px; }
+#payment-summary.payment-summary-exchange .price-details .price-element-details li { overflow:hidden; clear:both; margin-bottom: 5px; }
+#payment-summary.payment-summary-exchange .price-details ul ol { margin:7px 0 0 22px; font-weight: normal; }
+#payment-summary.payment-summary-exchange .price-details ul ol ul { margin:7px 0 0 1px; color: #999; }
+#payment-summary.payment-summary-exchange .price-details .price-type ol { margin-bottom: 15px; border-bottom: 1px dotted #B2B19F;  }
+
+
+#payment-summary.payment-summary-exchange {
+    width: 244px;
+}
+
+#payment-summary.payment-summary-exchange .modify-link {
+    float: right;
+}
+
+#payment-summary.payment-summary-exchange .total-top {
+    display: block;
+    margin: -1px 10px 0 20px;
+    padding: 0 0 10px;
+}
+
+#payment-summary.payment-summary-exchange h4.total-top em {
+    float: right;
+}
+
+#payment-summary.payment-summary-exchange .prices-alternative {
+    display: block;
+}
+
+#payment-summary.payment-summary-exchange .component-section ol {
+    list-style-type: none;
+}
+
+#payment-summary.payment-summary-exchange .component-section .fareDetails {
+    display: inline-block;
+    float: right;
+}
+
+#payment-summary.payment-summary-exchange .price-details ul {
+    list-style-type: none;
+}
+
+#payment-summary.payment-summary-exchange .price-details li .price-value {
+    float: right;
+}
+
+#payment-summary.payment-summary-exchange .price-details .price-type .item-price {
+    float: right;
+}
+
+#payment-summary.payment-summary-exchange .price-details ul ol ul {
+    list-style-type: none;
+}
+
+#payment-summary.payment-summary-exchange h4.total-bottom em {
+    float: right;
+}
+
+#payment-summary.payment-summary-exchange .payment-summary {
+    width: 30%;
+}
+
+#payment-summary.payment-summary-exchange .transactions-carried-out{
+    float: right;
+    width: 65%;
+}
+
+#payment-summary.payment-summary-exchange .transaction-price {
+    float: right;
+    height: 14px;
+}
+
+#payment-summary.payment-summary-exchange .transaction-name {
+    float: left;
+    width: 70%;
+}
+
+#payment-summary.payment-summary-exchange .number-of-transactions {
+    font-weight: bold;
+}
+
+#payment-summary.payment-summary-exchange .total-price-label {
+    display: inline-block;
+}
+
+#payment-summary.payment-summary-exchange .total-price-container {
+    display: inline-block;
+    float: right;
+}
+
+#payment-summary .multiple-currencies-info {
+    background:url("../images/info-icon.png") no-repeat scroll left 10px top rgba(0, 0, 0, 0);
+    padding-left: 30px;
+    height: 20px;
+}
+
+#payment-summary .reference-number {
+    width: 450px;
+    padding: 2px 5px;
+    float: left;
+}
+
+#payment-summary .payment-total .prices-and:before,
+#payment-summary .payment-breakdown .prices-and:before {
+    content: "\a";
+    white-space: pre;
+}
+
+#payment-summary .payment-total .pending {
+    clear: left;
+    float: right;
+}
+
+#payment-summary .payment .paymentMessages {
+    list-style-type: disc;
+}
+/* pnr info component */
+/* pnr info component */
+.pnr-wrapper { width:702px; background:url(../images/confirmation-bg.gif) repeat-y left; margin:0 0 15px 0; }
+.pnr-info { background:url(../images/confirmation-top.gif) no-repeat top; }
+.pnr-content { background:url(../images/confirmation-bottom.gif) no-repeat bottom; padding:15px 0; overflow: hidden; height: 1%;}
+.VIEW_ITINERARY_PAGE .pnr-content { background:url(../images/confirmation-bottom.gif) no-repeat bottom; padding:15px 0; overflow: visible; height: 1%;}
+#pnr-info  dl { line-height:18px; }
+#pnr-info  dt { font-size:13px; }
+#pnr-info  .inline { display:inline-block; padding-right:4px; }
+#pnr-info  dd span.left-space {padding-left:4px; }
+#pnr-info  dd { font-weight:bold; font-size:12px; }
+#pnr-info  .trip-actions {padding:0 0 30px 25px; display:block}
+#pnr-info  .trip-summary {width: 45%}
+#pnr-info  .claimPnrLinkHolder {margin-right: 50px}
+
+.pnr-wrapper.bnpl {background:none;}
+.bnpl .pnr-info {background:none;}
+.bnpl .pnr-content{background:none;}
+
+.pnrinfo .purchase-now-link {
+    background: #F7F5F5;
+    padding: 13px 10px;
+    color: black;
+}
+
+.pnrinfo .flightUpgradeButton{
+    font: bold 11px Arial;
+    text-decoration: none;
+    background-color: #EEEEEE;
+    color: #333333;
+    padding: 2px 6px 2px 6px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+}
+
+.pnrinfo .flightCheckInButton{
+    font: bold 11px Arial;
+    text-decoration: none;
+    background-color: #EEEEEE;
+    color: #333333;
+    padding: 2px 6px 2px 6px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+}
+
+.pnrinfo .upperUpgradeLinkWrapperClass {
+    background: #C0D0E0;
+    padding: 13px;
+    margin: 13px;
+}
+
+.pnrinfo .upperCheckInLinkWrapperClass {
+    background: #C0D0E0;
+    padding: 13px;
+    margin: 13px;
+}
+
+.pnrinfo .upperUpgradeButtonMessageContainerClass{
+    margin: 13px;
+}
+
+.pnrinfo .upperCheckInButtonMessageContainerClass{
+    margin: 13px;
+}
+
+.pnrinfo .purchase-now-link .onHoldPayment {
+    display: inline-block;
+    width: 20%;
+}
+
+.pnrinfo .purchase-now-link .onHoldMessage {
+    padding: 13px 10px;
+    display: inline-block;
+    width: 70%;
+}
+
+.pnrinfo a.button-link span {
+    background-image: url("../images/purchase-now-button.png");
+    width: 135px;
+}
+
+.pnrinfo .reloc-box {
+    float: left;
+    width: 135px;
+    background: #ECF1F4;
+    text-align: center;
+    margin-left: 14px;
+}
+
+.pnrinfo .reloc-box dl {
+    padding-top: 14px;
+    font-size: 11px;
+}
+
+.pnrinfo .reloc-box dd, .pnrinfo .reloc-box dt {
+    display: block;
+    margin: auto;
+    width: 114px;
+}
+
+.pnrinfo .reloc-box dt {
+
+}
+
+.pnrinfo .reloc-box .reloc {
+    font-size: 16px;
+    padding-bottom: 8px;
+}
+
+.pnrinfo .reloc-box .status {
+    border-top: 2px solid #DCDFE2;
+    padding-top: 6px;
+}
+
+.pnrinfo .pnr-wrapper {
+    margin-top: 9px;
+}
+
+.pnrinfo .trip-info {
+    float: left;
+    width: 527px;
+    padding-left: 12px;
+}
+
+.pnrinfo .flight-details-table, .pnrinfo .hotels-and-cars {
+    margin-left: 15px
+}
+
+.pnrinfo .flight-info p {
+    float: left;
+    color: black;
+}
+
+.pnrinfo .flight-info .origin {
+    margin-left: 2px;
+}
+
+.pnrinfo .flight-info span {
+    display: block;
+}
+
+.pnrinfo .flight-details-table {
+    border: 1px solid #DADADA;
+    width: 500px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.pnrinfo .flight-details-table th {
+    text-align: center;
+    background: #F2F2F2;
+    border: 1px solid #DADADA;
+    padding: 10px 0;
+    color: #666666;
+}
+
+.pnrinfo .flight-details-table td {
+    padding: 17px 0;
+    border: 1px solid #DADADA;
+    text-align: center;
+    color: #333333;
+}
+
+.pnrinfo .hotels-and-cars dt {
+    font-weight: bold;
+    float: left;
+    clear: left;
+}
+
+.pnrinfo .hotels-and-cars dd {
+    float: left;
+    margin-left: 5px;
+}
+
+.pnrinfo .trip-actions {
+    display: block;
+    clear: both;
+    margin: 0 0 0 27px;
+}
+
+.pnrinfo a.button-toggle-details {
+    float: left;
+}
+
+.pnrinfo strong.separator {
+    width: 80px;
+    display: block;
+    text-align: center;
+    float: left;
+    color: black;
+}
+
+.bnpl .pnrinfo #exchangeAndCancelLinksHolder li {
+    border-right: 1px solid gray;
+    font-size: 11px;
+    padding-top: 0;
+}
+
+.pnrinfo #exchangeAndCancelLinksHolder li.last {
+    border-right: none;
+}
+
+.pnrinfo div.cancellation-info {
+    clear: both;
+    font-weight: bold;
+    margin: 0 13px;
+    padding: 0 10px 10px 10px ;
+    text-align: center;
+    width: 115px;
+}
+
+.pnrinfo .print-now-link {
+    background: #F7F5F5;
+    padding: 13px 10px;
+    color: black;
+}
+
+.pnrinfo .print-now-link .printNow {
+    display: inline-block;
+    width: 20%;
+}
+
+.pnrinfo .print-now-link .printNowMessage {
+    padding: 13px 10px;
+    display: inline-block;
+    width: 70%;
+}
+
+.pnrinfo .print-now-link a.button-link span {
+    background-image: url("../images/print-now-button.png");
+    width: 135px;
+}
+
+.grayedOutLink {
+    color:#CCCCCC ;
+    text-decoration: none !important;
+    cursor: default;
+}
+
+.grayedOutLink:hover{
+    color:#CCCCCC;
+}
+
+#exchangeLinkContainer, #cancelLinkContainer, #upgradeLinkContainer, #editLinkContainer, #SEATS_MTOContainer, #ANCILLARIES_MTOContainer{
+    position: relative;
+}
+
+.hoverMessage{
+    border-radius: 8px;
+    border: 1px solid #CCCCCC;
+    z-index: 10000;
+    top: 15px;
+    left: 5px;
+    background: #FFFFFF;
+    position: absolute;
+    margin: 7px;
+}
+
+#hoverMessageTitle{
+    background: #CCCCCC;
+    display: inline-block;
+    position: relative;
+}
+
+#hoverMessageTitle p{
+    font-weight: bold;
+    margin: 10px;
+    max-width: 500px;
+    min-width: 350px;
+}
+
+.hoverMessageContent{
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+#tailBorder {
+    position:absolute;
+    top:-20px;
+    left:20px;
+    width:0;height:0;
+    border-color: transparent transparent #CCCCCC transparent;
+    border-width:10px;
+    border-style:solid;
+}
+
+#tail {
+    position:absolute;
+    top:-19px;
+    left:20px;
+    width:0;height:0;
+    border-color: transparent transparent #FFFFFF transparent;
+    border-width:10px;
+    border-style:solid;
+}#popupExchangeUpdateReservationErrors .clearer{clear: both;display: block;}
+#popupExchangeUpdateReservationErrors .failedAncillary{float: left; padding: 10px; height: 100%;}
+#popupExchangeUpdateReservationErrors .failedAncillaryIndex4,#popupExchangeUpdateReservationErrors .failedAncillaryIndex7,#popupExchangeUpdateReservationErrors .failedAncillaryIndex10{clear: left;}
+
+#popupExchangeUpdateReservationErrors h3{background-color: #CCC;color: #333;padding: 3px 5px 3px 10px; margin: 0 0 5px 0;}
+#popupExchangeUpdateReservationErrors ul{background: #fff;padding: 3px 3px 3px 10px;}
+#popupExchangeUpdateReservationErrors ul li{list-style: none; padding: 1px;}
+#popupExchangeUpdateReservationErrors ul li ul{ padding: 3px 0 3px 0;}
+#popupExchangeUpdateReservationErrors ul li.paddedItem{margin-bottom: 10px;}
+#popupExchangeUpdateReservationErrors ul li .flightNumber{ font-weight: bold; display:block; padding-bottom: 2px; }
+/* Process Bar */
+#booking-process .process-bar { margin-bottom: 15px; clear: left; }
+#booking-process .process-bar ol { min-height: 38px; }
+#booking-process .process-bar li { float: left; display: inline; font-size: 13px; text-transform: uppercase; background: url(../images/process-steps.gif) no-repeat;}
+#booking-process .process-bar li.lastStep a { padding-right: 25px;}
+#booking-process .process-bar li:after { content: ''; }
+#booking-process .process-bar a { display: block; height: 26px; float: left; padding: 12px 0 0 33px; font: 95%; }
+#booking-process .process-bar span.order { float: left; position: relative; height: 38px; margin-right: 13px; display: none; }
+#booking-process .process-bar #step-1 a { padding-left: 16px; }
+#booking-process .process-bar li.stepFuture a { cursor: default; }
+#booking-process .process-bar li.lastStep a { cursor: default; }
+#booking-process .process-bar li.stepFuture.firstStep { background-position: 0 -320px; }
+#booking-process .process-bar li.stepCurrent.firstStep { background-position: 0 0; }
+#booking-process .process-bar li.stepCurrent.lastStep { background-position: 0 -360px; }
+#booking-process .process-bar li.stepPast.firstStep { background-position:0 -40px; }
+#booking-process .process-bar li.stepCurrent.prevPast  { background-position:0 -80px; }
+#booking-process .process-bar li.stepPast.prevPast  { background-position:0 -120px; }
+#booking-process .process-bar li.stepPast.prevCurrent  { background-position:0 -160px; }
+#booking-process .process-bar li.stepFuture.prevCurrent  { background-position:0 -200px; }
+#booking-process .process-bar li.stepFuture.prevFuture  { background-position:0 -240px; }
+#booking-process .process-bar li.stepFuture.prevPast  { background-position:0 -280px; }
+#booking-process .process-bar li.stepFuture.lastStep a  { background:url(../images/process-steps.gif) no-repeat right -440px; }
+#booking-process .process-bar li.stepCurrent.lastStep a { background:url(../images/process-steps.gif) no-repeat right -400px; }
+#booking-process .process-bar li.stepPast.lastStep a { background:url(../images/process-steps.gif) no-repeat right -480px; }
+#booking-process .process-bar li.stepCurrent.prevFuture { background-position: 0 -360px; }
+#booking-process .process-bar li.readOnlyStep a { cursor: pointer; }
+#booking-process .process-bar li.stepPast.prevFuture  { background-position:0 -520px; }
+
+/* Process Steps */
+#booking-process .process-bar a, .process-bar a:hover { color:#fff; } /* Future & Current Link Color */
+#booking-process .process-bar a span.order { color:#2b6dcc; }
+
+#booking-process .process-bar .stepPast a, #booking-process .process-bar .stepPast span, #booking-process .process-bar .stepPast a:hover { color:#83806c; }  /* Past Link Color */
+#booking-process .process-bar li { background-color:#95b6e5; }  /* Future Step BG Color */
+#booking-process .process-bar .stepCurrent  { background-color:#2b6dcc; } /* Current Step BG Color */
+#booking-process .process-bar .stepPast  { background-color:#d7d7cf; } /* Past Step BG Color */
+#booking-process .process-bar .stepCurrent a { font-weight:bold; } /* Current Step BG Color */.left-margin{
+    margin-left:20px
+}
+
+/*is is needed??*/
+.bottom-margin{
+    margin-bottom:10px
+}
+
+.refundandcost-component .refundandcost-refund-total,
+.refundandcost-component .refundandcost-cost-total {
+    font-size: large;
+    font-weight: bold;
+}
+
+.refundandcost-component .refundandcost-cost-total{
+    padding-top: 10px;
+}
+
+.refundandcost-component .refundandcost-cost,
+.refundandcost-component .refundandcost-refund {
+    padding-top: 10px;
+}
+
+.refundandcost-component .refundandcost-cost .refundandcost-prices .total,
+.refundandcost-component .refundandcost-refund .refundandcost-prices .total {
+    border-top: 1px dotted #d0d0d0;
+    font-weight: bold;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
+.refundandcost-component .refundandcost-cost .refundandcost-prices .price + .price,
+.refundandcost-component .refundandcost-refund .refundandcost-prices .price + .price {
+    margin-top: 10px;
+}
+
+.refundandcost-component .refundandcost-cost .refundandcost-prices .price-tax + .price,
+.refundandcost-component .refundandcost-refund .refundandcost-prices .price-tax + .price {
+    margin-top: 10px;
+}
+
+.refundandcost-component .refundandcost-cost .refundandcost-prices .price + .price-tax,
+.refundandcost-component .refundandcost-refund .refundandcost-prices .price + .price-tax {
+    margin-top: 0px;
+}
+
+.refundandcost-component .refundandcost-refund .refundandcost-prices .trip-options-non-refundable {
+    margin-top: 10px;
+}
+
+.refundandcost-component .refundandcost-prices {
+    border-right: 1px solid #d0d0d0;
+    float: left;
+    margin-right: 20px;
+    width: 200px;
+    padding-right: 20px;
+}
+
+.refundandcost-component .refundandcost-payments {
+    float: left;
+    width: 420px;
+}
+
+.refundandcost-component .refundandcost-prices .right,
+.refundandcost-component .refundandcost-payments .right{
+    float: right;
+}
+
+.refundandcost-component .refundandcost-payments .transactions {
+    font-weight: normal;
+}
+
+.refundandcost-component .refundandcost-payments .paymentlist .payment {
+    margin-bottom: 10px;
+    border-bottom: 1px dotted #d0d0d0;
+    padding-bottom: 10px;
+}
+
+.refundandcost-component .refundandcost-payments .paymentlist .payment:last-child {
+    border-bottom: none;
+}
+
+.refundandcost-component .refundandcost-payments .payment span {
+    line-height: 15px;
+    vertical-align: middle;
+}
+
+.refundandcost-component .refundandcost-payments .fop-icon { display: none; width:35px; height:22px; margin-right: 5px; background: url(../images/payment-fop-icons.png) top left no-repeat; }
+.refundandcost-component .refundandcost-payments .fop-icon-ax { display: inline-block; background-position: 0 0; }
+.refundandcost-component .refundandcost-payments .fop-icon-ba { display: inline-block; background-position: -35px 0; }
+.refundandcost-component .refundandcost-payments .fop-icon-vi { display: inline-block; background-position: -35px 0; }
+.refundandcost-component .refundandcost-payments .fop-icon-dc { display: inline-block; background-position: -70px 0; }
+.refundandcost-component .refundandcost-payments .fop-icon-ds { display: inline-block; background-position: -105px 0; }
+.refundandcost-component .refundandcost-payments .fop-icon-gc { display: inline-block; background-position: -140px 0; }
+.refundandcost-component .refundandcost-payments .fop-icon-ik { display: inline-block; background-position: -175px 0; }
+.refundandcost-component .refundandcost-payments .fop-icon-ca { display: inline-block; background-position: -175px 0; }
+.refundandcost-component .refundandcost-payments .fop-icon-jb { display: inline-block; background-position: -210px 0; }
+.refundandcost-component .refundandcost-payments .fop-icon-po { display: inline-block; background-position: -245px 0; }
+.refundandcost-component .refundandcost-payments .fop-icon-pp { display: inline-block; background-position: -280px 0; }
+.refundandcost-component .refundandcost-payments .fop-icon-tp { display: inline-block; background-position: -315px 0; }
+.refundandcost-component .refundandcost-payments .fop-icon-af { display: inline-block; background-position: -385px 0; }
+.refundandcost-component .refundandcost-payments .fop-icon-pt { display: inline-block; background-position: -420px 0; }
+
+.refundandcost-component .travelbank-tooltip-wrapper {
+    padding-left: 10px;
+}
+
+.refundandcost-component .travelbank-tooltip-box {
+    text-align: left;
+    width: 17em;
+    position: relative;
+    padding: 1em;
+    background-color: #fff6d5;
+    border: 1px solid;
+    border-color: #aa8;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+.refundandcost-component .travelbank-tooltip-arrow-outer, .travelbank-tooltip-arrow-inner {
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 3px;
+    border: 10px solid;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+}
+
+.refundandcost-component .travelbank-tooltip-arrow-outer {
+    left: -10px;
+    border-right-color: #aa8;
+}
+
+.refundandcost-component .travelbank-tooltip-arrow-inner {
+    left: -8px;
+    border-right-color: #fff6d5;
+}
+
+.refundandcost-component .travelbank-tooltip-icon {
+    width: 26px;
+    height: 26px;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 5px;
+    background: url(../images/button-info.png) no-repeat;
+}
+
+.refundandcost-component .travelbank-tooltip-button-close {
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+    background: url(../images/button-close.png) no-repeat;
+}
+
+.refundandcost-component .travelbank-tooltip-button-close img {
+    border-width: 0;
+}
+
+.refundandcost-component .yui3-widget-hd {
+    font-weight: bold;
+    padding-right: 36px;
+    margin-bottom: 1em;
+}
+
+.refundandcost-component .yui3-widget-bd {
+    margin-bottom: 1em;
+}
+
+.refundandcost-component .travelbank-login-field-content {
+    width:100%;
+}
+
+.refundandcost-component .travelbank-login-field-create {
+    width:100%;
+}
+
+.refundandcost-component .hidden {
+    display: none;
+}
+
+.refundandcost-component .travelbank-login-field-content #travelbank-show-overlay {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.refundandcost-component #travelbank-show-overlay-register {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.refundandcost-component .travelBankLoginText {
+    display:inline;
+}
+
+.refundandcost-component .no-refund-due .title {
+    padding-bottom: 5px;
+}
+
+.refundandcost-component .no-refund-due .document-for-pax {
+    display: list-item;
+    margin-left: 10px;
+}
+.remarks .remarks-wrapper{
+    margin-top: 10px;
+    background: url(../images/border-white-top.gif) no-repeat top left;
+    padding-top: 10px
+}
+.remarks .remarks-border{
+    background: url(../images/border-white-bg.gif) repeat-y;
+}
+.remarks .remarks-bottom{
+    background: url(../images/border-white-bottom.gif) no-repeat bottom left;
+    padding-bottom: 10px;
+}
+
+.remarks .remarks-component{
+    margin-left: 15px;
+    margin-top: 8px;
+    clear: both;
+}
+
+.remarks .remarks-content{
+    padding: 5px 0 8px 0;
+    width: 265px;
+}
+
+.remarks textarea{
+    width:300px;
+    height:50px;
+    margin: 0 0 0 10px;
+}
+
+.view-comments textarea{
+    width:600px;
+    height:75px;
+    margin: 0 0 0 10px;
+}
+
+.remarks .comments{
+    vertical-align: top;
+}
+
+.remarks .note{
+    padding: 0 0 0 70px;
+    margin-left: 50px;
+}
+
+.remarks .view-comments-label{
+    vertical-align: top;
+    margin-left: 9px;
+}
+
+.remarks .view-comments{
+    margin-top: 10px;
+}
+
+#remember-me .container { float: right; clear: left; margin: 5px 5px 30px 5px }/* retail locations component */
+.retaillocations { padding-bottom: 15px; }
+
+#retail-locations .retaillocations-component { border-right: 1px dotted #ccc; padding-right: 7px; padding-left: 7px; }
+#retail-locations .retaillocations-component { float: left; width: auto; }
+#retail-locations .retaillocations-wrapper { background:url(../images/component-bg.gif) repeat-y; width:702px; }
+#retail-locations .retaillocations-container { background:url(../images/confirmation-top.gif) no-repeat top left; padding-top:3px; margin-bottom: 15px; }
+#retail-locations div.retaillocations { background:url(../images/component-bottom.gif) no-repeat bottom left; padding-bottom:7px; }
+#retail-locations .retaillocations .header { border-bottom: 1px dotted #ccc; background: #ECF1F4; margin: 0 2px 5px; }
+#retail-locations .retaillocations .header h2 { padding: 5px 5px 0 7px; color: #2B6DCC; font-weight: bold;  }
+#retail-locations .retaillocations .retaillocations-providers-icons { padding-bottom: 60px; }
+#retail-locations .retaillocations .retaillocations-providers-icon-BN {background: url(../images/retail-payment-provider-icons-oneLine.png) no-repeat -235px 0; height: 45px; width: 90px; margin-left:auto; margin-right:auto; float: left; }
+#retail-locations .retaillocations .retaillocations-providers-icon-BX {background: url(../images/retail-payment-provider-icons-oneLine.png) no-repeat -330px 0; height: 45px; width: 85px; margin-left:auto; margin-right:auto; float: left; }
+#retail-locations .retaillocations .retaillocations-providers-icon-HS {background: url(../images/retail-payment-provider-icons-oneLine.png) no-repeat -475px 0; height: 45px; width: 88px; margin-left:auto; margin-right:auto; float: left; }
+#retail-locations .retaillocations .retaillocations-providers-icon-PG {background: url(../images/retail-payment-provider-icons-oneLine.png) no-repeat -418px 0; height: 45px; width: 55px; margin-left:auto; margin-right:auto; float: left; }
+#retail-locations .retaillocations .retaillocations-providers-icon-ST {background: url(../images/retail-payment-provider-icons-oneLine.png) no-repeat -560px 0; height: 45px; width: 90px; margin-left:auto; margin-right:auto; float: left; }
+#retail-locations .retaillocations .retaillocations-providers-icon-SB {background: url(../images/retail-payment-provider-icons-oneLine.png) no-repeat -151px 0; height: 45px; width: 88px; margin-left:auto; margin-right:auto; float: left; }
+#retail-locations .retaillocations .retaillocations-providers-icon-SA {background: url(../images/retail-payment-provider-icons-oneLine.png) no-repeat -105px 0; height: 45px; width: 53px; margin-left:auto; margin-right:auto; float: left; }
+#retail-locations .retaillocations .retaillocations-providers-icon-TL {background: url(../images/retail-payment-provider-icons-oneLine.png) no-repeat 0 0; height: 45px; width: 100px; margin-left:auto; margin-right:auto; float: left; }
+#retail-locations .retaillocations .retaillocations-content { padding: 5px 11px 2px 14px; }
+#retail-locations .retaillocations .retaillocations-content table { width:100%; text-align:left; }
+#retail-locations .retaillocations .retaillocations-content table th { color: #2B6DCC; font-size: 14px; width:50%; padding: 7px 0 0 0; vertical-align: top; }
+#retail-locations .retaillocations .retaillocations-content .locations-table-header { background-color: #F7F5F5; }
+#retail-locations .retaillocations .retaillocations-content .locations-table-line-white { }
+#retail-locations .retaillocations .retaillocations-content .locations-table-line-color { background-color: #F7F5F5; }
+#retail-locations .retaillocations .retaillocations-content table tr { height: 30px; }
+#retail-locations .retaillocations .retaillocations-content table tr td { font-size: 12px; vertical-align: top; }
+
+.flow-message-retailpayment-advisory { padding: 5px; border: 0; background: none; }
+.flow-message-retailpayment-advisory .flow-message-title { color: #9dd53a; }.revenuerewardtoggle .toggle-buttons-container  {
+    background-color: #F3F9FF;
+    padding: 12px 8px 12px 18px;
+    margin: 10px;
+    vertical-align: middle;
+    border-radius: 6px;
+    width: 240px;
+    height: 25px;
+}
+
+.revenuerewardtoggle .toggleButtonLabel{
+    float: left;
+    margin: 6px;
+}
+
+.revenuerewardtoggle .toggle-buttons-container .currency {
+    background-position: 0px -280px;
+    margin-left: 0px;
+    border-right: 1px solid #C6C6C6;
+}
+
+.revenuerewardtoggle .toggle-buttons-container .points
+{
+    background-position: -335px -280px;
+    margin-left: -2px;
+    border-left: 1px solid #C6C6C6;
+}
+
+.revenuerewardtoggle .toggle-buttons-container .button-gray.currency {
+     background-position:0px -81px ;
+ }
+.revenuerewardtoggle .toggle-buttons-container .button-gray.points  {
+    background-position:-335px -81px ;
+}
+.revenuerewardtoggle .buttons input
+{
+    background: url(../images/button-sprite-gray.png) no-repeat;
+    height: 26px;
+    float: left;
+    margin: 0 0 0 10px;
+    width: 87px;
+    color: #888;
+    font-size: 11px;
+}
+.button-group-nav {
+    padding: 1em;
+    height: 1em;
+}
+
+.button-group-nav-back,
+.button-group-nav-prev-seg {
+    float: left;
+}
+
+.button-group-nav-forward,
+.button-group-nav-next-seg {
+    float: right;
+}
+
+/* For individual buttons in the "forward" group when there are multiple buttons like Select Seats, Continue etc */
+.button-group-nav-forward-btn {
+    display: inline;
+}/** static content component **/
+.scc .scc-text {margin-bottom: 15px;}
+.scc .scc-text h2 {margin-left: 0}
+.scc .confirmation-success h2 {color:#1baf1b; margin-left:0}
+.scc .confirmation-failure h2 {color:#f00; margin-left:0}
+.scc .unchangedFlight {color: #808080; font-size: 12px; font-weight: bold; margin:0 0 10px 0;}
+.scc .unchangedFlight h2 {visibility: hidden}
+
+/** dynamic content component **/
+.dcc .dcc-text {margin-bottom: 15px;}
+.dcc .dcc-text h2 {margin-left: 0}
+.scc .cancellationPolicy, .dcc .cancellationPolicy, .dcc .confirmCancellationPolicy, .dcc .refundToAccounting {width: 702px; background:url(../images/component-bg.gif) repeat-y;}
+.scc .cancellationPolicy .scc-component-top, .dcc .cancellationPolicy .dcc-component-top, .dcc .refundToAccounting .dcc-component-top {height: 10px; background:url(../images/component-top.gif) no-repeat;}
+.scc .cancellationPolicy .scc-component-bottom, .dcc .cancellationPolicy .dcc-component-bottom, .dcc .refundToAccounting .dcc-component-bottom {height: 10px; background:url(../images/component-bottom.gif) no-repeat;}
+.scc .cancellationPolicy .scc-component-content, .dcc .cancellationPolicy .dcc-component-content, .dcc .refundToAccounting .dcc-component-content {padding: 0 10px}
+
+.dcc .confirmRefundToAccounting .dcc-component-top, .dcc .confirmCancellationPolicy .dcc-component-top {height: 10px; background:url(../images/component-top.gif) no-repeat;}
+.dcc .confirmRefundToAccounting .dcc-component-bottom, .dcc .confirmCancellationPolicy .dcc-component-bottom {height: 10px; background:url(../images/component-bottom.gif) no-repeat;}
+.dcc .confirmRefundToAccounting .dcc-component-content, .dcc .confirmCancellationPolicy .dcc-component-content {padding: 0 10px}
+
+.scc .exchangeSelectTitle {display: none}
+
+/* seats component */
+
+/* A380 aircraft */
+/* business */
+.aircraft-380.deck-upper.service-business tr {
+    position: relative;
+}
+
+.aircraft-380.deck-upper.service-business td.seat-map-seat-preview strong,
+.aircraft-380.deck-upper.service-business td.seat-map-seat-selectable strong {
+    height: 35px;
+    width: 24px;
+    padding: 0;
+    margin: 0 2px;
+    background: url("../images/seat-a380-seats-sprite.png") no-repeat;
+    display: block;
+}
+
+.aircraft-380.deck-upper.service-business tr td.unavailable strong {
+    height: 35px;
+    width: 24px;
+    padding: 0;
+    margin: 0 2px;
+    background: #999 url("../images/seat-map-legend-occupied.png") no-repeat center center;
+}
+
+.aircraft-380.deck-upper.service-business td strong.rearFacingSeat {
+    background: url("../images/seat-a380-seats-sprite.png") -24px 0 no-repeat;
+}
+
+.aircraft-380.deck-upper.service-business td.seat-map-seat-preview:hover,
+.aircraft-380.deck-upper.service-business td.seat-map-seat-selectable:hover {
+    opacity: 1;
+    text-indent: -5000px;
+}
+
+.aircraft-380.deck-upper.service-business td.seat-map-pax strong,
+.aircraft-380.deck-upper.service-business td.seat-map-seat-selectable strong:hover {
+    text-indent: 0;
+    height: 31px;
+    width: 23px;
+    padding: 4px 0 0 1px;
+    margin: 0 2px;
+    background: url("../images/seat-a380-seats-sprite.png") -48px 0 no-repeat;
+}
+
+.aircraft-380.deck-upper.service-business td.seat-map-pax strong.rearFacingSeat,
+.aircraft-380.deck-upper.service-business td.seat-map-seat-selectable strong.rearFacingSeat:hover {
+    height: 14px;
+    width: 23px;
+    padding: 21px 0 0 1px;
+    margin: 0 2px;
+    background: url("../images/seat-a380-seats-sprite.png") -72px 0 no-repeat;
+}
+
+.aircraft-380.deck-upper.service-business span.seat-map-bassinet {
+    position: absolute;
+}
+
+.aircraft-380.deck-upper.service-business #seat-0-23C, .aircraft-380.deck-upper.service-business #seat-0-23D, .aircraft-380.deck-upper.service-business #seat-0-23G, .aircraft-380.deck-upper.service-business #seat-0-23H,
+.aircraft-380.deck-upper.service-business #seat-0-25C, .aircraft-380.deck-upper.service-business #seat-0-25D, .aircraft-380.deck-upper.service-business #seat-0-25G, .aircraft-380.deck-upper.service-business #seat-0-25H {
+    position: relative;
+}
+
+.aircraft-380.deck-upper.service-business #seat-0-23C span.seat-map-bassinet, .aircraft-380.deck-upper.service-business #seat-0-25C span.seat-map-bassinet {
+    left: -17px;
+    top: 20px;
+}
+
+.aircraft-380.deck-upper.service-business #seat-0-23D span.seat-map-bassinet, .aircraft-380.deck-upper.service-business #seat-0-25D span.seat-map-bassinet {
+    left: 30px;
+    top: 10px;
+}
+
+.aircraft-380.deck-upper.service-business #seat-0-23G span.seat-map-bassinet, .aircraft-380.deck-upper.service-business #seat-0-25G span.seat-map-bassinet {
+    left: -20px;
+    top: 10px;
+}
+
+.aircraft-380.deck-upper.service-business #seat-0-23H span.seat-map-bassinet, .aircraft-380.deck-upper.service-business #seat-0-25H span.seat-map-bassinet {
+    left: 30px;
+    top: 20px;
+}
+
+/* first */
+.aircraft-380.deck-upper.service-first tr {
+    position: relative;
+}
+
+.aircraft-380.deck-upper.service-first tr.row-2 td strong.rearFacingSeat {
+    margin: 10px 2px !important;
+}
+
+.aircraft-380.deck-upper.service-first td.seat-map-seat strong {
+    height: 65px;
+    width: 54px;
+    padding: 0;
+    margin: 10px 2px 0;
+    background: url("../images/seat-a380-seats-sprite.png") -258px 0 no-repeat;
+    display: block;
+}
+
+.aircraft-380.deck-upper.service-first td strong.rearFacingSeat {
+    background: url("../images/seat-a380-seats-sprite.png") -204px 0 no-repeat;
+    margin-top: -60px;
+}
+
+.aircraft-380.deck-upper.service-first tr.row-5 .seat-map-aisle strong,
+.aircraft-380.deck-upper.service-first tr.row-7 .seat-map-aisle strong,
+.aircraft-380.deck-upper.service-first tr.row-5 .seat-map-aisle strong:hover,
+.aircraft-380.deck-upper.service-first tr.row-7 .seat-map-aisle strong:hover {
+    margin-top: -7px !important;
+}
+
+.aircraft-380.deck-upper.service-first td.unavailable strong {
+    height: 65px;
+    width: 54px;
+    padding: 0;
+    margin: 8px 2px;
+    background: #999 url("../images/seat-map-legend-occupied.png") no-repeat center center;
+}
+
+.aircraft-380.deck-upper.service-first td.seat-map-seat-selectable:hover {
+    opacity: 1;
+}
+
+.aircraft-380.deck-upper.service-first td.seat-map-seat-selectable:hover {
+    text-indent: -5000px;
+}
+
+.aircraft-380.deck-upper.service-first td.seat-map-pax strong.rearFacingSeat,
+.aircraft-380.deck-upper.service-first td.seat-map-seat-selectable strong.rearFacingSeat:hover {
+    height: 30px;
+    width: 54px;
+    padding: 35px 0 0 0;
+    background: url("../images/seat-a380-seats-sprite.png") -96px 0 no-repeat;
+    text-indent: 0;
+}
+
+.aircraft-380.deck-upper.service-first td.seat-map-pax strong,
+.aircraft-380.deck-upper.service-first td.seat-map-seat-selectable strong:hover {
+    height: 60px;
+    width: 54px;
+    padding: 5px 0 0 0;
+    background: url("../images/seat-a380-seats-sprite.png") -150px 0 no-repeat;
+    text-indent: 0;
+}
+
+.aircraft-380.deck-upper.service-first .seat-map-seat span.seat-map-bassinet {
+    margin: 4px auto 0;
+}
+
+/* economy */
+.aircraft-380.deck-main.service-economy td {
+    position: relative;
+}
+
+.aircraft-380.deck-main.service-economy td .seat-map-bassinet {
+    position: absolute;
+    top: -13px;
+    left: 2px;
+}
+
+.aircraft-380.deck-main.service-economy td#seat-0-75E .seat-map-bassinet {
+    position: absolute;
+    top: -13px;
+    left: 12px;
+}
+
+.aircraft-380.deck-main.service-economy .seat-map-plane-wing-left_side strong div,
+.aircraft-380.deck-main.service-economy .seat-map-plane-left_side strong div {
+    position: absolute;
+    top: -15px;
+    left: 35px;
+    width: 8px;
+    height: 16px;
+    padding: 0;
+    background: url("../images/seat-facility-sprite.png") -18px 0 no-repeat;
+    text-indent: -5000px;
+}
+
+.aircraft-380.deck-main.service-economy .seat-map-plane-wing-right_side strong div,
+.aircraft-380.deck-main.service-economy .seat-map-plane-right_side strong div {
+    position: absolute;
+    top: -15px;
+    left: -5px;
+    width: 8px;
+    height: 16px;
+    padding: 0;
+    background: url("../images/seat-facility-sprite.png") -26px 0 no-repeat;
+    text-indent: -5000px;
+}
+
+.seat-map-planemap span.seat-map-bassinet {
+    display: block;
+    margin: -4px auto 0;
+    height: 16px;
+    width: 16px;
+    background: url("../images/seat-facility-sprite.png") 0 0 no-repeat;
+}
+
+.seat-map-planemap td.seat-map-bulkhead strong {
+    border: 1px solid #808080;
+    padding: 1px;
+    width: auto;
+    display: block;
+    height: 0;
+    margin-bottom: 18px;
+}
+
+.seat-map-keys .displayLegendsFromSeatMap span.seat-map-bassinet strong {
+    background: url("../images/seat-facility-sprite.png") 0 0 no-repeat;
+    vertical-align: middle;
+    margin: 0 10px 0 6px;
+}
+
+.seat-map-keys .displayLegendsFromSeatMap span.seat-map-bulkhead strong {
+    border: 1px solid #808080;
+    padding: 1px;
+    height: 0;
+    width: 24px;
+    vertical-align: middle;
+}
+
+.seat-map-planemap td.seat-map-lounge strong,
+.seat-map-planemap td.seat-map-lavatory strong,
+.seat-map-planemap td.seat-map-shower strong,
+.seat-map-planemap td.seat-map-galley strong,
+.seat-map-planemap td.seat-map-prayer_room strong,
+.seat-map-planemap td.seat-map-stairs strong {
+    margin: 5px 0 0;
+    padding: 10px 0;
+    border: 1px solid #808080;
+    display: block;
+    width: auto !important;
+}
+
+.seat-map-keys .displayLegendsFromSeatMap span.seat-map-lounge strong,
+.seat-map-keys .displayLegendsFromSeatMap span.seat-map-lavatory strong,
+.seat-map-keys .displayLegendsFromSeatMap span.seat-map-shower strong,
+.seat-map-keys .displayLegendsFromSeatMap span.seat-map-galley strong,
+.seat-map-keys .displayLegendsFromSeatMap span.seat-map-prayer_room strong,
+.seat-map-keys .displayLegendsFromSeatMap span.seat-map-stairs strong {
+    padding: 10px 0;
+    border: 1px solid #808080;
+    width: 26px;
+    vertical-align: middle;
+}
+
+.seat-map-keys .displayLegendsFromSeatMap li {
+    height: 30px;
+    line-height: 40px;
+    margin-top: 0px;
+}
+
+.seat-map-keys .displayLegendsFromSeatMap {
+    padding-bottom: 5px;
+}
+
+.seat-map-planemap td.seat-map-apartment {
+    position: relative;
+    border: 2px solid #fff;
+}
+
+.seat-map-planemap td.seat-map-lavatory strong,
+.seat-map-keys .displayLegendsFromSeatMap span.seat-map-lavatory strong {
+    background: #fff url("../images/seat-facility-sprite.png") center -110px no-repeat;
+}
+
+.seat-map-planemap td.seat-map-shower strong,
+.seat-map-keys .displayLegendsFromSeatMap span.seat-map-shower strong {
+    background: #fff url("../images/seat-facility-sprite.png") center -205px no-repeat;
+}
+
+.seat-map-planemap td.seat-map-galley strong,
+.seat-map-keys .displayLegendsFromSeatMap span.seat-map-galley strong {
+    background: #fff url("../images/seat-facility-sprite.png") center -60px no-repeat;
+}
+
+.seat-map-planemap td.seat-map-prayer_room strong,
+.seat-map-keys .displayLegendsFromSeatMap span.seat-map-prayer_room strong {
+    background: #fff url("../images/seat-facility-sprite.png") center -160px no-repeat;
+}
+
+.seat-map-planemap td.seat-map-stairs strong,
+.seat-map-keys .displayLegendsFromSeatMap span.seat-map-stairs strong {
+    background: #fff url("../images/seat-facility-sprite.png") center -270px no-repeat;
+}
+
+.seat-map-planemap td.seat-map-lounge strong,
+.seat-map-keys .displayLegendsFromSeatMap span.seat-map-lounge strong {
+    background: #fff url("../images/seat-facility-sprite.png") center -334px no-repeat;
+}
+
+.seat-map-planemap td.seat-map-apartment strong {
+    background-color: #b6b6b6;
+    display: block;
+    position: absolute;
+    border: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/** seatmap.css **/
+.s1 {
+    text-align: center
+}
+
+.s2 {
+    text-align: left;
+    margin: 0 auto;
+    width: 960px;
+}
+
+/** marketing texts **/
+.marketing-text1, .marketing-text2 .text-container {
+    display: inline
+}
+
+.seat-map {
+    font-size: 11px;
+}
+
+.seat-map a {
+    text-decoration: underline
+}
+
+.seat-map .submit-placeholder {
+    display: inline
+}
+
+.seat-map-header {
+    clear: both;
+    overflow: hidden;;
+    margin-bottom: 5px
+}
+
+.seat-map-footer {
+    clear: both;
+    overflow: hidden;;
+    margin-top: 5px
+}
+
+.seat-map-header h2,
+.seat-map-footer h2 {
+    float: left
+}
+
+.seat-map-header-links,
+.seat-map-footer-links {
+    float: right
+}
+
+a.seat-map-button, .submit-placeholder input {
+    display: inline-block;
+    text-decoration: none;
+    height: 28px;
+    line-height: 28px;
+    background: #80ac21 url("../images/seat-map-button-green.png") repeat-x;
+    border-radius: 4px;
+    border: none;
+    padding: 0 8px;
+    color: #fff;
+    font-size: 17px;
+    margin: 0 20px 0 15px;
+    cursor: pointer
+}
+
+.submit-placeholder input.disabled {
+    display: inline-block;
+    text-decoration: none;
+    height: 28px;
+    line-height: 28px;
+    background: none repeat scroll 0 0 #CCCCCC;
+    border-radius: 4px;
+    border: none;
+    padding: 0 8px;
+    color: #EEEEEE;
+    font-size: 17px;
+    margin: 0 20px 0 15px;
+    cursor: pointer
+}
+
+.seat-map-content {
+    overflow: hidden;
+    border: 1px solid #b2b49e;
+    border-radius: 5px;
+    padding: 25px 20px 30px;
+    background: white url("../images/seat-map-content-bg.png") repeat-x;
+}
+
+.seat-map-invocation {
+    margin-bottom: 10px;
+    text-align: left
+}
+
+.seat-map-invocation strong {
+    color: #2b6dcc
+}
+
+.seat-map-plane {
+    float: right;
+    clear: right;
+    width: 320px;
+    position: relative;
+}
+
+.seat-map-plane .marketing-text2 {
+    margin: 0 20px 20px;
+    font-weight: bold;
+}
+
+.seat-map-plane .flight-controls {
+    margin: 0 20px;
+    height: 15px;
+}
+
+.oldie .seat-map-plane .flight-controls {
+    height: 45px;
+}
+
+.seat-map-plane .flight-controls a {
+    display: block;
+    background-color: #ddd;
+    background-image: -webkit-linear-gradient(top, #f0f0f0, #ddd);
+    background-image: -moz-linear-gradient(top, #f0f0f0, #ddd);
+    background-image: -o-linear-gradient(top, #f0f0f0, #ddd);
+    background-image: -ms-linear-gradient(top, #f0f0f0, #ddd);
+    background-image: linear-gradient(top, #f0f0f0, #ddd);
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    box-shadow: 1px 1px 0 #ccc;
+    padding: .4em 1em;
+    margin: 1em 0;
+    text-decoration: none;
+}
+
+.seat-map-plane .flight-controls a.disabled {
+    color: #666;
+    cursor: auto;
+}
+
+.seat-map-plane .flight-controls a.prevFlight {
+    float: left;
+}
+
+.seat-map-plane .flight-controls a.nextFlight {
+    float: right;
+}
+
+.seat-map-plane p a {
+    font-weight: normal;
+}
+
+.seats-exit-row .overlay-content {
+    line-height: 160%;
+    font-size: 12px;
+    padding: 5px;
+    overflow-y: auto;
+    height: 180px;
+    margin-bottom: 5px;
+}
+
+.seats-exit-row .overlay-content ol {
+    margin: 0 5px 0 22px;
+    padding: 15px;
+}
+
+#seat-map-map-container {
+    position: relative;
+}
+
+/*#seat-map-map-container .seat-map-segment.hidden {position:absolute;}*/
+/*#seat-map-map-container .seat-map-segment.current {position:relative;}*/
+.seat-map-plane-previewed {
+    height: 555px;
+    width: 490px;
+    overflow-y: auto;
+    margin-right: 9px;
+    text-align: center;
+}
+
+.seat-map-planemap {
+    margin: 0 auto;
+}
+
+.seat-map-planemap .multiStep {
+    margin: 20px auto;
+}
+
+.seat-map-flight-data {
+    background: #B6CAF3;
+    text-align: center;
+    padding: 7px 10px;
+    margin: 10px;
+}
+
+.seat-map-planemap .seat-map-legend strong {
+    margin: 5px 2px;
+}
+
+.seat-map-plane-left_side {
+    background: white url("../images/seat-map-plain-lt-side.png") repeat-y 17px top;
+    width: 38px
+}
+
+.seat-map-plane-right_side {
+    background: white url("../images/seat-map-plain-rg-side.png") repeat-y 6px top;
+    width: 38px
+}
+
+thead .seat-map-plane-left_side {
+    background: white url("../images/seat-map-plain-lt-begin.png") no-repeat 20px bottom;
+    width: 32px;
+    height: 39px
+}
+
+thead .seat-map-plane-right_side {
+    background: white url("../images/seat-map-plain-rg-begin.png") no-repeat 6px bottom;
+    width: 32px;
+    height: 39px
+}
+
+.seat-map-row_label {
+    width: 38px;
+}
+
+.seat-map-plane-wing {
+    background: white;
+}
+
+.seat-map-plane-wing-wing_begin {
+    vertical-align: top
+}
+
+.seat-map-plane-wing-wing_begin strong {
+    display: block;
+    width: 31px;
+    height: 32px;
+}
+
+.seat-map-plane-wing-left_side.seat-map-plane-wing-wing_begin strong {
+    float: right;
+    margin-right: 6px;
+    background: white url("../images/seat-map-plain-lt-wing-begin.png") no-repeat;
+}
+
+.seat-map-plane-wing-right_side.seat-map-plane-wing-wing_begin strong {
+    float: left;
+    margin-left: 6px;
+    background: white url("../images/seat-map-plain-rg-wing-begin.png") no-repeat;
+}
+
+.seat-map-plane-wing-wing_end {
+    vertical-align: bottom
+}
+
+.seat-map-plane-wing-wing_end strong {
+    display: block;
+    width: 31px;
+    height: 32px;
+}
+
+.seat-map-plane-wing-left_side.seat-map-plane-wing-wing_end strong {
+    float: right;
+    margin-right: 6px;
+    background: white url("../images/seat-map-plain-lt-wing-end.png") no-repeat;
+}
+
+.seat-map-plane-wing-right_side.seat-map-plane-wing-wing_end strong {
+    float: left;
+    margin-left: 6px;
+    background: white url("../images/seat-map-plain-rg-wing-end.png") no-repeat;
+}
+
+.seat-map-legend strong {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    padding: 2px;
+    font-size: 11px;
+    margin: 0;
+    text-align: center;
+    line-height: 25px;
+    border-radius: 4px;
+}
+
+.seat-map-seat strong,
+.seat-map-standard strong {
+    background: #b6caf3;
+    color: #fff
+}
+
+.seat-map-pay strong {
+    background: #6e91db;
+    color: #fff
+}
+
+.seat-map-seat_reserved strong {
+    background: #306000 !important;
+    color: #fff
+}
+
+/** colors for paid seat**/
+.seat-map-price_0 strong {
+    background: #FF0000;
+    color: #fff
+}
+
+.seat-map-price_1 strong {
+    background: #FFFF00;
+    color: #fff
+}
+
+.seat-map-price_2 strong {
+    background: #11FF00;
+    color: #fff
+}
+
+.seat-map-price_3 strong {
+    background: #0D00FF;
+    color: #fff
+}
+
+.seat-map-price_4 strong {
+    background: #FF00EB;
+    color: #fff
+}
+
+.seat-map-price_5 strong {
+    background: #FFB3B3;
+    color: #fff
+}
+
+.seat-map-price_6 strong {
+    background: #FFBC00;
+    color: #fff
+}
+
+.seat-map-price_7 strong {
+    background: #91762B;
+    color: #fff
+}
+
+.seat-map-price_8 strong {
+    background: #CFFFCB;
+    color: #fff
+}
+
+.seat-map-price_9 strong {
+    background: #698A8D;
+    color: #fff
+}
+
+.seat-map-price_10 strong {
+    background: #89912B;
+    color: #fff
+}
+
+.seat-map-price_11 strong {
+    background: #452C68;
+    color: #fff
+}
+
+.seat-map-price_12 strong {
+    background: #6F2C6C;
+    color: #fff
+}
+
+.seat-map-price_13 strong {
+    background: #790000;
+    color: #fff
+}
+
+.seat-map-price_14 strong {
+    background: #5C5C5C;
+    color: #fff
+}
+
+.seat-map-price_15 strong {
+    background: #D9AECF;
+    color: #fff
+}
+
+.seat-map-price_16 strong {
+    background: #1C7E79;
+    color: #fff
+}
+
+.seat-map-price_17 strong {
+    background: #00FF5A;
+    color: #fff
+}
+
+.seat-map-price_18 strong {
+    background: #FFFC00;
+    color: #fff
+}
+
+.seat-map-price_19 strong {
+    background: #727000;
+    color: #fff
+}
+
+.seat-map-price_20 strong {
+    background: #FFA200;
+    color: #fff
+}
+
+.seat-map-price_21 strong {
+    background: #D1D1D1;
+    color: #fff
+}
+
+.seat-map-price_22 strong {
+    background: #51FFF7;
+    color: #fff
+}
+
+.seat-map-price_23 strong {
+    background: #0E374B;
+    color: #fff
+}
+
+.seat-map-price_24 strong {
+    background: #D733A9;
+    color: #fff
+}
+
+.seat-map-price-strike {
+    text-decoration: line-through
+}
+
+.seat-map-block strong {
+    background: #1a4193;
+    color: #fff
+}
+
+.seat-map-companion strong {
+    background: #ff6633;
+    color: #fff
+}
+
+.seat-map-lavatory strong {
+    background: #A2BEF6 url("../images/seat-lavatory.gif") no-repeat center center;
+    color: #fff
+}
+
+.seat-map-seat_lavatory strong {
+    background: #A2BEF6 url("../images/seat-lavatory.gif") no-repeat center center;
+    color: #fff
+}
+
+.seat-map-galley strong {
+    background: #65BC71 url("../images/seat-galley.gif") no-repeat center center;
+    color: #fff
+}
+
+.seat-map-door strong {
+    background: url("../images/seat-door.gif") no-repeat center center;
+    color: #fff
+}
+
+.seat-map-bassinet strong {
+    background: url("../images/seat-bassinet.png") no-repeat center center;
+    color: #fff
+}
+
+.seat-map-legend.unavailable strong, .seat-map-seat_unavailable strong {
+    background: #999 url("../images/seat-map-legend-occupied.png") no-repeat center center;
+    color: #ccc
+}
+
+.seat-map-bulkhead strong {
+    border-bottom: solid 3px #ccc;
+}
+
+.seat-map-pax strong, .seat-map-flights-chosen .seat-map-flights-pax-no strong {
+    background: #7cac14;
+    color: #fff
+}
+
+.seat-map-flights-pax-no strong {
+    background: #ccc;
+    color: #fff;
+}
+
+.seat-map-blank strong {
+    display: none
+}
+
+.seat-map-seat-selectable {
+    cursor: pointer
+}
+
+.seat-map-seat-selectable-exit {
+    cursor: pointer;
+}
+
+.seat-map-seat-selectable:hover {
+    opacity: .5
+}
+
+.seat-map-planemap-1 .seat-map-legend strong,
+.seat-map-planemap-2 .seat-map-legend strong,
+.seat-map-planemap-3 .seat-map-legend strong,
+.seat-map-planemap-4 .seat-map-legend strong,
+.seat-map-planemap-5 .seat-map-legend strong,
+.seat-map-planemap-6 .seat-map-legend strong,
+.seat-map-planemap-7 .seat-map-legend strong {
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 11px
+}
+
+.seat-map-planemap-8 .seat-map-legend strong,
+.seat-map-planemap-9 .seat-map-legend strong,
+.seat-map-planemap-10 .seat-map-legend strong,
+.seat-map-planemap-11 .seat-map-legend strong,
+.seat-map-planemap-12 .seat-map-legend strong {
+    width: 12px;
+    height: 12px;
+    line-height: 10px;
+    font-size: 8px;
+    border-radius: 3px
+}
+
+.seat-map-planemap-13 .seat-map-legend strong,
+.seat-map-planemap-14 .seat-map-legend strong,
+.seat-map-planemap-15 .seat-map-legend strong,
+.seat-map-planemap-16 .seat-map-legend strong,
+.seat-map-planemap-17 .seat-map-legend strong,
+.seat-map-planemap-18 .seat-map-legend strong {
+    width: 11px;
+    height: 11px;
+    line-height: 10px;
+    font-size: 8px;
+    font-weight: normal;
+    padding: 0;
+    border-radius: 2px
+}
+
+.seat-map-unavailable {
+    width: 180px;
+    height: 25px;
+    padding: 0 20px;
+    text-align: center;
+}
+
+/** unavailable seatmap **/
+.seat-map-unavailable .seat-map-button {
+    height: auto;
+    line-height: 1.2em;
+    padding: .3em;
+}
+
+.seat-map-unavailable .message {
+    margin-bottom: 20px;
+    font-weight: bold
+}
+
+/** flight information **/
+.seat-map-infobox {
+    float: left;
+    clear: left;
+    width: 330px;
+    margin-bottom: 15px;
+    padding-right: 5px
+}
+
+.seat-map-infobox h3 {
+    height: 31px;
+    line-height: 31px;
+    padding: 0 6px;
+    margin: 0;
+    color: white;
+    font-size: 17px;
+    background: #6f92db url("../images/seat-map-boxnavi-bg-header.png") repeat-x;
+    border-radius: 5px 5px 0 0
+}
+
+.seat-map-infobox h3 span {
+    display: inline-block;
+    height: 31px;
+    background: transparent no-repeat;
+    padding-left: 32px
+}
+
+.seat-map-keys h3 span {
+    background-image: url("../images/seat-map-boxnavi-keys-hd.png");
+    background-position: 0 6px
+}
+
+.seat-map-keys ul {
+    border: 2px solid #dde6fa;
+}
+
+.seat-map-keys li {
+    list-style: none;
+    height: 17px;
+    line-height: 17px;
+    margin: 8px 12px;
+    font-weight: bold;
+}
+
+.oldie .seat-map-keys ul.seatLegend li {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.seat-map-keys .seat-map-legend strong {
+    width: 13px;
+    height: 13px;
+    margin: 0 5px 0 0;
+    vertical-align: top
+}
+
+.seat-map-flights-departing h3 span {
+    background-image: url("../images/seat-map-boxnavi-departing-hd.png");
+    background-position: 0 10px
+}
+
+.seat-map-flights-returning h3 span {
+    background-image: url("../images/seat-map-boxnavi-returning-hd.png");
+    background-position: 0 7px
+}
+
+.seat-map-flights ul {
+}
+
+.seat-map-flights li {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1px 0;
+    border: 0 solid #DDE6FA;
+    border-bottom-width: 2px;
+}
+
+.seat-map-flights li div {
+    clear: both;
+    background: #dde6fa;
+    padding: 10px 6px;
+    color: #4f4e40;
+}
+
+.seat-map-flights li div span {
+    display: inline-block;
+}
+
+.seat-map-flights-list,
+.seat-map-empty-flights-list {
+    width: 17px;
+    height: 17px;
+    background: transparent no-repeat left bottom;
+    display: block;
+    float: left;
+    margin-right: 7px;
+}
+
+.segment-pax {
+    overflow: hidden;
+    width: 340px;
+}
+
+.seat-map-flights-expanded .seat-map-flights-list {
+    background-image: none; /*background-image: url("../images/seat-map-list-expanded.png")*/
+}
+
+.seat-map-flights-collapsed .seat-map-flights-list {
+    background-image: url("../images/seat-map-list-collapsed.png")
+}
+
+.seat-map-flights-collapsed .seat-map-segment {
+    cursor: pointer;
+}
+
+.seat-map-flights-date {
+    font-weight: bold;
+}
+
+.seat-map-flights-pipe {
+}
+
+.seat-map-flights-segment {
+    display: inline-block;
+}
+
+.seat-map-flights-flight-no {
+    float: right;
+    font-weight: bold;
+}
+
+.ie7 .seat-map-segment span.seat-map-flights-flight-no {
+    margin-top: -23px;
+    padding-right: 5px;
+}
+
+.seat-map-flights li ul {
+    float: left;
+    clear: left;
+    border: 0 solid #dde6fa;
+    border-left-width: 2px;
+}
+
+.seat-map-flights li ul li {
+    float: left;
+}
+
+.seat-map-flights-pax span {
+    float: left;
+    vertical-align: top
+}
+
+.seat-map-flights-status {
+    height: 33px;
+    width: 24px;
+}
+
+.seat-map-flights-chosen .seat-map-flights-status {
+    background: url("../images/seat-map-icon-checked.png") no-repeat right center;
+}
+
+.seat-map-flights-pax.selectable:hover {
+    cursor: pointer;
+}
+
+.seat-map-flights-pax-no {
+    width: 22px;
+    height: 27px;
+    padding: 6px 6px 0;
+}
+
+.seat-map-flights-pax-no.seat-map-legend strong {
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+}
+
+.seat-map-flights-pax-name {
+    width: 120px;
+    line-height: 33px;
+    margin-right: 6px;
+    font-weight: bold;
+    text-align: left;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis
+}
+
+.seat-map-flights-place-no {
+    width: 30px;
+    line-height: 33px;
+    margin-right: 5px;
+    font-weight: bold;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.seat-map-flights-place-no em {
+    font-weight: normal;
+}
+
+.seat-map-flights-price {
+    width: 83px;
+    height: 33px;
+    text-align: right;
+}
+
+.seat-map-flights-price span {
+    float: none;
+    display: inline-block;
+}
+
+.seat-map-flights-price table {
+    height: 100%;
+    width: 100%;
+}
+
+.seat-map-flights-price td {
+    vertical-align: middle;
+}
+
+.seat-map-flights-action {
+    height: 33px;
+    width: 10px;
+    padding: 0 7px;
+}
+
+.seat-map-flights-chosen .seat-map-flights-action {
+    background: url("../images/seat-map-icon-cancel.png") no-repeat center
+}
+
+.seat-map-flights-chosen {
+}
+
+.seat-map-flights-selected .seat-map-flights-action {
+    position: relative;
+}
+
+.seat-map-flights .seat-map-flights-pax {
+    border-right-width: 2px;
+}
+
+.seat-map-flights .seat-map-flights-pending {
+    color: #999;
+}
+
+.seat-map-flights .seat-map-flights-selected {
+    border-right-width: 0;
+    border-bottom-width: 0;
+    color: #fff;
+    position: relative;
+    padding-right: 11px;
+    background: #999 url("../images/seat-map-boxnavi-selected.png") right center no-repeat;
+    margin: 1px 0;
+}
+
+.seat-map-flights-collapsed {
+    border-bottom: 1px solid #658bd7
+}
+
+.seat-map-flights-collapsed-last {
+    border-bottom: 2px solid #DDE6FA
+}
+
+.seat-map-flights-collapsed ul {
+    display: none
+}
+
+.seat-map-flights .seat-map-flights-unavailable {
+    float: none
+}
+
+.seat-map-flights .seat-map-flights-unavailable li {
+    float: none;
+    display: block;
+    padding: 10px 28px;
+    font-weight: bold
+}
+
+button.more-link {
+    background: none;
+    border: none;
+    color: #2B6DCC;
+    text-decoration: underline;
+    cursor: pointer
+}
+
+.seat-segment-maps {
+    clear: both;
+    margin: 20px 0;
+}
+
+.seat-map-segment-info {
+    background-color: #DDE6FA;
+    margin: 0 20px;
+    padding: 8px 6px;
+    border-radius: 5px 5px 0 0;
+    text-align: center;
+    clear: both;
+}
+
+.seat-map-segment-info-top {
+    border-radius: 5px 5px 0 0;
+    margin-bottom: 5px;
+}
+
+.seat-map-segment-info-bottom {
+    border-radius: 0 0 5px 5px;
+    margin-top: 5px;
+}
+
+.seat-map-deck {
+    background-color: #DDE6FA;
+    margin: 0 70px;
+    padding: 8px 6px;
+    border-radius: 5px 5px 0 0;
+    text-align: center;
+    clear: both;
+}
+
+#flight-list-infobox {
+    width: 330px;
+    overflow: visible;
+}
+
+.seats-extraLegRoomPopup-navigation {
+    margin: 40px 5px 5px;
+}
+
+.seats-extraLegRoomPopup-navigation a {
+    display: block;
+    background-color: #9FC353;
+    background-image: -webkit-linear-gradient(top, #f0f0f0, #9FC353);
+    background-image: -moz-linear-gradient(top, #f0f0f0, #9FC353);
+    background-image: -o-linear-gradient(top, #f0f0f0, #9FC353);
+    background-image: -ms-linear-gradient(top, #f0f0f0, #9FC353);
+    background-image: linear-gradient(top, #f0f0f0, #9FC353);
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    box-shadow: 1px 1px 0 #ccc;
+    padding: .4em 1em;
+    margin-right: 20px;
+    maring-top: 40px;
+    text-decoration: none;
+    float: right;
+}
+
+.seat-map-flights .seat-pax-with-discounted-info,
+.seat-map-flights .seat-map-flights-selected .seat-pax-with-discounted-info {
+    margin-bottom: 0px;
+    border-bottom-width: 0px;
+}
+
+.seat-map-flights .seat-discounted-selected {
+    background-color: #999;
+    color: rgb(243, 227, 219);
+}
+
+.seat-map-flights .seat-discounted {
+    width: 296px;
+    margin-bottom: 0px;
+    padding-left: 30px;
+    padding-bottom: 3px;
+    border: 0 solid #DDE6FA;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    position: relative;
+}
+
+.seat-details .seat-with-discount-msg {
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 1px;
+}
+
+.seat-with-discount-color,
+.tier-inheritance {
+    color: #FFA500;
+}
+
+#seats-readonly-popup .seat-avail-option {
+    margin: 10px;
+    font-size: 12px;
+}
+
+#seats-readonly-popup .header-cont {
+    padding: 10px;
+}
+
+#seats-readonly-popup #seat-map-info {
+    display: inline-block;
+    width: 200px;
+    margin-left: 20px;
+    float: left;
+}
+
+#seats-readonly-popup .seat-map-info-inner {
+    display: inline-block;
+    margin: 10px;
+    padding: 5px;
+    width: 200px;
+}
+
+#seats-readonly-popup #seat-map-preview {
+    display: inline-block;
+    width: 500px;
+    margin-left: 20px;
+    height: 400px;
+    float: right;
+}
+
+#seats-readonly-popup .header-cont .big {
+    display: inline;
+    height: 20px;
+    font-size: 20px;
+}
+
+#seats-readonly-popup .header-cont .normal {
+    display: inline;
+    height: 20px;
+    font-size: 12px;
+    margin-top: 4px;
+    margin-left: 5px;
+}
+
+#seats-readonly-popup .brand-id-dropdown-inner {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    background: #e4e4e4;
+    margin-top: 20px;
+}
+
+#seats-readonly-popup .brand-id-dropdown-inner select {
+    margin-left: 10px;
+    width: 150px;
+    margin-bottom: 10px;
+}
+
+#seats-readonly-popup .seat-map-legend-inner {
+    height: 100px;
+}
+
+#seats-readonly-popup .seat-map-info-inner h2 {
+    font-size: 12px;
+}
+
+#seats-readonly-popup .header-cont .next {
+    font-size: 12px;
+    float: right;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+#seats-readonly-popup .header-cont .prev {
+    font-size: 12px;
+    float: right;
+    margin-left: 30px;
+}
+
+#seats-readonly-popup .unvisible {
+    visibility: hidden;
+}
+
+#seats-readonly-popup .hrStyle {
+    padding: 0px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    clear: both
+}
+
+#seats-readonly-popup .seat-map-infobox {
+    margin-bottom: 15px;
+    padding-right: 5px;
+    width: 180px;
+}
+
+.seat-details-overlay {
+    margin: 10px 10px 10px 10px;
+}
+
+.seat-details-overlay .seat-details-header {
+    border-bottom: 1px solid #dddddd;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+}
+
+.seat-details-overlay .seat-position .seat-number {
+    font-weight: bold;
+}
+
+.seat-details-overlay .seat-price {
+    color: green;
+}
+
+.seat-details-overlay .seat-price .prices-amount {
+    font-weight: bold;
+}
+
+.seat-details-overlay .seat-type {
+    font-weight: bold;
+    padding-top: 10px;
+    clear: both;
+}
+
+.seat-details-overlay .seat-image-AISLE {
+    background: url("../images/seat_aisle_image.png") no-repeat center center;
+    height: 80px;
+    width: 118px;
+    display: inline-block;
+}
+
+.seat-details-overlay .seat-features {
+    padding-top: 10px;
+    display: inline-block;
+}
+
+.seat-details-overlay .seat-features .seat-features-list {
+    padding-top: 10px;
+}
+
+.seat-details-overlay .seat-features .seat-features-list div {
+    height: 55px;
+    width: 80px;
+    position: relative;
+    display: inline-block;
+}
+
+.seat-details-overlay .seat-features .seat-features-list div + div {
+    border-left: 1px solid #dddddd;
+}
+
+.seat-details-overlay .seat-features .seat-features-list .facility-INDIVIDUAL_MOVIE_SCREEN_WITH_CHOICE,
+.seat-details-overlay .seat-features .seat-features-list .facility-INDIVIDUAL_MOVIE_SCREEN_WITHOUT_CHOICE {
+    background: url("../images/seat_overlay_facilities_sprite.png") no-repeat 0px top;
+}
+
+.seat-details-overlay .seat-features .seat-features-list .facility-INDIVIDUAL_AIRPHONE {
+    background: url("../images/seat_overlay_facilities_sprite.png") no-repeat -52px top;
+}
+
+.seat-details-overlay .seat-features .seat-features-list .facility-BASSINET {
+    background: url("../images/seat_overlay_facilities_sprite.png") no-repeat -104px top;
+}
+
+.seat-details-overlay .seat-features .seat-features-list .facility-LEG_REST {
+    background: url("../images/seat_overlay_facilities_sprite.png") no-repeat -156px top;
+}
+
+.seat-details-overlay .seat-features .seat-features-list .facility-ELECTRONICS_CONNECTION {
+    background: url("../images/seat_overlay_facilities_sprite.png") no-repeat -208px top;
+}
+
+.seat-details-overlay .seat-features .seat-features-list .facility-EXTRA_COMFORT,
+.seat-details-overlay .seat-features .seat-features-list .facility-EXTRA_LEG_SPACE {
+    background: url("../images/seat_overlay_facilities_sprite.png") no-repeat -260px top;
+}
+
+.seat-details-overlay .seat-features .seat-features-list .facility-EXTRA_OXYGEN_MASK {
+    background: url("../images/seat_overlay_facilities_sprite.png") no-repeat -312px top;
+}
+
+.seat-details-overlay .seat-features .seat-features-list span {
+    position: absolute;
+    top: 28px;
+    font-size: 10px;
+    text-align: center;
+    width: 100%;
+}
+
+.seat-details-overlay .seat-refund-exchange-info {
+    font-size: 10px;
+    padding-top: 5px;
+}
+
+.seat-details-overlay .buttons {
+    border-top: 1px solid #dddddd;
+    padding: 10px 0px 10px;
+    margin-top: 10px;
+}
+
+#seat-map-collapsed-state-placeholder,
+#seat-map-completed-state-placeholder {
+    overflow: hidden;
+    border: 1px solid #b2b49e;
+    border-radius: 5px;
+}
+
+.seat-map-multistates-horizonal-rule-line {
+    margin: 10px 10px 0 10px;
+    border-top: 1px solid #b2b49e;
+    width: 680px;
+    height: 5px;
+    clear: both;
+}
+
+.seat-map-multistates-header {
+    margin-top: 10px;
+}
+
+.seat-map-multistates-title {
+    width: 350px;
+    float: left;
+}
+
+.seat-map-multistates-title h2 {
+    margin-left: 10px;
+}
+
+.seat-map-multistates-title .seat-map-checkmark {
+    margin-left: 10px;
+}
+
+.seat-map-gray-button {
+    width: 92px;
+    height: 26px;
+    margin: 0 5px 0 5px;
+    border: none;
+    border-right: 1px solid #d7d7d7;
+    color: #2b6dcc;
+    background: url("../images/button-sprite-gray.png") no-repeat 0px -280px;
+    -webkit-border-top-right-radius: 2px;
+    -webkit-border-bottom-right-radius: 2px;
+    -moz-border-radius-topright: 2px;
+    -moz-border-radius-bottomright: 2px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
+.seat-map-gray-button:hover {
+    background: url("../images/button-sprite-gray.png") no-repeat 0px -81px;
+}
+
+.seat-map-green-button {
+    width: 102px;
+    height: 32px;
+    margin: 0 5px 0 5px;
+    border: none;
+    color: #fff;
+    background: url("../images/button-sprite-gray.png") no-repeat 0px -43px;
+    -webkit-border-top-right-radius: 2px;
+    -webkit-border-bottom-right-radius: 2px;
+    -moz-border-radius-topright: 2px;
+    -moz-border-radius-bottomright: 2px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
+.seat-map-collapsed-state-image {
+    width: 220px;
+    height: 100px;
+    margin: 10px 0 10px 10px;
+    background: url("../images/seat.png") no-repeat left top;
+    float: left;
+}
+
+.seat-map-collapsed-state-content {
+    width: 450px;
+    margin: 10px;
+    float: left;
+}
+
+.seat-map-collapsed-state-content input[type="button"] {
+    margin: 10px 0 0 0;
+}
+
+.seat-map-collapsed-state-prices {
+    margin-top: 10px;
+}
+
+.seat-map-collapsed-state-prices strong {
+    font-size: 1.2em;
+}
+
+.seat-map-flights li div.seat-map-expanded-state-segment-navSection,
+.seat-map-flights li div.seat-map-expanded-state-segment-editSection {
+    width: 330px;
+    padding: 0;
+}
+
+.seat-map-flights li div.seat-map-expanded-state-segment-editSection {
+    height: 40px;
+}
+
+.seat-map-flights li div.seat-map-expanded-state-segment-navSection .seat-map-expanded-state-nextFlight,
+.seat-map-flights li div.seat-map-expanded-state-segment-navSection .seat-map-expanded-state-saveSeats {
+    height: 40px;
+    margin-right: 10px;
+    padding: 0;
+}
+
+.seat-map-flights li div.seat-map-expanded-state-segment-navSection .seat-map-expanded-state-nextFlight input[type="button"],
+.seat-map-flights li div.seat-map-expanded-state-segment-navSection .seat-map-expanded-state-saveSeats input[type="button"],
+.seat-map-flights li div.seat-map-expanded-state-segment-editSection input[type="button"] {
+    float: right;
+}
+
+.seat-map-flights li div.seat-map-expanded-state-segment-editSection input[type="button"] {
+    margin: 5px 15px 0 0;
+}
+
+.seat-map-flights li div.seat-map-expanded-state-segment-navSection .seat-map-expanded-state-clickMessage,
+.seat-map-flights li div.seat-map-expanded-state-segment-navSection .seat-map-expanded-state-allSeatsSelectedMessage {
+    margin-left: 10px;
+}
+
+.seat-map-flights li div.seat-map-expanded-state-segment-navSection .seat-map-expanded-state-allSeatsSelectedMessage p {
+    line-height: 17px;
+}
+
+.seat-map-flights li div.seat-map-expanded-state-segment-navSection div.seat-map-checkmark {
+    width: 17px;
+    height: 17px;
+    background: url("../images/seat-map-icon-checked.png") top left no-repeat;
+    margin-right: 5px;
+    float: left;
+}
+
+.seat-map-select-indicator {
+    width: 89px;
+    line-height: 33px;
+    background: url("../images/seat-map-arrow.png") center right no-repeat;
+    padding-left: 30px;
+}
+
+.seat-map-flights .seat-map-expanded-state-activePax {
+    color: #fff;
+    position: relative;
+    background-color: #999;
+    margin: 1px 0;
+}
+
+#seat-map-completed-state-left-column-segments,
+#seat-map-completed-state-right-column-segments {
+    width: 335px;
+    float: left;
+    margin-left: 10px;
+}
+
+.seat-map-completed-state-footer {
+    clear: both;
+    width: 680px;
+    height: 40px;
+    margin: 0 0 10px 10px;
+    background-color: #ecf1f4;
+}
+
+.seat-map-completed-state-footer-total {
+    width: 330px;
+    float: left;
+    line-height: 40px;
+    padding-left: 10px;
+}
+
+.seat-map-completed-state-footer-buttons {
+    width: 335px;
+    float: right;
+    padding: 7px 5px 0 0;
+}
+
+.seat-map-completed-state-footer-buttons input[type="button"] {
+    float: right;
+}
+
+.seat-map-completed-state-segment {
+    width: 335px;
+    background-color: #eaf4fd;
+    margin: 10px 0 10px 0;
+}
+
+.seat-map-completed-state-segment-header {
+    width: 315px;
+    border-bottom: 1px solid #b2b49e;
+    margin: 0 0 10px 10px;
+    padding: 10px 0 10px 0;
+}
+
+.seat-map-completed-state-segment-header h2 {
+    color: #000;
+    margin: 0;
+    padding: 0;
+}
+
+.seat-map-completed-state-segment-header p {
+    margin: 0;
+    padding: 0;
+}
+
+.seat-map-completed-state-segment-passengers {
+    padding: 0 0 20px 28px;
+}
+
+.seat-map-completed-state-segment-passengers ol {
+    list-style-type: decimal;
+}
+
+.seat-map-completed-state-segment-passengers ol li {
+    padding: 10px 0 10px 0;
+    clear: both;
+}
+
+.seat-map-completed-state-passenger-personalData {
+    font-size: 1.2em;
+}
+
+.seat-map-completed-state-passenger-seatNumber {
+    width: 150px;
+    float: left;
+    padding-top: 10px;
+ }
+
+.seat-map-completed-state-passenger-seatPrice {
+    width: 145px;
+    margin-right: 10px;
+    float: right;
+    text-align: right;
+    padding-top: 10px;
+}
+
+.tier-inheritance-header {
+    clear: both;
+    margin: 0px 0px 10px 15px;
+    padding-top: 15px;
+}
+
+.tier-inheritance-passenger-overlay {
+    margin: 10px 0px;
+}#side-bar-pnr-info {
+    background: url(../images/sidebar-bg.gif) repeat-y;
+    margin-bottom: 15px;
+    padding: 0px;
+    clear: both;
+}
+
+#side-bar-pnr-info .side-bar-pnr-info-header {
+    background: url(../images/sidebar-top.gif) no-repeat;
+    padding: 15px;
+    padding-bottom: 0px;
+    margin: 0px;
+    font-weight: bold;
+    font-size: 14px;
+    color: black;
+}
+
+.side-bar-pnr-info-subheader {
+    margin: 0px 4px 0px 2px;
+    font-weight: bold;
+    font-size: 14px;
+    color: black;
+    padding: 15px 0px 0px 0px;
+    border-top: 1px solid #cfcfcf;
+    border-bottom: 1px solid #cfcfcf;
+    background-color: #fafafa;
+}
+
+#side-bar-pnr-info .side-bar-pnr-info-body {
+    background-image: none;
+    padding: 15px;
+}
+
+#side-bar-pnr-info .side-bar-pnr-info-body-flight-delimiter {
+    background-color: #AAA;
+    padding-top: 1px;
+    margin: 0px 15px;
+}
+
+#side-bar-pnr-info .side-bar-pnr-info-bottom {
+    background: url(../images/sidebar-bottom.gif) no-repeat bottom;
+    padding-bottom: 10px;
+}
+
+#side-bar-pnr-info .side-bar-pnr-info-pnr-number {
+
+}
+
+#side-bar-pnr-info .side-bar-pnr-info-body-flight-empty-space {
+    padding: 5px;
+}
+
+#side-bar-pnr-info .side-bar-pnr-info-body-flight-line {
+    padding: 0px 5px 0px 5px;
+}
+
+#side-bar-pnr-info .side-bar-pnr-info-flights {
+    font-weight: bold;
+    font-size: 13px;
+}
+
+#side-bar-pnr-info .side-bar-pnr-info-body-flight-type-to {
+    font-weight: bold;
+    font-size: 13px;
+}
+
+#side-bar-pnr-info .side-bar-pnr-info-body-passenger {
+    padding: 0px 5px 0px 5px;
+}
+
+/* Simple Payment Component */
+#simple-payment { width: 702px; padding: 0 0 20px }
+#simple-payment .simple-payment-wrapper { background:url(../images/payment-bg.gif) repeat-y; }
+#simple-payment .simple-payment-content { background:url(../images/payment-top.gif) no-repeat top left; padding-top:3px; }
+#simple-payment div.payment { background: url("../images/payment-bottom.gif") no-repeat scroll left bottom transparent; overflow: visible; padding: 10px 18px; }
+#simple-payment .payment-type { background:url(../images/payment-type-bottom.gif) no-repeat bottom left; padding: 10px 20px; clear: right}
+#simple-payment .payment-type-wrapper {width:664px; background: #eaebe6 url(../images/payment-type-top.gif) no-repeat top left;}
+#simple-payment .payment-type span {padding-right: 10px}
+#simple-payment .total { float: right; }
+#simple-payment h3 { margin-left: 0; font-size: 14px }
+#simple-payment h4 { color: #000000; padding: 0; float: left; font-size: 14px}
+#simple-payment .payment-type h4 {padding: 7px 0;}
+#simple-payment .card-icon {display: block; text-indent: -9999px;overflow:hidden;float: left;height: 30px;width: 50px;background: url("../images/payment_icons.png") no-repeat 0 0;margin-bottom: 20px}
+#simple-payment .card-IK { background-position: 0 -30px; }
+#simple-payment .card-CA { background-position: 0 -30px; }
+#simple-payment .card-AX { background-position: 0 -60px; }
+#simple-payment .card-CIRRUS { background-position: 0 -90px; }
+#simple-payment .card-VE { background-position: 0 -120px; }
+#simple-payment .card-PP { background-position: 0 -150px; }
+#simple-payment .card-BILL { background-position: 0 -180px; }
+#simple-payment .card-WU { background-position: 0 -210px; }
+#simple-payment .card-TP { background-position: 0 -240px; }
+#simple-payment .card-DC { background-position: 0 -270px; }
+#simple-payment .card-JB { background-position: 0 -300px; }
+#simple-payment .card-BPC { background-position: 0 -330px; }
+#simple-payment .card-AF { background-position: 0 -360px; }
+#simple-payment .card-FA { background-position: 0 -390px; }
+#simple-payment .card-POLI { background-position: 0 -420px; }
+#simple-payment .fop-details, #simple-payment .fop-details dt {clear: left}
+#simple-payment .fop-details dt {float:left; width: 140px; margin-bottom: 10px}
+#simple-payment .fop-details dd {float:left; width: 140px; margin-bottom: 10px; text-align: right;}
+#simple-payment .fop-details dt {text-align: right;margin-right: 10px}
+#simple-payment.simpleAwardOnlyPayment .fop-details dt { text-align: left; }
+#simple-payment.simpleAwardOnlyPayment h4 { font-size: 13px; }
+#simple-payment.simpleAwardOnlyPayment span.currency { margin:0; padding:0; }
+#simple-payment .simpleTravelBankPayment .fop-details dt { width: 180px; }
+#simple-payment .simpleTravelBankPayment a { text-decoration: underline; }
+#simple-payment .simpleTravelBankPayment span { padding: 0; }
+#simple-payment .simple-payment-login a { text-decoration: underline; }
+#simple-payment .simple-payment-login { margin-right: 200px; margin-top: 20px; text-align: right; }
+#simple-payment .simple-payment-login .login-fields { margin-right: 80px; }
+#simple-payment .simple-payment-login .login-buttons { padding-top:10px; padding-bottom:40px;}
+#simple-payment .simple-payment-login .account-fields { margin-right: 100px; }
+#simple-payment .simple-payment-login .account-buttons{ margin-top:20px; }
+#simple-payment .simple-payment-login span { padding: 0; }
+#simple-payment .simple-payment-login .textfield { width : 120px; }
+#simple-payment .simple-payment-login .prefixClip { margin-right: 82px; }
+#simple-payment .simple-payment-login .prefixClip-container { display: inline-block; }
+#simple-payment .simple-payment-login .note2 { text-align: left; color: #999; display: block; }
+#simple-payment .simple-payment-login .btn { margin-left:210px; width:50px;}
+#simple-payment .simple-payment-login .btn2 { margin-left: 190px; }
+#simple-payment .simple-payment-login #username, #simple-payment .simple-payment-login #password { width: 130px }
+#simple-payment .simple-payment-login .create-buttons { float: left;}
+#simple-payment .simple-payment-login .link-create	{float: right; margin-top: 5px; margin-left: 20px;}
+#simple-payment .simple-payment-login .btn-create-account { padding-bottom: 40px; padding-right:15px; width: 418px;}
+#simple-payment .payment-refund { padding: 10px 20px; clear: right; border-bottom: 1px solid #CCCCCC; display: inline-block; width: 615px;}
+#simple-payment .price-details, #simple-payment .price-details dt {clear: left;}
+#simple-payment .price-details dt {float:left; width: 140px; margin-bottom: 5px;}
+#simple-payment .price-details dd {float:left; width: 140px; margin-bottom: 5px; text-align: right;}
+#simple-payment .price-details dt {text-align: right;margin-right: 10px;}
+#simple-payment .payment-refund .refund-label {float: left; width: 200px;}#split-info #split-title, #split-info #split-description { margin: 0 15px; }
+#split-info #passenger-info, #split-info #reservation-info { margin: 0 40px; }
+#split-info #reservation-original, #split-info #reservation-split { width: 265px; }
+#split-info #passenger-info select { width: 220px; height: 140px; }
+#split-info #split-arrows { width: 35px; height: 60px; margin: 48px 5px 0 5px; text-align: center; }
+#split-arrows input { clear: both; }
+
+#split-info #split-title h2, #split-info #reservation-info h3 { margin: 0; padding: 0; color: #4F4E40; font-weight: bold; }
+#split-info #split-title h2 { font-size: 15px; line-height: 26px; }
+#split-info #reservation-info h3 { font-size: 13px; line-height: 26px; }
+
+#split-info .column { clear: right; display: inline; float: left; }
+
+#split-info .info-wrapper { width: 673px; background: url(../images/passenger-toggle-bg.gif) repeat-y left; margin: 0 0 15px 15px; }
+#split-info .form-info { background: url(../images/passenger-toggle-top.gif) no-repeat top; }
+#split-info .info-content { background: url(../images/passenger-toggle-bottom.gif) no-repeat bottom; padding: 15px 5px 5px; overflow: visible; }
+#split-info .info-content .split-section { border-top: 1px dotted; clear: both; margin: 5px 0 0; padding: 15px 0; }
+
+.splitpassenger-component .split-navLinks { list-style-type: none; font-size: 16px; margin: 0 0 10px 5px }
+.splitpassenger-component .split-navLinks li { display: inline; padding: 0 10px; border-left: solid 1px #999 }
+.splitpassenger-component .split-navLinks li.active a { color: #4f4e40; cursor: auto }
+.splitpassenger-component .split-navLinks li:first-child { border: none }
+/** screen.css **/
+/* terms and conditions component */
+#terms_and_conditions {background: transparent; margin:15px 0 20px 20px;}
+#terms_and_conditions .confirm-payment { font-size:12px; line-height:20px;  width:455px;}
+.PURCHASE_PAGE #terms_and_conditions .confirm-payment, .EXCHANGE_PAYMENT_PAGE #terms_and_conditions .confirm-payment {width:430px}
+#terms_and_conditions .confirm-payment input { margin-right:10px; }/* 30 days calendar */
+.grid { display:table;width: 600px; margin-left: 90px;margin-bottom: 20px; border-collapse: collapse}
+.ie7 .grid { display: block }
+.tdc-discount-indicator-container { clear: none; float: left; }
+.tdc-negofare-indicator-container { float: left; clear: right; padding-left: 10px; }
+.tdc-indicator-text { padding-left: 30px; color: #F9AA09; font-size: 13px; font-weight: bold; height: 20px; line-height: 1; margin-top: 15px; }
+.tdc-discount-indicator { background: url(../images/star.png) no-repeat scroll left top #FFFFFF; }
+.tdc-negofare-indicator { background: url(../images/nego-fare.png) no-repeat scroll left top #FFFFFF; }
+.tdc-cell-discountnegofare-indicator { background: url(../images/star-nego-fare.png) no-repeat scroll right 10% #FFFFFF; }
+.tdc-cell-discountfare-indicator { background: url(../images/star.png) no-repeat scroll right 10% #FFFFFF; }
+.tdc-cell-negofare-indicator { background: url(../images/nego-fare.png) no-repeat scroll right 10% #FFFFFF; }
+.month-nav-container { position: static; margin-left: 4px; width: 80px; float: left; height: 344px; padding-top: 43px; }
+.grid-c {width: 75px; min-height: 64px; height: 64px; padding: 4px; cursor: pointer; }
+.ie7 .grid-c { float: left; min-height: 84px;}
+.grid-m { display: none }
+.grid-m-edge { display: table-row }
+.ie7 .grid-m,
+.ie7 .grid-m-edge { float: left; display: block; width: 1px; height: 1px; }
+.centered-price { text-align: center; }
+.centered-text { margin-top: 10px; text-align: center; }
+.grid-c.unavailable { background-color: #eee; font-weight: normal; font-size: 12px; cursor: default; }
+.sold-out { background-color: #FCFFCD; font-weight: normal; font-size: 12px; }
+.inbound { background-color: #BBEE66; margin: auto; font-weight: bold; font-size: 14px; }
+.month-nav-bottom { background-color: #D8EBFD; color: #FFF; margin: auto; font-weight: bold; font-size: 10px; height: 25%; margin-top: 5px; }
+.month-nav-top { color: #FFF; font-weight: bold; font-size: 10px; margin-bottom: 5px; margin-top: 3px; height: 25%; }
+.gridcontents { display:table-cell; border-right: 1px solid #A7C2EB; border-bottom: 1px solid #A7C2EB; border-left: 1px solid #fff; }
+.ie7 .gridcontents { display:block; border-left: none;}
+.date-number { top: 3px; left: 3px; color: #256ACF; font-weight: bold; font-size: 14px; text-align: left; padding: 0; }
+.days { background-color: #2E72D8; color: #FFFFFF; font-size: 12px; font-weight: bold; text-align: center; width: 74px; border-left: 1px solid #256ACF; padding: 4px; height: 34px; }
+.ie7 .days { float: left; min-height: 34px; }
+.grid-month-1 { background-color: #8AC80A; height: 44px; width: 98%; -webkit-border-radius: 9px; -moz-border-radius: 9px; border-radius: 9px; text-align: center; }
+.grid-current-month { background-color: #E8F2FC; margin-left: auto; margin-right: auto; }
+.left-edge { border-left: 1px solid #256ACF; clear: left;}
+.lowest-fare-cell { background-color: #BCEE66; }
+.lowest-fare-text { color: #256ACF; }
+.top-left-radius { -webkit-border-top-left-radius: 9px; -moz-border-radius-topleft: 9px; }
+.top-right-radius { -webkit-border-top-right-radius: 9px; -moz-border-radius-topright: 9px; }
+.departing-date { color: #A6A6A6; font-size: 14px; font-weight: normal; width: 100%; }
+.departing-label { width: 100%; padding-left: 180px; color: #A6A6A6; font-size: 14px; font-weight: normal; }
+.next-month-nav-block { height: 220px; }
+.dead-center { position: relative; top: 45%; text-align: center; }
+.prev-month { position: relative; top: 30px; }
+/* Summary Outbound bar and continue leg button in case hiding inbound*/
+.price-prefix { display: block;}
+.leg-continue-wrapper  {float: right; height: 30px; line-height: 30px; }
+.radio-date{text-align: center; margin-top: 20px;}
+#depart-summary-info-date {float: left; font-weight: bold;}
+#depart-summary-info { background: none repeat scroll 0 0 #3175D8; color: #FFFFFF; font-size: 12px; height: 30px; line-height: 30px; padding: 20px 10px; width: 670px; }
+#depart-summary-info-button { background-color: #DDDDDD; background-image: -moz-linear-gradient(center top , #F0F0F0, #DDDDDD); border: 1px solid #CCCCCC; border-radius: 7px; box-shadow: 1px 1px 0 #CCCCCC; display: block; float: right; line-height: 15px; margin: 0 auto; padding: 0.4em 1em; text-decoration: none; }
+.calendar-button, .calendar-button a:link { background: url("../images/button-sprite.png") no-repeat scroll left top rgba(0, 0, 0, 0); border-radius: 4px; box-shadow: 1px 1px 0 #CCCCCC; color: #FFFFFF; display: block; float: right; height: 37px; line-height: 30px; margin: 0 0 0 20px; padding-left: 60px; text-decoration: none; width: 100px; }
+/* Month navigation bar */
+.month { font-weight: bold; font-size: 12px; vertical-align: middle; -webkit-border-radius: 9px; -moz-border-radius: 9px; }
+.odd-month { background-color: #D9EBFD; }
+.even-month { background-color: #E8F3FC; }
+.month-size-0_5 { height: 36px; }
+.month-size-1_0 { height: 72px; }
+.month-size-1_5 { height: 108px; }
+.month-size-2_0 { height: 144px; }
+.month-size-2_5 { height: 180px; }
+.month-size-3_0 { height: 216px; }
+.month-size-3_5 { height: 252px; }
+.month-size-4_0 { height: 288px; }
+.month-size-4_5 { height: 324px; }
+.month-size-5_0 { min-height: 360px; }
+/*Cell markers*/
+.tdc-searched { background-color: #A7C2EB; margin: auto; font-weight: bold; font-size: 12px; }
+.grid-c.tdc-selected { background-color: #3175D8; margin: auto; font-weight: bold; font-size: 12px; }
+.tdc-selected .date-number { color: #FFFFFF; }
+.tdc-selected .centered-text { color: #FFFFFF; }
+.tdc-selected .centered-price { color: #FFFFFF; }
+
+.component .thirtydaycal .prices-all {display: inline-block;width: 75px;}
+.component .thirtydaycal .centered-price, .component .thirtydaycal .radio-date { line-height: 16px; }
+.component .thirtydaycal .prefix-price {display: block;}
+a.calendar-button { background: url("../images/button-sprite.png") no-repeat scroll left top rgba(0, 0, 0, 0);  border: 0 none; border-radius: 3px; cursor: pointer; font: 1.3em "Lucida Sans Unicode","Lucida Grande",sans-serif; height: 22px; letter-spacing: 1px; padding: 0.5em 1em; text-transform: uppercase; width: 160px; text-align: center; }
+.component .thirtydaycal .prices-alternative { display: inline; }
+.component .thirtydaycal .prices-alternative .prices-amount, .component .thirtydaycal .prices-alternative .prices-currency { display: inline-block; word-break: break-all; }
+.advthirtydaycal .grid { margin-left: 0; width: 690px; }
+.price-included { display: block; }
+.flight-matrix-wrapper { overflow: hidden; padding: 0; margin: 32px 0 0; }
+
+.flight-matrix-header-wrapper-horizontal { float: left; height: 65px; width: 100%; overflow: hidden;}
+.flight-matrix-header-wrapper-vertical .flight-matrix-item.selected,.flight-matrix-header-wrapper-horizontal .flight-matrix-item.selected { background-color: #FFFFFF !important; }
+.flight-matrix-header-wrapper-horizontal ul,.flight-matrix-header-wrapper-vertical ul { position: relative; }
+.flight-matrix-header-wrapper-horizontal ul { height: 65px; }
+
+.flight-matrix-items-wrapper { float: left; font-size: 10px; cursor: pointer; overflow: hidden; }
+.flight-matrix-wrapper ul { list-style: none outside none; margin: 0; padding: 0; height: 75px;}
+
+.flight-matrix-wrapper button[disabled="disabled"] { background-color: #F5F5F5; }
+.flight-matrix-wrapper button { border: none; height: 26px; width: 26px; padding: 0; z-index: 90; position:relative;}
+.flight-matrix-wrapper button:hover { background-color: #F5F5F5; }
+.flight-matrix-item-wrapper.hovered,.flight-matrix-wrapper button:active{ background-color: #B0D9FC; }
+
+.flight-matrix-item-wrapper .cell-selected { background-color: #DDFADD !important; }
+.flight-matrix-item-wrapper .cell-selected .lowest-fare-cell { background-color: #DDFADD !important; }
+.flight-matrix-item-wrapper .lowest-fare-cell { background-color:#F5F5F5; }
+.flight-matrix-item-wrapper .lowest-fare-cell .lowest-fare-text { color: #87B13C; }
+.flight-matrix-item-wrapper .unavailable { color: #909981; font-weight: normal; cursor: default; }
+.flight-matrix-item-wrapper .unavailable .centered-text { text-align: center; margin-top: 0px}
+.flight-matrix-item .header-vertical { font-weight: normal }
+.flight-matrix-item .header-horizontal { font-weight: normal }
+.flight-matrix-item-wrapper .cell-discountnegofare-indicator { background: url(../images/star-nego-fare.png) no-repeat scroll right 10% #F5F5F5; }
+.flight-matrix-item-wrapper .cell-negofare-indicator { background: url(../images/nego-fare.png) no-repeat scroll right 10% #F5F5F5; }
+.flight-matrix-item-wrapper .cell-discountfare-indicator { background: url(../images/star.png) no-repeat scroll right 10% #F5F5F5; }
+.flight-matrix-item-wrapper .cell-radio-button {margin-top: 24px }
+.flight-matrix-item-wrapper .noresults {padding-top: 26px}
+.flight-matrix-item-wrapper .soldout {padding-top: 26px}
+.flight-matrix-item .centered-price { font-weight: normal; font-size: 11px; font-weight: normal; line-height: 16px; word-wrap: break-word; padding: 0 5px 5px; margin-top: 0; }
+
+
+.nav-wrapper button.loading { background: url(../images/loader-small.gif) no-repeat scroll left top #FFFFFF; }
+.flight-matrix-wrapper .componentLoadingContainer { width: 100%; height: 100%; top: 0; left: 0; color: #000; z-index: 199; position: absolute; }
+
+.flight-matrix-wrapper .flightHeader { color: #000000; font-size: 21px; }
+.flight-matrix-header-wrapper-vertical .flight-matrix-item, .flight-matrix-header-wrapper-horizontal .flight-matrix-item { background-color: #EAF4FD; padding: 10px; text-align: left; width: 88px; height: 45px; font-size: 10px; line-height: 16px; }
+
+.nav-wrapper{float: left; height: 65px; width: 100%;}
+.nav-wrapper.horizontal-right { }
+.nav-wrapper.horizontal-right.five { }
+.flight-matrix-navigate-horizontal-left{ background: url(../images/arrow-left.png) no-repeat scroll left top #FFFFFF; }
+.flight-matrix-navigate-horizontal-right{ background: url(../images/arrow-right.png) no-repeat scroll left top #FFFFFF; }
+.flight-matrix-navigate-vertical-top { background: url(../images/arrow-up.png) no-repeat scroll left top #FFFFFF;}
+.flight-matrix-navigate-vertical-bottom { background: url(../images/arrow-down.png) no-repeat scroll left top #FFFFFF; }
+
+.flight-matrix-navigate-horizontal-left{ float: right; top: 38px; margin-right: 1px; }
+.flight-matrix-navigate-horizontal-right { float: left; top: 38px; margin-left: 1px; }
+.flight-matrix-navigate-vertical-bottom { float: right; margin-top: 2px; }
+.flight-matrix-navigate-vertical-top { float: right; top: 38px; }
+.flight-matrix-navigate-horizontal-right.top { top: 0; }
+.flight-matrix-navigate-horizontal-left.top { top: 0; }
+.flight-matrix-navigate-vertical-top.left { float: left; }
+.flight-matrix-navigate-vertical-bottom.left-no-horizontal { float: left; margin-top: 2px; }
+
+
+.flight-matrix-item { text-align: center; background-color:#F5F5F5; font-weight:bold; }
+
+.flight-matrix-5x5 .horizontal-legend .flight-matrix-item, .flight-matrix-5x5 .vertical-legend .flight-matrix-item { padding: 16px 15px 0; }
+.flight-matrix-7x7 .horizontal-legend .flight-matrix-item, .flight-matrix-7x7 .vertical-legend .flight-matrix-item { padding: 16px 10px 0; }
+.flight-matrix-5x5 .flight-matrix-item { padding: 1px; min-height: 63px; width: 106px;}
+.flight-matrix-7x7 .flight-matrix-item { padding: 1px; min-height: 63px; width: 81px;}
+.flight-matrix-5x5 { width: 770px; height: 476px; }
+.flight-matrix-7x7 { width: 765px; height: 612px; }
+.flight-matrix-5x5 .flight-matrix-item-wrapper { width: 108px; float: left; padding: 1px; height: 65px; overflow: hidden; }
+.flight-matrix-7x7 .flight-matrix-item-wrapper { width: 83px; float: left; padding: 1px; height: 65px; overflow: hidden; }
+.flight-matrix-5x5.flight-matrix-wrapper ul { list-style: none; margin: 0; padding: 0; height: 65px;}
+.flight-matrix-7x7.flight-matrix-wrapper ul { list-style: none; margin: 0; padding: 0; height: 65px;}
+.flight-matrix-5x5 .flight-matrix-header-wrapper-vertical { float: left; width: 110px; overflow: hidden;}
+.flight-matrix-7x7 .flight-matrix-header-wrapper-vertical { float: left; width: 85px; overflow: hidden;}
+.flight-matrix-5x5 .nav-wrapper{float: left; height: 65px; width: 110px; position:relative;}
+.flight-matrix-7x7 .nav-wrapper{float: left; height: 65px; width: 85px; position:relative;}
+.flight-matrix-5x5 .flight-matrix-items-wrapper { width: 550px; height: 335px; }
+.flight-matrix-7x7 .flight-matrix-items-wrapper { width: 595px; height: 469px; }
+.flight-matrix-5x5 .flight-matrix-header-wrapper-vertical { height: 335px; }
+.flight-matrix-7x7 .flight-matrix-header-wrapper-vertical { height: 469px; }
+.flight-matrix-5x5 .flight-matrix-header-wrapper-vertical ul { float: left; width: 110px; }
+.flight-matrix-7x7 .flight-matrix-header-wrapper-vertical ul { float: left; width: 85px; }
+.flight-matrix-5x5 .flight-matrix-header-wrapper-vertical .flight-matrix-date-wrapper { overflow: hidden; height: 335px; float: left; }
+.flight-matrix-7x7 .flight-matrix-header-wrapper-vertical .flight-matrix-date-wrapper { overflow: hidden; height: 469px; float: left; }
+.flight-matrix-5x5 .flight-matrix-header-wrapper-horizontal .flight-matrix-date-wrapper { overflow: hidden; width: 550px; float: left; }
+.flight-matrix-7x7 .flight-matrix-header-wrapper-horizontal .flight-matrix-date-wrapper { overflow: hidden; width: 595px; float: left; }
+.flight-matrix-5x5 .slider-wrapper { height: 335px; left: 0px; position: relative; width: 550px;}
+.flight-matrix-7x7 .slider-wrapper { height: 469px; left: 0px; position: relative; width: 595px;}
+.flight-matrix-5x5 .slider-window { height: 335px; overflow: hidden; width: 550px; float: left; position: relative; }
+.flight-matrix-7x7 .slider-window { height: 469px; overflow: hidden; width: 595px; float: left; position: relative; }
+.flight-matrix-5x5 .horizontal-header-window { float: left; height: 65px; overflow: hidden; width: 550px; position: relative; }
+.flight-matrix-7x7 .horizontal-header-window { float: left; height: 65px; overflow: hidden; width: 595px; position: relative; }
+.flight-matrix-5x5 .horizontal-legend { width: 550px; height: 65px; float: left; }
+.flight-matrix-7x7 .horizontal-legend { width: 595px; height: 65px; float: left; }
+.flight-matrix-5x5 .horizontal-header-slider-wrapper{ height: 65px; left: 0px; position: relative; width: 550px; float: left;}
+.flight-matrix-7x7 .horizontal-header-slider-wrapper{ height: 65px; left: 0px; position: relative; width: 595px; float: left;}
+.flight-matrix-5x5 .vertical-header-window { float: left; height: 335px; overflow: hidden; width: 110px; position: relative; }
+.flight-matrix-7x7 .vertical-header-window { float: left; height: 469px; overflow: hidden; width: 85px; position: relative; }
+.flight-matrix-5x5 .vertical-legend { width: 110px; height: 335px; float: left; }
+.flight-matrix-7x7 .vertical-legend { width: 110px; height: 469px; float: left; }
+
+.flight-matrix-5x5 .vertical-header-slider-wrapper{ height: 335px; left: 0px; position: relative; width: 110px;}
+.flight-matrix-7x7 .vertical-header-slider-wrapper{ height: 469px; left: 0px; position: relative; width: 85px;}
+
+.flightMatrixComponent .matrix-bottom-line-5x5 {border-bottom: 2px solid #E1E1E1; margin-bottom: 10px; width: 700px;}
+.flightMatrixComponent .matrix-bottom-line-7x7 {border-bottom: 2px solid #E1E1E1; margin-bottom: 10px; width: 700px;}
+
+.flightHeader dt { float: left; margin-right: 5px; }
+.flightHeader { font-size: 21px; }
+.marketingMessages { margin: 16px 16px 0; }#travel-bank-register-overlay .travel-bank-register-overlay-title {
+    font-size: 17px;
+    font-weight: bold;
+    margin-left: 25px;
+    margin-top: 25px;
+    padding: 5px;
+}
+
+#travel-bank-register-overlay .travel-bank-register-overlay-description {
+    font-size: 12px;
+    font-weight: normal;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 5px;
+}
+
+#travel-bank-register-overlay .suffix-name {
+    display: inline-block;
+}
+
+#travel-bank-register-overlay .first-name {
+    display: inline-block;
+}
+
+#travel-bank-register-overlay .last-name {
+    display: inline-block;
+}
+
+#travel-bank-register-overlay .passengers-prefix-container {
+    display: inline-block;
+}
+
+#travel-bank-register-overlay .field label {
+    width: 120px;
+    display: inline-block;
+}
+
+#travel-bank-register-overlay .field-name label {
+    width: 40px;
+    text-align: right;
+    display: inline-block;
+    padding: 10px 0px 10px 0px;
+}
+
+#travel-bank-register-overlay .button-create-account {
+    height: 30px;
+}
+
+#travel-bank-register-overlay .create-account-error {
+    color: #ff0000;
+    font-weight: bold;
+    font-size: 12px;
+    margin-left: 10px;
+    padding: 5px;
+}
+#travel-bank-register-overlay .first-name .textfield{
+    width: 80px;
+}
+
+#travel-bank-register-overlay .last-name .textfield{
+    width: 80px;
+}
+
+#travel-bank-register-overlay .travel-bank-register-overlay-content {
+    margin-left: 40px;
+    margin-right: 10px;
+}
+#travel-bank-register-overlay .travel-bank-register-overlay-spacer {
+    margin-right:10px;
+    margin-left:20px;
+    margin-top:15px;
+    margin-bottom:15px;
+    height:0px;
+    padding-top: 1px;
+    background-color: rgba(79, 78, 64, 0.21);
+    width: auto;
+}
+#travel-bank-register-overlay .name-container {
+    margin-left: -40px;
+}
+
+.tripcontactinfo-container {
+    width: auto;
+}
+
+.tripcontactinfo-outer-container {
+    /*top right bottom left*/
+    margin: 5px 75px 5px 0px;
+    border: 1px solid #a1a1a1;
+    border-radius: 10px;
+}
+
+.tripcontactinfo .field label {
+    width: 100px;
+    float: left;
+}
+
+.tripcontactinfo-tabs {
+    color: #000;
+    margin: 12px 0px 0px 0px;
+    z-index: 1;
+    padding: 0px 0px 0px 127px;
+}
+
+.tripcontactinfo-li {
+    display: inline;
+    overflow: hidden;
+    list-style-type: none;
+    border-radius: 2px;
+    border: 1px solid #d3d3d3;
+    background-color: #ffffff;
+    padding: 5px;
+}
+
+.tripcontactinfo-li.selected {
+    border: 1px solid #000;
+    background-color: #666666;
+}
+
+.tripcontactinfo-li a {
+    text-decoration: none;
+}
+
+.tripcontactinfo-li .tripcontactinfo-tab {
+    display: inline;
+    overflow: hidden;
+    list-style-type: none;
+    padding: 1px;
+    font-weight: normal;
+    color: #A3A3A3;
+}
+
+.tripcontactinfo-tabs .selected .tripcontactinfo-tab {
+    font-weight: bold;
+    color: #E3E3E3;
+}
+
+.tripcontactinfo-component-title h2 {
+    margin-left: 10px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+/* upsell component */
+
+/** upsell.css **/
+
+
+
+div.upsell-content { background: url(../images/seat-map-content-bg.png?1363714057561) repeat-x scroll 0 0 white; border-radius: 5px 5px 5px 5px; border: 1px solid #B2B49E; padding: 25px; font-family: "Verdana"; font-size: 11px; margin-bottom: 20px; overflow-y: auto; }
+div.upsell h1, section.upsell h1 { color: black; margin-bottom: 15px; font-weight: normal; font-family: "Arial"; font-size: 21px; }
+div.upsell h3, section.upsell h3 { margin-left: 0; }
+div.upsell h4, section.upsell h4 { font-size: 11px; color: #4F4E40; font-weight: normal; font-size: 11px; }
+/* tabs */
+div.upsell-tabs { border-bottom: 1px solid #999999; height: 38px; }
+div.upsell-tabs ul { list-style-type: none; }
+div.upsell-tabs ul li { display: block; float: left; padding: 11px 20px; border: 1px solid #999; border-radius: 5px 5px 0 0; text-transform: capitalize; color: #999999; font-weight: bold; }
+div.upsell-tabs ul li.selected { border-radius: 5px 5px 0 0; border: 1px solid #999999; border-bottom: 1px solid white; color: #333333; background: #FFF; padding: 12px 20px; }
+div.upsell-tabs ul li a { color: #999999; }
+div.upsell-tabs ul li.selected a, div.upsell-tabs ul li a:hover { color: #333333; }
+/* tab content */
+div.upsell div.tab-content, section.upsell div.tab-content { clear: both; }
+div.upsell div.marketing-text, section.upsell div.marketing-text { margin-top: 28px; text-align: justify; }
+div.upsell .tab-item, section.upsell .tab-item { display: none; }
+div.upsell .tab-item.selected, section.upsell .tab-item.selected { display: block; }
+div.upsell div.upsell-matrix-container, section.upsell div.upsell-matrix-container { float: left; width: 650px; }
+div.upsell div.upsell-table-container, section.upsell div.upsell-table-container { overflow-x: auto; }
+/* comparison matrix */
+div.upsell table, section.upsell table { border-collapse: separate; border-spacing: 3px; margin-top: 48px; }
+div.upsell td, div.upsell th, section.upsell td, section.upsell th { height: 30px; text-align: center; padding-left: 18px; padding-right: 18px; }
+div.upsell th, section.upsell th { color: #0066CC; }
+div.upsell td.feature, section.upsell td.feature { text-align: left; padding-right: 44px; padding-left: 7px; }
+div.upsell tr.odd td, section.upsell tr.odd td { background-color: #F5F5F5; }
+div.upsell td.checked span, section.upsell td.checked span { display: none; }
+div.upsell td.checked, section.upsell td.checked { background-image: url(../images/upsell-checked.png?1363714057561); width: 21px; background-repeat: no-repeat; background-position: center; }
+div.upsell button.selectBrand, section.upsell button.selectBrand { background-color: transparent; border: none; }
+div.upsell button.selectBrand span, section.upsell button.selectBrand span { display: block; width: 116px; height: 31px; background-repeat: no-repeat; line-height: 31px; }
+div.upsell button.selectBrand span.select, section.upsell button.selectBrand span.select { color: white; background-image: url(../images/upsell-select-btn.png?1363714057561); }
+div.upsell button.selectBrand span.remove, section.upsell button.selectBrand span.remove { color: black; background-image: url(../images/upsell-remove-btn.png?1363714057561); display: none; }
+div.upsell button.selectBrand.selected span.select, section.upsell button.selectBrand.selected span.select { display: none; }
+div.upsell button.selectBrand.selected span.remove, section.upsell button.selectBrand.selected span.remove { display: block; }
+div.upsell button.continue, section.upsell button.continue { width: 136px; height: 39px; background-image: url(../images/upsell-continue-btn.png?1363714057561); background-repeat: no-repeat; background-color: transparent; border: 0; color: white; margin-top: 76px; float: right; margin-bottom: 10px; }
+/* select upgrade */
+div.select-upgrade-summary { text-align: right; background: #E4E4E4; border-radius: 5px 5px 5px 5px; border-color: #E4E4E4; padding: 15px; clear: both; color: black; }
+div.select-upgrade-options { width: 100%; /*display: none;*/ }
+/*div.select-upgrade-options.selected {*/
+/*display: block;*/
+/*}*/
+div.select-upgrade-options h3 { margin-top: 21px; margin-bottom: 16px; font-size: 11px; font-weight: normal; color: black; }
+div.select-upgrade-options div.options { background: #EAF4FD; border-radius: 5px 5px 5px 5px; width: 49%; margin-bottom: 20px; }
+div.options.upgrade-outbound { float: left; }
+div.options.upgrade-inbound { float: right; }
+div.select-upgrade-options div.options-inner { padding: 17px 10px; }
+div.select-upgrade-options div.options ul { list-style-type: none; padding-left: 12px; margin-top: 20px; }
+div.select-upgrade-options div.options ul li { line-height: 16px; margin-bottom: 9px; }
+/*
+Copyright (c) 2009, Yahoo! Inc. All rights reserved.
+Code licensed under the BSD License:
+http://developer.yahoo.net/yui/license.txt
+version: 2.8.0r4
+*/
+/* Menu & MenuBar styles */
+
+.yuimenu {
+    top: -999em;
+    left: -999em;
+}
+
+.yuimenubar {
+    position: static;
+}
+
+.yuimenu .yuimenu,
+.yuimenubar .yuimenu {
+    position: absolute;
+}
+
+.yuimenubar li,
+.yuimenu li {
+    list-style-type: none;
+}
+
+.yuimenubar ul,
+.yuimenu ul,
+.yuimenubar li,
+.yuimenu li,
+.yuimenu h6,
+.yuimenubar h6 {
+
+    margin: 0;
+    padding: 0;
+
+}
+
+.yuimenuitemlabel,
+.yuimenubaritemlabel {
+
+    text-align: left;
+    white-space: nowrap;
+
+}
+
+/*
+    The following style rule trigger the "hasLayout" property in
+    IE (http://msdn2.microsoft.com/en-us/library/ms533776.aspx) for a
+    MenuBar instance's <ul> element, allowing both to clear their floated
+    child <li> elements.
+*/
+
+.yuimenubar ul {
+
+    *zoom: 1;
+
+}
+
+/*
+    Remove the "hasLayout" trigger for submenus of MenuBar instances as it
+    is unnecessary.
+*/
+
+.yuimenubar .yuimenu ul {
+
+    *zoom: normal;
+
+}
+
+/*
+    The following style rule allows a MenuBar instance's <ul> element to clear
+    its floated <li> elements in Firefox, Safari and and Opera.
+*/
+
+.yuimenubar>.bd>ul:after {
+
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    height: 0;
+    line-height: 0;
+
+}
+
+.yuimenubaritem {
+
+    float: left;
+
+}
+
+.yuimenubaritemlabel,
+.yuimenuitemlabel {
+
+    display: block;
+
+}
+
+.yuimenuitemlabel .helptext {
+
+    font-style: normal;
+    display: block;
+
+    /*
+        The value for the left margin controls how much the help text is
+        offset from the text of the menu item.  This value will need to
+        be customized depending on the longest text label of a menu item.
+    */
+
+    margin: -1em 0 0 10em;
+
+}
+
+/*
+    PLEASE NOTE: The <div> element used for a menu's shadow is appended
+    to its root element via JavaScript once it has been rendered.  The
+    code that creates the shadow lives in the menu's public "onRender"
+    event handler that is a prototype method of YAHOO.widget.Menu.
+    Implementers wishing to remove a menu's shadow or add any other markup
+    required for a given skin for menu should override the "onRender" method.
+*/
+
+.yui-menu-shadow {
+
+    position: absolute;
+    visibility: hidden;
+    z-index: -1;
+
+}
+
+.yui-menu-shadow-visible {
+
+    top: 2px;
+    right: -3px;
+    left: -3px;
+    bottom: -3px;
+    visibility: visible;
+
+}
+
+/*
+
+There are two known issues with YAHOO.widget.Overlay (the superclass class of
+Menu) that manifest in Gecko-based browsers on Mac OS X:
+
+    1) Elements with scrollbars will poke through Overlay instances floating
+       above them.
+
+    2) An Overlay's scrollbars and the scrollbars of its child nodes remain
+       visible when the Overlay is hidden.
+
+To fix these bugs in Menu (a subclass of YAHOO.widget.Overlay):
+
+    1) The "overflow" property of a Menu instance's shadow element and child
+       nodes is toggled between "hidden" and "auto" (through the application
+       and removal of the "hide-scrollbars" and "show-scrollbars" CSS classes)
+       as its "visibility" configuration property is toggled between
+       "false" and "true."
+
+    2) The "display" property of <select> elements that are child nodes of the
+       Menu instance's root element is set to "none" when it is hidden.
+
+PLEASE NOTE:
+
+    1) The "hide-scrollbars" and "show-scrollbars" CSS classes classes are
+       applied only for Gecko on Mac OS X and are added/removed to/from the
+       Overlay's root HTML element (DIV) via the "hideMacGeckoScrollbars" and
+       "showMacGeckoScrollbars" methods of YAHOO.widget.Overlay.
+
+    2) There may be instances where the CSS for a web page or application
+       contains style rules whose specificity override the rules implemented by
+       the Menu CSS files to fix this bug.  In such cases, is necessary to
+       leverage the provided "hide-scrollbars" and "show-scrollbars" classes to
+       write custom style rules to guard against this bug.
+
+** For more information on this issue, see:
+
+   + https://bugzilla.mozilla.org/show_bug.cgi?id=187435
+   + YUILibrary bug #1723530
+
+*/
+
+.hide-scrollbars * {
+
+    overflow: hidden;
+
+}
+
+.hide-scrollbars select {
+
+    display: none;
+
+}
+
+/*
+
+The following style rule (".yuimenu.show-scrollbars") overrides the
+".show-scrollbars" rule defined in container-core.css which sets the
+"overflow" property of a YAHOO.widget.Overlay instance's root HTML element to
+"auto" when it is visible.  Without this override, a Menu would have scrollbars
+when one of its submenus is visible.
+
+*/
+
+.yuimenu.show-scrollbars,
+.yuimenubar.show-scrollbars {
+
+    overflow: visible;
+
+}
+
+.yuimenu.hide-scrollbars .yui-menu-shadow,
+.yuimenubar.hide-scrollbars .yui-menu-shadow {
+
+    overflow: hidden;
+
+}
+
+.yuimenu.show-scrollbars .yui-menu-shadow,
+.yuimenubar.show-scrollbars .yui-menu-shadow {
+
+    overflow: auto;
+
+}
+
+/* MenuBar style rules */
+
+.yuimenubar {
+
+    background-color: #f6f7ee;
+
+}
+
+/* Menu style rules */
+
+.yuimenu {
+
+    background-color: #f6f7ee;
+    border: solid 1px #c4c4be;
+    padding: 1px;
+
+}
+
+.yui-menu-shadow {
+
+    display: none;
+
+}
+
+.yuimenu ul {
+
+    border: solid 1px #c4c4be;
+    border-width: 1px 0 0 0;
+    padding: 10px 0;
+
+}
+
+.yuimenu .yui-menu-body-scrolled {
+
+    overflow: hidden;
+
+}
+
+/* Group titles */
+
+.yuimenu h6,
+.yuimenubar h6 {
+
+    font-size: 100%;
+    font-weight: normal;
+    border: solid 1px #c4c4be;
+    color: #b9b9b9;
+
+}
+
+.yuimenubar h6 {
+
+    float: left;
+    padding: 4px 12px;
+    border-width: 0 1px 0 0;
+
+}
+
+.yuimenubar .yuimenu h6 {
+
+    float: none;
+
+}
+
+.yuimenu h6 {
+
+    border-width: 1px 0 0 0;
+    padding: 5px 10px 0 10px;
+
+}
+
+.yuimenu ul.first-of-type,
+.yuimenu ul.hastitle,
+.yuimenu h6.first-of-type {
+
+    border-width: 0;
+
+}
+
+/* Top and bottom scroll controls */
+
+/* .yuimenu .topscrollbar,
+.yuimenu .bottomscrollbar {
+
+    height: 16px;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+}
+
+.yuimenu .topscrollbar {
+
+    background-image: url(menu_up_arrow.png);
+
+}
+
+.yuimenu .topscrollbar_disabled {
+
+    background-image: url(menu_up_arrow_disabled.png);
+
+}
+
+.yuimenu .bottomscrollbar {
+
+    background-image: url(menu_down_arrow.png);
+
+}
+
+.yuimenu .bottomscrollbar_disabled {
+
+    background-image: url(menu_down_arrow_disabled.png);
+
+} */
+
+/* MenuItem and MenuBarItem styles */
+
+.yuimenuitem {
+
+    /*
+        For IE: Used to collapse superfluous white space between <li> elements
+        that is triggered by the "display" property of the <a> elements being
+        set to "block."
+    */
+
+    *border-bottom: solid 1px #f6f7ee;
+
+}
+
+.yuimenuitemlabel,
+.yuimenuitemlabel:visited,
+.yuimenubaritemlabel,
+.yuimenubaritemlabel:visited {
+
+    font-size: 85%;
+    color: #000;
+    text-decoration: none;
+
+}
+
+.yuimenuitemlabel {
+
+    padding: 2px 24px;
+
+}
+
+.yuimenubaritemlabel {
+
+    border-width: 0 0 0 1px;
+    border-style: solid;
+    border-color: #c4c4be;
+    padding: 4px 24px;
+
+}
+
+
+/* .yuimenubaritem-hassubmenu {
+
+    background: url(menubaritem_submenuindicator.png) right center no-repeat;
+
+}
+
+.yuimenuitem-hassubmenu {
+
+    background: url(menuitem_submenuindicator.png) right center no-repeat;
+
+}
+
+.yuimenuitem-checked {
+
+    background: url(menuitem_checkbox.png) left center no-repeat;
+
+} */
+
+.yuimenuitemlabel .helptext {
+
+    margin-top: -1.1em;
+    *margin-top: -1.2em; /* For IE*/
+
+}
+
+/* MenuItem states */
+
+/* Selected MenuItem */
+
+.yuimenubaritem-selected,
+.yuimenuitem-selected {
+
+    background-color: #8c8ad0;
+
+}
+
+.yuimenubaritemlabel-selected,
+.yuimenubaritemlabel-selected:visited,
+.yuimenuitemlabel-selected,
+.yuimenuitemlabel-selected:visited {
+
+    text-decoration: underline;
+    color: #fff;
+
+}
+
+/* .yuimenubaritem-hassubmenu-selected {
+
+    background-image: url(menubaritem_submenuindicator_selected.png);
+
+}
+
+.yuimenuitem-hassubmenu-selected {
+
+    background-image: url(menuitem_submenuindicator_selected.png);
+
+}
+
+.yuimenuitem-checked-selected {
+
+    background-image: url(menuitem_checkbox_selected.png);
+
+} */
+
+/* Disabled MenuItem */
+
+.yuimenubaritemlabel-disabled,
+.yuimenubaritemlabel-disabled:visited,
+.yuimenuitemlabel-disabled,
+.yuimenuitemlabel-disabled:visited {
+
+    cursor: default;
+    color: #b9b9b9;
+
+}
+
+/* .yuimenubaritem-hassubmenu-disabled {
+
+    background-image: url(menubaritem_submenuindicator_disabled.png);
+
+}
+
+.yuimenuitem-hassubmenu-disabled {
+
+    background-image: url(menuitem_submenuindicator_disabled.png);
+
+}
+
+.yuimenuitem-checked-disabled {
+
+    background-image: url(menuitem_checkbox_disabled.png);
+
+} */
+
+.yui-module.yuimenubar {
+    border: none;
+    background-color: transparent;
+    background-image: none;
+    margin: 0;
+}
+
+/** date tabs **/
+.menu-dates .yuimenubar {
+    float: left;
+    width: 603px;
+    height: 75px;
+}
+
+.day-range-0 .yuimenubar {
+    width: 367px !important;
+}
+
+.menu-dates .menu-dates-instance-container {
+    overflow: hidden;
+    height: 75px;
+    float: left;
+    width: 603px;
+}
+
+.menu-dates .menu-dates-instance-container.prevDisabled {
+/*margin-left: 47px*/
+}
+
+.day-range-0 .menu-dates-instance-container {
+    width: 367px;
+}
+
+.menu-dates .menu-dates-instance-container-inner {
+    width: 4000px;
+    height: 75px;
+}
+
+.menu-dates li {
+    padding-bottom: 9px;
+    margin: 0 -1px 0 0;
+    border-color: #fff;
+    border-style: solid;
+    border-width: 1px 3px 0;
+}
+
+.menu-dates .yuimenubaritemlabel {
+    padding: 0;
+    text-align: center;
+    white-space: normal;
+}
+
+.menu-dates .yuimenubaritemlabel-selected,
+.menu-dates .yuimenubaritemlabel-selected:visited,
+.menu-dates .yuimenuitemlabel-selected,
+.menu-dates .yuimenuitemlabel-selected:visited {
+    text-decoration: none;
+    color: #fff;
+}
+
+.menu-dates .active {
+    margin-bottom: -1px; /* for overlap */
+    margin: 0 1px -1px 1px;
+    border: none;
+}
+
+.menu-dates .prev-label, .menu-dates .next-label {
+    padding-bottom: 0;
+    background-image: none;
+    border: none;
+    display: block;
+    float: left;
+}
+
+.menu-dates .dates-prev, .menu-dates .dates-next {
+    border: none;
+}
+
+.menu-dates .next-label {
+    background-position: -410px -220px;
+    float: right !important;
+    margin-right: 0;
+}
+
+.menu-dates .prev-label span, .menu-dates .next-label span {
+    bottom: 5px;
+    font-size: 10px;
+    left: 7px;
+    position: absolute;
+}
+
+.menu-dates a.disabled span {
+    color: gray;
+}
+
+.menu-dates li a {
+    display: block;
+    display: inline-block;
+    vertical-align: bottom; /* safari: for overlap */
+    zoom: 1;
+    height: 63px;
+    border: solid 1px #D6D6CD;
+}
+
+.menu-dates li a {
+    padding: 0.2em 0.5em;
+    top: -1px; /* for 1px rounded corners */
+    position: relative;
+    color: #000;
+    text-decoration: none;
+}
+
+.menu-dates .active a {
+    border-color: #2B6DCC;
+    border-style: solid;
+    border-width: 1px 3px 0;
+}
+
+.menu-dates .active.dates-prev a, .menu-dates .active.dates-next a {
+    border: none;
+}
+
+.menu-dates .disabled {
+    color: #ccc;
+    cursor: default;
+}
+
+.menu-dates .yuimenubaritem-selected {
+    background-color: transparent
+}
+
+.menu-dates ul {
+    white-space: nowrap;
+}
+
+.menu-dates li .date {
+    background-color: #8A8874;
+    color: #FFFFFF;
+}
+
+.menu-dates li.active .date {
+    background-color: #2B6DCC;
+    color: #FFFFFF;
+    border: 0 none;
+}
+
+.menu-dates .yuimenubaritemlabel-disabled span.date, .menu-dates .yuimenubaritemlabel-disabled span.price {
+    color: #bbb;
+    border: 0 none;
+}
+
+.menu-dates li .price {
+    color: #4F4E40;
+    font-size: /*15px*/ 9px;
+    line-height: 38px;
+}
+
+.menu-dates li .rt-price {
+    color: #4F4E40;
+    font-size: /*15px*/ 9px;
+    line-height: 20px;
+}
+
+.menu-dates li.active .price {
+    color: #2B6DCC;
+}
+
+.menu-dates li .date, .date-list li .price {
+    display: block;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 22px;
+    padding-bottom: 1px;
+    white-space: nowrap;
+}
+
+/** class tabs **/
+
+.yuimenubar.menu-classes {
+    margin: -20px 0 5px 0;
+    clear: both;
+}
+
+.menu-classes .yuimenubaritemlabel {
+    color: #82806a;
+}
+
+.menu-classes .yuimenubaritemlabel-selected,
+.menu-classes .yuimenubaritemlabel-selected:visited,
+.menu-classes .yuimenuitemlabel-selected,
+.menu-classes .yuimenuitemlabel-selected:visited {
+    text-decoration: none;
+    color: #82806a;
+}
+
+.menu-classes li {
+    padding-left: 15px;
+    float: right;
+    line-height: 32px;
+    font-size: 14px;
+    text-transform: uppercase;
+    margin-top: 4px;
+}
+
+.menu-classes li a {
+    margin: 0;
+    padding: 0 20px 0 0;
+    display: block; /*margin-left:16px;*/
+    height: 32px;
+    border: none;
+    color: #82806a; /*display: block;*/
+}
+
+.menu-classes .active, .menu-classes .yuimenubaritem-selected {
+    margin-bottom: 0; /* for overlap */
+    height: 36px;
+    margin-top: 0;
+}
+
+.menu-classes .active a, .menu-classes a.yuimenubaritemlabel-selected {
+    color: #7DBB12;
+    height: 34px;
+    padding-top: 2px;
+}
+.yui-calcontainer {
+    border: none;
+}
+/*
+Copyright (c) 2009, Yahoo! Inc. All rights reserved.
+Code licensed under the BSD License:
+http://developer.yahoo.net/yui/license.txt
+version: 2.8.0r4
+*/
+/**
+ * SAM
+ *
+ * Skin colors used:
+ *
+ * - Control Border : 808080
+ * - Control Chrome : f2f2f2
+ * - Cell Borders : cccccc
+ * - Normal Cell BG : ffffff
+ * - Date Links : 0066cc
+ * - Selected Cells BG : b3d4ff
+ * - Cell Hover BG : 426fd9
+ * - Disabled BG : cccccc
+ * - Disabled Text Color : a6a6a6
+ **/
+
+/* CALENDAR BOUNDING BOX */
+.yui-calcontainer {
+    padding:10px;
+    margin: 0; padding: 0; border: 0; outline: 0; line-height: 1.3; text-decoration: none; font-size: 100%; list-style: none;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 1.1em;
+    padding: 7px 15px 13px 7px;
+    position: relative;
+}
+
+/* CALENDARGROUP BOUNDING BOX */
+.yui-calcontainer.multi {
+    padding:0 20px;
+    margin-top:31px;
+    height: 200px;
+}
+
+/* BOUNDING BOX FOR EACH CALENDAR GROUP PAGE */
+.yui-calcontainer.multi .groupcal {
+    background-color:transparent;
+    border: 1px solid #D8D8D1;
+    padding:0;
+    margin:0;
+    float: left;
+}
+.yui-calcontainer.multi .first-of-type {
+    margin-right: 3px;   
+}
+
+.yui-calcontainer.multi .last-of-type {
+    
+}
+
+/* TITLE BAR */
+.yui-calcontainer .title {
+    background:url(../../../../assets/skins/sam/sprite.png) repeat-x 0 0;
+    border-bottom:1px solid #cccccc;
+    font:100% sans-serif;
+    color:#000;
+    font-weight:bold;
+    height:auto;
+    padding:.4em;
+    margin:0 -10px 10px -10px;
+    top:0;
+    left:0;
+    text-align:left;
+}
+
+.yui-calcontainer.multi .title {
+    margin:0 -5px 0 -5px;
+}
+
+.yui-calcontainer.withtitle {
+    padding-top:0;
+}
+
+/* CLOSE BUTTON */
+.yui-calcontainer .calclose {
+    background:url(../../../../assets/skins/sam/sprite.png) no-repeat 0 -300px;
+    width:25px;
+    height:15px;
+    top:.4em;
+    right:.4em;
+    cursor:pointer;
+}
+
+/* CALENDAR TABLE */
+.yui-calendar {
+    border-spacing:0;
+    border-collapse:collapse;
+    text-align:center;
+    margin:0;
+    width: 100%;
+}
+
+/* NAVBAR BOUNDING BOX */
+.yui-calendar .calhead {
+    vertical-align:middle;
+    font-size:12px;
+    font-weight:bold;
+    margin: 0 0 1px;
+    border-bottom: 1px solid #D8D8D1;
+    position: relative;
+    text-align:center;
+}
+
+/* NAVBAR TEXT CONTAINER */
+.yui-calendar .calheader {
+    background:transparent;
+    font-weight:bold;
+    padding: 0;
+    text-align:center;
+    height:33px;
+    line-height: 3em
+}
+
+.yui-calendar .calheader img {
+    border:none;
+}
+
+/* NAVBAR LEFT ARROW */
+/* NAVBAR RIGHT ARROW */
+.yui-calendar .calnavleft, .yui-calendar .calnavright {
+    top: 0;
+    position: absolute;
+    text-indent: -999999px;
+    cursor: pointer;
+    font-size: 1em;
+    display: block;
+    height:33px;
+    width:30px;
+}
+
+.yui-calendar .calnavleft {left: 0;}
+.yui-calendar .calnavright {right: 0;}
+
+/* WEEKDAY HEADER ROW */
+.yui-calendar .calweekdayrow {
+    height:2em;
+}
+
+.yui-calendar .calweekdayrow th {
+    background-color:#D0D0C8;
+    color:#0B0501;
+    text-transform: uppercase;
+    font-weight: normal;
+    font-size:10px;
+    padding:0 2px;
+    border:none;
+}
+
+/* WEEKDAY (Su, Mo, Tu...) HEADER CELLS */
+.yui-calendar .calweekdaycell {
+    color:#000;
+    font-weight:bold;
+    text-align:center;
+    width:2em;
+}
+
+/* CALENDAR FOOTER. NOT IMPLEMENTED BY DEFAULT */
+.yui-calendar .calfoot {
+    background-color:#f2f2f2;
+}
+
+/* WEEK NUMBERS (ROW HEADERS/FOOTERS) */
+.yui-calendar .calrowhead,  .yui-calendar .calrowfoot {
+    color:#a6a6a6;
+    font-size:85%;
+    font-style:normal;
+    font-weight:normal;
+    border:none;
+}
+
+.yui-calendar .calrowhead {
+    text-align:right;
+    padding:0 2px 0 0;
+}
+
+.yui-calendar .calrowfoot {
+    text-align:left;
+    padding:0 0 0 2px;
+}
+
+/* NORMAL CELLS */
+.yui-calendar td.calcell {
+    border:solid 1px #ccc;
+    background:#fff;
+    text-align:center;
+    white-space:nowrap;
+    padding:2px 3px;
+}
+
+/* LINK INSIDE NORMAL CELLS */
+.yui-calendar td.calcell a {
+    text-align:center;
+    color:#0066cc;
+    display:block;
+    height:100%;
+    text-decoration:none;
+}
+
+/* TODAY'S DATE */
+.yui-calendar td.calcell.today {
+    background-color:#88AB2B !important;
+    color:#FFFFFF !important;
+}
+
+.yui-calendar td.calcell.today a {
+    color :#fff;
+}
+
+/* OOM DATES */
+.yui-calendar td.calcell.oom {
+    background-color:#fff !important;
+    color:#fff;
+    cursor:default;
+    border: none;
+}
+
+/* SELECTED DATE */
+.yui-calendar td.calcell.selected {
+    background-color:#fff;
+    color:#000;
+}
+
+.yui-calendar td.calcell.selected a {
+    background-color:#3D76CA;
+    color:#000;
+}
+
+/* HOVER DATE */
+.yui-calendar td.calcell.calcellhover {
+    background-color:#426fd9;
+    color:#fff;
+    cursor:pointer;
+}
+
+.yui-calendar td.calcell.calcellhover a {
+    background-color:#426fd9;
+    color:#fff;
+}
+
+/* DEFAULT OOB DATES */
+.yui-calendar td.calcell.previous {
+    color:#e0e0e0;
+    border: none;
+    padding-top: 3px
+}
+
+/* CUSTOM RENDERERS */
+.yui-calendar td.calcell.restricted { text-decoration:line-through; }
+.yui-calendar td.calcell.highlight1 { background-color:#9CB8E3; }
+.yui-calendar td.calcell.highlight2 { background-color:#99ccff; }
+.yui-calendar td.calcell.highlight3 { background-color:#ffcccc; }
+.yui-calendar td.calcell.highlight4 { background-color:#ccff99; }
+
+/* CalendarNavigator */
+
+/* MONTH/YEAR LABEL */
+.yui-calendar a.calnav {
+    border: 1px solid #f2f2f2;
+    padding:0 4px;
+    text-decoration:none;
+    color:#000;
+    zoom:1;
+}
+
+.yui-calendar a.calnav:hover {
+    background: url(../../../../assets/skins/sam/sprite.png) repeat-x 0 0;
+    border-color:#A0A0A0;
+    cursor:pointer;
+}
+
+/* NAVIGATOR MASK */
+.yui-calcontainer .yui-cal-nav-mask {
+    background-color:#000;
+    opacity:0.25;
+    filter:alpha(opacity=25); /* IE */
+}
+
+/* NAVIGATOR BOUNDING BOX */
+.yui-calcontainer .yui-cal-nav {
+    font-family:arial,helvetica,clean,sans-serif;
+    font-size:93%;
+    border:1px solid #808080;
+    left:50%;
+    margin-left:-7em;
+    width:14em;
+    padding:0;
+    top:2.5em;
+    background-color:#f2f2f2;
+}
+
+.yui-calcontainer.withtitle .yui-cal-nav {
+    top:4.5em;
+}
+
+/* NAVIGATOR BOUNDING BOX */
+.yui-calcontainer.multi .yui-cal-nav {
+    width:16em;
+    margin-left:-8em;
+}
+
+/* NAVIGATOR YEAR/MONTH/BUTTON/ERROR BOUNDING BLOCKS */
+.yui-calcontainer .yui-cal-nav-y,
+.yui-calcontainer .yui-cal-nav-m,
+.yui-calcontainer .yui-cal-nav-b {
+    padding:5px 10px 5px 10px;
+}
+
+.yui-calcontainer .yui-cal-nav-b {
+    text-align:center;
+}
+
+.yui-calcontainer .yui-cal-nav-e {
+    margin-top:5px;
+    padding:5px;
+    background-color:#EDF5FF;
+    border-top:1px solid black;
+    display:none;
+}
+
+/* NAVIGATOR LABELS */
+.yui-calcontainer .yui-cal-nav label {
+    display:block;
+    font-weight:bold;
+}
+
+/* NAVIGATOR MONTH CONTROL */
+.yui-calcontainer .yui-cal-nav-mc {
+    width:100%;
+    _width:auto; /* IE6, IE7 Quirks don't handle 100% well */
+}
+
+/* NAVIGATOR MONTH CONTROL, VALIDATION ERROR */
+.yui-calcontainer .yui-cal-nav-y input.yui-invalid {
+    background-color:#FFEE69;
+    border: 1px solid #000;
+}
+
+/* NAVIGATOR YEAR CONTROL */
+.yui-calcontainer .yui-cal-nav-yc {
+    width:4em;
+}
+
+/* NAVIGATOR BUTTONS */
+
+/* BUTTON WRAPPER */
+.yui-calcontainer .yui-cal-nav .yui-cal-nav-btn {
+    border:1px solid #808080;
+    background: url(../../../../assets/skins/sam/sprite.png) repeat-x 0 0;
+    background-color:#ccc;
+    margin: auto .15em;
+}
+
+/* BUTTON (based on button-skin.css) */
+.yui-calcontainer .yui-cal-nav .yui-cal-nav-btn button {
+    padding:0 8px;
+    font-size:93%;
+    line-height: 2;  /* ~24px */
+    *line-height: 1.7; /* For IE */
+    min-height: 2em; /* For Gecko */
+    *min-height: auto; /* For IE */
+    color: #000;
+}
+
+/* DEFAULT BUTTONS */
+/* NOTE: IE6 will only pickup the yui-default specifier from the multiple class specifier */
+.yui-calcontainer .yui-cal-nav .yui-cal-nav-btn.yui-default {
+    border:1px solid #304369;
+    background-color: #426fd9;
+    background: url(../../../../assets/skins/sam/sprite.png) repeat-x 0 -1400px;
+}
+
+.yui-calcontainer .yui-cal-nav .yui-cal-nav-btn.yui-default button {
+    color:#fff;
+}.yui-overlay,.yui-panel-container{visibility:hidden;position:absolute;z-index:2;}.yui-panel{position:relative;}.yui-panel-container form{margin:0;}.mask{z-index:1;display:none;position:absolute;top:0;left:0;right:0;bottom:0;}.mask.block-scrollbars{overflow:auto;}.masked select,.drag select,.hide-select select{_visibility:hidden;}.yui-panel-container select{_visibility:inherit;}.hide-scrollbars,.hide-scrollbars *{overflow:hidden;}.hide-scrollbars select{display:none;}.show-scrollbars{overflow:auto;}.yui-panel-container.show-scrollbars,.yui-tt.show-scrollbars{overflow:visible;}.yui-panel-container.show-scrollbars .underlay,.yui-tt.show-scrollbars .yui-tt-shadow{overflow:auto;}.yui-panel-container.shadow .underlay.yui-force-redraw{padding-bottom:1px;}.yui-effect-fade .underlay,.yui-effect-fade .yui-tt-shadow{display:none;}.yui-tt-shadow{position:absolute;}.yui-override-padding{padding:0!important;}.yui-panel-container .container-close{overflow:hidden;text-indent:-10000em;text-decoration:none;}.yui-overlay.yui-force-redraw,.yui-panel-container.yui-force-redraw{margin-bottom:1px;}/*
+Copyright (c) 2010, Yahoo! Inc. All rights reserved.
+Code licensed under the BSD License:
+http://developer.yahoo.com/yui/license.html
+version: 3.1.2
+build: 56
+*/
+.yui3-overlay{position:absolute;}.yui3-overlay-hidden{visibility:hidden;}.yui3-widget-tmp-forcesize .yui3-overlay-content{overflow:hidden!important;}
+.yui3-slider,.yui3-slider-rail{display:-moz-inline-stack;display:inline-block;*display:inline;zoom:1;vertical-align:middle;}.yui3-slider-content{position:relative;display:block;}.yui3-slider-rail{position:relative;}.yui3-slider-rail-cap-top,.yui3-slider-rail-cap-left,.yui3-slider-rail-cap-bottom,.yui3-slider-rail-cap-right,.yui3-slider-thumb,.yui3-slider-thumb-image,.yui3-slider-thumb-shadow{position:absolute;}.yui3-slider-thumb{overflow:hidden;}.yui3-skin-sam .yui3-slider-x .yui3-slider-rail,.yui3-skin-sam .yui3-slider-x .yui3-slider-rail-cap-left,.yui3-skin-sam .yui3-slider-x .yui3-slider-rail-cap-right{background-image:url(rail-x.png?1426726744876);background-repeat:repeat-x;}.yui3-skin-sam .yui3-slider-x .yui3-slider-rail{height:26px;}.yui3-skin-sam .yui3-slider-x .yui3-slider-thumb{height:26px;width:15px;}.yui3-skin-sam .yui3-slider-x .yui3-slider-rail-cap-left{background-position:0 -20px;height:20px;left:-2px;width:5px;}.yui3-skin-sam .yui3-slider-x .yui3-slider-rail-cap-right{background-position:0 -40px;height:20px;right:-2px;width:5px;}.yui3-skin-sam .yui3-slider-x .yui3-slider-thumb-image{left:0;top:-10px;}.yui3-skin-sam .yui3-slider-x .yui3-slider-thumb-shadow{left:0;opacity:.15;filter:alpha(opacity=15);top:-50px;}.yui3-skin-sam .yui3-slider-y .yui3-slider-rail,.yui3-skin-sam .yui3-slider-y .yui3-slider-rail-cap-top,.yui3-skin-sam .yui3-slider-y .yui3-slider-rail-cap-bottom{background-image:url(rail-y.png?1426726744876);background-repeat:repeat-y;}.yui3-skin-sam .yui3-slider-y .yui3-slider-rail{width:26px;}.yui3-skin-sam .yui3-slider-y .yui3-slider-thumb{width:26px;height:15px;}.yui3-skin-sam .yui3-slider-y .yui3-slider-rail-cap-top{background-position:-20px 0;width:20px;top:-2px;height:5px;}.yui3-skin-sam .yui3-slider-y .yui3-slider-rail-cap-bottom{background-position:-40px 0;width:20px;bottom:-2px;height:5px;}.yui3-skin-sam .yui3-slider-y .yui3-slider-thumb-image{left:-10px;top:0;}.yui3-skin-sam .yui3-slider-y .yui3-slider-thumb-shadow{left:-50px;opacity:.15;filter:alpha(opacity=15);top:0;}.yui3-widget-hidden{display:none;}.yui3-widget-content{overflow:hidden;}.yui3-widget-content-expanded{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;-ms-box-sizing:border-box;box-sizing:border-box;height:100%;}.yui3-widget-tmp-forcesize{overflow:hidden!important;}
